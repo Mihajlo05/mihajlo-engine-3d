@@ -1,5 +1,16 @@
 #include <Windows.h>
 
+LRESULT CALLBACK WndProc(HWND wnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	switch (uMsg)
+	{
+	case WM_CLOSE:
+		PostQuitMessage(0);
+		break;
+	}
+	return DefWindowProc(wnd, uMsg, wParam, lParam);
+}
+
 int CALLBACK WinMain(
 	HINSTANCE hInst,
 	HINSTANCE hInstPrev,
@@ -8,11 +19,11 @@ int CALLBACK WinMain(
 )
 {
 	const char* className = "MihajloEngine3D";
-	
+
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_OWNDC;
-	wc.lpfnWndProc = DefWindowProc;
+	wc.lpfnWndProc = WndProc;
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = hInst;
@@ -24,14 +35,21 @@ int CALLBACK WinMain(
 	RegisterClassEx(&wc);
 
 	HWND hWnd = CreateWindowEx(
-		0, className,
-		className,
+		0, className, className,
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
 		200, 200, 640, 480,
 		nullptr, nullptr, hInst, nullptr
 	);
 	ShowWindow(hWnd, SW_SHOW);
 
-	while (true);
-	return 0;
+	MSG msg = { };
+	BOOL k;
+	while ((k = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	if (k == -1) return -1;
+	else return msg.wParam;
 }
