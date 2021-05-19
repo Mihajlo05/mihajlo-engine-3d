@@ -1,10 +1,10 @@
 #pragma once
 
+//Windows SDK limit (Windows 7 and up)
 #define _WIN32_WINNT 0x0601
 #include <sdkddkver.h>
-// The following #defines disable a bunch of unused windows stuff. If you 
-// get weird errors when trying to do some windows stuff, try removing some
-// (or all) of these defines (it will increase build time though).
+
+//Microsoft hates namespaces, so this are bunch of switches which disable unecacery stuff
 #define WIN32_LEAN_AND_MEAN
 #define NOGDICAPMASKS
 #define NOSYSMETRICS
