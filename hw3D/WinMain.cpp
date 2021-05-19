@@ -7,7 +7,7 @@ int CALLBACK WinMain(
 	int		  nCmdShow
 )
 {
-	Window wnd = Window(640u, 480u, "Mihajlo Engine 3D");
+	Window wnd(640u, 480u, "Mihajlo Engine 3D");
 
 	return Window::ProcessWindows();
 }

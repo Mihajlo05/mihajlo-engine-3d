@@ -43,10 +43,18 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 	height(height),
 	wndName(wndName)
 {
+	int x = CW_USEDEFAULT;
+	int y = CW_USEDEFAULT;
+	RECT rect;
+	rect.left = x; rect.right = x + width;
+	rect.top = y; rect.bottom = y + height;
+	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
+	AdjustWindowRect(&rect, style, FALSE);
+
 	HWND hWnd = CreateWindowEx(
 		0, WindowRegister::GetName(), wndName,
-		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
-		CW_USEDEFAULT, CW_USEDEFAULT, 640, 480,
+		style,
+		x, y, width, height,
 		nullptr, nullptr, WindowRegister::GetInstance(), this);
 
 	ShowWindow(hWnd, SW_SHOW);

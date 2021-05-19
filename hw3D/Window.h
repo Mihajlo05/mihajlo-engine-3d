@@ -26,8 +26,8 @@ public:
 	LRESULT HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static int ProcessWindows();
 private:
-	const char* wndName;
 	unsigned int width;
 	unsigned int height;
+	const char* wndName;
 	HWND hWnd;
 };
