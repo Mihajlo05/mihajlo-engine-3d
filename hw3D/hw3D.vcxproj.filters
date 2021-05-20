@@ -4,6 +4,9 @@
     <Filter Include="Windows">
       <UniqueIdentifier>{80ad819a-b56a-4981-8992-d3f4df5ee87e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ErrorHandling">
+      <UniqueIdentifier>{4a8cf865-c7fc-4acf-849d-b4ec424bd075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -12,6 +15,9 @@
     <ClInclude Include="Window.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="MihajloException.h">
+      <Filter>ErrorHandling</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -19,6 +25,9 @@
     </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MihajloException.cpp">
+      <Filter>ErrorHandling</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

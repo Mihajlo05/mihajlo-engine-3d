@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include <sstream>
 
 Window::WindowRegister Window::WindowRegister::wndReg;
 
@@ -116,4 +117,54 @@ int Window::ProcessWindows()
 
 	if (gParam == -1) return -1;
 	else return msg.wParam;
+}
+
+Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
+	:
+	MihajloException(file, line),
+	hr(hr)
+{ }
+
+const char* Window::Exception::what() const noexcept
+{
+	std::ostringstream msg;
+	msg << "[Type] " << GetType() << std::endl;
+	msg << GetLocation() << std::endl << std::endl;
+	msg << "[Error Code] " << GetErrorCode() << std::endl;
+	msg << "[Error Description] " << GetErrorString();
+
+	whatBuffer = msg.str();
+	return whatBuffer.c_str();
+}
+
+std::string Window::Exception::GetType() const noexcept
+{
+	return "Window Exception";
+}
+
+std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
+{
+	const char* msgBuffer = nullptr;
+	DWORD msgLen = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+		nullptr, hr, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+		reinterpret_cast<LPSTR>(&msgBuffer), 0, nullptr);
+
+	if (msgLen == 0)
+	{
+		return "Unidentified Error Code";
+	}
+
+	std::string msg = msgBuffer;
+	LocalFree(&msgBuffer);
+	return msgBuffer;
+}
+
+long Window::Exception::GetErrorCode() const noexcept
+{
+	return hr;
+}
+
+std::string Window::Exception::GetErrorString() const noexcept
+{
+	return TranslateErrorCode(hr);
 }

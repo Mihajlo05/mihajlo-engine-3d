@@ -1,8 +1,22 @@
 #pragma once
 #include "MihajloWin.h"
+#include "MihajloException.h"
 
 class Window
 {
+public:
+	class Exception : public MihajloException
+	{
+	public:
+		Exception(const std::string& file, int line, HRESULT hr) noexcept;
+		const char* what() const noexcept override;
+		std::string GetType() const noexcept override;
+		static std::string TranslateErrorCode(HRESULT hr) noexcept;
+		long GetErrorCode() const noexcept;
+		std::string GetErrorString() const noexcept;
+	private:
+		HRESULT hr;
+	};
 private:
 	class WindowRegister
 	{
