@@ -4,7 +4,7 @@
 #define _WIN32_WINNT 0x0601
 #include <sdkddkver.h>
 
-//Microsoft hates namespaces, so this are bunch of switches which disable unecacery stuff
+//Microsoft hates namespaces, so this are bunch of switches which disable unnecessary stuff
 #define WIN32_LEAN_AND_MEAN
 #define NOGDICAPMASKS
 #define NOSYSMETRICS

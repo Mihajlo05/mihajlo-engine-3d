@@ -119,6 +119,16 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
+void Window::CreateMsgBox(const std::string& title, const std::string& msg, UINT flags)
+{
+	MessageBox(nullptr, msg.c_str(), title.c_str(), flags);
+}
+
+void Window::CreateErrorMsgBox(const std::string& title, const std::string& msg)
+{
+	CreateMsgBox(title, msg, MB_OK | MB_ICONEXCLAMATION);
+}
+
 int Window::ProcessWindows()
 {
 	MSG msg;

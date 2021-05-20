@@ -15,15 +15,15 @@ int CALLBACK WinMain(
 	}
 	catch (const MihajloException& e)
 	{
-		MessageBox(nullptr, e.what(), e.GetType().c_str(), MB_OK | MB_ICONEXCLAMATION);
+		Window::CreateErrorMsgBox(e.GetType(), e.what());
 	}
 	catch (const std::exception& e)
 	{
-		MessageBox(nullptr, e.what(), "Standard Exception", MB_OK | MB_ICONEXCLAMATION);
+		Window::CreateErrorMsgBox("Standard Exception", e.what());
 	}
 	catch (...)
 	{
-		MessageBox(nullptr, "unidentified exception caught", "wut", MB_OK | MB_ICONEXCLAMATION);
+		Window::CreateErrorMsgBox("Unknown Exception", "No details avalibe");
 	}
 
 	return -1;
