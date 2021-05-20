@@ -7,6 +7,9 @@
     <Filter Include="ErrorHandling">
       <UniqueIdentifier>{4a8cf865-c7fc-4acf-849d-b4ec424bd075}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{f821da62-e9d3-423a-ab43-30afb393dbbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -17,6 +20,9 @@
     </ClInclude>
     <ClInclude Include="MihajloException.h">
       <Filter>ErrorHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -29,5 +35,15 @@
     <ClCompile Include="MihajloException.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="hw3D.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.ico">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

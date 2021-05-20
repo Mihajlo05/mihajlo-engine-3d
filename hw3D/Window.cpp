@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "resource.h"
 #include <sstream>
 
 #define WND_EXCEPTION_H(hr) Window::Exception(__FILE__, __LINE__, hr)
@@ -28,12 +29,12 @@ Window::WindowRegister::WindowRegister()
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = hInst;
-	wc.hIcon = nullptr;
+	wc.hIcon = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0));
 	wc.hCursor = nullptr;
 	wc.hbrBackground = nullptr;
 	wc.lpszMenuName = nullptr;
 	wc.lpszClassName = className;
-	wc.hIconSm = nullptr;
+	wc.hIconSm = static_cast<HICON>(LoadImage(hInst, MAKEINTRESOURCE(IDI_ICON1), IMAGE_ICON, 16, 16, 0));
 	RegisterClassEx(&wc);
 }
 
