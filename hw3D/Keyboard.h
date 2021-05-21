@@ -56,7 +56,7 @@ private:
 private:
 	static constexpr unsigned int nStates = 256u;
 	static constexpr unsigned int maxBufferSize = 16u;
-	bool isAutorepeatEnabled = true;
+	bool isAutorepeatEnabled = false;
 	std::bitset<nStates> keyStates;
 	std::queue<Event> keyBuffer;
 	std::queue<char> charBuffer;

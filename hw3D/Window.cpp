@@ -61,7 +61,6 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 		throw WND_EXCEPTION;
 	}
 
-
 	HWND hWnd = CreateWindowEx(
 		0, WindowRegister::GetName(), name.c_str(),
 		style,
@@ -73,6 +72,7 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 		throw WND_EXCEPTION;
 	}
 
+	this->hWnd = hWnd;
 	ShowWindow(hWnd, SW_SHOW);
 }
 
@@ -119,7 +119,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_KEYDOWN:
 	case WM_SYSKEYDOWN:
-		if (!(lParam & 30) || kbd.IsAutorepeatEnabled())
+		if (!(lParam & 0x40000000) || kbd.IsAutorepeatEnabled())
 			kbd.OnKeyPress(static_cast<unsigned char>(wParam));
 		break;
 	case WM_KEYUP:
@@ -142,6 +142,12 @@ void Window::CreateMsgBox(const std::string& title, const std::string& msg, UINT
 void Window::CreateErrorMsgBox(const std::string& title, const std::string& msg)
 {
 	CreateMsgBox(title, msg, MB_OK | MB_ICONEXCLAMATION);
+}
+
+void Window::ChangeName(const std::string& name)
+{
+	this->name = name;
+	if (SetWindowText(hWnd, this->name.c_str()) == FALSE) throw WND_EXCEPTION;
 }
 
 Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
