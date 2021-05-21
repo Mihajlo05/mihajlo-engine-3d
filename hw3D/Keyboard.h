@@ -39,6 +39,8 @@ public:
 	void ClearChars();
 	void Clear(); //clears both keyBuffer and charBuffer
 	void ClearStates(); //clear keyStates
+	void SetAutorepeateTo(bool value);
+	bool IsAutorepeatEnabled() const;
 private:
 	void OnKeyPress(unsigned char keycode);
 	void OnKeyRelease(unsigned char keycode);
@@ -54,6 +56,7 @@ private:
 private:
 	static constexpr unsigned int nStates = 256u;
 	static constexpr unsigned int maxBufferSize = 16u;
+	bool isAutorepeatEnabled = true;
 	std::bitset<nStates> keyStates;
 	std::queue<Event> keyBuffer;
 	std::queue<char> charBuffer;

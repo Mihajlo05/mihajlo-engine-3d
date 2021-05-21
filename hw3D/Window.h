@@ -36,18 +36,17 @@ public:
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
+	static void CreateMsgBox(const std::string& title, const std::string& msg, UINT flags);
+	static void CreateErrorMsgBox(const std::string& title, const std::string& msg);
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 public:
-	static void CreateMsgBox(const std::string& title, const std::string& msg, UINT flags);
-	static void CreateErrorMsgBox(const std::string& title, const std::string& msg);
-public:
 	Keyboard kbd;
 private:
 	unsigned int width;
 	unsigned int height;
-	const char* wndName;
+	std::string name;
 	HWND hWnd;
 };

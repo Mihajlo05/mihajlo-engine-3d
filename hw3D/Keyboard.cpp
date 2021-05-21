@@ -58,6 +58,16 @@ void Keyboard::ClearStates()
 	keyStates = std::bitset<nStates>();
 }
 
+void Keyboard::SetAutorepeateTo(bool value)
+{
+	isAutorepeatEnabled = value;
+}
+
+bool Keyboard::IsAutorepeatEnabled() const
+{
+	return isAutorepeatEnabled;
+}
+
 void Keyboard::OnKeyPress(unsigned char keycode)
 {
 	keyStates[keycode] = true;

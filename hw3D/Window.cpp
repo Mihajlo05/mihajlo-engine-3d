@@ -47,7 +47,7 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 	:
 	width(width),
 	height(height),
-	wndName(wndName)
+	name(wndName)
 {
 	int x = CW_USEDEFAULT;
 	int y = CW_USEDEFAULT;
@@ -63,7 +63,7 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 
 
 	HWND hWnd = CreateWindowEx(
-		0, WindowRegister::GetName(), wndName,
+		0, WindowRegister::GetName(), name.c_str(),
 		style,
 		x, y, rect.right - rect.left, rect.bottom - rect.top,
 		nullptr, nullptr, WindowRegister::GetInstance(), this);
@@ -118,9 +118,12 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		kbd.ClearStates();
 		break;
 	case WM_KEYDOWN:
-		kbd.OnKeyPress(static_cast<unsigned char>(wParam));
+	case WM_SYSKEYDOWN:
+		if (!(lParam & 30) || kbd.IsAutorepeatEnabled())
+			kbd.OnKeyPress(static_cast<unsigned char>(wParam));
 		break;
 	case WM_KEYUP:
+	case WM_SYSKEYUP:
 		kbd.OnKeyRelease(static_cast<unsigned char>(wParam));
 		break;
 	case WM_CHAR:
