@@ -10,6 +10,9 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{f821da62-e9d3-423a-ab43-30afb393dbbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Windows\Input">
+      <UniqueIdentifier>{bff5acaf-32e5-48bb-9b91-f27a196eb478}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -24,16 +27,22 @@
     <ClInclude Include="resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Windows\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
     <ClCompile Include="Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="MihajloException.cpp">
       <Filter>ErrorHandling</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Windows\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

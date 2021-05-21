@@ -114,6 +114,18 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		return 0;
 		break;
+	case WM_KILLFOCUS:
+		kbd.ClearStates();
+		break;
+	case WM_KEYDOWN:
+		kbd.OnKeyPress(static_cast<unsigned char>(wParam));
+		break;
+	case WM_KEYUP:
+		kbd.OnKeyRelease(static_cast<unsigned char>(wParam));
+		break;
+	case WM_CHAR:
+		kbd.OnChar(static_cast<unsigned char>(wParam));
+		break;
 	}
 
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
@@ -127,21 +139,6 @@ void Window::CreateMsgBox(const std::string& title, const std::string& msg, UINT
 void Window::CreateErrorMsgBox(const std::string& title, const std::string& msg)
 {
 	CreateMsgBox(title, msg, MB_OK | MB_ICONEXCLAMATION);
-}
-
-int Window::ProcessWindows()
-{
-	MSG msg;
-	BOOL gParam;
-
-	while ((gParam = GetMessage(&msg, nullptr, 0, 0)) > 0)
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-
-	if (gParam == -1) return -1;
-	else return msg.wParam;
 }
 
 Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept

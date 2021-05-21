@@ -1,6 +1,7 @@
 #pragma once
 #include "MihajloWin.h"
 #include "MihajloException.h"
+#include "Keyboard.h"
 
 class Window
 {
@@ -35,13 +36,15 @@ public:
 	~Window();
 	Window(const Window&) = delete;
 	Window& operator=(const Window&) = delete;
+private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 public:
 	static void CreateMsgBox(const std::string& title, const std::string& msg, UINT flags);
 	static void CreateErrorMsgBox(const std::string& title, const std::string& msg);
-	static int ProcessWindows(); //Process all active windows
+public:
+	Keyboard kbd;
 private:
 	unsigned int width;
 	unsigned int height;
