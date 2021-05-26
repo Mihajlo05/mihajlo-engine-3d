@@ -30,6 +30,9 @@
     <ClInclude Include="Keyboard.h">
       <Filter>Windows\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Windows\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -42,6 +45,9 @@
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
+      <Filter>Windows\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
       <Filter>Windows\Input</Filter>
     </ClCompile>
   </ItemGroup>
