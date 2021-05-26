@@ -38,6 +38,7 @@ public:
 	int GetPosX() const;
 	int GetPosY() const;
 	bool IsEmpty() const;
+	void Clear();
 	Event Read();
 	std::pair<int, int> GetPos() const;
 private:
@@ -45,7 +46,9 @@ private:
 	void ChangeRightState(bool pressed);
 	void OnWheelMove(bool isUp);
 	void Move(int x, int y);
+	void LimitBuffer();
 private:
+	static constexpr unsigned int bufferSize = 16u;
 	bool leftIsPressed = false;
 	bool rightIsPressed = false;
 	int xPos;

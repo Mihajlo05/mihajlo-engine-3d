@@ -25,6 +25,11 @@ bool Mouse::IsEmpty() const
 	return events.empty();
 }
 
+void Mouse::Clear()
+{
+	events = std::queue<Event>();
+}
+
 Mouse::Event Mouse::Read()
 {
 	Event e = events.front();
@@ -42,6 +47,7 @@ void Mouse::ChangeLeftState(bool pressed)
 	leftIsPressed = pressed;
 	if (LeftIsPressed()) events.emplace(Event::Type::RPress, *this);
 	else events.emplace(Event::Type::LPress, *this);
+	LimitBuffer();
 }
 
 void Mouse::ChangeRightState(bool pressed)
@@ -49,12 +55,14 @@ void Mouse::ChangeRightState(bool pressed)
 	rightIsPressed = pressed;
 	if (RightIsPressed()) events.emplace(Event::Type::RPress, *this);
 	else events.emplace(Event::Type::LPress, *this);
+	LimitBuffer();
 }
 
 void Mouse::OnWheelMove(bool isUp)
 {
 	if (isUp) events.emplace(Event::Type::WheelUp, *this);
 	else      events.emplace(Event::Type::WheelDown, *this);
+	LimitBuffer();
 }
 
 void Mouse::Move(int x, int y)
@@ -62,4 +70,10 @@ void Mouse::Move(int x, int y)
 	xPos = x;
 	yPos = y;
 	events.emplace(Event::Type::Move, *this);
+	LimitBuffer();
+}
+
+void Mouse::LimitBuffer()
+{
+	while (events.size() > bufferSize) events.pop();
 }

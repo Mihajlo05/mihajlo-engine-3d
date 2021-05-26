@@ -112,9 +112,9 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_CLOSE:
 		PostQuitMessage(0);
 		return 0;
-		break;
 	case WM_KILLFOCUS:
 		kbd.ClearStates();
+		mouse.Clear();
 		break;
 	case WM_KEYDOWN:
 	case WM_SYSKEYDOWN:
@@ -146,7 +146,16 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_MOUSEWHEEL:
 		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
-		mouse.OnWheelMove(delta > 0);
+		while (delta > WHEEL_DELTA)
+		{
+			mouse.OnWheelMove(true);
+			delta -= WHEEL_DELTA;
+		}
+		while (delta < -WHEEL_DELTA)
+		{
+			mouse.OnWheelMove(false);
+			delta += WHEEL_DELTA;
+		}
 		break;
 	}
 
