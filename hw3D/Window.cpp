@@ -60,8 +60,8 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 	{
 		throw WND_EXCEPTION;
 	}
-
-	HWND hWnd = CreateWindowEx(
+	
+	hWnd = CreateWindowEx(
 		0, WindowRegister::GetName(), name.c_str(),
 		style,
 		x, y, rect.right - rect.left, rect.bottom - rect.top,
@@ -72,7 +72,6 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 		throw WND_EXCEPTION;
 	}
 
-	this->hWnd = hWnd;
 	ShowWindow(hWnd, SW_SHOW);
 }
 
