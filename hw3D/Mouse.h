@@ -53,5 +53,5 @@ private:
 	bool rightIsPressed = false;
 	int xPos;
 	int yPos;
-	std::queue<Event> events;
+	std::queue<Event> buffer;
 };

@@ -33,7 +33,7 @@ int CALLBACK WinMain(
 	}
 	catch (...)
 	{
-		Window::CreateErrorMsgBox("Unknown Exception", "No details avalibe");
+		Window::CreateErrorMsgBox("Unknown Exception", "No details available");
 	}
 
 	return -1;
