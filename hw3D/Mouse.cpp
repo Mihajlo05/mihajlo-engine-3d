@@ -20,6 +20,11 @@ int Mouse::GetPosY() const
 	return yPos;
 }
 
+bool Mouse::IsEmpty() const
+{
+	return events.empty();
+}
+
 Mouse::Event Mouse::Read()
 {
 	Event e = events.front();
@@ -44,6 +49,12 @@ void Mouse::ChangeRightState(bool pressed)
 	rightIsPressed = pressed;
 	if (RightIsPressed()) events.emplace(Event::Type::RPress, *this);
 	else events.emplace(Event::Type::LPress, *this);
+}
+
+void Mouse::OnWheelMove(bool isUp)
+{
+	if (isUp) events.emplace(Event::Type::WheelUp, *this);
+	else      events.emplace(Event::Type::WheelDown, *this);
 }
 
 void Mouse::Move(int x, int y)

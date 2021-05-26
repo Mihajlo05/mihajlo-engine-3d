@@ -2,6 +2,7 @@
 #include "MihajloWin.h"
 #include "MihajloException.h"
 #include "Keyboard.h"
+#include "Mouse.h"
 
 class Window
 {
@@ -45,6 +46,7 @@ private:
 	LRESULT HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 public:
 	Keyboard kbd;
+	Mouse mouse;
 private:
 	unsigned int width;
 	unsigned int height;

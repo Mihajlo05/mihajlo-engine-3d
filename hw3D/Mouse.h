@@ -15,6 +15,8 @@ public:
 			RPress,
 			LDown,
 			RDown,
+			WheelUp,
+			WheelDown,
 			Move,
 			Invalid
 		};
@@ -35,11 +37,13 @@ public:
 	bool RightIsPressed() const;
 	int GetPosX() const;
 	int GetPosY() const;
+	bool IsEmpty() const;
 	Event Read();
 	std::pair<int, int> GetPos() const;
 private:
 	void ChangeLeftState(bool pressed);
 	void ChangeRightState(bool pressed);
+	void OnWheelMove(bool isUp);
 	void Move(int x, int y);
 private:
 	bool leftIsPressed = false;

@@ -129,6 +129,26 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_CHAR:
 		kbd.OnChar(static_cast<unsigned char>(wParam));
 		break;
+	case WM_MOUSEMOVE:
+		const POINTS pos = MAKEPOINTS(lParam);
+		mouse.Move(pos.x, pos.y);
+		break;
+	case WM_LBUTTONDOWN:
+		mouse.ChangeRightState(true);
+		break;
+	case WM_LBUTTONUP:
+		mouse.ChangeLeftState(false);
+		break;
+	case WM_RBUTTONDOWN:
+		mouse.ChangeRightState(true);
+		break;
+	case WM_RBUTTONUP:
+		mouse.ChangeRightState(false);
+		break;
+	case WM_MOUSEWHEEL:
+		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
+		mouse.OnWheelMove(delta > 0);
+		break;
 	}
 
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
