@@ -130,10 +130,31 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_MOUSEMOVE:
 		const POINTS pos = MAKEPOINTS(lParam);
+		if (pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) //if mouse is outside
+		{
+			if (mouse.LeftIsPressed() || mouse.RightIsPressed())
+			{
+				mouse.Move(pos.x, pos.y);
+			}
+			else
+			{
+				if (ReleaseCapture() == FALSE) throw WND_EXCEPTION;
+				mouse.OnMouseLeave();
+			}
+		}
+		else
+		{
+			mouse.Move(pos.x, pos.y);
+			if (!mouse.IsInWindow())
+			{
+				SetCapture(hWnd);
+				mouse.OnMouseEnter();
+			}
+		}
 		mouse.Move(pos.x, pos.y);
 		break;
 	case WM_LBUTTONDOWN:
-		mouse.ChangeRightState(true);
+		mouse.ChangeLeftState(true);
 		break;
 	case WM_LBUTTONUP:
 		mouse.ChangeLeftState(false);

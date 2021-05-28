@@ -25,6 +25,11 @@ bool Mouse::IsEmpty() const
 	return buffer.empty();
 }
 
+bool Mouse::IsInWindow() const
+{
+	return isInWindow;
+}
+
 void Mouse::Clear()
 {
 	buffer = std::queue<Event>();
@@ -70,6 +75,20 @@ void Mouse::Move(int x, int y)
 	xPos = x;
 	yPos = y;
 	buffer.emplace(Event::Type::Move, *this);
+	LimitBuffer();
+}
+
+void Mouse::OnMouseLeave()
+{
+	isInWindow = false;
+	buffer.emplace(Event::Type::Leave, *this);
+	LimitBuffer();
+}
+
+void Mouse::OnMouseEnter()
+{
+	isInWindow = true;
+	buffer.emplace(Event::Type::Enter, *this);
 	LimitBuffer();
 }
 
