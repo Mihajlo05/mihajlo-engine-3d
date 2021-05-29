@@ -11,17 +11,14 @@ int CALLBACK WinMain(
 	{
 		Window wnd(640u, 480u, "Mihajlo Engine 3D");
 
-		MSG msg;
-		BOOL gParam;
+		std::optional<int> exitCode;
 
-		while ((gParam = GetMessage(&msg, nullptr, 0, 0)) > 0)
+		while (!(exitCode = Window::ProcessMessages()))
 		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+
 		}
 
-		if (gParam == -1) return -1;
-		else return msg.wParam;
+		return *exitCode;
 	}
 	catch (const MihajloException& e)
 	{
