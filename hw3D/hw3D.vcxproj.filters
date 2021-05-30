@@ -13,6 +13,9 @@
     <Filter Include="Windows\Input">
       <UniqueIdentifier>{bff5acaf-32e5-48bb-9b91-f27a196eb478}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{2d8613c9-2d3f-43ae-8e5a-b3cdd78adb14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -33,6 +36,9 @@
     <ClInclude Include="Mouse.h">
       <Filter>Windows\Input</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -49,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>Windows\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
