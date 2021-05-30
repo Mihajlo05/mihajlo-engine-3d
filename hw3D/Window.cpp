@@ -199,22 +199,6 @@ void Window::ChangeName(const std::string& name)
 	if (SetWindowText(hWnd, this->name.c_str()) == FALSE) throw WND_EXCEPTION;
 }
 
-std::optional<int> Window::ProcessMessages()
-{
-	MSG msg;
-	while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-	{
-		if (msg.message == WM_QUIT)
-		{
-			return msg.wParam;
-		}
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-
-	return { };
-}
-
 Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
 	:
 	MihajloException(file, line),

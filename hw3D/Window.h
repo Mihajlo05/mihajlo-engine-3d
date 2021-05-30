@@ -3,7 +3,6 @@
 #include "MihajloException.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include <optional>
 
 class Window
 {
@@ -41,7 +40,6 @@ public:
 	static void CreateMsgBox(const std::string& title, const std::string& msg, UINT flags);
 	static void CreateErrorMsgBox(const std::string& title, const std::string& msg);
 	void ChangeName(const std::string& name);
-	static std::optional<int> ProcessMessages();
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
