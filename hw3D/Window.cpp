@@ -130,7 +130,7 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_MOUSEMOVE:
 		const POINTS pos = MAKEPOINTS(lParam);
-		if (pos.x < 0 || pos.x >= width || pos.y < 0 || pos.y >= height) //if mouse is outside
+		if (pos.x < 0 || pos.x >= (int)width || pos.y < 0 || pos.y >= (int)height) //if mouse is outside
 		{
 			if (mouse.LeftIsPressed() || mouse.RightIsPressed())
 			{
@@ -198,6 +198,25 @@ void Window::ChangeName(const std::string& name)
 	this->name = name;
 	if (SetWindowText(hWnd, this->name.c_str()) == FALSE) throw WND_EXCEPTION;
 }
+
+int Window::ProcessMessages()
+{
+	MSG msg;
+	BOOL gParam;
+
+	while ((gParam = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	if (gParam < -1) throw WND_EXCEPTION;
+	else return msg.wParam;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////EXCEPTION////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
 	:
