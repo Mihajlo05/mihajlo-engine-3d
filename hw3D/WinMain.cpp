@@ -11,7 +11,14 @@ int CALLBACK WinMain(
 	{
 		Window wnd(640u, 480u, "Mihajlo Engine 3D");
 
-		return Window::ProcessMessages();
+		std::optional<int> ecode;
+
+		while (!(ecode = Window::ProcessMessages()))
+		{
+
+		}
+
+		return *ecode;
 	}
 	catch (const MihajloException& e)
 	{

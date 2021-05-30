@@ -199,19 +199,22 @@ void Window::ChangeName(const std::string& name)
 	if (SetWindowText(hWnd, this->name.c_str()) == FALSE) throw WND_EXCEPTION;
 }
 
-int Window::ProcessMessages()
+std::optional<int> Window::ProcessMessages()
 {
 	MSG msg;
-	BOOL gParam;
 
-	while ((gParam = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 	{
+		if (msg.message == WM_QUIT)
+		{
+			return msg.wParam;
+		}
+
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
 
-	if (gParam < -1) throw WND_EXCEPTION;
-	else return msg.wParam;
+	return { };
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
