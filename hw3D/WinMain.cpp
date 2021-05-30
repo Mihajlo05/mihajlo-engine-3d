@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Game.h"
 
 int CALLBACK WinMain(
 	HINSTANCE hInst,
@@ -9,13 +9,13 @@ int CALLBACK WinMain(
 {
 	try
 	{
-		Window wnd(640u, 480u, "Mihajlo Engine 3D");
+		Game game;
 
 		std::optional<int> ecode;
 
 		while (!(ecode = Window::ProcessMessages()))
 		{
-
+			game.Go();
 		}
 
 		return *ecode;

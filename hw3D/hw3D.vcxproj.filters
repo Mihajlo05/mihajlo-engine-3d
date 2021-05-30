@@ -16,6 +16,9 @@
     <Filter Include="Components">
       <UniqueIdentifier>{2d8613c9-2d3f-43ae-8e5a-b3cdd78adb14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{590f7537-ca24-4959-b0f8-7c5e2ec21639}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -39,6 +42,9 @@
     <ClInclude Include="Timer.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -58,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
