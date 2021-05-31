@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#include <optional>
+
 int CALLBACK WinMain(
 	HINSTANCE hInst,
 	HINSTANCE hInstPrev,

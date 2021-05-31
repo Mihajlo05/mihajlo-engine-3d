@@ -7,10 +7,19 @@ Game::Game()
 
 void Game::Go()
 {
+	while (!wnd.mouse.IsEmpty()) HandleMouseEvents(wnd.mouse.Read());
+	while (!wnd.kbd.IsKeyEmpty()) HandleKeyboardEvents(wnd.kbd.ReadKey());
 	Update();
+}
+
+void Game::HandleMouseEvents(const Mouse::Event& e)
+{
+}
+
+void Game::HandleKeyboardEvents(const Keyboard::Event& e)
+{
 }
 
 void Game::Update()
 {
-
 }

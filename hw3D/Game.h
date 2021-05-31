@@ -10,6 +10,8 @@ public:
 	Game& operator=(const Game&) = delete;
 	void Go();
 private:
+	void HandleMouseEvents(const Mouse::Event& e);
+	void HandleKeyboardEvents(const Keyboard::Event& e);
 	void Update();
 private:
 	Window wnd;
