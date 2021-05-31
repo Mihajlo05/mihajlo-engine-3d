@@ -22,6 +22,7 @@ public:
 		unsigned char GetCode() { return code; }
 		Type GetType() { return type; }
 		bool IsPressed() { return type == Type::Pressed; }
+		bool IsReleased() { return type == Type::Release; }
 		bool IsValid() { return type != Type::Invalid; }
 	private:
 		unsigned char code;
