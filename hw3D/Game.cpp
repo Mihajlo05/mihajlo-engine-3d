@@ -7,9 +7,10 @@ Game::Game()
 
 void Game::Go()
 {
+	const float dt = timer.Reset();
 	while (!wnd.mouse.IsEmpty()) HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) HandleKeyboardEvents(wnd.kbd.ReadKey());
-	Update();
+	Update(dt);
 }
 
 void Game::HandleMouseEvents(const Mouse::Event& e)
@@ -20,6 +21,6 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 {
 }
 
-void Game::Update()
+void Game::Update(float dt)
 {
 }

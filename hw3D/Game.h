@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Window.h"
+#include "Timer.h"
 
 class Game
 {
@@ -12,7 +13,8 @@ public:
 private:
 	void HandleMouseEvents(const Mouse::Event& e);
 	void HandleKeyboardEvents(const Keyboard::Event& e);
-	void Update();
+	void Update(float dt);
 private:
 	Window wnd;
+	Timer timer;
 };
