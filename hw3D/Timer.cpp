@@ -17,5 +17,5 @@ float Timer::Reset()
 
 float Timer::Get() const
 {
-	return (steady_clock::now() - last).count();
+	return static_cast<float>( (steady_clock::now() - last).count() );
 }

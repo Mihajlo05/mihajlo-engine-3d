@@ -87,8 +87,8 @@ LRESULT CALLBACK Window::HandleMsgSetup(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 		const CREATESTRUCTW* pCreateStruct = reinterpret_cast<CREATESTRUCTW*>(lParam);
 		Window* const pWnd = reinterpret_cast<Window*>(pCreateStruct->lpCreateParams);
 
-		SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG>(pWnd));
-		SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG>(HandleMsgThunk));
+		SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWnd));
+		SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HandleMsgThunk));
 
 		return pWnd->HandleMsg(hWnd, uMsg, wParam, lParam);
 	}
@@ -207,7 +207,7 @@ std::optional<int> Window::ProcessMessages()
 	{
 		if (msg.message == WM_QUIT)
 		{
-			return msg.wParam;
+			return static_cast<int>(msg.wParam);
 		}
 
 		TranslateMessage(&msg);
@@ -258,7 +258,7 @@ std::string Window::Exception::TranslateErrorCode(HRESULT hr) noexcept
 
 	std::string msg = msgBuffer;
 	LocalFree(msgBuffer);
-	return msgBuffer;
+	return msg;
 }
 
 long Window::Exception::GetErrorCode() const noexcept
