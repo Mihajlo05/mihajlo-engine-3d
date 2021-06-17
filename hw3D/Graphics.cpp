@@ -18,6 +18,7 @@ Graphics::Graphics(HWND hWnd)
 	scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	scd.BufferCount = 1; //double-boufer
 	scd.OutputWindow = hWnd;
+	scd.Windowed = TRUE;
 	scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 	scd.Flags = 0; //not setting any flags (yet)
 

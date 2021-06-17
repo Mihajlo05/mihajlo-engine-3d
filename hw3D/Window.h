@@ -3,8 +3,10 @@
 #include "MihajloException.h"
 #include "Keyboard.h"
 #include "Mouse.h"
+#include "Graphics.h"
 
 #include <optional>
+#include <memory>
 
 class Window
 {
@@ -43,6 +45,7 @@ public:
 	static void CreateErrorMsgBox(const std::string& title, const std::string& msg);
 	void ChangeName(const std::string& name);
 	static std::optional<int> ProcessMessages();
+	Graphics& Gfx();
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
@@ -55,4 +58,5 @@ private:
 	unsigned int height;
 	std::string name;
 	HWND hWnd;
+	std::unique_ptr<Graphics> pGfx = nullptr;
 };
