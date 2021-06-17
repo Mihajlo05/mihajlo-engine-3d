@@ -19,6 +19,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{590f7537-ca24-4959-b0f8-7c5e2ec21639}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Windows\Graphics">
+      <UniqueIdentifier>{113b2353-71b7-4ac8-bb62-d93a126755e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -45,6 +48,9 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Windows\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -67,6 +73,9 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Windows\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
