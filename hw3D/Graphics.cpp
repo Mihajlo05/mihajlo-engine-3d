@@ -36,11 +36,29 @@ Graphics::Graphics(HWND hWnd)
 		nullptr, //not specifying feature level,
 		&pContext
 	);
+
+	ID3D11Resource* pBackBuffer = nullptr;
+	pSwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&pBackBuffer));
+
+	pDevice->CreateRenderTargetView(pBackBuffer, nullptr, &pTarget);
+	pBackBuffer->Release();
 }
 
 Graphics::~Graphics()
 {
+	if (pTarget != nullptr) pTarget->Release();
 	if (pSwapChain != nullptr) pSwapChain->Release();
 	if (pContext != nullptr) pContext->Release();
 	if (pDevice != nullptr) pDevice->Release();
+}
+
+void Graphics::EndFrame()
+{
+	pSwapChain->Present(1u, 0u);
+}
+
+void Graphics::ClearBuffer(float r, float g, float b, float a)
+{
+	const float color[] = { r, g, b, a };
+	pContext->ClearRenderTargetView(pTarget, color);
 }
