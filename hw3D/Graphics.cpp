@@ -8,6 +8,8 @@
 #define THROW_IF_ERROR_GFX_EXCEPTION(hr) if (FAILED(hr)) throw GFX_EXCEPTION(hr)
 #define GFX_DEVICE_REMOVED_EXCEPTION(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, hr)
 
+using namespace Microsoft::WRL;
+
 Graphics::Graphics(HWND hWnd)
 {
 	//swap chain descriptor
@@ -44,13 +46,12 @@ Graphics::Graphics(HWND hWnd)
 		&pContext
 	) );
 
-	ID3D11Resource* pBackBuffer = nullptr;
+	ComPtr<ID3D11Resource> pBackBuffer = nullptr;
 	THROW_IF_ERROR_GFX_EXCEPTION( pSwapChain->GetBuffer(0,
 		__uuidof(ID3D11Resource),
-		reinterpret_cast<void**>(&pBackBuffer)) );
+		&pBackBuffer) );
 
-	THROW_IF_ERROR_GFX_EXCEPTION( pDevice->CreateRenderTargetView(pBackBuffer, nullptr, &pTarget) );
-	pBackBuffer->Release();
+	THROW_IF_ERROR_GFX_EXCEPTION( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
 }
 
 Graphics::~Graphics()
@@ -75,7 +76,7 @@ void Graphics::EndFrame()
 void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
-	pContext->ClearRenderTargetView(pTarget, color);
+	pContext->ClearRenderTargetView(pTarget.Get(), color);
 }
 
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept

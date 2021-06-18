@@ -2,6 +2,7 @@
 
 #include "MihajloWin.h"
 #include <d3d11.h>
+#include "wrl.h"
 #include "MihajloException.h"
 
 class Graphics
@@ -33,8 +34,8 @@ public:
 	void EndFrame();
 	void ClearBuffer(float r, float g, float b, float a=1.0f);
 private:
-	ID3D11Device* pDevice = nullptr;
-	IDXGISwapChain* pSwapChain = nullptr;
-	ID3D11DeviceContext* pContext = nullptr;
-	ID3D11RenderTargetView* pTarget = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
+	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11DeviceContext> pContext = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget = nullptr;
 };
