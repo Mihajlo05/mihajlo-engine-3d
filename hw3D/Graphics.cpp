@@ -30,12 +30,21 @@ Graphics::Graphics(HWND hWnd)
 	scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 	scd.Flags = 0; //not setting any flags (yet)
 
+	UINT deviceSwapChainFlags;
+
+#ifdef NDEBUG
+	deviceSwapChainFlags = 0;
+#else
+	deviceSwapChainFlags = D3D11_CREATE_DEVICE_DEBUG;
+#endif
+
+
 	THROW_IF_ERROR_GFX_EXCEPTION (
 	D3D11CreateDeviceAndSwapChain(
 		nullptr, //not specifying graphics card
 		D3D_DRIVER_TYPE_HARDWARE, //Hardware driver
 		nullptr,
-		D3D11_CREATE_DEVICE_DEBUG,
+		deviceSwapChainFlags,
 		nullptr,
 		0, //not specifying feature levels
 		D3D11_SDK_VERSION, //SDK version on device
