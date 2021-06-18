@@ -6,6 +6,7 @@
 
 #define GFX_EXCEPTION(hr) Graphics::Exception(__FILE__, __LINE__, hr)
 #define THROW_IF_ERROR_GFX_EXCEPTION(hr) if (FAILED(hr)) throw GFX_EXCEPTION(hr)
+#define GFX_DEVICE_REMOVED_EXCEPTION(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, hr)
 
 Graphics::Graphics(HWND hWnd)
 {
@@ -62,7 +63,13 @@ Graphics::~Graphics()
 
 void Graphics::EndFrame()
 {
-	pSwapChain->Present(1u, 0u);
+	HRESULT hr;
+	hr = pSwapChain->Present(1u, 0u);
+	if (FAILED(hr))
+		if (hr == DXGI_ERROR_DEVICE_REMOVED)
+			throw GFX_DEVICE_REMOVED_EXCEPTION(pDevice->GetDeviceRemovedReason());
+		else
+			throw GFX_EXCEPTION(hr);
 }
 
 void Graphics::ClearBuffer(float r, float g, float b, float a)
@@ -111,4 +118,9 @@ std::string Graphics::Exception::GetErrorDescription() const noexcept
 long Graphics::Exception::GetErrorCode() const noexcept
 {
 	return static_cast<long>(hr);
+}
+
+std::string Graphics::DeviceRemovedException::GetType() const noexcept
+{
+	return "Graphics Exception [Device Removed]";
 }

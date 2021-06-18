@@ -12,12 +12,18 @@ private:
 	public:
 		Exception(const std::string& file, int line, HRESULT hr) noexcept;
 		const char* what() const noexcept override;
-		std::string GetType() const noexcept override;
+		virtual std::string GetType() const noexcept override;
 		std::string GetErrorString() const noexcept;
 		std::string GetErrorDescription() const noexcept;
 		long GetErrorCode() const noexcept;
 	private:
 		HRESULT hr;
+	};
+	class DeviceRemovedException : public Exception
+	{
+	public:
+		using Exception::Exception;
+		std::string GetType() const noexcept override;
 	};
 public:
 	Graphics(HWND hWnd);
