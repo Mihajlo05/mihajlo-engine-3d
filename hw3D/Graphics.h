@@ -2,9 +2,23 @@
 
 #include "MihajloWin.h"
 #include <d3d11.h>
+#include "MihajloException.h"
 
 class Graphics
 {
+private:
+	class Exception : public MihajloException
+	{
+	public:
+		Exception(const std::string& file, int line, HRESULT hr) noexcept;
+		const char* what() const noexcept override;
+		std::string GetType() const noexcept override;
+		std::string GetErrorString() const noexcept;
+		std::string GetErrorDescription() const noexcept;
+		long GetErrorCode() const noexcept;
+	private:
+		HRESULT hr;
+	};
 public:
 	Graphics(HWND hWnd);
 	Graphics& operator=(const Graphics&) = delete;
