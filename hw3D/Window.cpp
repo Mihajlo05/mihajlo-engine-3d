@@ -221,6 +221,8 @@ std::optional<int> Window::ProcessMessages()
 
 Graphics& Window::Gfx()
 {
+	if (pGfx == nullptr)
+		throw std::runtime_error("trying to access graphics from window, but it doesn't exist.\n[File] Window.cpp\n[Line] 227");
 	return *pGfx;
 }
 
