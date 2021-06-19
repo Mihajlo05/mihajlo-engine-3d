@@ -88,6 +88,11 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
 }
 
+void Graphics::DrawTestTriangle()
+{
+	pContext->Draw(3u, 0u);
+}
+
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
 	:
 	MihajloException(file, line),
