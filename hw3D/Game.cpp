@@ -25,5 +25,4 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
-	wnd.Gfx().DrawTestTriangle();
 }

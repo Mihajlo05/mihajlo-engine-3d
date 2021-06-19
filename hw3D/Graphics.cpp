@@ -63,14 +63,6 @@ Graphics::Graphics(HWND hWnd)
 	THROW_IF_ERROR_GFX_EXCEPTION( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
 }
 
-Graphics::~Graphics()
-{
-	if (pTarget != nullptr) pTarget->Release();
-	if (pSwapChain != nullptr) pSwapChain->Release();
-	if (pContext != nullptr) pContext->Release();
-	if (pDevice != nullptr) pDevice->Release();
-}
-
 void Graphics::EndFrame()
 {
 	HRESULT hr;
@@ -86,11 +78,6 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
-}
-
-void Graphics::DrawTestTriangle()
-{
-	pContext->Draw(3u, 0u);
 }
 
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
