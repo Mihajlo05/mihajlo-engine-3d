@@ -63,14 +63,6 @@ Graphics::Graphics(HWND hWnd)
 	THROW_IF_ERROR_GFX_EXCEPTION( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
 }
 
-Graphics::~Graphics()
-{
-	if (pTarget != nullptr) pTarget->Release();
-	if (pSwapChain != nullptr) pSwapChain->Release();
-	if (pContext != nullptr) pContext->Release();
-	if (pDevice != nullptr) pDevice->Release();
-}
-
 void Graphics::EndFrame()
 {
 	HRESULT hr;
