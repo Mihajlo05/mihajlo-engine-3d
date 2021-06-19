@@ -3,9 +3,6 @@
 #include "resource.h"
 #include <sstream>
 
-#define WND_EXCEPTION_H(hr) Window::Exception(__FILE__, __LINE__, hr)
-#define WND_EXCEPTION WND_EXCEPTION_H(GetLastError())
-
 Window::WindowRegister Window::WindowRegister::wndReg;
 
 HINSTANCE Window::WindowRegister::GetInstance() noexcept
