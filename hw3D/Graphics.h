@@ -30,8 +30,10 @@ public:
 	Graphics(HWND hWnd);
 	Graphics& operator=(const Graphics&) = delete;
 	Graphics(const Graphics&) = delete;
+	~Graphics();
 	void EndFrame();
 	void ClearBuffer(float r, float g, float b, float a=1.0f);
+	void DrawTestTriangle();
 private:
 	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;
