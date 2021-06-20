@@ -3,6 +3,8 @@
 #include "resource.h"
 #include <sstream>
 
+#define WND_NOGFX_EXCEPT Window::NoGfxException(__FILE__, __LINE__)
+
 Window::WindowRegister Window::WindowRegister::wndReg;
 
 HINSTANCE Window::WindowRegister::GetInstance() noexcept
@@ -219,7 +221,7 @@ std::optional<int> Window::ProcessMessages()
 Graphics& Window::Gfx()
 {
 	if (pGfx == nullptr)
-		throw std::runtime_error("trying to access graphics from window, but it doesn't exist.\n[File] Window.cpp\n[Line] 227");
+		throw WND_NOGFX_EXCEPT;
 	return *pGfx;
 }
 
@@ -236,8 +238,7 @@ Window::Exception::Exception(const std::string& file, int line, HRESULT hr) noex
 const char* Window::Exception::what() const noexcept
 {
 	std::ostringstream msg;
-	msg << "[Type] " << GetType() << std::endl;
-	msg << GetLocation() << std::endl << std::endl;
+	msg << MihajloException::what() << std::endl;
 	msg << "[Error Code] " << GetErrorCode() << std::endl;
 	msg << "[Error Description] " << GetErrorString();
 
@@ -275,4 +276,9 @@ long Window::Exception::GetErrorCode() const noexcept
 std::string Window::Exception::GetErrorString() const noexcept
 {
 	return TranslateErrorCode(hr);
+}
+
+std::string Window::NoGfxException::GetType() const noexcept
+{
+	return "Window Exception [No Graphics/GFX Exception]";
 }

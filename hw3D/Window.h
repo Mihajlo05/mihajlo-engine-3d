@@ -23,6 +23,12 @@ public:
 	private:
 		HRESULT hr;
 	};
+	class NoGfxException : public MihajloException
+	{
+	public:
+		using MihajloException::MihajloException;
+		std::string GetType() const noexcept override;
+	};
 private:
 	class WindowRegister
 	{

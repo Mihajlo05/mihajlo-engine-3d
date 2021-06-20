@@ -4,10 +4,6 @@
 
 #pragma comment(lib, "d3d11.lib")
 
-#define GFX_EXCEPTION(hr) Graphics::Exception(__FILE__, __LINE__, hr)
-#define THROW_IF_ERROR_GFX_EXCEPTION(hr) if (FAILED(hr)) throw GFX_EXCEPTION(hr)
-#define GFX_DEVICE_REMOVED_EXCEPTION(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, hr)
-
 using namespace Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd)
@@ -24,10 +20,10 @@ Graphics::Graphics(HWND hWnd)
 	scd.SampleDesc.Count = 1;
 	scd.SampleDesc.Quality = 0; //no anti-aliasing
 	scd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	scd.BufferCount = 1; //double-boufer
+	scd.BufferCount = 2; //double-boufer
 	scd.OutputWindow = hWnd;
 	scd.Windowed = TRUE;
-	scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	scd.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 	scd.Flags = 0; //not setting any flags (yet)
 
 	UINT deviceSwapChainFlags;
@@ -39,8 +35,7 @@ Graphics::Graphics(HWND hWnd)
 #endif
 
 
-	THROW_IF_ERROR_GFX_EXCEPTION (
-	D3D11CreateDeviceAndSwapChain(
+	GFX_THROW( D3D11CreateDeviceAndSwapChain(
 		nullptr, //not specifying graphics card
 		D3D_DRIVER_TYPE_HARDWARE, //Hardware driver
 		nullptr,
@@ -56,28 +51,46 @@ Graphics::Graphics(HWND hWnd)
 	) );
 
 	ComPtr<ID3D11Resource> pBackBuffer = nullptr;
-	THROW_IF_ERROR_GFX_EXCEPTION( pSwapChain->GetBuffer(0,
+	GFX_THROW( pSwapChain->GetBuffer(0,
 		__uuidof(ID3D11Resource),
 		&pBackBuffer) );
 
-	THROW_IF_ERROR_GFX_EXCEPTION( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
+	GFX_THROW( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
 }
 
 void Graphics::EndFrame()
 {
+#ifndef NDEBUG
+	infoManager.Set();
+#endif
 	HRESULT hr;
 	hr = pSwapChain->Present(1u, 0u);
 	if (FAILED(hr))
 		if (hr == DXGI_ERROR_DEVICE_REMOVED)
-			throw GFX_DEVICE_REMOVED_EXCEPTION(pDevice->GetDeviceRemovedReason());
+			throw GFX_DEVICE_REMOVED_EXCEPT(pDevice->GetDeviceRemovedReason());
 		else
-			throw GFX_EXCEPTION(hr);
+			throw GFX_EXCEPT(hr);
 }
 
 void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
+}
+
+//EXCEPTION
+
+Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr, const std::vector<std::string>& infos) noexcept
+	:
+	MihajloException(file, line),
+	hr(hr)
+{
+	for (const auto& is : infos)
+	{
+		info += is;
+		info += "\n";
+	}
+	if (!info.empty()) info.pop_back();
 }
 
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr) noexcept
@@ -89,12 +102,14 @@ Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr) no
 const char* Graphics::Exception::what() const noexcept
 {
 	std::ostringstream msg;
-	msg << "[Type] " << GetType() << std::endl;
-	msg << GetLocation() << std::endl << std::endl;
+	msg << MihajloException::what() << std::endl;
 	
 	msg << "[Error Code] " << GetErrorCode() << std::endl;
-	msg << "[Error Name] " << GetErrorString() << std::endl;
+	msg << "[Error String] " << GetErrorString() << std::endl;
 	msg << "[Error Description] " << GetErrorDescription() << std::endl;
+#ifndef NDEBUG
+	msg << "[Error Info]\n" << GetErrorInfo();
+#endif
 
 	whatBuffer = msg.str();
 	return whatBuffer.c_str();
@@ -122,7 +137,12 @@ long Graphics::Exception::GetErrorCode() const noexcept
 	return static_cast<long>(hr);
 }
 
+std::string Graphics::Exception::GetErrorInfo() const noexcept
+{
+	return info;
+}
+
 std::string Graphics::DeviceRemovedException::GetType() const noexcept
 {
-	return "Graphics Exception [Device Removed]";
+	return "Graphics Exception [Device Removed] (DXGI_ERROR_DEVICE_REMOVED)";
 }

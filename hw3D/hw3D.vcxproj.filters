@@ -57,6 +57,9 @@
     <ClInclude Include="dxerr.h">
       <Filter>ErrorHandling\DxErr</Filter>
     </ClInclude>
+    <ClInclude Include="DxgiInfoManager.h">
+      <Filter>ErrorHandling</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -85,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="dxerr.cpp">
       <Filter>ErrorHandling\DxErr</Filter>
+    </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>ErrorHandling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
