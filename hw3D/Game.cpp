@@ -2,7 +2,7 @@
 
 Game::Game()
 	:
-	wnd(640u, 480u, "Mihajlo Engine 3D")
+	wnd(800u, 600u, "Mihajlo Engine 3D")
 { }
 
 void Game::Go()
