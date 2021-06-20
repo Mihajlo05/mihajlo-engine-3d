@@ -47,16 +47,3 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> pContext = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget = nullptr;
 };
-
-#define GFX_EXCEPT_NOINFO(hr) Graphics::Exception(__FILE__, __LINE__, (hr))
-#define GFX_THROW_NOINFO(hr) if (FAILED(hr)) throw GFX_EXCEPT_NOINFO(hr)
-
-#ifndef NDEBUG
-#define GFX_EXCEPT(hr) Graphics::Exception(__FILE__, __LINE__, (hr), infoManager.GetMessages())
-#define GFX_THROW(hr) infoManager.Set(); if (FAILED(hr)) throw GFX_EXCEPT(hr)
-#define GFX_DEVICE_REMOVED_EXCEPT(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, (hr), infoManager.GetMessages())
-#else
-#define GFX_EXCEPT(hr) GFX_EXCEPT_NOINFO(hr)
-#define GFX_THROW(hr) GFX_THROW_NOINFO(hr)
-#define GFX_DEVICE_REMOVED_EXCEPT(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, (hr))
-#endif
