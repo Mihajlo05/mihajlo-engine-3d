@@ -14,6 +14,7 @@ private:
 	void HandleMouseEvents(const Mouse::Event& e);
 	void HandleKeyboardEvents(const Keyboard::Event& e);
 	void Update(float dt);
+	void Draw(Graphics& gfx);
 private:
 	Window wnd;
 	Timer timer;

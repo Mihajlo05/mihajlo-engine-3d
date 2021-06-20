@@ -12,6 +12,7 @@ void Game::Go()
 	while (!wnd.mouse.IsEmpty()) HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) HandleKeyboardEvents(wnd.kbd.ReadKey());
 	Update(dt);
+	Draw(wnd.Gfx());
 	wnd.Gfx().EndFrame();
 }
 
@@ -24,5 +25,9 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 }
 
 void Game::Update(float dt)
+{
+}
+
+void Game::Draw(Graphics& gfx)
 {
 }
