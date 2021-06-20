@@ -30,6 +30,16 @@ public:
 		using Exception::Exception;
 		std::string GetType() const noexcept override;
 	};
+	class InfoException : public MihajloException
+	{
+	public:
+		InfoException(const std::string& file, int line, std::vector<std::string>& info) noexcept;
+		std::string GetType() const noexcept override;
+		const char* what() const noexcept override;
+		std::string GetErrorInfo() const noexcept;
+	private:
+		std::string info;
+	};
 public:
 	Graphics(HWND hWnd);
 	Graphics& operator=(const Graphics&) = delete;

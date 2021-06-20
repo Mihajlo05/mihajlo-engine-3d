@@ -13,10 +13,14 @@ using namespace Microsoft::WRL;
 #define GFX_EXCEPT(hr) Graphics::Exception(__FILE__, __LINE__, (hr), infoManager.GetMessages())
 #define GFX_THROW(hr) infoManager.Set(); if (FAILED(hr)) throw GFX_EXCEPT(hr)
 #define GFX_DEVICE_REMOVED_EXCEPT(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, (hr), infoManager.GetMessages())
+#define GFX_EXCEPT_INFO_ONLY() Graphics::InfoException(__FILE__, __LINE__, infoManager.GetMessages())
+#define GFX_THROW_INFO_ONLY(call) infoManager.Set(); (call); { auto msgs = GetMessages(); if (!msgs.empty()) throw GFX_EXCEPT_INFO_ONLY(); }
 #else
 #define GFX_EXCEPT(hr) GFX_EXCEPT_NOINFO(hr)
 #define GFX_THROW(hr) GFX_THROW_NOINFO(hr)
 #define GFX_DEVICE_REMOVED_EXCEPT(hr) Graphics::DeviceRemovedException(__FILE__, __LINE__, (hr))
+#define GFX_EXCEPT_INFO_ONLY()
+#define GFX_THROW_INFO_ONLY(call) (call)
 #endif
 
 Graphics::Graphics(HWND hWnd)
@@ -158,4 +162,38 @@ std::string Graphics::Exception::GetErrorInfo() const noexcept
 std::string Graphics::DeviceRemovedException::GetType() const noexcept
 {
 	return "Graphics Exception [Device Removed] (DXGI_ERROR_DEVICE_REMOVED)";
+}
+
+Graphics::InfoException::InfoException(const std::string& file, int line, std::vector<std::string>& infos) noexcept
+	:
+	MihajloException(file, line)
+{
+	for (const auto& is : infos)
+	{
+		info += is;
+		info += "\n";
+	}
+	if (!info.empty()) info.pop_back();
+}
+
+std::string Graphics::InfoException::GetType() const noexcept
+{
+	return "Graphics Exception [INFO_ONLY]";
+}
+
+const char* Graphics::InfoException::what() const noexcept
+{
+	std::ostringstream msg;
+	msg << MihajloException::what() << std::endl;
+#ifndef NDEBUG
+	msg << "[Error Info]\n" << GetErrorInfo();
+#endif
+
+	whatBuffer = msg.str();
+	return whatBuffer.c_str();
+}
+
+std::string Graphics::InfoException::GetErrorInfo() const noexcept
+{
+	return info;
 }
