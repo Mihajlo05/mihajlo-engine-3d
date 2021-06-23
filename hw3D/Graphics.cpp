@@ -73,6 +73,38 @@ Graphics::Graphics(HWND hWnd)
 		&pBackBuffer) );
 
 	GFX_THROW( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
+
+	ComPtr<ID3D11DepthStencilState> pDepthStencilState;
+	D3D11_DEPTH_STENCIL_DESC dsd = {};
+	dsd.DepthEnable = TRUE;
+	dsd.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+	dsd.DepthFunc = D3D11_COMPARISON_LESS;
+
+	GFX_THROW(pDevice->CreateDepthStencilState(&dsd, &pDepthStencilState));
+	pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
+
+	ComPtr<ID3D11Texture2D> pTexture;
+	D3D11_TEXTURE2D_DESC t2d = {};
+	t2d.Width = 800u;
+	t2d.Height = 600u;
+	t2d.MipLevels = 0u;
+	t2d.ArraySize = 1u;
+	t2d.Format = DXGI_FORMAT_D32_FLOAT;
+	t2d.SampleDesc.Count = 1u;
+	t2d.SampleDesc.Quality = 0u;
+	t2d.Usage = D3D11_USAGE_DEFAULT;
+	t2d.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+	t2d.MiscFlags = 0u;
+	t2d.CPUAccessFlags = 0u;
+
+	GFX_THROW(pDevice->CreateTexture2D(&t2d, nullptr, &pTexture));
+
+	D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {};
+	dsvd.Format = DXGI_FORMAT_D32_FLOAT;
+	dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+	dsvd.Texture2D.MipSlice = 0u;
+
+	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
 }
 
 void Graphics::EndFrame()
