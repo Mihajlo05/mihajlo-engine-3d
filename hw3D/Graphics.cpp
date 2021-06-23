@@ -23,12 +23,12 @@ using namespace Microsoft::WRL;
 #define GFX_THROW_INFO_ONLY(call) (call)
 #endif
 
-Graphics::Graphics(HWND hWnd)
+Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 {
 	//swap chain descriptor
 	DXGI_SWAP_CHAIN_DESC scd = { 0 };
-	scd.BufferDesc.Width = 0; //width and height are the same as window
-	scd.BufferDesc.Height = 0;
+	scd.BufferDesc.Width = width;
+	scd.BufferDesc.Height = height;
 	scd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	scd.BufferDesc.RefreshRate.Numerator = 0; //not setting refresh rate
 	scd.BufferDesc.RefreshRate.Denominator = 0;
@@ -85,8 +85,8 @@ Graphics::Graphics(HWND hWnd)
 
 	ComPtr<ID3D11Texture2D> pTexture;
 	D3D11_TEXTURE2D_DESC t2d = {};
-	t2d.Width = 800u;
-	t2d.Height = 600u;
+	t2d.Width = width;
+	t2d.Height = height;
 	t2d.MipLevels = 0u;
 	t2d.ArraySize = 1u;
 	t2d.Format = DXGI_FORMAT_D32_FLOAT;
