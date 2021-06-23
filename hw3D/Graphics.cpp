@@ -125,6 +125,7 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
+	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
 //EXCEPTION
