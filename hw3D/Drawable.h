@@ -15,7 +15,7 @@ public:
 	virtual DirectX::XMMATRIX GetTransformation() const = 0;
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
 	void AddIndexBuffer(std::unique_ptr<IndexBuffer> pib);
-	~Drawable() = default;
+	virtual ~Drawable() = default;
 private:
 	const IndexBuffer* pIndexBuffer = nullptr;
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;

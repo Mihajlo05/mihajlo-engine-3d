@@ -2,7 +2,8 @@
 
 Game::Game()
 	:
-	wnd(800u, 600u, "Mihajlo Engine 3D")
+	wnd(800u, 600u, "Mihajlo Engine 3D"),
+	box(wnd.Gfx())
 { }
 
 void Game::Go()
@@ -30,4 +31,5 @@ void Game::Update(float dt)
 
 void Game::Draw(Graphics& gfx)
 {
+	box.Draw(gfx);
 }

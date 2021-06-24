@@ -21,7 +21,7 @@ public:
 		bd.Usage = D3D11_USAGE_DEFAULT;
 		bd.CPUAccessFlags = 0u;
 		bd.MiscFlags = 0u;
-		bd.ByteWidth = stride * vertices.size();
+		bd.ByteWidth = stride * (uint32_t)vertices.size();
 		bd.StructureByteStride = stride;
 		D3D11_SUBRESOURCE_DATA sd = {};
 		sd.pSysMem = vertices.data();

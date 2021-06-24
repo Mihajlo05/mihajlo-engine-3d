@@ -48,6 +48,7 @@ public:
 		GetContext(gfx)->Unmap(pData.Get(), 0u);
 	}
 	virtual void Bind(Graphics& gfx) const override = 0;
+	virtual ~ConstantBuffer() = default;
 protected:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> pData;
 };
