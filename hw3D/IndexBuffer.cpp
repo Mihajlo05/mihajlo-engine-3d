@@ -2,7 +2,7 @@
 
 IndexBuffer::IndexBuffer(Graphics& gfx, std::vector<unsigned short>& indices)
 	:
-	count(indices.size())
+	count((uint32_t)indices.size())
 {
 	BIND_INFOMAN(gfx);
 
@@ -25,7 +25,7 @@ void IndexBuffer::Bind(Graphics& gfx) const
 	GetContext(gfx)->IASetIndexBuffer(pData.Get(), DXGI_FORMAT_R16_UINT, 0u);
 }
 
-size_t IndexBuffer::GetCount() const
+uint32_t IndexBuffer::GetCount() const
 {
 	return count;
 }

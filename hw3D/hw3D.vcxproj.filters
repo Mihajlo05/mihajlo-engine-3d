@@ -28,6 +28,18 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{6bcfebac-f0f5-4bc5-bc8b-909be6d81632}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bindable\Shaders">
+      <UniqueIdentifier>{9c95ab0e-fdbd-4dc0-a312-80c18a01189a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable\Buffers">
+      <UniqueIdentifier>{6f64582f-a1d0-4423-9dd2-c939b0cd0421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable\Buffers\ConstantBuffers">
+      <UniqueIdentifier>{81de8335-3c66-4cdd-92aa-cf61568b8e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawable">
+      <UniqueIdentifier>{c57255a9-df1a-458a-b4ef-2947858adba5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -63,18 +75,6 @@
     <ClInclude Include="Bindable.h">
       <Filter>Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="IndexBuffer.h">
-      <Filter>Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelShader.h">
-      <Filter>Bindable</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexShader.h">
-      <Filter>Bindable</Filter>
-    </ClInclude>
     <ClInclude Include="InputLayout.h">
       <Filter>Bindable</Filter>
     </ClInclude>
@@ -88,13 +88,28 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="VertexConstantBuffer.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="PixelConstantBuffer.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,18 +143,6 @@
     <ClCompile Include="Bindable.cpp">
       <Filter>Bindable</Filter>
     </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Bindable</Filter>
-    </ClCompile>
-    <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Bindable</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelShader.cpp">
-      <Filter>Bindable</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
-      <Filter>Bindable</Filter>
-    </ClCompile>
     <ClCompile Include="InputLayout.cpp">
       <Filter>Bindable</Filter>
     </ClCompile>
@@ -151,6 +154,21 @@
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
