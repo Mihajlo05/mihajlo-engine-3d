@@ -16,12 +16,24 @@ public:
 
 		std::vector<Vertex> vertices =
 		{
-			{ 0.0f, 0.5f, 0.0f },
-			{ 0.5f, -0.5f, 0.0f },
-			{-0.5f, -0.5f, 0.0f}
+			{ -1.0f,-1.0f,-1.0f	 },
+			{ 1.0f,-1.0f,-1.0f	 },
+			{ -1.0f,1.0f,-1.0f	 },
+			{ 1.0f,1.0f,-1.0f	  },
+			{ -1.0f,-1.0f,1.0f	 },
+			{ 1.0f,-1.0f,1.0f	  },
+			{ -1.0f,1.0f,1.0f	 },
+			{ 1.0f,1.0f,1.0f	 }
 		};
 
-		std::vector<unsigned short> indices = { 0, 1, 2 };
+		std::vector<unsigned short> indices = {
+				0,2,1, 2,3,1,
+				1,3,5, 3,7,5,
+				2,6,3, 3,6,7,
+				4,5,7, 4,7,6,
+				0,4,2, 2,4,6,
+				0,1,4, 1,5,4
+		};
 
 		AddIndexBuffer(std::make_unique<IndexBuffer>(gfx, indices));
 
@@ -49,10 +61,25 @@ public:
 		dvp.TopLeftY = 0u;
 
 		AddBindable(std::make_unique<Viewport>(dvp));
+
+		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 	}
-	void Update(float dt) override {}
+	void Update(float dt) override
+	{
+		pitch += dpitch * dt;
+		yaw += dyaw * dt;
+		roll += droll * dt;
+	}
 	DirectX::XMMATRIX GetTransformation() const
 	{
-		return DirectX::XMMatrixTranslation(0.0f, 0.0f, 4.0f);
+		return DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
+			DirectX::XMMatrixTranslation(0.0f, 0.0f, 4.0f);
 	}
+private:
+	float pitch = 0.0f;
+	float yaw = 0.0f;
+	float roll = 0.0f;
+	float dpitch = 3.14f;
+	float dyaw = 2.1f;
+	float droll = 6.28f;
 };
