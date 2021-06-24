@@ -27,7 +27,7 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
-	box.Update(dt);
+	box.Update(dt, wnd.Gfx());
 }
 
 void Game::Draw(Graphics& gfx)

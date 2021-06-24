@@ -11,7 +11,7 @@ class Drawable
 public:
 	Drawable() = default;
 	void Draw(Graphics& gfx) const;
-	virtual void Update(float dt) = 0;
+	virtual void Update(float dt, Graphics& gfx) = 0;
 	virtual DirectX::XMMATRIX GetTransformation() const = 0;
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
 	void AddIndexBuffer(std::unique_ptr<IndexBuffer> pib);

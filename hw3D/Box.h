@@ -4,6 +4,11 @@
 #include "AllBindables.h"
 #include <memory>
 
+struct PBuf
+{
+	float time, t1, t2, t3;
+};
+
 class Box : public Drawable
 {
 public:
@@ -12,18 +17,22 @@ public:
 		struct Vertex
 		{
 			struct { float x, y, z; } pos;
+			struct { float r, g, b; } color;
+			float phase;
 		};
+
+		const float pif = 3.14f / 4.0f;
 
 		std::vector<Vertex> vertices =
 		{
-			{ -1.0f,-1.0f,-1.0f	 },
-			{ 1.0f,-1.0f,-1.0f	 },
-			{ -1.0f,1.0f,-1.0f	 },
-			{ 1.0f,1.0f,-1.0f	  },
-			{ -1.0f,-1.0f,1.0f	 },
-			{ 1.0f,-1.0f,1.0f	  },
-			{ -1.0f,1.0f,1.0f	 },
-			{ 1.0f,1.0f,1.0f	 }
+			{ -1.0f,-1.0f,-1.0f, 1.0f, 1.0f, 1.0f, pif },
+			{ 1.0f,-1.0f,-1.0f, 1.0f, 1.0f, 0.0f, 2 * pif },
+			{ -1.0f,1.0f,-1.0f, 1.0f, 0.0f, 1.0f, 3 * pif },
+			{ 1.0f,1.0f,-1.0f, 0.0f, 1.0f, 1.0f, 4 * pif},
+			{ -1.0f,-1.0f,1.0f, 1.0f, 0.0f, 0.0f, 5 * pif},
+			{ 1.0f,-1.0f,1.0f, 0.0f, 1.0f, 0.0f, 6 * pif },
+			{ -1.0f,1.0f,1.0f, 0.0f, 0.0f, 0.0f, 7 * pif },
+			{ 1.0f,1.0f,1.0f, 0.0f, 0.0f, 0.0f, 8 * pif}
 		};
 
 		std::vector<unsigned short> indices = {
@@ -47,6 +56,8 @@ public:
 
 		std::vector<D3D11_INPUT_ELEMENT_DESC> iedsc;
 		iedsc.push_back({ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 });
+		iedsc.push_back({ "COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 3 * sizeof(float), D3D11_INPUT_PER_VERTEX_DATA, 0 });
+		iedsc.push_back({ "PHASE", 0, DXGI_FORMAT_R32_FLOAT, 0, 6 * sizeof(float), D3D11_INPUT_PER_VERTEX_DATA, 0 });
 
 		AddBindable(std::make_unique<InputLayout>(gfx, iedsc, vs.GetBytecode(), vs.GetBytecodeSize()));
 
@@ -54,33 +65,21 @@ public:
 
 		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 
-		struct PSCBuf
-		{
-			struct
-			{
-				float r, g, b, a;
-			} colors[6];
-		};
-
-		const PSCBuf pscb =
-		{
-			{
-				{ 1.0f, 1.0f, 1.0f, 1.0f },
-				{ 1.0f, 1.0f, 0.0f, 1.0f },
-				{ 1.0f, 0.0f, 0.0f, 1.0f },
-				{ 0.0f, 1.0f, 1.0f, 1.0f },
-				{ 0.0f, 1.0f, 0.0f, 1.0f },
-				{ 0.0f, 0.0f, 0.0f, 1.0f }
-			}
-		};
-
-		AddBindable(std::make_unique<PixelConstantBuffer<PSCBuf>>(gfx, pscb));
+		PBuf pb = { time, 0.0f, 0.0f, 0.0f };
+		auto upcb = std::make_unique<PixelConstantBuffer<PBuf>>(gfx, pb);
+		pcb = upcb.get();
+		AddBindable(std::move(upcb));
 	}
-	void Update(float dt) override
+	void Update(float dt, Graphics& gfx) override
 	{
+		time += dt;
+
 		pitch += dpitch * dt;
 		yaw += dyaw * dt;
 		roll += droll * dt;
+
+		PBuf pb = { time, 0.0f, 0.0f, 0.0f };
+		pcb->Update(gfx, pb);
 	}
 	DirectX::XMMATRIX GetTransformation() const
 	{
@@ -91,7 +90,9 @@ private:
 	float pitch = 0.0f;
 	float yaw = 0.0f;
 	float roll = 0.0f;
-	float dpitch = 3.14f;
-	float dyaw = 2.1f;
-	float droll = 6.28f;
+	float dpitch = 3.14f / 3.0f;
+	float dyaw = 2.1f / 3.0f;
+	float droll = 6.28f / 3.0f;
+	float time = 0.0f;
+	PixelConstantBuffer<PBuf>* pcb = nullptr;
 };
