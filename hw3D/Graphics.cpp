@@ -113,6 +113,7 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 
 void Graphics::DrawIndexed(uint32_t count)
 {
+	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), pDepthStencilView.Get());
 	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
 }
 
