@@ -19,14 +19,14 @@
     <Filter Include="Game">
       <UniqueIdentifier>{590f7537-ca24-4959-b0f8-7c5e2ec21639}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows\Graphics">
-      <UniqueIdentifier>{113b2353-71b7-4ac8-bb62-d93a126755e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ErrorHandling\DxErr">
       <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Bindable">
       <UniqueIdentifier>{e705d3a2-ebf6-4c3b-9080-130950728d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{6bcfebac-f0f5-4bc5-bc8b-909be6d81632}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,9 +53,6 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Windows\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="dxerr.h">
       <Filter>ErrorHandling\DxErr</Filter>
@@ -87,6 +84,9 @@
     <ClInclude Include="Viewport.h">
       <Filter>Bindable</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -109,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Windows\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="dxerr.cpp">
       <Filter>ErrorHandling\DxErr</Filter>
@@ -142,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="Viewport.cpp">
       <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -111,6 +111,11 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
+void Graphics::DrawIndexed(uint32_t count)
+{
+	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
+}
+
 //EXCEPTION
 
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr, const std::vector<std::string>& infos) noexcept
