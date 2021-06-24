@@ -52,16 +52,6 @@ public:
 
 		AddBindable(std::make_unique<PrimitiveTopology>((D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)));
 
-		D3D11_VIEWPORT dvp;
-		dvp.Width = 800u;
-		dvp.Height = 600u;
-		dvp.MinDepth = 0.0f;
-		dvp.MaxDepth = 1.0f;
-		dvp.TopLeftX = 0u;
-		dvp.TopLeftY = 0u;
-
-		AddBindable(std::make_unique<Viewport>(dvp));
-
 		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 
 		struct PSCBuf

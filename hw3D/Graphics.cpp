@@ -90,6 +90,18 @@ Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 	dsvd.Texture2D.MipSlice = 0u;
 
 	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
+
+	//Making the viewport, which is currently hardcoded in constructor
+	D3D11_VIEWPORT dvp;
+	dvp.Width = (float)width;
+	dvp.Height = (float)height;
+	dvp.MinDepth = 0.0f;
+	dvp.MaxDepth = 1.0f;
+	dvp.TopLeftX = 0u;
+	dvp.TopLeftY = 0u;
+
+	//bind the viewport
+	pContext->RSSetViewports(1u, &dvp);
 }
 
 void Graphics::EndFrame()
