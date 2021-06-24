@@ -7,6 +7,8 @@
 using namespace Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
+	:
+	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 10.0f))
 {
 	//swap chain descriptor
 	DXGI_SWAP_CHAIN_DESC scd = { 0 };
@@ -109,6 +111,22 @@ void Graphics::ClearBuffer(float r, float g, float b, float a)
 	const float color[] = { r, g, b, a };
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
 	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
+}
+
+void Graphics::DrawIndexed(uint32_t count)
+{
+	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), pDepthStencilView.Get());
+	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
+}
+
+void Graphics::SetPerspective(const DirectX::XMMATRIX& p)
+{
+	perspective = p;
+}
+
+DirectX::XMMATRIX Graphics::GetPerspective() const
+{
+	return perspective;
 }
 
 //EXCEPTION

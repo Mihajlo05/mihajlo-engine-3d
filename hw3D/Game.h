@@ -2,6 +2,7 @@
 
 #include "Window.h"
 #include "Timer.h"
+#include "Box.h"
 
 class Game
 {
@@ -18,4 +19,5 @@ private:
 private:
 	Window wnd;
 	Timer timer;
+	Box box;
 };

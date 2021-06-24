@@ -19,11 +19,29 @@
     <Filter Include="Game">
       <UniqueIdentifier>{590f7537-ca24-4959-b0f8-7c5e2ec21639}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows\Graphics">
-      <UniqueIdentifier>{113b2353-71b7-4ac8-bb62-d93a126755e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ErrorHandling\DxErr">
       <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable">
+      <UniqueIdentifier>{e705d3a2-ebf6-4c3b-9080-130950728d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{6bcfebac-f0f5-4bc5-bc8b-909be6d81632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable\Shaders">
+      <UniqueIdentifier>{9c95ab0e-fdbd-4dc0-a312-80c18a01189a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable\Buffers">
+      <UniqueIdentifier>{6f64582f-a1d0-4423-9dd2-c939b0cd0421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindable\Buffers\ConstantBuffers">
+      <UniqueIdentifier>{81de8335-3c66-4cdd-92aa-cf61568b8e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawable">
+      <UniqueIdentifier>{c57255a9-df1a-458a-b4ef-2947858adba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Shaders">
+      <UniqueIdentifier>{e07fd4a7-d21c-4d96-a34b-3d3f9f481a0a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,14 +69,59 @@
     <ClInclude Include="Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Windows\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="dxerr.h">
       <Filter>ErrorHandling\DxErr</Filter>
     </ClInclude>
     <ClInclude Include="DxgiInfoManager.h">
       <Filter>ErrorHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="Bindable.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveTopology.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewport.h">
+      <Filter>Bindable</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexConstantBuffer.h">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelConstantBuffer.h">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Bindable\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Bindable\Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformationConstantBuffer.h">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="AllBindables.h">
+      <Filter>Bindable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,14 +146,44 @@
     <ClCompile Include="Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Windows\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="dxerr.cpp">
       <Filter>ErrorHandling\DxErr</Filter>
     </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
       <Filter>ErrorHandling</Filter>
+    </ClCompile>
+    <ClCompile Include="Bindable.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveTopology.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewport.cpp">
+      <Filter>Bindable</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Bindable\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Bindable\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformationConstantBuffer.cpp">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,5 +206,13 @@
     <None Include="DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
