@@ -40,9 +40,6 @@
     <Filter Include="Drawable">
       <UniqueIdentifier>{c57255a9-df1a-458a-b4ef-2947858adba5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Shaders">
-      <UniqueIdentifier>{e07fd4a7-d21c-4d96-a34b-3d3f9f481a0a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -116,9 +113,6 @@
     </ClInclude>
     <ClInclude Include="TransformationConstantBuffer.h">
       <Filter>Bindable\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Drawable</Filter>
     </ClInclude>
     <ClInclude Include="AllBindables.h">
       <Filter>Bindable</Filter>
@@ -206,13 +200,5 @@
     <None Include="DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="VertexShader.hlsl">
-      <Filter>Graphics\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="PixelShader.hlsl">
-      <Filter>Graphics\Shaders</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>
