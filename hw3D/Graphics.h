@@ -8,10 +8,11 @@
 
 class Graphics
 {
+	friend class Bindable;
 public:
-	class Exception : public MihajloException
-	{
-	public:
+		class Exception : public MihajloException
+		{
+		public:
 		Exception(const std::string& file, int line, HRESULT hr, const std::vector<std::string>& info) noexcept;
 		Exception(const std::string& file, int line, HRESULT hr) noexcept;
 		const char* what() const noexcept override;
