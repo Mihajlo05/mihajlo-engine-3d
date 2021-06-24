@@ -10,8 +10,8 @@ public:
 	virtual void Bind(Graphics& gfx) const = 0;
 	~Bindable() = default;
 protected:
-	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice(Graphics& gfx) const;
-	Microsoft::WRL::ComPtr<ID3D11DeviceContext> GetContext(Graphics& gfx) const;
+	ID3D11Device* GetDevice(Graphics& gfx) const;
+	ID3D11DeviceContext* GetContext(Graphics& gfx) const;
 #ifndef NDEBUG
 	DxgiInfoManager& GetInfoManager(Graphics& gfx) const;
 #endif

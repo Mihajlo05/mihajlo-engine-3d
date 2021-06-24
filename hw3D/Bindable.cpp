@@ -2,14 +2,14 @@
 
 using namespace Microsoft::WRL;
 
-ComPtr<ID3D11Device> Bindable::GetDevice(Graphics& gfx) const
+ID3D11Device* Bindable::GetDevice(Graphics& gfx) const
 {
-	return gfx.pDevice;
+	return gfx.pDevice.Get();
 }
 
-ComPtr<ID3D11DeviceContext> Bindable::GetContext(Graphics& gfx) const
+ID3D11DeviceContext* Bindable::GetContext(Graphics& gfx) const
 {
-	return gfx.pContext;
+	return gfx.pContext.Get();
 }
 
 #ifndef NDEBUG
