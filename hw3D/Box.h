@@ -63,6 +63,28 @@ public:
 		AddBindable(std::make_unique<Viewport>(dvp));
 
 		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
+
+		struct PSCBuf
+		{
+			struct
+			{
+				float r, g, b, a;
+			} colors[6];
+		};
+
+		const PSCBuf pscb =
+		{
+			{
+				{ 1.0f, 1.0f, 1.0f, 1.0f },
+				{ 1.0f, 1.0f, 0.0f, 1.0f },
+				{ 1.0f, 0.0f, 0.0f, 1.0f },
+				{ 0.0f, 1.0f, 1.0f, 1.0f },
+				{ 0.0f, 1.0f, 0.0f, 1.0f },
+				{ 0.0f, 0.0f, 0.0f, 1.0f }
+			}
+		};
+
+		AddBindable(std::make_unique<PixelConstantBuffer<PSCBuf>>(gfx, pscb));
 	}
 	void Update(float dt) override
 	{
