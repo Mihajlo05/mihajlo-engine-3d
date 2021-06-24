@@ -37,7 +37,7 @@ public:
 
 		GFX_THROW(GetDevice(gfx)->CreateBuffer(&cbd, nullptr, &pData));
 	}
-	void Update(Graphics& gfx, const C& cBuf)
+	void Update(Graphics& gfx, const C& cBuf) const
 	{
 		BIND_INFOMAN(gfx);
 

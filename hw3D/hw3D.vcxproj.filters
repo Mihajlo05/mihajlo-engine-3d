@@ -111,6 +111,9 @@
     <ClInclude Include="Drawable.h">
       <Filter>Drawable</Filter>
     </ClInclude>
+    <ClInclude Include="TransformationConstantBuffer.h">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -169,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="Drawable.cpp">
       <Filter>Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformationConstantBuffer.cpp">
+      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
