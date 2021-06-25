@@ -144,7 +144,7 @@
     <ClInclude Include="IndexedTriangleList.h">
       <Filter>Math\IndexedListd</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.h">
+    <ClInclude Include="CubeModel.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="DefaultVertex.h">

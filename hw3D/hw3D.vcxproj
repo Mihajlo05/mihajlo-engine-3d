@@ -171,7 +171,7 @@
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="ConstantBuffer.h" />
-    <ClInclude Include="Cube.h" />
+    <ClInclude Include="CubeModel.h" />
     <ClInclude Include="DefaultVertex.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableBase.h" />

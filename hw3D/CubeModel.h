@@ -2,7 +2,7 @@
 
 #include "IndexedTriangleList.h"
 
-class Cube
+class CubeModel
 {
 public:
 	template<class Vertex>
