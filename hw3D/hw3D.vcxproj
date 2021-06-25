@@ -171,6 +171,8 @@
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
     <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="DefaultVertex.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="DrawableBase.h" />
     <ClInclude Include="dxerr.h" />
@@ -179,6 +181,8 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Index.h" />
     <ClInclude Include="IndexBuffer.h" />
+    <ClInclude Include="IndexedList.h" />
+    <ClInclude Include="IndexedTriangleList.h" />
     <ClInclude Include="InputLayout.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="MihajloException.h" />

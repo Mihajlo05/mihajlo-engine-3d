@@ -46,6 +46,15 @@
     <Filter Include="Math">
       <UniqueIdentifier>{936612c5-2e9c-449b-b556-c94e5d8e93d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math\IndexedListd">
+      <UniqueIdentifier>{9e5e96c9-707e-491b-8505-933bda723107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{2a4585f1-a392-4b68-a3a3-dea94ec71b8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vertices">
+      <UniqueIdentifier>{d5c49eac-b15a-4439-82a8-9c7d11bc72e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -128,6 +137,18 @@
     </ClInclude>
     <ClInclude Include="Index.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedList.h">
+      <Filter>Math\IndexedListd</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexedTriangleList.h">
+      <Filter>Math\IndexedListd</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVertex.h">
+      <Filter>Math\Vertices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
