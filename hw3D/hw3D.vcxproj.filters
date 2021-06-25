@@ -182,9 +182,6 @@
     <ClCompile Include="TransformationConstantBuffer.cpp">
       <Filter>Bindable\Buffers\ConstantBuffers</Filter>
     </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Drawable</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3D.rc">

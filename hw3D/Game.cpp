@@ -3,14 +3,7 @@
 Game::Game()
 	:
 	wnd(800u, 600u, "Mihajlo Engine 3D")
-{
-	const int nBoxes = 10;
-	boxes.reserve(nBoxes);
-	for (int i = 0; i < nBoxes; i++)
-	{
-		boxes.push_back(std::make_unique<Box>(wnd.Gfx()));
-	}
-}
+{ }
 
 void Game::Go()
 {
@@ -33,14 +26,8 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
-	for (auto& box : boxes)
-	{
-		box->Update(dt, wnd.Gfx());
-	}
 }
 
 void Game::Draw(Graphics& gfx)
 {
-	for (auto& box : boxes)
-		box->Draw(gfx);
 }
