@@ -55,12 +55,6 @@
     <Filter Include="Math\Vertices">
       <UniqueIdentifier>{d5c49eac-b15a-4439-82a8-9c7d11bc72e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drawables\FlatDrawable">
-      <UniqueIdentifier>{9f4df88c-36fc-4568-91ec-c72a2e82d360}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Drawables\FlatDrawable\Shaders">
-      <UniqueIdentifier>{1ae7188f-dc23-4185-af07-28d6da19e743}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -156,9 +150,6 @@
     <ClInclude Include="DefaultVertex.h">
       <Filter>Math\Vertices</Filter>
     </ClInclude>
-    <ClInclude Include="FlatDrawable.h">
-      <Filter>Drawables\FlatDrawable</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -242,13 +233,5 @@
     <None Include="DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="FlatVertexShader.hlsl">
-      <Filter>Drawables\FlatDrawable\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="FlatPixelShader.hlsl">
-      <Filter>Drawables\FlatDrawable\Shaders</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>

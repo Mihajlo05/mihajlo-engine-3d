@@ -4,8 +4,7 @@
 
 Game::Game()
 	:
-	wnd(800u, 600u, "Mihajlo Engine 3D"),
-	fd(wnd.Gfx(), Cube::GetWrapped<DefaultVertex>())
+	wnd(800u, 600u, "Mihajlo Engine 3D")
 { }
 
 void Game::Go()
@@ -29,11 +28,8 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
-	fd.UpdateLogic(dt);
 }
 
 void Game::Draw(Graphics& gfx)
 {
-	fd.UpdateGraphics(gfx);
-	fd.Draw(gfx);
 }
