@@ -1,12 +1,12 @@
 #include "IndexBuffer.h"
 
-IndexBuffer::IndexBuffer(Graphics& gfx, std::vector<unsigned short>& indices)
+IndexBuffer::IndexBuffer(Graphics& gfx, std::vector<Index>& indices)
 	:
 	count((uint32_t)indices.size())
 {
 	BIND_INFOMAN(gfx);
 
-	UINT stride = sizeof(unsigned short);
+	UINT stride = sizeof(Index);
 
 	D3D11_BUFFER_DESC ibd = {};
 	ibd.BindFlags = D3D11_BIND_INDEX_BUFFER;

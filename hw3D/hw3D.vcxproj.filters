@@ -22,23 +22,29 @@
     <Filter Include="ErrorHandling\DxErr">
       <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bindable">
-      <UniqueIdentifier>{e705d3a2-ebf6-4c3b-9080-130950728d52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{6bcfebac-f0f5-4bc5-bc8b-909be6d81632}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bindable\Shaders">
+    <Filter Include="Drawables">
+      <UniqueIdentifier>{c57255a9-df1a-458a-b4ef-2947858adba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawables\Base">
+      <UniqueIdentifier>{8bee4929-3701-4a39-b1bc-21b9c4ecc93f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindables">
+      <UniqueIdentifier>{e705d3a2-ebf6-4c3b-9080-130950728d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bindables\Shaders">
       <UniqueIdentifier>{9c95ab0e-fdbd-4dc0-a312-80c18a01189a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bindable\Buffers">
+    <Filter Include="Bindables\Buffers">
       <UniqueIdentifier>{6f64582f-a1d0-4423-9dd2-c939b0cd0421}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Bindable\Buffers\ConstantBuffers">
+    <Filter Include="Bindables\Buffers\ConstantBuffers">
       <UniqueIdentifier>{81de8335-3c66-4cdd-92aa-cf61568b8e11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drawable">
-      <UniqueIdentifier>{c57255a9-df1a-458a-b4ef-2947858adba5}</UniqueIdentifier>
+    <Filter Include="Math">
+      <UniqueIdentifier>{936612c5-2e9c-449b-b556-c94e5d8e93d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,52 +79,55 @@
       <Filter>ErrorHandling</Filter>
     </ClInclude>
     <ClInclude Include="Bindable.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClInclude>
     <ClInclude Include="InputLayout.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveTopology.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClInclude>
     <ClInclude Include="Viewport.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClInclude>
     <ClInclude Include="Graphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
-      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="VertexConstantBuffer.h">
-      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="PixelConstantBuffer.h">
-      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="PixelShader.h">
-      <Filter>Bindable\Shaders</Filter>
+      <Filter>Bindables\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="VertexShader.h">
-      <Filter>Bindable\Shaders</Filter>
+      <Filter>Bindables\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="IndexBuffer.h">
-      <Filter>Bindable\Buffers</Filter>
+      <Filter>Bindables\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="VertexBuffer.h">
-      <Filter>Bindable\Buffers</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawable.h">
-      <Filter>Drawable</Filter>
+      <Filter>Bindables\Buffers</Filter>
     </ClInclude>
     <ClInclude Include="TransformationConstantBuffer.h">
-      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="AllBindables.h">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClInclude>
     <ClInclude Include="DrawableBase.h">
-      <Filter>Drawable</Filter>
+      <Filter>Drawables\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Drawables\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Index.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -150,37 +159,37 @@
       <Filter>ErrorHandling</Filter>
     </ClCompile>
     <ClCompile Include="Bindable.cpp">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClCompile>
     <ClCompile Include="InputLayout.cpp">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveTopology.cpp">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClCompile>
     <ClCompile Include="Viewport.cpp">
-      <Filter>Bindable</Filter>
+      <Filter>Bindables</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="PixelShader.cpp">
-      <Filter>Bindable\Shaders</Filter>
+      <Filter>Bindables\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="VertexShader.cpp">
-      <Filter>Bindable\Shaders</Filter>
+      <Filter>Bindables\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Bindable\Buffers</Filter>
+      <Filter>Bindables\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Bindable\Buffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Drawable.cpp">
-      <Filter>Drawable</Filter>
+      <Filter>Bindables\Buffers</Filter>
     </ClCompile>
     <ClCompile Include="TransformationConstantBuffer.cpp">
-      <Filter>Bindable\Buffers\ConstantBuffers</Filter>
+      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Drawables\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
