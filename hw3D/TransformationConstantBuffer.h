@@ -12,5 +12,5 @@ public:
 	void Bind(Graphics& gfx) const override;
 private:
 	const Drawable& parent;
-	VertexConstantBuffer<DirectX::XMMATRIX> vConstBuf;
+	static std::unique_ptr<VertexConstantBuffer<DirectX::XMMATRIX>> pVConstBuf;
 };
