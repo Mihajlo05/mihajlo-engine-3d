@@ -123,9 +123,6 @@
     <ClInclude Include="AllBindables.h">
       <Filter>Bindable</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableBase.h">
-      <Filter>Drawable</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -187,9 +184,6 @@
     </ClCompile>
     <ClCompile Include="TransformationConstantBuffer.cpp">
       <Filter>Bindable\Buffers\ConstantBuffers</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Drawable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
