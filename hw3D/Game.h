@@ -2,6 +2,8 @@
 
 #include "Window.h"
 #include "Timer.h"
+#include "FlatDrawable.h"
+#include "DefaultVertex.h"
 
 class Game
 {
@@ -18,4 +20,5 @@ private:
 private:
 	Window wnd;
 	Timer timer;
+	FlatDrawable fd;
 };

@@ -5,7 +5,7 @@
 template<class T>
 class DrawableBase : public Drawable
 {
-protected:
+public:
 	void Draw(Graphics& gfx) const override
 	{
 		for (auto& b : staticBindablePtrs)
@@ -14,6 +14,7 @@ protected:
 		}
 		Drawable::Draw(gfx);
 	}
+protected:
 	bool IsStaticInitialized() const
 	{
 		return !staticBindablePtrs.empty();

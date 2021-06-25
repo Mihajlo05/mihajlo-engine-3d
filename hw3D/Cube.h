@@ -31,6 +31,6 @@ public:
 			0,1,4, 1,5,4
 		};
 
-		return std::move(itl);
+		return itl;
 	}
 };
