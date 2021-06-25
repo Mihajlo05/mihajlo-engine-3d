@@ -12,14 +12,13 @@ void Drawable::Draw(Graphics& gfx) const
 
 void Drawable::AddBindable(std::unique_ptr<Bindable> pBindable)
 {
-	assert("Can't add index buffer in AddBindable function, you MUST use AddIndexBuffer" &&
-		typeid(*pBindable) != typeid(IndexBuffer));
+	assert(typeid(*pBindable) != typeid(IndexBuffer));
 	bindablePtrs.push_back(std::move(pBindable));
 }
 
 void Drawable::AddIndexBuffer(std::unique_ptr<IndexBuffer> pib)
 {
-	assert("Binding index buffer second time, this is not allowed" && pIndexBuffer == nullptr);
+	assert(pIndexBuffer == nullptr);
 	pIndexBuffer = pib.get();
 	bindablePtrs.push_back(std::move(pib));
 }
