@@ -19,5 +19,5 @@ private:
 private:
 	Window wnd;
 	Timer timer;
-	Box box;
+	std::vector<std::unique_ptr<Box>> boxes;
 };

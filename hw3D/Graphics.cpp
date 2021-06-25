@@ -8,7 +8,7 @@ using namespace Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 	:
-	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 10.0f))
+	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 30.0f))
 {
 	//swap chain descriptor
 	DXGI_SWAP_CHAIN_DESC scd = { 0 };
