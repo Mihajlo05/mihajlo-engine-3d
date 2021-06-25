@@ -5,7 +5,7 @@
 template<class T>
 class DrawableBase : public Drawable
 {
-public:
+protected:
 	void Draw(Graphics& gfx) const override
 	{
 		for (auto& b : staticBindablePtrs)
