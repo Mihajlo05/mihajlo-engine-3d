@@ -13,7 +13,8 @@ class Drawable
 public:
 	Drawable() = default;
 	virtual void Draw(Graphics& gfx) const;
-	virtual void Update(float dt, Graphics& gfx) = 0;
+	virtual void UpdateLogic(float dt) = 0;
+	virtual void UpdateGraphics(Graphics& gfx) = 0;
 	virtual DirectX::XMMATRIX GetTransformation() const = 0;
 	virtual ~Drawable() = default;
 protected:
