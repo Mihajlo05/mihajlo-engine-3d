@@ -1,11 +1,8 @@
 #pragma once
 
+#include <DirectXMath.h>
+
 struct DefaultVertex
 {
-	struct
-	{
-		float x;
-		float y;
-		float z;
-	} pos;
+	DirectX::XMFLOAT3 pos;
 };
