@@ -5,5 +5,5 @@ cbuffer CBuf
 
 float4 main(uint id : SV_PrimitiveID) : SV_TARGET
 {
-	return colors[id / 2];
+	return colors[(id / 2) % 6];
 }

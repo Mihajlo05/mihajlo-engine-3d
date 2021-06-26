@@ -280,16 +280,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="PSFlat.hlsl">
-      <Filter>Drawables\FlatCube</Filter>
-    </FxCompile>
-    <FxCompile Include="VSFlat.hlsl">
-      <Filter>Drawables\FlatCube</Filter>
-    </FxCompile>
     <FxCompile Include="VSInterpolated.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
     <FxCompile Include="PSInterpolated.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PSFlat.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="VSFlat.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
   </ItemGroup>
