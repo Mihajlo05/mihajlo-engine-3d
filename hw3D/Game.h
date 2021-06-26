@@ -2,6 +2,7 @@
 
 #include "Window.h"
 #include "Timer.h"
+#include "Drawable.h"
 
 class Game
 {
@@ -18,4 +19,5 @@ private:
 private:
 	Window wnd;
 	Timer timer;
+	std::vector<std::unique_ptr<Drawable>> drawablePtrs;
 };

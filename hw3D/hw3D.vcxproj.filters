@@ -4,9 +4,6 @@
     <Filter Include="Windows">
       <UniqueIdentifier>{80ad819a-b56a-4981-8992-d3f4df5ee87e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ErrorHandling">
-      <UniqueIdentifier>{4a8cf865-c7fc-4acf-849d-b4ec424bd075}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{f821da62-e9d3-423a-ab43-30afb393dbbf}</UniqueIdentifier>
     </Filter>
@@ -18,9 +15,6 @@
     </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{590f7537-ca24-4959-b0f8-7c5e2ec21639}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ErrorHandling\DxErr">
-      <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics">
       <UniqueIdentifier>{6bcfebac-f0f5-4bc5-bc8b-909be6d81632}</UniqueIdentifier>
@@ -55,6 +49,15 @@
     <Filter Include="Math\Vertices">
       <UniqueIdentifier>{d5c49eac-b15a-4439-82a8-9c7d11bc72e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\ErrorHandling">
+      <UniqueIdentifier>{4a8cf865-c7fc-4acf-849d-b4ec424bd075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ErrorHandling\DxErr">
+      <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawables\FlatCube">
+      <UniqueIdentifier>{52d8d0d2-2875-4ced-95a2-9efc858040d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -64,7 +67,7 @@
       <Filter>Windows</Filter>
     </ClInclude>
     <ClInclude Include="MihajloException.h">
-      <Filter>ErrorHandling</Filter>
+      <Filter>Game\ErrorHandling</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resources</Filter>
@@ -82,10 +85,10 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="dxerr.h">
-      <Filter>ErrorHandling\DxErr</Filter>
+      <Filter>Game\ErrorHandling\DxErr</Filter>
     </ClInclude>
     <ClInclude Include="DxgiInfoManager.h">
-      <Filter>ErrorHandling</Filter>
+      <Filter>Game\ErrorHandling</Filter>
     </ClInclude>
     <ClInclude Include="Bindable.h">
       <Filter>Bindables</Filter>
@@ -150,13 +153,16 @@
     <ClInclude Include="DefaultVertex.h">
       <Filter>Math\Vertices</Filter>
     </ClInclude>
+    <ClInclude Include="FlatCube.h">
+      <Filter>Drawables\FlatCube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="MihajloException.cpp">
-      <Filter>ErrorHandling</Filter>
+      <Filter>Game\ErrorHandling</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>Windows</Filter>
@@ -174,10 +180,10 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="dxerr.cpp">
-      <Filter>ErrorHandling\DxErr</Filter>
+      <Filter>Game\ErrorHandling\DxErr</Filter>
     </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
-      <Filter>ErrorHandling</Filter>
+      <Filter>Game\ErrorHandling</Filter>
     </ClCompile>
     <ClCompile Include="Bindable.cpp">
       <Filter>Bindables</Filter>
@@ -212,6 +218,9 @@
     <ClCompile Include="Drawable.cpp">
       <Filter>Drawables\Base</Filter>
     </ClCompile>
+    <ClCompile Include="FlatCube.cpp">
+      <Filter>Drawables\FlatCube</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3D.rc">
@@ -225,13 +234,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">
-      <Filter>ErrorHandling\DxErr</Filter>
+      <Filter>Game\ErrorHandling\DxErr</Filter>
     </None>
     <None Include="DXGetErrorString.inl">
-      <Filter>ErrorHandling\DxErr</Filter>
+      <Filter>Game\ErrorHandling\DxErr</Filter>
     </None>
     <None Include="DXTrace.inl">
-      <Filter>ErrorHandling\DxErr</Filter>
+      <Filter>Game\ErrorHandling\DxErr</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PSFlat.hlsl">
+      <Filter>Drawables\FlatCube</Filter>
+    </FxCompile>
+    <FxCompile Include="VSFlat.hlsl">
+      <Filter>Drawables\FlatCube</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

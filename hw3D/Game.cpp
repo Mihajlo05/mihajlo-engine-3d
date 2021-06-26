@@ -1,11 +1,12 @@
 #include "Game.h"
-#include "Cube.h"
-#include "DefaultVertex.h"
+#include "FlatCube.h"
 
 Game::Game()
 	:
 	wnd(800u, 600u, "Mihajlo Engine 3D")
-{ }
+{
+	drawablePtrs.push_back(std::make_unique<FlatCube>(wnd.Gfx()));
+}
 
 void Game::Go()
 {
@@ -28,8 +29,15 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
+	for (auto& pDrawable : drawablePtrs)
+		pDrawable->UpdateLogic(dt);
 }
 
 void Game::Draw(Graphics& gfx)
 {
+	for (auto& pDrawable : drawablePtrs)
+	{
+		pDrawable->UpdateGraphics(gfx);
+		pDrawable->Draw(gfx);
+	}
 }
