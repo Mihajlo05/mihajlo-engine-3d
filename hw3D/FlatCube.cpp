@@ -36,8 +36,8 @@ FlatCube::FlatCube(Graphics& gfx)
 
 		AddStaticBindable(std::make_unique<PixelConstantBuffer<PixelConstBufData>>(gfx, pixelConstBufData));
 
-		AddStaticBindable(std::make_unique<PixelShader>(gfx, L"PSFlat.cso"));
-		auto pvs = std::make_unique<VertexShader>(gfx, L"VSFlat.cso");
+		AddStaticBindable(std::make_unique<PixelShader>(gfx, L"FlatPS.cso"));
+		auto pvs = std::make_unique<VertexShader>(gfx, L"FlatVS.cso");
 		VertexShader& vertexShader = *pvs;
 		AddStaticBindable(std::move(pvs));
 

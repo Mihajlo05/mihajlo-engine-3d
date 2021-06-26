@@ -40,9 +40,6 @@
     <Filter Include="Math">
       <UniqueIdentifier>{936612c5-2e9c-449b-b556-c94e5d8e93d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Math\IndexedListd">
-      <UniqueIdentifier>{9e5e96c9-707e-491b-8505-933bda723107}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Models">
       <UniqueIdentifier>{2a4585f1-a392-4b68-a3a3-dea94ec71b8a}</UniqueIdentifier>
     </Filter>
@@ -51,9 +48,6 @@
     </Filter>
     <Filter Include="Drawables\FlatCube">
       <UniqueIdentifier>{52d8d0d2-2875-4ced-95a2-9efc858040d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Drawables\InterpoletedCube">
-      <UniqueIdentifier>{d4553900-b450-4d87-bbf1-42d9a3b63dfb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{b41298a0-a702-4cdc-a985-c50335e2cfbd}</UniqueIdentifier>
@@ -72,6 +66,15 @@
     </Filter>
     <Filter Include="Scenes\FlatCubeScene">
       <UniqueIdentifier>{f19ab737-4608-4465-8e4e-58941b84bd3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawables\InterpolatedCube">
+      <UniqueIdentifier>{d4553900-b450-4d87-bbf1-42d9a3b63dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawables\InterpolatedPlane">
+      <UniqueIdentifier>{81a1bd12-6632-4e1e-b604-9b73ad7d6f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\IndexedLists">
+      <UniqueIdentifier>{9e5e96c9-707e-491b-8505-933bda723107}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -151,10 +154,10 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="IndexedList.h">
-      <Filter>Math\IndexedListd</Filter>
+      <Filter>Math\IndexedLists</Filter>
     </ClInclude>
     <ClInclude Include="IndexedTriangleList.h">
-      <Filter>Math\IndexedListd</Filter>
+      <Filter>Math\IndexedLists</Filter>
     </ClInclude>
     <ClInclude Include="CubeModel.h">
       <Filter>Models</Filter>
@@ -166,7 +169,7 @@
       <Filter>Drawables\FlatCube</Filter>
     </ClInclude>
     <ClInclude Include="InterpolatedCube.h">
-      <Filter>Drawables\InterpoletedCube</Filter>
+      <Filter>Drawables\InterpolatedCube</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Scenes</Filter>
@@ -182,6 +185,12 @@
     </ClInclude>
     <ClInclude Include="FlatCubeScene.h">
       <Filter>Scenes\FlatCubeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="InterpolatedPlane.h">
+      <Filter>Drawables\InterpolatedPlane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -243,7 +252,7 @@
       <Filter>Drawables\FlatCube</Filter>
     </ClCompile>
     <ClCompile Include="InterpolatedCube.cpp">
-      <Filter>Drawables\InterpoletedCube</Filter>
+      <Filter>Drawables\InterpolatedCube</Filter>
     </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
       <Filter>ErrorHandling</Filter>
@@ -256,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="FlatCubeScene.cpp">
       <Filter>Scenes\FlatCubeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="InterpolatedPlane.cpp">
+      <Filter>Drawables\InterpolatedPlane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -280,16 +292,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="VSInterpolated.hlsl">
+    <FxCompile Include="ColorPosVS.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="PSInterpolated.hlsl">
+    <FxCompile Include="InterpolatedPS.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="PSFlat.hlsl">
+    <FxCompile Include="FlatPS.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="VSFlat.hlsl">
+    <FxCompile Include="FlatVS.hlsl">
       <Filter>Graphics\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

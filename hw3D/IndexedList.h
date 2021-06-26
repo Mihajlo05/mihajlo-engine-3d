@@ -4,6 +4,7 @@
 #include <cassert>
 #include <d3d11.h>
 #include "Index.h"
+#include <DirectXMath.h>
 
 template<class Vertex>
 class IndexedList
@@ -19,6 +20,17 @@ public:
 	IndexList& Indices()
 	{
 		return indices;
+	}
+	void Transform(DirectX::FXMMATRIX matrix)
+	{
+		for (auto& v : vertices)
+		{
+			const DirectX::XMVECTOR pos = DirectX::XMLoadFloat3(&v.pos);
+			DirectX::XMStoreFloat3(
+				&v.pos,
+				DirectX::XMVector3Transform(pos, matrix)
+			);
+		}
 	}
 	D3D11_PRIMITIVE_TOPOLOGY GetType()
 	{

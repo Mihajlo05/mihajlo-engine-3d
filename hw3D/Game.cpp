@@ -20,8 +20,8 @@ Game::Game()
 
 void Game::Go()
 {
-	wnd.Gfx().ClearBuffer(0.1f, 0.1f, 0.1f, 0.0f);
 	const float dt = timer.Reset();
+	wnd.Gfx().ClearBuffer(0.1f, 0.1f, 0.1f, 0.0f);
 	while (!wnd.mouse.IsEmpty()) HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) HandleKeyboardEvents(wnd.kbd.ReadKey());
 	Update(dt);

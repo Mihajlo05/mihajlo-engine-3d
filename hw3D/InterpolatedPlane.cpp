@@ -1,29 +1,27 @@
-#include "InterpolatedCube.h"
-#include "CubeModel.h"
+#include "InterpolatedPlane.h"
+#include "PlaneModel.h"
 #include "AllBindables.h"
 
 namespace dx = DirectX;
 
-InterpolatedCube::InterpolatedCube(Graphics& gfx)
+InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 {
 	if (!IsStaticInitialized())
 	{
 		struct Vertex
 		{
-			struct { float x, y, z; } pos;
+			dx::XMFLOAT3 pos;
 			struct { float r, g, b; } color;
 		};
-		
-		auto indTriangleL = CubeModel::GetWrapped<Vertex>();
+
+		auto indTriangleL = PlaneModel::GetTessellated<Vertex>();
 
 		indTriangleL.Vertices()[0].color = { 1.0f, 1.0f, 1.0f };
 		indTriangleL.Vertices()[1].color = { 1.0f, 1.0f, 0.0f };
 		indTriangleL.Vertices()[2].color = { 1.0f, 0.0f, 1.0f };
 		indTriangleL.Vertices()[3].color = { 0.0f, 1.0f, 1.0f };
-		indTriangleL.Vertices()[4].color = { 0.0f, 0.0f, 1.0f };
-		indTriangleL.Vertices()[5].color = { 0.0f, 1.0f, 0.0f };
-		indTriangleL.Vertices()[6].color = { 1.0f, 0.0f, 0.0f };
-		indTriangleL.Vertices()[7].color = { 0.0f, 0.0f, 0.0f };
+
+		indTriangleL.Transform(dx::XMMatrixRotationX(4 * dx::XM_PI / 9));
 
 		AddStaticBindable(std::make_unique<VertexBuffer>(gfx, indTriangleL.Vertices()));
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, indTriangleL.Indices()));
@@ -50,17 +48,16 @@ InterpolatedCube::InterpolatedCube(Graphics& gfx)
 	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 }
 
-void InterpolatedCube::UpdateLogic(float dt)
+void InterpolatedPlane::UpdateLogic(float dt)
 {
 	time += dt;
 }
 
-void InterpolatedCube::UpdateGraphics(Graphics& gfx)
+void InterpolatedPlane::UpdateGraphics(Graphics& gfx)
 {
 }
 
-DirectX::XMMATRIX InterpolatedCube::GetTransformation() const
+dx::XMMATRIX InterpolatedPlane::GetTransformation() const
 {
-	return dx::XMMatrixRotationRollPitchYaw(time, time/2.0f, time*2.0f) *
-		dx::XMMatrixTranslation(0.0f, 0.0f, 4.0f);
+	return dx::XMMatrixTranslation(0.0f, 0.0f, 3.0f);
 }

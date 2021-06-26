@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Scene.h"
-#include "InterpolatedCube.h"
+#include "InterpolatedPlane.h"
 
 class InterpolatedCubeScene : public Scene
 {
@@ -12,5 +12,5 @@ public:
 	void Update(float dt) override;
 	void Draw() const override;
 private:
-	InterpolatedCube cube;
+	InterpolatedPlane cube;
 };
