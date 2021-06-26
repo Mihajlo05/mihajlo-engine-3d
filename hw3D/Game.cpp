@@ -1,11 +1,12 @@
 #include "Game.h"
 #include "FlatCube.h"
+#include "InterpolatedCube.h"
 
 Game::Game()
 	:
 	wnd(800u, 600u, "Mihajlo Engine 3D")
 {
-	drawablePtrs.push_back(std::make_unique<FlatCube>(wnd.Gfx()));
+	drawablePtrs.push_back(std::make_unique<InterpolatedCube>(wnd.Gfx()));
 }
 
 void Game::Go()
