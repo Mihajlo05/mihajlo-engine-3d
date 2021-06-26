@@ -49,12 +49,6 @@
     <Filter Include="Math\Vertices">
       <UniqueIdentifier>{d5c49eac-b15a-4439-82a8-9c7d11bc72e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\ErrorHandling">
-      <UniqueIdentifier>{4a8cf865-c7fc-4acf-849d-b4ec424bd075}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\ErrorHandling\DxErr">
-      <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Drawables\FlatCube">
       <UniqueIdentifier>{52d8d0d2-2875-4ced-95a2-9efc858040d0}</UniqueIdentifier>
     </Filter>
@@ -64,6 +58,21 @@
     <Filter Include="Graphics\Shaders">
       <UniqueIdentifier>{b41298a0-a702-4cdc-a985-c50335e2cfbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{d712258b-bbb5-4b6c-9fd6-f54234934269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ErrorHandling">
+      <UniqueIdentifier>{cbfc4b0f-3f40-4720-9ef6-37e0263576af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ErrorHandling\DxErr">
+      <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\InterpolatedCubeScene">
+      <UniqueIdentifier>{cc7fba52-5c85-41d1-b928-7475bad06c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\FlatCubeScene">
+      <UniqueIdentifier>{f19ab737-4608-4465-8e4e-58941b84bd3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -71,9 +80,6 @@
     </ClInclude>
     <ClInclude Include="Window.h">
       <Filter>Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="MihajloException.h">
-      <Filter>Game\ErrorHandling</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resources</Filter>
@@ -91,10 +97,7 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="dxerr.h">
-      <Filter>Game\ErrorHandling\DxErr</Filter>
-    </ClInclude>
-    <ClInclude Include="DxgiInfoManager.h">
-      <Filter>Game\ErrorHandling</Filter>
+      <Filter>ErrorHandling\DxErr</Filter>
     </ClInclude>
     <ClInclude Include="Bindable.h">
       <Filter>Bindables</Filter>
@@ -165,13 +168,25 @@
     <ClInclude Include="InterpolatedCube.h">
       <Filter>Drawables\InterpoletedCube</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.h">
+      <Filter>ErrorHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="MihajloException.h">
+      <Filter>ErrorHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="InterpolatedCubeScene.h">
+      <Filter>Scenes\InterpolatedCubeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="FlatCubeScene.h">
+      <Filter>Scenes\FlatCubeScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
       <Filter>Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="MihajloException.cpp">
-      <Filter>Game\ErrorHandling</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>Windows</Filter>
@@ -189,10 +204,7 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="dxerr.cpp">
-      <Filter>Game\ErrorHandling\DxErr</Filter>
-    </ClCompile>
-    <ClCompile Include="DxgiInfoManager.cpp">
-      <Filter>Game\ErrorHandling</Filter>
+      <Filter>ErrorHandling\DxErr</Filter>
     </ClCompile>
     <ClCompile Include="Bindable.cpp">
       <Filter>Bindables</Filter>
@@ -233,6 +245,18 @@
     <ClCompile Include="InterpolatedCube.cpp">
       <Filter>Drawables\InterpoletedCube</Filter>
     </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
+      <Filter>ErrorHandling</Filter>
+    </ClCompile>
+    <ClCompile Include="MihajloException.cpp">
+      <Filter>ErrorHandling</Filter>
+    </ClCompile>
+    <ClCompile Include="InterpolatedCubeScene.cpp">
+      <Filter>Scenes\InterpolatedCubeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatCubeScene.cpp">
+      <Filter>Scenes\FlatCubeScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3D.rc">
@@ -246,13 +270,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="DXGetErrorDescription.inl">
-      <Filter>Game\ErrorHandling\DxErr</Filter>
+      <Filter>ErrorHandling\DxErr</Filter>
     </None>
     <None Include="DXGetErrorString.inl">
-      <Filter>Game\ErrorHandling\DxErr</Filter>
+      <Filter>ErrorHandling\DxErr</Filter>
     </None>
     <None Include="DXTrace.inl">
-      <Filter>Game\ErrorHandling\DxErr</Filter>
+      <Filter>ErrorHandling\DxErr</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

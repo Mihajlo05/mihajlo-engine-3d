@@ -151,11 +151,13 @@
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="FlatCube.cpp" />
+    <ClCompile Include="FlatCubeScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="InputLayout.cpp" />
     <ClCompile Include="InterpolatedCube.cpp" />
+    <ClCompile Include="InterpolatedCubeScene.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="MihajloException.cpp" />
     <ClCompile Include="Mouse.cpp" />
@@ -180,6 +182,7 @@
     <ClInclude Include="dxerr.h" />
     <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="FlatCube.h" />
+    <ClInclude Include="FlatCubeScene.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Index.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="IndexedTriangleList.h" />
     <ClInclude Include="InputLayout.h" />
     <ClInclude Include="InterpolatedCube.h" />
+    <ClInclude Include="InterpolatedCubeScene.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="MihajloException.h" />
     <ClInclude Include="MihajloWin.h" />
@@ -196,6 +200,7 @@
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="PrimitiveTopology.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformationConstantBuffer.h" />
     <ClInclude Include="VertexBuffer.h" />
