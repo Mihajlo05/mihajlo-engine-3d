@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IndexedTriangleList.h"
+#include "DefaultVertex.h"
 
 class CubeModel
 {
@@ -11,14 +12,14 @@ public:
 		IndexedTriangleList<Vertex> itl;
 		itl.Vertices() =
 		{
-			{ -1.0f,-1.0f,-1.0f },
-			{ 1.0f,-1.0f,-1.0f },
-			{ -1.0f,1.0f,-1.0f },
-			{ 1.0f,1.0f,-1.0f },
-			{ -1.0f,-1.0f,1.0f },
-			{ 1.0f,-1.0f,1.0f },
-			{ -1.0f,1.0f,1.0f },
-			{ 1.0f,1.0f,1.0f }
+			{{ -1.0f,-1.0f,-1.0f }},
+			{{ 1.0f,-1.0f,-1.0f }},
+			{{ -1.0f,1.0f,-1.0f }},
+			{{ 1.0f,1.0f,-1.0f }},
+			{{ -1.0f,-1.0f,1.0f }},
+			{{ 1.0f,-1.0f,1.0f }},
+			{{ -1.0f,1.0f,1.0f }},
+			{{ 1.0f,1.0f,1.0f }}
 		};
 
 		itl.Indices() =

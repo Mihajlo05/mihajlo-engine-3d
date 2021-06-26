@@ -19,11 +19,11 @@ public:
 	public:
 		Event() : Event(0u, Type::Invalid) { }
 		Event(unsigned char code, Type type) : code(code), type(type) { }
-		unsigned char GetCode() { return code; }
-		Type GetType() { return type; }
-		bool IsPressed() { return type == Type::Pressed; }
-		bool IsReleased() { return type == Type::Release; }
-		bool IsValid() { return type != Type::Invalid; }
+		unsigned char GetCode() const { return code; }
+		Type GetType() const { return type; }
+		bool IsPressed() const { return type == Type::Pressed; }
+		bool IsReleased() const { return type == Type::Release; }
+		bool IsValid() const { return type != Type::Invalid; }
 	private:
 		unsigned char code;
 		Type type;

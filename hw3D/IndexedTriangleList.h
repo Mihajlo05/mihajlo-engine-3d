@@ -9,6 +9,7 @@ public:
 	using IndexedList<Vertex>::Vertices;
 	using IndexedList<Vertex>::Indices;
 	using IndexedList<Vertex>::GetType;
+	using IndexedList<Vertex>::Transform;
 public:
 	IndexedTriangleList()
 		:
