@@ -159,6 +159,7 @@
     <ClCompile Include="InterpolatedCube.cpp" />
     <ClCompile Include="InterpolatedCubeScene.cpp" />
     <ClCompile Include="InterpolatedPlane.cpp" />
+    <ClCompile Include="InterpolatedPlaneScene.cpp" />
     <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="MihajloException.cpp" />
     <ClCompile Include="Mouse.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="InterpolatedCube.h" />
     <ClInclude Include="InterpolatedCubeScene.h" />
     <ClInclude Include="InterpolatedPlane.h" />
+    <ClInclude Include="InterpolatedPlaneScene.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="MihajloException.h" />
     <ClInclude Include="MihajloWin.h" />

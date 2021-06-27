@@ -2,9 +2,11 @@
 #include <cassert>
 #include "InterpolatedCubeScene.h"
 #include "FlatCubeScene.h"
+#include "InterpolatedPlaneScene.h"
 
 void ConfigureScenes(std::vector<std::unique_ptr<Scene>>& scenePtrs, Window& wnd)
 {
+	scenePtrs.push_back(std::make_unique<InterpolatedPlaneScene>(wnd.Gfx()));
 	scenePtrs.push_back(std::make_unique<InterpolatedCubeScene>(wnd.Gfx()));
 	scenePtrs.push_back(std::make_unique<FlatCubeScene>(wnd.Gfx()));
 }

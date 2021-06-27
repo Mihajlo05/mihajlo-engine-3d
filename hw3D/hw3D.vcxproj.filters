@@ -76,6 +76,9 @@
     <Filter Include="Math\IndexedLists">
       <UniqueIdentifier>{9e5e96c9-707e-491b-8505-933bda723107}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes\InterpolatedPlaneScene">
+      <UniqueIdentifier>{b341d248-ef88-42ee-8a8e-e83df79f93b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="InterpolatedPlane.h">
       <Filter>Drawables\InterpolatedPlane</Filter>
     </ClInclude>
+    <ClInclude Include="InterpolatedPlaneScene.h">
+      <Filter>Scenes\InterpolatedPlaneScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -268,6 +274,9 @@
     </ClCompile>
     <ClCompile Include="InterpolatedPlane.cpp">
       <Filter>Drawables\InterpolatedPlane</Filter>
+    </ClCompile>
+    <ClCompile Include="InterpolatedPlaneScene.cpp">
+      <Filter>Scenes\InterpolatedPlaneScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
