@@ -1,6 +1,7 @@
 #include "InterpolatedPlane.h"
 #include "PlaneModel.h"
 #include "AllBindables.h"
+#include <random>
 
 namespace dx = DirectX;
 
@@ -16,12 +17,16 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 			struct { float r, g, b; } color;
 		};
 
-		auto indTriangleL = PlaneModel::GetTessellated<Vertex>();
+		auto indTriangleL = PlaneModel::GetTessellated<Vertex>(50);
 
-		indTriangleL.Vertices()[0].color = { 1.0f, 1.0f, 1.0f };
-		indTriangleL.Vertices()[1].color = { 1.0f, 1.0f, 0.0f };
-		indTriangleL.Vertices()[2].color = { 1.0f, 0.0f, 1.0f };
-		indTriangleL.Vertices()[3].color = { 0.0f, 1.0f, 1.0f };
+		std::random_device rd;
+		std::mt19937 rng(rd());
+		std::uniform_real_distribution<float> cDist(0.0f, 1.0f);
+
+		for (auto& v : indTriangleL.Vertices())
+		{
+			v.color = { cDist(rng), cDist(rng), cDist(rng) };
+		}
 
 		indTriangleL.Transform(dx::XMMatrixRotationX(4 * dx::XM_PI / 9));
 
@@ -47,12 +52,19 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 		AddIndexBufferFromStatic();
 	}
 
-	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
+	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this, 0u));
+
+	auto spvcb = std::make_unique<VertexConstantBuffer<WaveBuf>>(gfx, 1u);
+	pVCB = spvcb.get();
+	AddBindable(std::move(spvcb));
 }
 
 void InterpolatedPlane::Update(float dt)
 {
 	time += dt;
+
+	const WaveBuf wb = { time, 2.5f, 10.5f, 0.1f };
+	pVCB->Update(gfx, wb);
 }
 
 dx::XMMATRIX InterpolatedPlane::GetTransformation() const
