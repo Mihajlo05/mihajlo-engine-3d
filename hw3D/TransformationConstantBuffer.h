@@ -8,9 +8,9 @@
 class TransformationConstantBuffer : public Bindable
 {
 public:
-	TransformationConstantBuffer(Graphics& gfx, const Drawable& parent);
+	TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot = 0u);
 	void Bind(Graphics& gfx) const override;
 private:
 	const Drawable& parent;
-	static std::unique_ptr<VertexConstantBuffer<DirectX::XMMATRIX>> pVConstBuf;
+	VertexConstantBuffer<DirectX::XMMATRIX> vConstBuf;
 };

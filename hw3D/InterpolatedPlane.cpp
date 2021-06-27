@@ -29,7 +29,7 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, indTriangleL.Indices()));
 
 		AddStaticBindable(std::make_unique<PixelShader>(gfx, L"InterpolatedPS.cso"));
-		auto pvs = std::make_unique<VertexShader>(gfx, L"ColorPosVS.cso");
+		auto pvs = std::make_unique<VertexShader>(gfx, L"InterpolatedPlaneVS.cso");
 		VertexShader& vertexShader = *pvs;
 		AddStaticBindable(std::move(pvs));
 

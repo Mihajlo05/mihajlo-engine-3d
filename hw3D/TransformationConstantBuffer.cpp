@@ -3,20 +3,14 @@
 namespace dx = DirectX;
 using VConstBuf = VertexConstantBuffer<dx::XMMATRIX>;
 
-std::unique_ptr<VConstBuf> TransformationConstantBuffer::pVConstBuf;
-
-TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const Drawable& parent)
+TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot)
 	:
-	parent(parent)
-{
-	if (pVConstBuf.get() == nullptr)
-	{
-		pVConstBuf = std::make_unique<VConstBuf>(gfx);
-	}
-}
+	parent(parent),
+	vConstBuf(gfx, slot)
+{ }
 
 void TransformationConstantBuffer::Bind(Graphics& gfx) const
 {
-	pVConstBuf->Update(gfx, dx::XMMatrixTranspose( parent.GetTransformation() * gfx.GetPerspective() ));
-	pVConstBuf->Bind(gfx);
+	vConstBuf.Update(gfx, dx::XMMatrixTranspose( parent.GetTransformation() * gfx.GetPerspective() ));
+	vConstBuf.Bind(gfx);
 }
