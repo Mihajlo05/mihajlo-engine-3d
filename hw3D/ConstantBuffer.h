@@ -6,7 +6,9 @@ template<class C>
 class ConstantBuffer : public Bindable
 {
 public:
-	ConstantBuffer(Graphics& gfx, const C& cBuf)
+	ConstantBuffer(Graphics& gfx, const C& cBuf, uint32_t slot = 0u)
+		:
+		slot(slot)
 	{
 		BIND_INFOMAN(gfx);
 
@@ -23,7 +25,9 @@ public:
 
 		GFX_THROW(GetDevice(gfx)->CreateBuffer(&cbd, &csd, &pData));
 	}
-	ConstantBuffer(Graphics& gfx)
+	ConstantBuffer(Graphics& gfx, uint32_t slot = 0u)
+		:
+		slot(slot)
 	{
 		BIND_INFOMAN(gfx);
 
@@ -51,4 +55,5 @@ public:
 	virtual ~ConstantBuffer() = default;
 protected:
 	Microsoft::WRL::ComPtr<ID3D11Buffer> pData;
+	uint32_t slot;
 };

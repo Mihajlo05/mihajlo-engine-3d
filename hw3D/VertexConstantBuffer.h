@@ -7,10 +7,11 @@ class VertexConstantBuffer : public ConstantBuffer<C>
 {
 	using ConstantBuffer<C>::pData;
 	using Bindable::GetContext;
+	using ConstantBuffer<C>::slot;
 public:
 	using ConstantBuffer<C>::ConstantBuffer;
 	void Bind(Graphics& gfx) const override
 	{
-		GetContext(gfx)->VSSetConstantBuffers(0u, 1u, this->pData.GetAddressOf());
+		GetContext(gfx)->VSSetConstantBuffers(slot, 1u, this->pData.GetAddressOf());
 	}
 };

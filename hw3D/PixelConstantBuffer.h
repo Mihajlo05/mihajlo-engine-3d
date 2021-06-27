@@ -7,10 +7,11 @@ class PixelConstantBuffer : public ConstantBuffer<C>
 {
 	using ConstantBuffer<C>::pData;
 	using Bindable::GetContext;
+	using ConstantBuffer<C>::slot;
 public:
 	using ConstantBuffer<C>::ConstantBuffer;
 	void Bind(Graphics& gfx) const override
 	{
-		GetContext(gfx)->PSSetConstantBuffers(0u, 1u, pData.GetAddressOf());
+		GetContext(gfx)->PSSetConstantBuffers(slot, 1u, pData.GetAddressOf());
 	}
 };
