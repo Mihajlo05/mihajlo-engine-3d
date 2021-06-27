@@ -16,11 +16,10 @@ void InterpolatedCubeScene::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void InterpolatedCubeScene::Update(float dt)
 {
-	cube.UpdateLogic(dt);
-	cube.UpdateGraphics(gfx);
+	cube.Update(dt);
 }
 
 void InterpolatedCubeScene::Draw() const
 {
-	cube.Draw(gfx);
+	cube.Draw();
 }

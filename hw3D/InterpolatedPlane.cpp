@@ -5,6 +5,8 @@
 namespace dx = DirectX;
 
 InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
+	:
+	DrawableBase(gfx)
 {
 	if (!IsStaticInitialized())
 	{
@@ -48,13 +50,9 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 }
 
-void InterpolatedPlane::UpdateLogic(float dt)
+void InterpolatedPlane::Update(float dt)
 {
 	time += dt;
-}
-
-void InterpolatedPlane::UpdateGraphics(Graphics& gfx)
-{
 }
 
 dx::XMMATRIX InterpolatedPlane::GetTransformation() const

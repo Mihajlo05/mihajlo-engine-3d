@@ -5,6 +5,8 @@
 namespace dx = DirectX;
 
 InterpolatedCube::InterpolatedCube(Graphics& gfx)
+	:
+	DrawableBase(gfx)
 {
 	if (!IsStaticInitialized())
 	{
@@ -50,13 +52,9 @@ InterpolatedCube::InterpolatedCube(Graphics& gfx)
 	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 }
 
-void InterpolatedCube::UpdateLogic(float dt)
+void InterpolatedCube::Update(float dt)
 {
 	time += dt;
-}
-
-void InterpolatedCube::UpdateGraphics(Graphics& gfx)
-{
 }
 
 DirectX::XMMATRIX InterpolatedCube::GetTransformation() const

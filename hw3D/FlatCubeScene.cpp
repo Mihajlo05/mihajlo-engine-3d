@@ -16,11 +16,10 @@ void FlatCubeScene::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void FlatCubeScene::Update(float dt)
 {
-	cube.UpdateLogic(dt);
-	cube.UpdateGraphics(gfx);
+	cube.Update(dt);
 }
 
 void FlatCubeScene::Draw() const
 {
-	cube.Draw(gfx);
+	cube.Draw();
 }

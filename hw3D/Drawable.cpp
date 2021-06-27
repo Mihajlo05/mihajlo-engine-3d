@@ -1,6 +1,11 @@
 #include "Drawable.h"
 
-void Drawable::Draw(Graphics& gfx) const
+Drawable::Drawable(Graphics& gfx)
+	:
+	gfx(gfx)
+{ }
+
+void Drawable::Draw() const
 {
 	for (const auto& pb : bindablePtrs)
 	{

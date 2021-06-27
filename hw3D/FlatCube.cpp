@@ -6,6 +6,8 @@
 namespace dx = DirectX;
 
 FlatCube::FlatCube(Graphics& gfx)
+	:
+	DrawableBase(gfx)
 {
 	if (!IsStaticInitialized())
 	{
@@ -57,13 +59,9 @@ FlatCube::FlatCube(Graphics& gfx)
 	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
 }
 
-void FlatCube::UpdateLogic(float dt)
+void FlatCube::Update(float dt)
 {
 	time += dt;
-}
-
-void FlatCube::UpdateGraphics(Graphics& gfx)
-{
 }
 
 DirectX::XMMATRIX FlatCube::GetTransformation() const

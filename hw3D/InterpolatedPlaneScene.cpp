@@ -16,11 +16,10 @@ void InterpolatedPlaneScene::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void InterpolatedPlaneScene::Update(float dt)
 {
-	plane.UpdateLogic(dt);
-	plane.UpdateGraphics(gfx);
+	plane.Update(dt);
 }
 
 void InterpolatedPlaneScene::Draw() const
 {
-	plane.Draw(gfx);
+	plane.Draw();
 }
