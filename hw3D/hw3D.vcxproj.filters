@@ -198,6 +198,18 @@
     <ClInclude Include="InterpolatedPlaneScene.h">
       <Filter>Scenes\InterpolatedPlaneScene</Filter>
     </ClInclude>
+    <ClInclude Include="ConeModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="MihajloMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PrismModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereModel.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">

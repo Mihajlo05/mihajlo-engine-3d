@@ -17,7 +17,7 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 			struct { float r, g, b; } color;
 		};
 
-		auto indTriangleL = PlaneModel::GetTessellated<Vertex>(50);
+		auto indTriangleL = PlaneModel::GetTessellated<Vertex>(100 );
 
 		std::random_device rd;
 		std::mt19937 rng(rd());
@@ -28,7 +28,8 @@ InterpolatedPlane::InterpolatedPlane(Graphics& gfx)
 			v.color = { cDist(rng), cDist(rng), cDist(rng) };
 		}
 
-		indTriangleL.Transform(dx::XMMatrixRotationX(4 * dx::XM_PI / 9));
+		indTriangleL.Transform(dx::XMMatrixScaling(2.0f, 2.0f, 1.0f));
+		indTriangleL.Transform(dx::XMMatrixRotationX(7.0f * dx::XM_PI / 18.0f));
 
 		AddStaticBindable(std::make_unique<VertexBuffer>(gfx, indTriangleL.Vertices()));
 		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(gfx, indTriangleL.Indices()));
@@ -63,7 +64,7 @@ void InterpolatedPlane::Update(float dt)
 {
 	time += dt;
 
-	const WaveBuf wb = { time, 2.5f, 10.5f, 0.1f };
+	const WaveBuf wb = { time, 4.0f, 12.0f, 0.1f };
 	pVCB->Update(gfx, wb);
 }
 

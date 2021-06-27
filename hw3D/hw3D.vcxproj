@@ -176,6 +176,7 @@
   <ItemGroup>
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
+    <ClInclude Include="ConeModel.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="CubeModel.h" />
     <ClInclude Include="DefaultVertex.h" />
@@ -198,14 +199,17 @@
     <ClInclude Include="InterpolatedPlaneScene.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="MihajloException.h" />
+    <ClInclude Include="MihajloMath.h" />
     <ClInclude Include="MihajloWin.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="PixelConstantBuffer.h" />
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="PlaneModel.h" />
     <ClInclude Include="PrimitiveTopology.h" />
+    <ClInclude Include="PrismModel.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SphereModel.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformationConstantBuffer.h" />
     <ClInclude Include="VertexBuffer.h" />
