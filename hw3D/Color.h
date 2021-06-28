@@ -1,33 +1,75 @@
 #pragma once
 
-#include <cassert>
-#include <typeinfo>
-
-template<typename T>
-class ColorT
+class Color //taken from https://github.com/planetchili/hw3d/blob/T22-End/hw3d/Surface.h
 {
-protected:
-	ColorT(T r, T g, T b, T a)
-		:
-		r(r),
-		g(g),
-		b(b),
-		a(a)
-	{
-		if (typeid(T) == typeid(float))
-		{
-			assert(r >= 0.0f && r <= 1.0f);
-			assert(g >= 0.0f && g <= 1.0f);
-			assert(b >= 0.0f && b <= 1.0f);
-			assert(a >= 0.0f && a <= 1.0f);
-		}
-	}
 public:
-	T r;
-	T g;
-	T b;
-	T a;
+	unsigned int dword;
+public:
+	Color() : dword()
+	{}
+	Color(const Color& col)
+		:
+		dword(col.dword)
+	{}
+	Color(unsigned int dw)
+		:
+		dword(dw)
+	{}
+	Color(unsigned char x, unsigned char r, unsigned char g, unsigned char b)
+		:
+		dword((x << 24u) | (r << 16u) | (g << 8u) | b)
+	{}
+	Color(unsigned char r, unsigned char g, unsigned char b)
+		:
+		dword((r << 16u) | (g << 8u) | b)
+	{}
+	Color(Color col, unsigned char x)
+		:
+		Color((x << 24u) | col.dword)
+	{}
+	Color& operator =(Color color)
+	{
+		dword = color.dword;
+		return *this;
+	}
+	unsigned char GetX() const
+	{
+		return dword >> 24u;
+	}
+	unsigned char GetA() const
+	{
+		return GetX();
+	}
+	unsigned char GetR() const
+	{
+		return (dword >> 16u) & 0xFFu;
+	}
+	unsigned char GetG() const
+	{
+		return (dword >> 8u) & 0xFFu;
+	}
+	unsigned char GetB() const
+	{
+		return dword & 0xFFu;
+	}
+	void SetX(unsigned char x)
+	{
+		dword = (dword & 0xFFFFFFu) | (x << 24u);
+	}
+	void SetA(unsigned char a)
+	{
+		SetX(a);
+	}
+	void SetR(unsigned char r)
+	{
+		dword = (dword & 0xFF00FFFFu) | (r << 16u);
+	}
+	void SetG(unsigned char g)
+	{
+		dword = (dword & 0xFFFF00FFu) | (g << 8u);
+	}
+	void SetB(unsigned char b)
+	{
+		dword = (dword & 0xFFFFFF00u) | b;
+	}
 };
-
-using Color = ColorT<unsigned char>;
-using Colorf = ColorT<float>;

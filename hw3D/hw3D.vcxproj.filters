@@ -216,6 +216,12 @@
     <ClInclude Include="GDIPlusManager.h">
       <Filter>Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Surface.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultMihException.h">
+      <Filter>ErrorHandling</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -298,6 +304,12 @@
     </ClCompile>
     <ClCompile Include="GDIPlusManager.cpp">
       <Filter>Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Surface.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultMihException.cpp">
+      <Filter>ErrorHandling</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
