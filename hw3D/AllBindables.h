@@ -11,3 +11,5 @@
 #include "InputLayout.h"
 #include "PrimitiveTopology.h"
 #include "Viewport.h"
+#include "Texture2D.h"
+#include "Sampler.h"

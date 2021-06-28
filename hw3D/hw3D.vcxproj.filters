@@ -49,9 +49,6 @@
     <Filter Include="Drawables\FlatCube">
       <UniqueIdentifier>{52d8d0d2-2875-4ced-95a2-9efc858040d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Shaders">
-      <UniqueIdentifier>{b41298a0-a702-4cdc-a985-c50335e2cfbd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{d712258b-bbb5-4b6c-9fd6-f54234934269}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="Scenes\InterpolatedPlaneScene">
       <UniqueIdentifier>{b341d248-ef88-42ee-8a8e-e83df79f93b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{643749f0-cf34-4db6-aef9-19ad7d98a8f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,12 @@
     <ClInclude Include="DefaultMihException.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Bindables</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>Bindables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -311,6 +317,12 @@
     <ClCompile Include="DefaultMihException.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>Bindables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3D.rc">
@@ -334,20 +346,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="ColorPosVS.hlsl">
-      <Filter>Graphics\Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="InterpolatedPS.hlsl">
-      <Filter>Graphics\Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="FlatPS.hlsl">
-      <Filter>Graphics\Shaders</Filter>
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="ColorPosVS.hlsl">
+      <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="FlatVS.hlsl">
-      <Filter>Graphics\Shaders</Filter>
+      <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="InterpolatedPlaneVS.hlsl">
-      <Filter>Drawables\InterpolatedPlane</Filter>
+    <FxCompile Include="InterpolatedPS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Texture2DPS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Texture2DVS.hlsl">
+      <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>

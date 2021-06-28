@@ -25,6 +25,10 @@ public:
 	~Surface() = default;
 	Color GetPixel(int x, int y) const;
 	void SetPixel(int x, int y, Color c);
+	uint64_t GetWidth() const;
+	uint64_t GetHeight() const;
+	Color* GetBufferPointer();
+	const Color* GetBufferPointer() const;
 private:
 	Color& At(int x, int y);
 	const Color& At(int x, int y) const;

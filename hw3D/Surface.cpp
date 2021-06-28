@@ -96,6 +96,26 @@ void Surface::SetPixel(int x, int y, Color c)
 	At(x, y) = c;
 }
 
+uint64_t Surface::GetWidth() const
+{
+	return width;
+}
+
+uint64_t Surface::GetHeight() const
+{
+	return height;
+}
+
+Color* Surface::GetBufferPointer()
+{
+	return pBuffer.get();
+}
+
+const Color* Surface::GetBufferPointer() const
+{
+	return pBuffer.get();
+}
+
 Color& Surface::At(int x, int y)
 {
 	return pBuffer[y * width + x];
