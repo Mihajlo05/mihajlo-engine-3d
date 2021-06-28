@@ -5,6 +5,8 @@
 #include <sdkddkver.h>
 
 //Microsoft hates namespaces, so this are bunch of switches which disable unnecessary stuff
+#ifndef NO_SWITCHES
+
 #define WIN32_LEAN_AND_MEAN
 #define NOGDICAPMASKS
 #define NOSYSMETRICS
@@ -38,6 +40,8 @@
 #define NOPROXYSTUB
 #define NOIMAGE
 #define NOTAPE
+
+#endif //NO_SWITCHES
 
 #define NOMINMAX
 

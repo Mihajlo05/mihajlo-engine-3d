@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "GDIPlusManager.h"
 #include <optional>
 
 int CALLBACK WinMain(
@@ -11,6 +11,7 @@ int CALLBACK WinMain(
 {
 	try
 	{
+		GDIPlusManager gpm;
 		Game game;
 
 		std::optional<int> ecode;

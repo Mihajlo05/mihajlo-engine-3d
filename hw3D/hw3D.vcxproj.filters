@@ -210,6 +210,12 @@
     <ClInclude Include="SphereModel.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIPlusManager.h">
+      <Filter>Windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -289,6 +295,9 @@
     </ClCompile>
     <ClCompile Include="InterpolatedPlaneScene.cpp">
       <Filter>Scenes\InterpolatedPlaneScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIPlusManager.cpp">
+      <Filter>Windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
