@@ -46,9 +46,6 @@
     <Filter Include="Math\Vertices">
       <UniqueIdentifier>{d5c49eac-b15a-4439-82a8-9c7d11bc72e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drawables\FlatCube">
-      <UniqueIdentifier>{52d8d0d2-2875-4ced-95a2-9efc858040d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{d712258b-bbb5-4b6c-9fd6-f54234934269}</UniqueIdentifier>
     </Filter>
@@ -58,23 +55,8 @@
     <Filter Include="ErrorHandling\DxErr">
       <UniqueIdentifier>{1e1cb900-13db-4d60-8939-697d759a2dcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scenes\InterpolatedCubeScene">
-      <UniqueIdentifier>{cc7fba52-5c85-41d1-b928-7475bad06c62}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scenes\FlatCubeScene">
-      <UniqueIdentifier>{f19ab737-4608-4465-8e4e-58941b84bd3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Drawables\InterpolatedCube">
-      <UniqueIdentifier>{d4553900-b450-4d87-bbf1-42d9a3b63dfb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Drawables\InterpolatedPlane">
-      <UniqueIdentifier>{81a1bd12-6632-4e1e-b604-9b73ad7d6f54}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Math\IndexedLists">
       <UniqueIdentifier>{9e5e96c9-707e-491b-8505-933bda723107}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scenes\InterpolatedPlaneScene">
-      <UniqueIdentifier>{b341d248-ef88-42ee-8a8e-e83df79f93b5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{643749f0-cf34-4db6-aef9-19ad7d98a8f0}</UniqueIdentifier>
@@ -168,12 +150,6 @@
     <ClInclude Include="DefaultVertex.h">
       <Filter>Math\Vertices</Filter>
     </ClInclude>
-    <ClInclude Include="FlatCube.h">
-      <Filter>Drawables\FlatCube</Filter>
-    </ClInclude>
-    <ClInclude Include="InterpolatedCube.h">
-      <Filter>Drawables\InterpolatedCube</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
@@ -183,20 +159,8 @@
     <ClInclude Include="MihajloException.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
-    <ClInclude Include="InterpolatedCubeScene.h">
-      <Filter>Scenes\InterpolatedCubeScene</Filter>
-    </ClInclude>
-    <ClInclude Include="FlatCubeScene.h">
-      <Filter>Scenes\FlatCubeScene</Filter>
-    </ClInclude>
     <ClInclude Include="PlaneModel.h">
       <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="InterpolatedPlane.h">
-      <Filter>Drawables\InterpolatedPlane</Filter>
-    </ClInclude>
-    <ClInclude Include="InterpolatedPlaneScene.h">
-      <Filter>Scenes\InterpolatedPlaneScene</Filter>
     </ClInclude>
     <ClInclude Include="ConeModel.h">
       <Filter>Models</Filter>
@@ -284,29 +248,11 @@
     <ClCompile Include="Drawable.cpp">
       <Filter>Drawables\Base</Filter>
     </ClCompile>
-    <ClCompile Include="FlatCube.cpp">
-      <Filter>Drawables\FlatCube</Filter>
-    </ClCompile>
-    <ClCompile Include="InterpolatedCube.cpp">
-      <Filter>Drawables\InterpolatedCube</Filter>
-    </ClCompile>
     <ClCompile Include="DxgiInfoManager.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
     <ClCompile Include="MihajloException.cpp">
       <Filter>ErrorHandling</Filter>
-    </ClCompile>
-    <ClCompile Include="InterpolatedCubeScene.cpp">
-      <Filter>Scenes\InterpolatedCubeScene</Filter>
-    </ClCompile>
-    <ClCompile Include="FlatCubeScene.cpp">
-      <Filter>Scenes\FlatCubeScene</Filter>
-    </ClCompile>
-    <ClCompile Include="InterpolatedPlane.cpp">
-      <Filter>Drawables\InterpolatedPlane</Filter>
-    </ClCompile>
-    <ClCompile Include="InterpolatedPlaneScene.cpp">
-      <Filter>Scenes\InterpolatedPlaneScene</Filter>
     </ClCompile>
     <ClCompile Include="GDIPlusManager.cpp">
       <Filter>Windows</Filter>
@@ -346,18 +292,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="FlatPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="ColorPosVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="FlatVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="InterpolatedPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="Texture2DPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
