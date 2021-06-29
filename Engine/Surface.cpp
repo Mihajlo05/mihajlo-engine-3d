@@ -25,7 +25,7 @@ Surface::Surface(uint64_t width, uint64_t height, Color fillColor)
 	:
 	width(width),
 	height(height),
-	pBuffer(std::make_unique<Color[]>(width * height))
+	pBuffer(std::make_unique<Color[]>(size_t(width * height)))
 {
 	for (int i = 0; i < width * height; i++)
 	{
@@ -54,7 +54,7 @@ Surface::Surface(const std::string& filename)
 	width = bitmap.GetWidth();
 	height = bitmap.GetHeight();
 
-	pBuffer = std::make_unique<Color[]>(width * height);
+	pBuffer = std::make_unique<Color[]>(size_t(width * height));
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -76,7 +76,7 @@ Surface& Surface::operator=(const Surface& other)
 	width = other.width;
 	height = other.height;
 	
-	pBuffer = std::make_unique<Color[]>(width * height);
+	pBuffer = std::make_unique<Color[]>(size_t(width * height));
 
 	for (int i = 0; i < width * height; i++)
 	{
@@ -118,7 +118,7 @@ const Color* Surface::GetBufferPointer() const
 
 Color& Surface::At(int x, int y)
 {
-	return pBuffer[y * width + x];
+	return pBuffer[size_t(y * width + x)];
 }
 
 const Color& Surface::At(int x, int y) const

@@ -61,7 +61,7 @@ void Game::GoToScene(int index)
 
 void Game::GoToNextScene()
 {
-	if (++curSceneIndex < scenePtrs.size())
+	if (++curSceneIndex < (int)scenePtrs.size())
 		curScene = scenePtrs[curSceneIndex].get();
 	else
 		curScene = scenePtrs[curSceneIndex = 0].get();

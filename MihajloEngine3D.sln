@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1500
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hw3D", "hw3D\hw3D.vcxproj", "{9D9E7CCE-1A73-46EC-8A70-E236777A2378}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\hw3D.vcxproj", "{9D9E7CCE-1A73-46EC-8A70-E236777A2378}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
