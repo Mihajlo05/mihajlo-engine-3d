@@ -46,7 +46,8 @@ public:
 	Graphics(HWND hWnd, uint32_t width, uint32_t height);
 	Graphics& operator=(const Graphics&) = delete;
 	Graphics(const Graphics&) = delete;
-	~Graphics() = default;
+	~Graphics();
+	void BeginFrame(float r, float g, float b);
 	void EndFrame();
 	void ClearBuffer(float r, float g, float b, float a=1.0f);
 	void DrawIndexed(uint32_t count);

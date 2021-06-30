@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "resource.h"
 #include <sstream>
+#include "imgui\imgui_impl_win32.h"
 
 #define WND_NOGFX_EXCEPT Window::NoGfxException(__FILE__, __LINE__)
 
@@ -73,11 +74,14 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 
 	ShowWindow(hWnd, SW_SHOW);
 
+	ImGui_ImplWin32_Init(hWnd);
+
 	pGfx = std::make_unique<Graphics>(hWnd, width, height);
 }
 
 Window::~Window()
 {
+	ImGui_ImplWin32_Shutdown();
 	DestroyWindow(hWnd);
 }
 
@@ -108,6 +112,11 @@ LRESULT CALLBACK Window::HandleMsgThunk(HWND hWnd, UINT uMsg, WPARAM wParam, LPA
 
 LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
+	{
+		return true;
+	}
+
 	switch (uMsg)
 	{
 	case WM_CLOSE:

@@ -1,6 +1,8 @@
 #include "Graphics.h"
 #include "dxerr.h"
 #include <sstream>
+#include "imgui/imgui_impl_dx11.h"
+#include "imgui/imgui_impl_win32.h"
 
 #pragma comment(lib, "d3d11.lib")
 
@@ -102,10 +104,29 @@ Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 
 	//bind the viewport
 	pContext->RSSetViewports(1u, &dvp);
+
+	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
+}
+
+Graphics::~Graphics()
+{
+	ImGui_ImplDX11_Shutdown();
+}
+
+void Graphics::BeginFrame(float r, float g, float b)
+{
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+
+	ClearBuffer(r, g, b);
 }
 
 void Graphics::EndFrame()
 {
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+
 #ifndef NDEBUG
 	infoManager.Set();
 #endif
