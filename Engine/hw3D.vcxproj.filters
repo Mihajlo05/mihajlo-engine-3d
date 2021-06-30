@@ -64,6 +64,9 @@
     <Filter Include="Scenes\UniverseScene">
       <UniqueIdentifier>{c7b3c13c-c9b4-48c9-9d61-46c57931b507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{4a1a2970-3654-486f-bcd5-281274fcb220}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -200,6 +203,12 @@
     </ClInclude>
     <ClInclude Include="FlatCube.h">
       <Filter>Drawables</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingObject.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

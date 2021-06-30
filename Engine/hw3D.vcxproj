@@ -188,6 +188,7 @@
     <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="FlatCube.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GDIPlusManager.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Index.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="PrimitiveTopology.h" />
     <ClInclude Include="PrismModel.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RotatingObject.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SphereModel.h" />
