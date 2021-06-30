@@ -302,6 +302,9 @@
     <ClCompile Include="RotatingObject.cpp">
       <Filter>GameObjects\RotatingObject</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3D.rc">

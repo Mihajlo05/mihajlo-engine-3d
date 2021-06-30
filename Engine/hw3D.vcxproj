@@ -154,6 +154,7 @@
     <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="FlatCube.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GDIPlusManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
