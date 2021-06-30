@@ -12,4 +12,6 @@ public:
 	void Draw() const override;
 private:
 	std::vector<RotatingObject> cubes;
+	float simulationSpeed = 1.0f;
+	bool isSimulationRunning = true;
 };

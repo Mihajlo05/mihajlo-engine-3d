@@ -117,6 +117,8 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		return true;
 	}
 
+	const auto& imio = ImGui::GetIO();
+
 	switch (uMsg)
 	{
 	case WM_CLOSE:
@@ -128,17 +130,25 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_KEYDOWN:
 	case WM_SYSKEYDOWN:
+		if (imio.WantCaptureKeyboard)
+			break;
 		if (!(lParam & 0x40000000) || kbd.IsAutorepeatEnabled())
 			kbd.OnKeyPress(static_cast<unsigned char>(wParam));
 		break;
 	case WM_KEYUP:
 	case WM_SYSKEYUP:
+		if (imio.WantCaptureKeyboard)
+			break;
 		kbd.OnKeyRelease(static_cast<unsigned char>(wParam));
 		break;
 	case WM_CHAR:
+		if (imio.WantCaptureKeyboard)
+			break;
 		kbd.OnChar(static_cast<unsigned char>(wParam));
 		break;
 	case WM_MOUSEMOVE:
+		if (imio.WantCaptureMouse)
+			break;
 		const POINTS pos = MAKEPOINTS(lParam);
 		if (pos.x < 0 || pos.x >= (int)width || pos.y < 0 || pos.y >= (int)height) //if mouse is outside
 		{
@@ -164,18 +174,28 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		mouse.Move(pos.x, pos.y);
 		break;
 	case WM_LBUTTONDOWN:
+		if (imio.WantCaptureMouse)
+			break;
 		mouse.ChangeLeftState(true);
 		break;
 	case WM_LBUTTONUP:
+		if (imio.WantCaptureMouse)
+			break;
 		mouse.ChangeLeftState(false);
 		break;
 	case WM_RBUTTONDOWN:
+		if (imio.WantCaptureMouse)
+			break;
 		mouse.ChangeRightState(true);
 		break;
 	case WM_RBUTTONUP:
+		if (imio.WantCaptureMouse)
+			break;
 		mouse.ChangeRightState(false);
 		break;
 	case WM_MOUSEWHEEL:
+		if (imio.WantCaptureMouse)
+			break;
 		short delta = GET_WHEEL_DELTA_WPARAM(wParam);
 		while (delta > WHEEL_DELTA)
 		{

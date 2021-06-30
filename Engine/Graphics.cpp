@@ -115,17 +115,23 @@ Graphics::~Graphics()
 
 void Graphics::BeginFrame(float r, float g, float b)
 {
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
+	if (isGuiEnabled)
+	{
+		ImGui_ImplDX11_NewFrame();
+		ImGui_ImplWin32_NewFrame();
+		ImGui::NewFrame();
+	}
 
 	ClearBuffer(r, g, b);
 }
 
 void Graphics::EndFrame()
 {
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	if (isGuiEnabled)
+	{
+		ImGui::Render();
+		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+	}
 
 #ifndef NDEBUG
 	infoManager.Set();
@@ -160,6 +166,21 @@ void Graphics::SetPerspective(const DirectX::XMMATRIX& p)
 DirectX::XMMATRIX Graphics::GetPerspective() const
 {
 	return perspective;
+}
+
+void Graphics::EnableGui()
+{
+	isGuiEnabled = true;
+}
+
+void Graphics::DisableGui()
+{
+	isGuiEnabled = false;
+}
+
+bool Graphics::IsGuiEnabled() const
+{
+	return isGuiEnabled;
 }
 
 //EXCEPTION

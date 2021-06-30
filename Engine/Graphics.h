@@ -53,6 +53,9 @@ public:
 	void DrawIndexed(uint32_t count);
 	void SetPerspective(const DirectX::XMMATRIX& p);
 	DirectX::XMMATRIX GetPerspective() const;
+	void EnableGui();
+	void DisableGui();
+	bool IsGuiEnabled() const;
 private:
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;
@@ -65,6 +68,8 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> pContext = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDepthStencilView = nullptr;
+private:
+	bool isGuiEnabled = true;
 };
 
 #define GFX_EXCEPT_NOINFO(hr) Graphics::Exception(__FILE__, __LINE__, (hr))
