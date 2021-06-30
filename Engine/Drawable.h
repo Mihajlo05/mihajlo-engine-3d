@@ -13,7 +13,7 @@ class Drawable
 public:
 	Drawable(Graphics& gfx);
 	virtual void Draw() const;
-	virtual void Update(float dt) = 0;
+	virtual void Update(float dt) {}
 	void ResetTransformations();
 	void AddTransformation(DirectX::FXMMATRIX t);
 	DirectX::XMMATRIX GetTransformation() const;

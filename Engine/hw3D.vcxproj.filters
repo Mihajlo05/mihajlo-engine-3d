@@ -67,6 +67,12 @@
     <Filter Include="GameObjects">
       <UniqueIdentifier>{4a1a2970-3654-486f-bcd5-281274fcb220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Drawables\FlatCube">
+      <UniqueIdentifier>{a62325b7-8e8d-4801-a75d-5cbb0887284f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\RotatingObject">
+      <UniqueIdentifier>{854e0a30-74e1-44c3-90de-c07d4e627d3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -201,14 +207,14 @@
     <ClInclude Include="UniverseScene.h">
       <Filter>Scenes\UniverseScene</Filter>
     </ClInclude>
-    <ClInclude Include="FlatCube.h">
-      <Filter>Drawables</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="FlatCube.h">
+      <Filter>Drawables\FlatCube</Filter>
+    </ClInclude>
     <ClInclude Include="RotatingObject.h">
-      <Filter>GameObjects</Filter>
+      <Filter>GameObjects\RotatingObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +292,15 @@
     </ClCompile>
     <ClCompile Include="Sampler.cpp">
       <Filter>Bindables</Filter>
+    </ClCompile>
+    <ClCompile Include="FlatCube.cpp">
+      <Filter>Drawables\FlatCube</Filter>
+    </ClCompile>
+    <ClCompile Include="UniverseScene.cpp">
+      <Filter>Scenes\UniverseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingObject.cpp">
+      <Filter>GameObjects\RotatingObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

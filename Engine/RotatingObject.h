@@ -2,24 +2,11 @@
 
 #include "GameObject.h"
 
-class RotationObject : public GameObject
+class RotatingObject : public GameObject
 {
 public:
-	RotationObject(std::unique_ptr<Drawable> d)
-		:
-		GameObject(std::move(d))
-	{
-		Translate({ 0.0f, 0.0f, 4.0f });
-	}
-	void Update(float dt) override
-	{
-		Rotate({ dt, dt * 2, dt / 2.0f });
-		GameObject::Update(dt);
-	}
-	void Draw() const override
-	{
-		GameObject::Draw();
-	}
+	RotatingObject(std::unique_ptr<Drawable> d);
+	void Update(float dt) override;
+	void Draw() const override;
 private:
-	float time = 0.0f;
 };
