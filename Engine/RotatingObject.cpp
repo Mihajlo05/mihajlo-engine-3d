@@ -6,7 +6,7 @@ RotatingObject::RotatingObject(std::unique_ptr<Drawable> d)
 {
 	std::random_device rd;
 	std::mt19937 rng(rd());
-	std::uniform_real_distribution<float> xDist(10.0f, 20.0f);
+	std::uniform_real_distribution<float> xDist(0.0f, 30.0f);
 
 	Translate({ xDist(rng), 0.0f, 0.0f });
 

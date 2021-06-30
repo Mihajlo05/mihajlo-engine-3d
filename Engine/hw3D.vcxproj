@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bindable.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DefaultMihException.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
@@ -187,6 +188,7 @@
   <ItemGroup>
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ConeModel.h" />
     <ClInclude Include="ConstantBuffer.h" />

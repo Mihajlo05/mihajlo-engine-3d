@@ -82,6 +82,9 @@
     <Filter Include="ImGui\CoreAndImplementations">
       <UniqueIdentifier>{733d6386-ca35-4fe1-adae-d9446d1575ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Camera">
+      <UniqueIdentifier>{361a37fe-5376-4940-8cac-4a442c958291}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -252,6 +255,9 @@
     <ClInclude Include="ImGuiManager.h">
       <Filter>ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>GameObjects\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -361,6 +367,9 @@
     </ClCompile>
     <ClCompile Include="ImGuiManager.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>GameObjects\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

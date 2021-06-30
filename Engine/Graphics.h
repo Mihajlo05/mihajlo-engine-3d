@@ -53,6 +53,8 @@ public:
 	void DrawIndexed(uint32_t count);
 	void SetPerspective(const DirectX::XMMATRIX& p);
 	DirectX::XMMATRIX GetPerspective() const;
+	void SetCamera(DirectX::FXMMATRIX ct);
+	DirectX::XMMATRIX GetCamera() const;
 	void EnableGui();
 	void DisableGui();
 	bool IsGuiEnabled() const;
@@ -62,6 +64,7 @@ private:
 #endif
 private:
 	DirectX::XMMATRIX perspective;
+	DirectX::XMMATRIX cameraTransf = DirectX::XMMatrixIdentity();
 private:
 	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;

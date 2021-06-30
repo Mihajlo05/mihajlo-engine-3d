@@ -10,7 +10,7 @@ using namespace Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 	:
-	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 30.0f))
+	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 100.0f))
 {
 	//swap chain descriptor
 	DXGI_SWAP_CHAIN_DESC scd = { 0 };
@@ -166,6 +166,16 @@ void Graphics::SetPerspective(const DirectX::XMMATRIX& p)
 DirectX::XMMATRIX Graphics::GetPerspective() const
 {
 	return perspective;
+}
+
+void Graphics::SetCamera(DirectX::FXMMATRIX ct)
+{
+	cameraTransf = ct;
+}
+
+DirectX::XMMATRIX Graphics::GetCamera() const
+{
+	return cameraTransf;
 }
 
 void Graphics::EnableGui()

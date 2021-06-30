@@ -6,7 +6,7 @@ UniverseScene::UniverseScene(Graphics& gfx)
 	:
 	Scene(gfx)
 {
-	const int nCubes = 200;
+	const int nCubes = 50;
 	cubes.reserve(nCubes);
 	for (int i = 0; i < nCubes; i++)
 	{
@@ -16,6 +16,9 @@ UniverseScene::UniverseScene(Graphics& gfx)
 
 void UniverseScene::Update(float dt)
 {
+	gfx.SetCamera(cam.GetTransfForModel());
+	cam.Update(dt);
+
 	if (ImGui::Begin("Kontrole simulacije"))
 	{
 		ImGui::SliderFloat("Brzina", &simulationSpeed, -2.0f, 2.0f);

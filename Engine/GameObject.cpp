@@ -38,6 +38,26 @@ void GameObject::Scale(DirectX::XMFLOAT3 delta)
 	AddToTransformation(scale, delta);
 }
 
+DirectX::XMFLOAT3 GameObject::GetPos() const
+{
+	return pos;
+}
+
+DirectX::XMFLOAT3 GameObject::GetRotation() const
+{
+	return rotation;
+}
+
+DirectX::XMFLOAT3 GameObject::GetScale() const
+{
+	return scale;
+}
+
+void GameObject::SetPos(DirectX::XMFLOAT3 p)
+{
+	pos = p;
+}
+
 GameObject::GameObject(std::unique_ptr<Drawable> model)
 	:
 	model(std::move(model))

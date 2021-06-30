@@ -15,6 +15,10 @@ public:
 	void Rotate(DirectX::XMFLOAT3 delta);
 	void Rotate(DirectX::XMFLOAT3 center, DirectX::XMFLOAT3 delta);
 	void Scale(DirectX::XMFLOAT3 delta);
+	DirectX::XMFLOAT3 GetPos() const;
+	DirectX::XMFLOAT3 GetRotation() const;
+	DirectX::XMFLOAT3 GetScale() const;
+	void SetPos(DirectX::XMFLOAT3 p);
 protected:
 	GameObject(std::unique_ptr<Drawable> model);
 private:
