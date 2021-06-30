@@ -3,16 +3,24 @@
 
 UniverseScene::UniverseScene(Graphics& gfx)
 	:
-	Scene(gfx),
-	cube(std::make_unique<FlatCube>(gfx))
-{}
+	Scene(gfx)
+{
+	const int nCubes = 50;
+	cubes.reserve(nCubes);
+	for (int i = 0; i < nCubes; i++)
+	{
+		cubes.emplace_back(std::make_unique<FlatCube>(gfx));
+	}
+}
 
 void UniverseScene::Update(float dt)
 {
-	cube.Update(dt);
+	for (auto& cube : cubes)
+		cube.Update(dt);
 }
 
 void UniverseScene::Draw() const
 {
-	cube.Draw();
+	for (const auto& cube : cubes)
+		cube.Draw();
 }

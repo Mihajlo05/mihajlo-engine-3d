@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include "RotatingObject.h"
+#include <vector>
 
 class UniverseScene : public Scene
 {
@@ -10,5 +11,5 @@ public:
 	void Update(float dt) override;
 	void Draw() const override;
 private:
-	RotatingObject cube;
+	std::vector<RotatingObject> cubes;
 };
