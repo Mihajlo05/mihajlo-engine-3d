@@ -1,13 +1,15 @@
 #include "Game.h"
 #include <cassert>
+#include "UniverseScene.h"
 
 void ConfigureScenes(std::vector<std::unique_ptr<Scene>>& scenePtrs, Window& wnd)
 {
+	scenePtrs.push_back(std::make_unique<UniverseScene>(wnd.Gfx()));
 }
 
 Game::Game()
 	:
-	wnd(800u, 600u, "Mihajlo Engine 3D")
+	wnd(1280u, 720u, "Mihajlo Engine 3D")
 {
 	ConfigureScenes(scenePtrs, wnd);
 	curScene = scenePtrs.front().get();

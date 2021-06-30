@@ -14,7 +14,9 @@ public:
 	Drawable(Graphics& gfx);
 	virtual void Draw() const;
 	virtual void Update(float dt) = 0;
-	virtual DirectX::XMMATRIX GetTransformation() const = 0;
+	void ResetTransformations();
+	void AddTransformation(DirectX::FXMMATRIX t);
+	DirectX::XMMATRIX GetTransformation() const;
 	virtual ~Drawable() = default;
 protected:
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
@@ -24,4 +26,5 @@ protected:
 private:
 	const IndexBuffer* pIndexBuffer = nullptr;
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
+	DirectX::XMMATRIX transformation = DirectX::XMMatrixIdentity();
 };

@@ -15,6 +15,21 @@ void Drawable::Draw() const
 	gfx.DrawIndexed(pIndexBuffer->GetCount());
 }
 
+void Drawable::ResetTransformations()
+{
+	transformation = DirectX::XMMatrixIdentity();
+}
+
+void Drawable::AddTransformation(DirectX::FXMMATRIX t)
+{
+	transformation *= t;
+}
+
+DirectX::XMMATRIX Drawable::GetTransformation() const
+{
+	return transformation;
+}
+
 void Drawable::AddBindable(std::unique_ptr<Bindable> pBindable)
 {
 	assert("Can't add index buffer in AddBindable function, you MUST use AddIndexBuffer" &&

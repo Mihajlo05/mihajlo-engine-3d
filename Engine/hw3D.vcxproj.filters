@@ -61,6 +61,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{643749f0-cf34-4db6-aef9-19ad7d98a8f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes\UniverseScene">
+      <UniqueIdentifier>{c7b3c13c-c9b4-48c9-9d61-46c57931b507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -192,6 +195,12 @@
     <ClInclude Include="Sampler.h">
       <Filter>Bindables</Filter>
     </ClInclude>
+    <ClInclude Include="UniverseScene.h">
+      <Filter>Scenes\UniverseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="FlatCube.h">
+      <Filter>Drawables</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -296,6 +305,12 @@
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Texture2DVS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="DefaultVS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="FlatPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>
