@@ -148,14 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bindable.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DefaultMihException.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
     <ClCompile Include="FlatCube.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GDIPlusManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImGuiManager.cpp" />
@@ -172,7 +170,6 @@
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="PrimitiveTopology.cpp" />
-    <ClCompile Include="RotatingObject.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture2D.cpp" />
@@ -188,7 +185,6 @@
   <ItemGroup>
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ConeModel.h" />
     <ClInclude Include="ConstantBuffer.h" />
@@ -201,7 +197,6 @@
     <ClInclude Include="DxgiInfoManager.h" />
     <ClInclude Include="FlatCube.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GDIPlusManager.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="ImGuiManager.h" />
@@ -229,13 +224,13 @@
     <ClInclude Include="PrimitiveTopology.h" />
     <ClInclude Include="PrismModel.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="RotatingObject.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SphereModel.h" />
     <ClInclude Include="Surface.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformationConstantBuffer.h" />
     <ClInclude Include="UniverseScene.h" />
     <ClInclude Include="VertexBuffer.h" />

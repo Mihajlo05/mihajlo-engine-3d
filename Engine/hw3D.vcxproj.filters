@@ -64,26 +64,14 @@
     <Filter Include="Scenes\UniverseScene">
       <UniqueIdentifier>{c7b3c13c-c9b4-48c9-9d61-46c57931b507}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GameObjects">
-      <UniqueIdentifier>{4a1a2970-3654-486f-bcd5-281274fcb220}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Drawables\FlatCube">
       <UniqueIdentifier>{a62325b7-8e8d-4801-a75d-5cbb0887284f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObjects\RotatingObject">
-      <UniqueIdentifier>{854e0a30-74e1-44c3-90de-c07d4e627d3b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObjects\Base">
-      <UniqueIdentifier>{065d0faf-1bf0-45be-a860-a82ccd1474c2}</UniqueIdentifier>
     </Filter>
     <Filter Include="ImGui">
       <UniqueIdentifier>{e24b6b80-55b5-4420-b9b8-3a139e0c775f}</UniqueIdentifier>
     </Filter>
     <Filter Include="ImGui\CoreAndImplementations">
       <UniqueIdentifier>{733d6386-ca35-4fe1-adae-d9446d1575ed}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameObjects\Camera">
-      <UniqueIdentifier>{361a37fe-5376-4940-8cac-4a442c958291}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -222,12 +210,6 @@
     <ClInclude Include="FlatCube.h">
       <Filter>Drawables\FlatCube</Filter>
     </ClInclude>
-    <ClInclude Include="RotatingObject.h">
-      <Filter>GameObjects\RotatingObject</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>GameObjects\Base</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
@@ -255,8 +237,8 @@
     <ClInclude Include="ImGuiManager.h">
       <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>GameObjects\Camera</Filter>
+    <ClInclude Include="Transform.h">
+      <Filter>Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -341,12 +323,6 @@
     <ClCompile Include="UniverseScene.cpp">
       <Filter>Scenes\UniverseScene</Filter>
     </ClCompile>
-    <ClCompile Include="RotatingObject.cpp">
-      <Filter>GameObjects\RotatingObject</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>GameObjects\Base</Filter>
-    </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
@@ -367,9 +343,6 @@
     </ClCompile>
     <ClCompile Include="ImGuiManager.cpp">
       <Filter>ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>GameObjects\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
