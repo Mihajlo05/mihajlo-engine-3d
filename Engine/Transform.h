@@ -25,4 +25,27 @@ struct Transform
 			DirectX::XMMatrixRotationRollPitchYawFromVector(rot) *
 			DirectX::XMMatrixTranslationFromVector(pos);
 	}
+	Transform& Translate(DirectX::FXMVECTOR delta)
+	{
+		pos = DirectX::XMVectorAdd(pos, delta);
+		return *this;
+	}
+	Transform& Translate(DirectX::XMFLOAT3 delta)
+	{
+		return Translate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
+	}
+	Transform& Rotate(DirectX::FXMVECTOR delta)
+	{
+		rot = DirectX::XMVectorAdd(rot, delta);
+		return *this;
+	}
+	Transform& Rotate(DirectX::XMFLOAT3 delta)
+	{
+		return Rotate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
+	}
+	Transform& Scale(float scalar)
+	{
+		scale = DirectX::XMVectorScale(scale, scalar);
+		return *this;
+	}
 };

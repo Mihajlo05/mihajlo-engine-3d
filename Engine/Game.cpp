@@ -40,7 +40,7 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Game::Update(float dt)
 {
-	curScene->Update(dt);
+	curScene->Update(dt, wnd.kbd, wnd.mouse);
 }
 
 void Game::Draw()

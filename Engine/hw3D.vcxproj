@@ -148,10 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bindable.cpp" />
+    <ClCompile Include="ControllableEntity.cpp" />
     <ClCompile Include="DefaultMihException.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="dxerr.cpp" />
     <ClCompile Include="DxgiInfoManager.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FlatCube.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GDIPlusManager.cpp" />
@@ -185,9 +187,11 @@
   <ItemGroup>
     <ClInclude Include="AllBindables.h" />
     <ClInclude Include="Bindable.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ConeModel.h" />
     <ClInclude Include="ConstantBuffer.h" />
+    <ClInclude Include="ControllableEntity.h" />
     <ClInclude Include="CubeModel.h" />
     <ClInclude Include="DefaultMihException.h" />
     <ClInclude Include="DefaultVertex.h" />
@@ -195,6 +199,7 @@
     <ClInclude Include="DrawableBase.h" />
     <ClInclude Include="dxerr.h" />
     <ClInclude Include="DxgiInfoManager.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="FlatCube.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GDIPlusManager.h" />

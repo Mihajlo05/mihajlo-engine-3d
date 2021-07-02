@@ -73,6 +73,15 @@
     <Filter Include="ImGui\CoreAndImplementations">
       <UniqueIdentifier>{733d6386-ca35-4fe1-adae-d9446d1575ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{26189654-8505-4f4d-b7db-7301e232c49c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Camera">
+      <UniqueIdentifier>{f7e96f47-5b25-4d01-9b3d-9c2bc4a09bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\ControllableEntity">
+      <UniqueIdentifier>{cb376c0b-4624-4c87-8dcd-c0fe9620028f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MihajloWin.h">
@@ -240,6 +249,15 @@
     <ClInclude Include="Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Entities\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllableEntity.h">
+      <Filter>Entities\ControllableEntity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -343,6 +361,12 @@
     </ClCompile>
     <ClCompile Include="ImGuiManager.cpp">
       <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllableEntity.cpp">
+      <Filter>Entities\ControllableEntity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
