@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "ControllableEntity.h"
 #include "Camera.h"
+#include <vector>
 
 class UniverseScene : public Scene
 {
@@ -11,6 +12,8 @@ public:
 	void Update(float dt, Keyboard& kbd, Mouse& mouse) override;
 	void Draw() const override;
 private:
+	void SpawnFactory();
+private:
 	Camera cam;
-	ControllableEntity cube;
+	std::vector<ControllableEntity> ctrlbls;
 };
