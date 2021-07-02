@@ -5,7 +5,8 @@ void GameObject::Update(float dt)
 	model->ResetTransformations();
 	model->AddTransformation(DirectX::XMMatrixRotationRollPitchYaw(rotation.x, rotation.y, rotation.z) *
 		DirectX::XMMatrixScaling(scale.x, scale.y, scale.z) *
-		DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z));
+		DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z) *
+		DirectX::XMMatrixRotationRollPitchYaw(globalRot.x, globalRot.y, globalRot.z));
 	model->Update(dt);
 }
 
@@ -24,18 +25,14 @@ void GameObject::Rotate(DirectX::XMFLOAT3 delta)
 	AddToTransformation(rotation, delta);
 }
 
-void GameObject::Rotate(DirectX::XMFLOAT3 center, DirectX::XMFLOAT3 delta)
-{
-	Rotate(delta);
-	auto vPos = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 1.0f);
-	auto dVec = DirectX::XMVectorSubtract(vPos, DirectX::XMVectorSet(center.x, center.y, center.z, 1.0f));
-	auto dVec2 = DirectX::XMVector3Transform(dVec, DirectX::XMMatrixRotationRollPitchYaw(delta.x, delta.y, delta.z));
-	DirectX::XMStoreFloat3(&pos, DirectX::XMVectorAdd(vPos, DirectX::XMVectorSubtract(dVec2, dVec)));
-}
-
 void GameObject::Scale(DirectX::XMFLOAT3 delta)
 {
 	AddToTransformation(scale, delta);
+}
+
+void GameObject::RotateGlobal(DirectX::XMFLOAT3 delta)
+{
+	AddToTransformation(globalRot, delta);
 }
 
 DirectX::XMFLOAT3 GameObject::GetPos() const
@@ -51,11 +48,6 @@ DirectX::XMFLOAT3 GameObject::GetRotation() const
 DirectX::XMFLOAT3 GameObject::GetScale() const
 {
 	return scale;
-}
-
-void GameObject::SetPos(DirectX::XMFLOAT3 p)
-{
-	pos = p;
 }
 
 GameObject::GameObject(std::unique_ptr<Drawable> model)

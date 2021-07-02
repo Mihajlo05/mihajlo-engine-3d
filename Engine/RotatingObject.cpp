@@ -18,7 +18,7 @@ RotatingObject::RotatingObject(std::unique_ptr<Drawable> d)
 
 void RotatingObject::Update(float dt)
 {
-	Rotate({0.0f, 0.0f, 0.0f}, { dalpha* dt, dbeta* dt, dgamma* dt });
+	RotateGlobal({ dalpha* dt, dbeta* dt, dgamma* dt });
 	GameObject::Update(dt);
 }
 

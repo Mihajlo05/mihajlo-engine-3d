@@ -1,17 +1,14 @@
 #pragma once
 
-#include "GameObject.h"
+#include <DirectXMath.h>
 
-class Camera : public GameObject
+class Camera
 {
 public:
-	Camera();
-	void Update(float dt) override;
+	void Update(float dt);
 	DirectX::XMMATRIX GetTransfForModel() const;
 private:
-	void Draw() const override;
-private:
-	float r = 0.0f;
+	float r = 1.0f;
 	float alpha = 0.0f;
 	float beta = 0.0f;
 	float roll = 0.0f;
