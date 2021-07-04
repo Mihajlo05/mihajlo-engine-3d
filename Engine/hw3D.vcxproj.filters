@@ -216,9 +216,6 @@
     <ClInclude Include="src\Scenes\UniverseScene.h">
       <Filter>Scenes\UniverseScene</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drawables\FlatCube.h">
-      <Filter>Drawables\FlatCube</Filter>
-    </ClInclude>
     <ClInclude Include="src\imgui\imconfig.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
@@ -258,6 +255,9 @@
     <ClInclude Include="src\Entities\ControllableEntity.h">
       <Filter>Entities\ControllableEntity</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drawables\Box.h" />
+    <ClInclude Include="src\Drawables\SolidSphere.h" />
+    <ClInclude Include="src\Entities\PointLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -335,9 +335,6 @@
     <ClCompile Include="src\Bindables\Sampler.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drawables\FlatCube.cpp">
-      <Filter>Drawables\FlatCube</Filter>
-    </ClCompile>
     <ClCompile Include="src\Scenes\UniverseScene.cpp">
       <Filter>Scenes\UniverseScene</Filter>
     </ClCompile>
@@ -368,6 +365,9 @@
     <ClCompile Include="src\Entities\ControllableEntity.cpp">
       <Filter>Entities\ControllableEntity</Filter>
     </ClCompile>
+    <ClCompile Include="src\Drawables\Box.cpp" />
+    <ClCompile Include="src\Drawables\SolidSphere.cpp" />
+    <ClCompile Include="src\Entities\PointLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
@@ -391,20 +391,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="src\Shaders\Texture2DPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\Texture2DVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\DefaultVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\FlatPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="src\Shaders\DefaultPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
+    <FxCompile Include="src\Shaders\PhongVS.hlsl" />
+    <FxCompile Include="src\Shaders\PhongPS.hlsl" />
+    <FxCompile Include="src\Shaders\DefaultVS.hlsl" />
+    <FxCompile Include="src\Shaders\SolidPS.hlsl" />
   </ItemGroup>
 </Project>

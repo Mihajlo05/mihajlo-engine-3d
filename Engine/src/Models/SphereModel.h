@@ -1,9 +1,9 @@
 #pragma once
 
-#include "IndexedTriangleList.h"
+#include "Math\IndexedTriangleList.h"
 #include <DirectXMath.h>
-#include "MihajloMath.h"
-#include "Index.h"
+#include "Math\MihajloMath.h"
+#include "Math\Index.h"
 
 class SphereModel
 {
@@ -91,7 +91,11 @@ public:
 		indices.push_back(calcIdx(latDiv - 2, longDiv - 1));
 		indices.push_back(iSouthPole);
 
-		return { std::move(vertices),std::move(indices) };
+		IndexedTriangleList<V> model;
+		model.Vertices() = std::move(vertices);
+		model.Indices() = std::move(indices);
+
+		return model;
 	}
 	template<class V>
 	static IndexedTriangleList<V> Make()

@@ -11,6 +11,12 @@ public:
 	TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot = 0u);
 	void Bind(Graphics& gfx) const override;
 private:
+	struct Data
+	{
+		DirectX::XMMATRIX modelView;
+		DirectX::XMMATRIX modelViewProj;
+	};
+private:
 	const Drawable& parent;
-	VertexConstantBuffer<DirectX::XMMATRIX> vConstBuf;
+	VertexConstantBuffer<Data> vConstBuf;
 };

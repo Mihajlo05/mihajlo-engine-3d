@@ -10,6 +10,7 @@ public:
 	using IndexedList<Vertex>::Indices;
 	using IndexedList<Vertex>::GetType;
 	using IndexedList<Vertex>::Transform;
+	using IndexedList<Vertex>::SetNormalsIndependentFlat;
 public:
 	IndexedTriangleList()
 		:

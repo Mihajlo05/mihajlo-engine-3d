@@ -1,15 +1,18 @@
 #include "UniverseScene.h"
-#include "Drawables/FlatCube.h"
 #include "imgui/imgui.h"
 
 namespace dx = DirectX;
 
 UniverseScene::UniverseScene(Graphics& gfx)
 	:
-	Scene(gfx)
+	Scene(gfx),
+	pointLight(Color(255, 255, 255), gfx),
+	floor(gfx)
 {
-	ctrlbls.emplace_back(std::make_unique<FlatCube>(gfx), "Obojena Kocka 1", DirectX::XMFLOAT3{ 0.0f, 0.0f, 0.0f });
+	ctrlbls.emplace_back(std::make_unique<Box>(gfx), "Kocka 1", DirectX::XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 	cam.SetLocalTransform(cam.GetLocalTransform().Translate(DirectX::XMFLOAT3{ 0.0f, 0.0f, -10.0f }));
+	floor.AddTransformation(DirectX::XMMatrixScaling(100, 0.1f, 100));
+	floor.AddTransformation(DirectX::XMMatrixTranslation(0.0f, -5.0f, 0.0f));
 }
 
 void UniverseScene::Update(float dt, Keyboard& kbd, Mouse& mouse)
@@ -17,7 +20,7 @@ void UniverseScene::Update(float dt, Keyboard& kbd, Mouse& mouse)
 	ControllCamera(dt, kbd);
 	gfx.SetCamera(cam.GetView());
 
-	SpawnFactory();
+	pointLight.SpawnControllWindow("Svetlost");
 
 	for (auto& ctrlbl : ctrlbls)
 	{
@@ -27,25 +30,13 @@ void UniverseScene::Update(float dt, Keyboard& kbd, Mouse& mouse)
 
 void UniverseScene::Draw() const
 {
+	pointLight.Draw();
 	for (const auto& ctrlbl : ctrlbls)
 	{
+		pointLight.Bind(gfx, cam.GetView());
 		ctrlbl.Draw();
 	}
-}
-
-void UniverseScene::SpawnFactory()
-{
-	static char buf[512] = "";
-	if (ImGui::Begin("Fabrika"))
-	{
-		ImGui::InputText("Ime Objekta", buf, IM_ARRAYSIZE(buf));
-
-		if (ImGui::Button("Obojena Kocka"))
-		{
-			ctrlbls.emplace_back(std::make_unique<FlatCube>(gfx), buf, DirectX::XMFLOAT3{ 0.0f, 0.0f, 0.0f });
-		}
-	}
-	ImGui::End();
+	floor.Draw();
 }
 
 void UniverseScene::ControllCamera(float dt, Keyboard& kbd)

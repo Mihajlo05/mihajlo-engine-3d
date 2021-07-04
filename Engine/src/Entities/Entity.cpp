@@ -70,6 +70,16 @@ void Entity::SpawnControllWindow(const std::string& wndName)
 		ImGui::SliderAngle("Yaw", &rot.y, -180, 180);
 
 		transform.rot = DirectX::XMLoadFloat3(&rot);
+		ImGui::Text("Uvecanje");
+
+		DirectX::XMFLOAT3 scale;
+		DirectX::XMStoreFloat3(&scale, transform.scale);
+
+		ImGui::SliderFloat("sX", &scale.x, 1.0f, 20.0f);
+		ImGui::SliderFloat("sY", &scale.y, 1.0f, 20.0f);
+		ImGui::SliderFloat("sZ", &scale.z, 1.0f, 20.0f);
+
+		transform.scale = DirectX::XMLoadFloat3(&scale);
 	}
 	ImGui::End();
 

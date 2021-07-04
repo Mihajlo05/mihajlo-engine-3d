@@ -22,7 +22,7 @@ public:
 	virtual void Update(float dt, Keyboard& kbd, Mouse& mouse) {}
 	virtual void Draw() const {}
 
-	void SpawnControllWindow(const std::string& wndName);
+	virtual void SpawnControllWindow(const std::string& wndName);
 protected:
 	Entity() = default;
 private:
