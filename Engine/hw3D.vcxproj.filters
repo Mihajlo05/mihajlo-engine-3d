@@ -84,326 +84,326 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MihajloWin.h">
+    <ClInclude Include="src\Windows\MihajloWin.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="src\Windows\Window.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="src\Resources\resource.h">
       <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Keyboard.h">
+    <ClInclude Include="src\Windows\Keyboard.h">
       <Filter>Windows\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Mouse.h">
+    <ClInclude Include="src\Windows\Mouse.h">
       <Filter>Windows\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="src\Components\Timer.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Game\Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="dxerr.h">
+    <ClInclude Include="src\ErrorHandling\dxerr.h">
       <Filter>ErrorHandling\DxErr</Filter>
     </ClInclude>
-    <ClInclude Include="Bindable.h">
+    <ClInclude Include="src\Bindables\Bindable.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="InputLayout.h">
+    <ClInclude Include="src\Bindables\InputLayout.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="PrimitiveTopology.h">
+    <ClInclude Include="src\Bindables\PrimitiveTopology.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="Viewport.h">
+    <ClInclude Include="src\Bindables\Viewport.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
+    <ClInclude Include="src\Graphics\Graphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="ConstantBuffer.h">
+    <ClInclude Include="src\Bindables\ConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="VertexConstantBuffer.h">
+    <ClInclude Include="src\Bindables\VertexConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="PixelConstantBuffer.h">
+    <ClInclude Include="src\Bindables\PixelConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="PixelShader.h">
+    <ClInclude Include="src\Bindables\PixelShader.h">
       <Filter>Bindables\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="VertexShader.h">
+    <ClInclude Include="src\Bindables\VertexShader.h">
       <Filter>Bindables\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="IndexBuffer.h">
+    <ClInclude Include="src\Bindables\IndexBuffer.h">
       <Filter>Bindables\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
+    <ClInclude Include="src\Bindables\VertexBuffer.h">
       <Filter>Bindables\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="TransformationConstantBuffer.h">
+    <ClInclude Include="src\Bindables\TransformationConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="AllBindables.h">
+    <ClInclude Include="src\Bindables\AllBindables.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="DrawableBase.h">
+    <ClInclude Include="src\Drawables\DrawableBase.h">
       <Filter>Drawables\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Drawable.h">
+    <ClInclude Include="src\Drawables\Drawable.h">
       <Filter>Drawables\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Index.h">
+    <ClInclude Include="src\Math\Index.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="IndexedList.h">
+    <ClInclude Include="src\Math\IndexedList.h">
       <Filter>Math\IndexedLists</Filter>
     </ClInclude>
-    <ClInclude Include="IndexedTriangleList.h">
+    <ClInclude Include="src\Math\IndexedTriangleList.h">
       <Filter>Math\IndexedLists</Filter>
     </ClInclude>
-    <ClInclude Include="CubeModel.h">
+    <ClInclude Include="src\Models\CubeModel.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultVertex.h">
+    <ClInclude Include="src\Math\DefaultVertex.h">
       <Filter>Math\Vertices</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="src\Scenes\Scene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="DxgiInfoManager.h">
+    <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
-    <ClInclude Include="MihajloException.h">
+    <ClInclude Include="src\ErrorHandling\MihajloException.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
-    <ClInclude Include="PlaneModel.h">
+    <ClInclude Include="src\Models\PlaneModel.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="ConeModel.h">
+    <ClInclude Include="src\Models\ConeModel.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="MihajloMath.h">
+    <ClInclude Include="src\Math\MihajloMath.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="PrismModel.h">
+    <ClInclude Include="src\Models\PrismModel.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="SphereModel.h">
+    <ClInclude Include="src\Models\SphereModel.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="Color.h">
+    <ClInclude Include="src\Graphics\Color.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="GDIPlusManager.h">
+    <ClInclude Include="src\Windows\GDIPlusManager.h">
       <Filter>Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Surface.h">
+    <ClInclude Include="src\Graphics\Surface.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultMihException.h">
+    <ClInclude Include="src\ErrorHandling\DefaultMihException.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
-    <ClInclude Include="Texture2D.h">
+    <ClInclude Include="src\Bindables\Texture2D.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="Sampler.h">
+    <ClInclude Include="src\Bindables\Sampler.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="UniverseScene.h">
+    <ClInclude Include="src\Scenes\UniverseScene.h">
       <Filter>Scenes\UniverseScene</Filter>
     </ClInclude>
-    <ClInclude Include="FlatCube.h">
+    <ClInclude Include="src\Drawables\FlatCube.h">
       <Filter>Drawables\FlatCube</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imconfig.h">
+    <ClInclude Include="src\imgui\imconfig.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui.h">
+    <ClInclude Include="src\imgui\imgui.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_dx11.h">
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_win32.h">
+    <ClInclude Include="src\imgui\imgui_impl_win32.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imgui_internal.h">
+    <ClInclude Include="src\imgui\imgui_internal.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_rectpack.h">
+    <ClInclude Include="src\imgui\imstb_rectpack.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_textedit.h">
+    <ClInclude Include="src\imgui\imstb_textedit.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="imgui\imstb_truetype.h">
+    <ClInclude Include="src\imgui\imstb_truetype.h">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiManager.h">
+    <ClInclude Include="src\imgui\ImGuiManager.h">
       <Filter>ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="src\Math\Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="src\Entities\Entity.h">
       <Filter>Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="src\Entities\Camera.h">
       <Filter>Entities\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="ControllableEntity.h">
+    <ClInclude Include="src\Entities\ControllableEntity.h">
       <Filter>Entities\ControllableEntity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="src\Windows\Window.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="WinMain.cpp">
+    <ClCompile Include="src\Windows\WinMain.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Keyboard.cpp">
+    <ClCompile Include="src\Windows\Keyboard.cpp">
       <Filter>Windows\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Mouse.cpp">
+    <ClCompile Include="src\Windows\Mouse.cpp">
       <Filter>Windows\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="src\Components\Timer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="dxerr.cpp">
+    <ClCompile Include="src\ErrorHandling\dxerr.cpp">
       <Filter>ErrorHandling\DxErr</Filter>
     </ClCompile>
-    <ClCompile Include="Bindable.cpp">
+    <ClCompile Include="src\Bindables\Bindable.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="InputLayout.cpp">
+    <ClCompile Include="src\Bindables\InputLayout.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="PrimitiveTopology.cpp">
+    <ClCompile Include="src\Bindables\PrimitiveTopology.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="Viewport.cpp">
+    <ClCompile Include="src\Bindables\Viewport.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
+    <ClCompile Include="src\Graphics\Graphics.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="PixelShader.cpp">
+    <ClCompile Include="src\Bindables\PixelShader.cpp">
       <Filter>Bindables\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
+    <ClCompile Include="src\Bindables\VertexShader.cpp">
       <Filter>Bindables\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="IndexBuffer.cpp">
+    <ClCompile Include="src\Bindables\IndexBuffer.cpp">
       <Filter>Bindables\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
+    <ClCompile Include="src\Bindables\VertexBuffer.cpp">
       <Filter>Bindables\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="TransformationConstantBuffer.cpp">
+    <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClCompile>
-    <ClCompile Include="Drawable.cpp">
+    <ClCompile Include="src\Drawables\Drawable.cpp">
       <Filter>Drawables\Base</Filter>
     </ClCompile>
-    <ClCompile Include="DxgiInfoManager.cpp">
+    <ClCompile Include="src\ErrorHandling\DxgiInfoManager.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
-    <ClCompile Include="MihajloException.cpp">
+    <ClCompile Include="src\ErrorHandling\MihajloException.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
-    <ClCompile Include="GDIPlusManager.cpp">
+    <ClCompile Include="src\Windows\GDIPlusManager.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Surface.cpp">
+    <ClCompile Include="src\Graphics\Surface.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultMihException.cpp">
+    <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp">
       <Filter>ErrorHandling</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
+    <ClCompile Include="src\Bindables\Texture2D.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="Sampler.cpp">
+    <ClCompile Include="src\Bindables\Sampler.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="FlatCube.cpp">
+    <ClCompile Include="src\Drawables\FlatCube.cpp">
       <Filter>Drawables\FlatCube</Filter>
     </ClCompile>
-    <ClCompile Include="UniverseScene.cpp">
+    <ClCompile Include="src\Scenes\UniverseScene.cpp">
       <Filter>Scenes\UniverseScene</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui.cpp">
+    <ClCompile Include="src\imgui\imgui.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_demo.cpp">
+    <ClCompile Include="src\imgui\imgui_demo.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_draw.cpp">
+    <ClCompile Include="src\imgui\imgui_draw.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_dx11.cpp">
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_win32.cpp">
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="imgui\imgui_widgets.cpp">
+    <ClCompile Include="src\imgui\imgui_widgets.cpp">
       <Filter>ImGui\CoreAndImplementations</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiManager.cpp">
+    <ClCompile Include="src\imgui\ImGuiManager.cpp">
       <Filter>ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="src\Entities\Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="ControllableEntity.cpp">
+    <ClCompile Include="src\Entities\ControllableEntity.cpp">
       <Filter>Entities\ControllableEntity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="hw3D.rc">
+    <ResourceCompile Include="src\Resources\hw3D.rc">
       <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="logo.ico">
+    <Image Include="src\Resources\logo.ico">
       <Filter>Resources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DXGetErrorDescription.inl">
+    <None Include="src\ErrorHandling\DXGetErrorDescription.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
-    <None Include="DXGetErrorString.inl">
+    <None Include="src\ErrorHandling\DXGetErrorString.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
-    <None Include="DXTrace.inl">
+    <None Include="src\ErrorHandling\DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Texture2DPS.hlsl">
+    <FxCompile Include="src\Shaders\Texture2DPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="Texture2DVS.hlsl">
+    <FxCompile Include="src\Shaders\Texture2DVS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="DefaultVS.hlsl">
+    <FxCompile Include="src\Shaders\DefaultVS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="FlatPS.hlsl">
+    <FxCompile Include="src\Shaders\FlatPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="DefaultPS.hlsl">
+    <FxCompile Include="src\Shaders\DefaultPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>

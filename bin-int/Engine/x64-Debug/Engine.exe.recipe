@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>D:\MihajloEngine3D\bin\Engine\x64-Debug\Engine.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>D:\MihajloEngine3D\Engine\src\Shaders\bin\DefaultPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\MihajloEngine3D\Engine\src\Shaders\bin\DefaultVS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\MihajloEngine3D\Engine\src\Shaders\bin\FlatPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\MihajloEngine3D\Engine\src\Shaders\bin\Texture2DPS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>D:\MihajloEngine3D\Engine\src\Shaders\bin\Texture2DVS.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
