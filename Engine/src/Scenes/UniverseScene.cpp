@@ -50,6 +50,13 @@ void UniverseScene::SpawnFactory()
 
 void UniverseScene::ControllCamera(float dt, Keyboard& kbd)
 {
+	if (ImGui::Begin("Kamera"))
+	{
+		ImGui::SliderFloat("Brzina", &camSpeed, 20.0f, 100.0f);
+		ImGui::SliderAngle("Brzine Rotacije", &camRotSpeed, 0.0f, 360.0f);
+	}
+	ImGui::End();
+
 	dx::XMVECTOR camVel = dx::XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f);
 
 	if (kbd.IsKeyPressed('W'))
