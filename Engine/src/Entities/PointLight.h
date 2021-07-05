@@ -8,17 +8,37 @@
 class PointLight : public Entity
 {
 public:
-	PointLight(Color c, Graphics& gfx);
-	void Bind(Graphics& gfx, DirectX::XMMATRIX view) const;
-	void Draw() const override;
+	struct Desc
+	{
+		Color ambient;
+		Color diffuseColor;
+		float diffuseIntensity;
+		float attConst;
+		float attLin;
+		float attQuad;
+	};
 private:
 	struct CBufData
 	{
-		DirectX::XMFLOAT3 pos;
-		float padding;
+		alignas(16) DirectX::XMFLOAT3 pos;
+		alignas(16) DirectX::XMFLOAT3 ambient;
+		alignas(16) DirectX::XMFLOAT3 diffuseColor;
+		float diffuseIntensity;
+		float attConst;
+		float attLin;
+		float attQuad;
 	};
+public:
+	PointLight(DirectX::XMVECTOR pos, Desc desc, Graphics& gfx);
+	void Bind(Graphics& gfx, DirectX::XMMATRIX view) const;
+	void Draw() const override;
 private:
-	Color color;
+	Color ambient;
+	Color diffuseColor;
+	float diffuseIntensity;
+	float attConst;
+	float attLin;
+	float attQuad;
 	mutable SolidSphere model;
 	mutable PixelConstantBuffer<CBufData> cbuf;
 };
