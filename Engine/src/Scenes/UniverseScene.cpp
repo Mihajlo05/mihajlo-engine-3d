@@ -7,7 +7,7 @@ UniverseScene::UniverseScene(Graphics& gfx)
 	:
 	Scene(gfx),
 	pointLight(DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f),
-		{Color(20, 20, 20), Color(255, 255, 255),
+		{Color(50, 50, 50), Color(255, 255, 255),
 		1.0f,
 		0.02f, 0.075f, 0.008f},
 		gfx),

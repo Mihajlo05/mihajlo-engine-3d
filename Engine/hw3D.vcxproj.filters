@@ -216,33 +216,6 @@
     <ClInclude Include="src\Scenes\UniverseScene.h">
       <Filter>Scenes\UniverseScene</Filter>
     </ClInclude>
-    <ClInclude Include="src\imgui\imconfig.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui_impl_dx11.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui_impl_win32.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imgui_internal.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_rectpack.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_textedit.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\imstb_truetype.h">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClInclude>
-    <ClInclude Include="src\imgui\ImGuiManager.h">
-      <Filter>ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Math\Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
@@ -258,6 +231,15 @@
     <ClInclude Include="src\Drawables\Box.h" />
     <ClInclude Include="src\Drawables\SolidSphere.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
+    <ClInclude Include="src\imgui\imgui_internal.h" />
+    <ClInclude Include="src\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\imgui\imconfig.h" />
+    <ClInclude Include="src\imgui\imgui.h" />
+    <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui\ImGuiManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -338,27 +320,6 @@
     <ClCompile Include="src\Scenes\UniverseScene.cpp">
       <Filter>Scenes\UniverseScene</Filter>
     </ClCompile>
-    <ClCompile Include="src\imgui\imgui.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_demo.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_draw.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_impl_win32.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\imgui_widgets.cpp">
-      <Filter>ImGui\CoreAndImplementations</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imgui\ImGuiManager.cpp">
-      <Filter>ImGui</Filter>
-    </ClCompile>
     <ClCompile Include="src\Entities\Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
@@ -368,6 +329,14 @@
     <ClCompile Include="src\Drawables\Box.cpp" />
     <ClCompile Include="src\Drawables\SolidSphere.cpp" />
     <ClCompile Include="src\Entities\PointLight.cpp" />
+    <ClCompile Include="src\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\imgui\imgui.cpp" />
+    <ClCompile Include="src\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\imgui\ImGuiManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

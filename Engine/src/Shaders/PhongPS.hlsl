@@ -9,7 +9,7 @@ cbuffer CBuf
     float  attQuad;
 };
 
-static const float3 materialColor = { 0.7f, 0.7f, 0.7f };
+static const float3 materialColor = { 1.0f, 1.0f, 1.0f };
 
 float4 main(float3 camPostion : POSITION, float3 normal : NORMAL) : SV_Target
 {

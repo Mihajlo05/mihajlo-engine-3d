@@ -4,6 +4,8 @@
 #include <sstream>
 #include "imgui\imgui_impl_win32.h"
 
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 #define WND_NOGFX_EXCEPT Window::NoGfxException(__FILE__, __LINE__)
 
 Window::WindowRegister Window::WindowRegister::wndReg;
