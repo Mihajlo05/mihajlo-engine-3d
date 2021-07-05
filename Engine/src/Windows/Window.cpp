@@ -56,7 +56,7 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 	RECT rect;
 	rect.left = x; rect.right = x + width;
 	rect.top = y; rect.bottom = y + height;
-	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
+	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU | WS_SIZEBOX | WS_MAXIMIZEBOX;
 
 	if (AdjustWindowRect(&rect, style, FALSE) == FALSE)
 	{
@@ -133,6 +133,14 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_KILLFOCUS:
 		kbd.ClearStates();
 		mouse.Clear();
+		break;
+	case WM_SIZE:
+		if (pGfx != nullptr)
+		{
+			width = LOWORD(lParam);
+			height = HIWORD(lParam);
+			Gfx().OnResize(width, height);
+		}
 		break;
 	case WM_KEYDOWN:
 	case WM_SYSKEYDOWN:

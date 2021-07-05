@@ -58,6 +58,7 @@ public:
 	void EnableGui();
 	void DisableGui();
 	bool IsGuiEnabled() const;
+	void OnResize(uint32_t width, uint32_t height);
 private:
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;

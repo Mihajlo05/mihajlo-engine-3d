@@ -201,6 +201,71 @@ bool Graphics::IsGuiEnabled() const
 	return isGuiEnabled;
 }
 
+void Graphics::OnResize(uint32_t width, uint32_t height)
+{
+	if (pSwapChain.Get())
+	{
+		pContext->OMSetRenderTargets(0, 0, 0);
+
+		pTarget = nullptr;
+		pDepthStencilView = nullptr;
+
+		GFX_THROW(pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0));
+
+		ComPtr<ID3D11Texture2D> pBuffer;
+		GFX_THROW(pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D),
+			&pBuffer));
+
+		GFX_THROW(pDevice->CreateRenderTargetView(pBuffer.Get(), nullptr,
+			&pTarget));
+
+		ComPtr<ID3D11DepthStencilState> pDepthStencilState;
+		D3D11_DEPTH_STENCIL_DESC dsd = {};
+		dsd.DepthEnable = TRUE;
+		dsd.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		dsd.DepthFunc = D3D11_COMPARISON_LESS;
+
+		GFX_THROW(pDevice->CreateDepthStencilState(&dsd, &pDepthStencilState));
+		pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
+
+		ComPtr<ID3D11Texture2D> pTexture;
+		D3D11_TEXTURE2D_DESC t2d = {};
+		t2d.Width = width;
+		t2d.Height = height;
+		t2d.MipLevels = 0u;
+		t2d.ArraySize = 1u;
+		t2d.Format = DXGI_FORMAT_D32_FLOAT;
+		t2d.SampleDesc.Count = 1u;
+		t2d.SampleDesc.Quality = 0u;
+		t2d.Usage = D3D11_USAGE_DEFAULT;
+		t2d.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+		t2d.MiscFlags = 0u;
+		t2d.CPUAccessFlags = 0u;
+
+		GFX_THROW(pDevice->CreateTexture2D(&t2d, nullptr, &pTexture));
+
+		D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {};
+		dsvd.Format = DXGI_FORMAT_D32_FLOAT;
+		dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+		dsvd.Texture2D.MipSlice = 0u;
+
+		GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
+
+		pContext->OMSetRenderTargets(1, pTarget.GetAddressOf(), pDepthStencilView.Get());
+
+		D3D11_VIEWPORT dvp;
+		dvp.Width = (float)width;
+		dvp.Height = (float)height;
+		dvp.MinDepth = 0.0f;
+		dvp.MaxDepth = 1.0f;
+		dvp.TopLeftX = 0u;
+		dvp.TopLeftY = 0u;
+		pContext->RSSetViewports(1, &dvp);
+
+		perspective = DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 100.0f);
+	}
+}
+
 //EXCEPTION
 
 Graphics::Exception::Exception(const std::string& file, int line, HRESULT hr, const std::vector<std::string>& infos) noexcept
