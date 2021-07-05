@@ -76,6 +76,10 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 
 	ShowWindow(hWnd, SW_SHOW);
 
+	auto& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+
 	ImGui_ImplWin32_Init(hWnd);
 
 	pGfx = std::make_unique<Graphics>(hWnd, width, height);
