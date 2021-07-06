@@ -60,7 +60,7 @@ Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 		__uuidof(ID3D11Resource),
 		&pBackBuffer) );
 
-	GFX_THROW( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pTarget) );
+	GFX_THROW( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pGuiTarget) );
 
 	ComPtr<ID3D11DepthStencilState> pDepthStencilState;
 	D3D11_DEPTH_STENCIL_DESC dsd = {};
@@ -94,18 +94,6 @@ Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 
 	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
 
-	//Making the viewport, which is currently hardcoded in constructor
-	D3D11_VIEWPORT dvp;
-	dvp.Width = (float)width;
-	dvp.Height = (float)height;
-	dvp.MinDepth = 0.0f;
-	dvp.MaxDepth = 1.0f;
-	dvp.TopLeftX = 0u;
-	dvp.TopLeftY = 0u;
-
-	//bind the viewport
-	pContext->RSSetViewports(1u, &dvp);
-
 	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
@@ -123,22 +111,86 @@ void Graphics::BeginFrame(float r, float g, float b)
 		ImGui::NewFrame();
 	}
 
-	ClearBuffer(r, g, b);
-
 	if (isGuiEnabled)
 	{
 		ImGui::DockSpaceOverViewport();
 	}
+
+	if (pRendererTarget == nullptr) //this will init pRenderTarget at the beginning and when screen is resized (genius)
+	{
+		D3D11_TEXTURE2D_DESC textureDesc = {};
+
+		ImGui::Begin(rendererWndName);
+		rndWidth = ImGui::GetWindowWidth();
+		rndHeight = ImGui::GetWindowHeight();
+		ImGui::End();
+
+		textureDesc.Width = (UINT)rndWidth;
+		textureDesc.Height = (UINT)rndHeight;
+		textureDesc.MipLevels = 1;
+		textureDesc.ArraySize = 1;
+		textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		textureDesc.SampleDesc.Count = 1;
+		textureDesc.Usage = D3D11_USAGE_DEFAULT;
+		textureDesc.BindFlags = D3D11_BIND_RENDER_TARGET | D3D11_BIND_SHADER_RESOURCE;
+		textureDesc.CPUAccessFlags = 0;
+		textureDesc.MiscFlags = 0;
+
+		ComPtr<ID3D11Texture2D> pTexture;
+		GFX_THROW(pDevice->CreateTexture2D(&textureDesc, nullptr, &pTexture));
+
+		D3D11_RENDER_TARGET_VIEW_DESC renderTargetViewDesc = {};
+		renderTargetViewDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		renderTargetViewDesc.ViewDimension = D3D11_RTV_DIMENSION_TEXTURE2D;
+		renderTargetViewDesc.Texture2D.MipSlice = 0;
+
+		GFX_THROW(pDevice->CreateRenderTargetView(pTexture.Get(), &renderTargetViewDesc, &pRendererTarget));
+
+		D3D11_VIEWPORT dvp;
+		dvp.Width = rndWidth;
+		dvp.Height = rndHeight;
+		dvp.MinDepth = 0.0f;
+		dvp.MaxDepth = 1.0f;
+		dvp.TopLeftX = 0u;
+		dvp.TopLeftY = 0u;
+		pContext->RSSetViewports(1, &dvp);
+	}
+
+	ClearBuffer(r, g, b);
 }
 
 void Graphics::EndFrame()
 {
 	if (isGuiEnabled)
 	{
+		D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc;
+		shaderResourceViewDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+		shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
+		shaderResourceViewDesc.Texture2D.MipLevels = 1;
 
-		ImGui::Begin("Renderer");
+		ComPtr<ID3D11Resource> pRendTexture;
+		pRendererTarget->GetResource(&pRendTexture);
+
+		ComPtr<ID3D11ShaderResourceView> pView;
+		GFX_THROW(pDevice->CreateShaderResourceView(pRendTexture.Get(), &shaderResourceViewDesc, &pView));
+
+		ImGui::Begin(rendererWndName);
+		rndWidth = ImGui::GetWindowWidth();
+		rndHeight = ImGui::GetWindowHeight();
+		ImVec2 size = ImGui::GetWindowSize();
+		perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndHeight / rndWidth, 0.5f, 100.0f);
+		ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndWidth, rndHeight));
 		ImGui::End();
 
+		ImGui::Begin("Help");
+		std::stringstream ss;
+		ss << rndWidth << ", " << rndHeight << std::endl;
+		ss << size.x << ", " << size.y;
+		ImGui::Text(ss.str().c_str());
+		ImGui::End();
+
+		pContext->OMSetRenderTargets(1u, pGuiTarget.GetAddressOf(), nullptr);
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
@@ -165,13 +217,14 @@ void Graphics::EndFrame()
 void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
-	pContext->ClearRenderTargetView(pTarget.Get(), color);
+	pContext->ClearRenderTargetView(pGuiTarget.Get(), color);
+	pContext->ClearRenderTargetView(pRendererTarget.Get(), color);
 	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
 void Graphics::DrawIndexed(uint32_t count)
 {
-	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), pDepthStencilView.Get());
+	pContext->OMSetRenderTargets(1u, pRendererTarget.GetAddressOf(), pDepthStencilView.Get());
 	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
 }
 
@@ -214,9 +267,10 @@ void Graphics::OnResize(uint32_t width, uint32_t height)
 {
 	assert(pSwapChain != nullptr);
 
-	pContext->OMSetRenderTargets(0, 0, 0);
+	pContext->OMSetRenderTargets(0, nullptr, nullptr);
 
-	pTarget = nullptr;
+	pGuiTarget = nullptr;
+	pRendererTarget = nullptr;
 	pDepthStencilView = nullptr;
 
 	GFX_THROW(pSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0));
@@ -226,7 +280,7 @@ void Graphics::OnResize(uint32_t width, uint32_t height)
 		&pBuffer));
 
 	GFX_THROW(pDevice->CreateRenderTargetView(pBuffer.Get(), nullptr,
-		&pTarget));
+		&pGuiTarget));
 
 	ComPtr<ID3D11DepthStencilState> pDepthStencilState;
 	D3D11_DEPTH_STENCIL_DESC dsd = {};
@@ -260,18 +314,7 @@ void Graphics::OnResize(uint32_t width, uint32_t height)
 
 	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
 
-	pContext->OMSetRenderTargets(1, pTarget.GetAddressOf(), pDepthStencilView.Get());
-
-	D3D11_VIEWPORT dvp;
-	dvp.Width = (float)width;
-	dvp.Height = (float)height;
-	dvp.MinDepth = 0.0f;
-	dvp.MaxDepth = 1.0f;
-	dvp.TopLeftX = 0u;
-	dvp.TopLeftY = 0u;
-	pContext->RSSetViewports(1, &dvp);
-
-	perspective = DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 100.0f);
+	pContext->OMSetRenderTargets(1, pGuiTarget.GetAddressOf(), pDepthStencilView.Get());
 }
 
 //EXCEPTION

@@ -70,10 +70,14 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> pContext = nullptr;
-	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pTarget = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pGuiTarget = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pRendererTarget = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDepthStencilView = nullptr;
 private:
 	bool isGuiEnabled = true;
+	const char* rendererWndName = "Renderer";
+	float rndWidth = -1.0f;
+	float rndHeight = -1.0f;
 };
 
 #define GFX_EXCEPT_NOINFO(hr) Graphics::Exception(__FILE__, __LINE__, (hr))
