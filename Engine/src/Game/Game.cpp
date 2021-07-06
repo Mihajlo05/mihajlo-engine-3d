@@ -41,7 +41,6 @@ void Game::HandleKeyboardEvents(const Keyboard::Event& e)
 void Game::Update(float dt)
 {
 	curScene->Update(dt, wnd.kbd, wnd.mouse);
-	ImGui::ShowDemoWindow();
 }
 
 void Game::Draw()
