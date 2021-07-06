@@ -62,38 +62,6 @@ Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
 
 	GFX_THROW( pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pGuiTarget) );
 
-	ComPtr<ID3D11DepthStencilState> pDepthStencilState;
-	D3D11_DEPTH_STENCIL_DESC dsd = {};
-	dsd.DepthEnable = TRUE;
-	dsd.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	dsd.DepthFunc = D3D11_COMPARISON_LESS;
-
-	GFX_THROW(pDevice->CreateDepthStencilState(&dsd, &pDepthStencilState));
-	pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
-
-	ComPtr<ID3D11Texture2D> pTexture;
-	D3D11_TEXTURE2D_DESC t2d = {};
-	t2d.Width = width;
-	t2d.Height = height;
-	t2d.MipLevels = 0u;
-	t2d.ArraySize = 1u;
-	t2d.Format = DXGI_FORMAT_D32_FLOAT;
-	t2d.SampleDesc.Count = 1u;
-	t2d.SampleDesc.Quality = 0u;
-	t2d.Usage = D3D11_USAGE_DEFAULT;
-	t2d.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-	t2d.MiscFlags = 0u;
-	t2d.CPUAccessFlags = 0u;
-
-	GFX_THROW(pDevice->CreateTexture2D(&t2d, nullptr, &pTexture));
-
-	D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {};
-	dsvd.Format = DXGI_FORMAT_D32_FLOAT;
-	dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-	dsvd.Texture2D.MipSlice = 0u;
-
-	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
-
 	ImGui_ImplDX11_Init(pDevice.Get(), pContext.Get());
 }
 
@@ -121,8 +89,8 @@ void Graphics::BeginFrame(float r, float g, float b)
 		D3D11_TEXTURE2D_DESC textureDesc = {};
 
 		ImGui::Begin(rendererWndName);
-		rndWidth = ImGui::GetWindowWidth();
-		rndHeight = ImGui::GetWindowHeight();
+		rndWidth = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
+		rndHeight = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
 		ImGui::End();
 
 		textureDesc.Width = (UINT)rndWidth;
@@ -145,6 +113,37 @@ void Graphics::BeginFrame(float r, float g, float b)
 		renderTargetViewDesc.Texture2D.MipSlice = 0;
 
 		GFX_THROW(pDevice->CreateRenderTargetView(pTexture.Get(), &renderTargetViewDesc, &pRendererTarget));
+
+		ComPtr<ID3D11DepthStencilState> pDepthStencilState;
+		D3D11_DEPTH_STENCIL_DESC dsd = {};
+		dsd.DepthEnable = TRUE;
+		dsd.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		dsd.DepthFunc = D3D11_COMPARISON_LESS;
+
+		GFX_THROW(pDevice->CreateDepthStencilState(&dsd, &pDepthStencilState));
+		pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
+
+		D3D11_TEXTURE2D_DESC t2d = {};
+		t2d.Width = (UINT)rndWidth;
+		t2d.Height = (UINT)rndHeight;
+		t2d.MipLevels = 0u;
+		t2d.ArraySize = 1u;
+		t2d.Format = DXGI_FORMAT_D32_FLOAT;
+		t2d.SampleDesc.Count = 1u;
+		t2d.SampleDesc.Quality = 0u;
+		t2d.Usage = D3D11_USAGE_DEFAULT;
+		t2d.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+		t2d.MiscFlags = 0u;
+		t2d.CPUAccessFlags = 0u;
+
+		GFX_THROW(pDevice->CreateTexture2D(&t2d, nullptr, &pTexture));
+
+		D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {};
+		dsvd.Format = DXGI_FORMAT_D32_FLOAT;
+		dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+		dsvd.Texture2D.MipSlice = 0u;
+
+		GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
 
 		D3D11_VIEWPORT dvp;
 		dvp.Width = rndWidth;
@@ -176,18 +175,13 @@ void Graphics::EndFrame()
 		GFX_THROW(pDevice->CreateShaderResourceView(pRendTexture.Get(), &shaderResourceViewDesc, &pView));
 
 		ImGui::Begin(rendererWndName);
-		rndWidth = ImGui::GetWindowWidth();
-		rndHeight = ImGui::GetWindowHeight();
-		ImVec2 size = ImGui::GetWindowSize();
-		perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndHeight / rndWidth, 0.5f, 100.0f);
-		ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndWidth, rndHeight));
-		ImGui::End();
+		{
+			rndWidth = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
+			rndHeight = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
+			perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndHeight / rndWidth, 0.5f, 100.0f);
 
-		ImGui::Begin("Help");
-		std::stringstream ss;
-		ss << rndWidth << ", " << rndHeight << std::endl;
-		ss << size.x << ", " << size.y;
-		ImGui::Text(ss.str().c_str());
+			ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndWidth, rndHeight)); //Render the frame on ImGui window
+		}
 		ImGui::End();
 
 		pContext->OMSetRenderTargets(1u, pGuiTarget.GetAddressOf(), nullptr);
@@ -217,7 +211,8 @@ void Graphics::EndFrame()
 void Graphics::ClearBuffer(float r, float g, float b, float a)
 {
 	const float color[] = { r, g, b, a };
-	pContext->ClearRenderTargetView(pGuiTarget.Get(), color);
+	const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+	pContext->ClearRenderTargetView(pGuiTarget.Get(), black);
 	pContext->ClearRenderTargetView(pRendererTarget.Get(), color);
 	pContext->ClearDepthStencilView(pDepthStencilView.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
@@ -282,39 +277,7 @@ void Graphics::OnResize(uint32_t width, uint32_t height)
 	GFX_THROW(pDevice->CreateRenderTargetView(pBuffer.Get(), nullptr,
 		&pGuiTarget));
 
-	ComPtr<ID3D11DepthStencilState> pDepthStencilState;
-	D3D11_DEPTH_STENCIL_DESC dsd = {};
-	dsd.DepthEnable = TRUE;
-	dsd.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
-	dsd.DepthFunc = D3D11_COMPARISON_LESS;
-
-	GFX_THROW(pDevice->CreateDepthStencilState(&dsd, &pDepthStencilState));
-	pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
-
-	ComPtr<ID3D11Texture2D> pTexture;
-	D3D11_TEXTURE2D_DESC t2d = {};
-	t2d.Width = width;
-	t2d.Height = height;
-	t2d.MipLevels = 0u;
-	t2d.ArraySize = 1u;
-	t2d.Format = DXGI_FORMAT_D32_FLOAT;
-	t2d.SampleDesc.Count = 1u;
-	t2d.SampleDesc.Quality = 0u;
-	t2d.Usage = D3D11_USAGE_DEFAULT;
-	t2d.BindFlags = D3D11_BIND_DEPTH_STENCIL;
-	t2d.MiscFlags = 0u;
-	t2d.CPUAccessFlags = 0u;
-
-	GFX_THROW(pDevice->CreateTexture2D(&t2d, nullptr, &pTexture));
-
-	D3D11_DEPTH_STENCIL_VIEW_DESC dsvd = {};
-	dsvd.Format = DXGI_FORMAT_D32_FLOAT;
-	dsvd.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
-	dsvd.Texture2D.MipSlice = 0u;
-
-	GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
-
-	pContext->OMSetRenderTargets(1, pGuiTarget.GetAddressOf(), pDepthStencilView.Get());
+	//the rest is being handeld in BeginFrame, since pRendererTarget is nullptr
 }
 
 //EXCEPTION

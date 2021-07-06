@@ -29,7 +29,7 @@ SolidSphere::SolidSphere(Graphics& gfx, Color c)
 		const PCBData pcbd = { { (float)c.GetR() * cf,
 								 (float)c.GetG() * cf,
 								 (float)c.GetB() * cf,
-								 (float)c.GetA() * cf } };
+								 1.0f } };
 
 		AddStaticBindable(std::make_unique<PixelConstantBuffer<PCBData>>(gfx, pcbd));
 
