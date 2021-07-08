@@ -1,4 +1,4 @@
-cbuffer CBuf
+cbuffer CLightBuf : register(b0)
 {
     float3 lightPos;
     float3 ambient;
@@ -9,9 +9,12 @@ cbuffer CBuf
     float  attQuad;
 };
 
-static const float3 materialColor = { 1.0f, 1.0f, 1.0f };
-static const float specularIntensity = 1.2f;
-static const float specularPower = 40.0f;
+cbuffer CMaterialBuf : register(b1)
+{
+    float3 materialColor;
+    float specularIntensity;
+    float specularPower;
+};
 
 float4 main(float3 camPosition : POSITION, float3 normal : NORMAL) : SV_Target
 {

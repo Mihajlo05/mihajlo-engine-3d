@@ -102,4 +102,14 @@ public:
 	{
 		return MakeTesselated<V>(12, 24);
 	}
+	template<class V>
+	static IndexedTriangleList<V> MakeWithNormals()
+	{
+		IndexedTriangleList<V> itl = Make<V>();
+		for (auto& v : itl.Vertices())
+		{
+			v.normal = v.pos;
+		}
+		return itl;
+	}
 };

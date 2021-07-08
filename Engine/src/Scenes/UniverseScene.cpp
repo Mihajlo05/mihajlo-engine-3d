@@ -1,6 +1,7 @@
 #include "UniverseScene.h"
 #include "imgui/imgui.h"
 #include "Models/CubeModel.h"
+#include "Models/SphereModel.h"
 
 namespace dx = DirectX;
 
@@ -10,11 +11,16 @@ UniverseScene::UniverseScene(Graphics& gfx)
 	pointLight(DirectX::XMVectorSet(0.0f, 0.0f, 0.0f, 0.0f),
 		{Color(50, 50, 50), Color(255, 255, 255),
 		1.0f,
-		0.02f, 0.075f, 0.008f},
+		0.02f, 0.0075f, 0.008f},
 		gfx),
 	floor(gfx, CubeModel::MakeIndependent<PhongDrawable::Vertex>().SetNormalsIndependentFlat(),
-		{ {0.0f, 1.0f, 1.0f}, 0.1f, 30.0f })
+		{ {1.0f, 1.0f, 1.0f}, 0.1f, 9.0f })
 {
+	ctrlbls.emplace_back(std::make_unique<PhongDrawable>(gfx, CubeModel::MakeIndependent<PhongDrawable::Vertex>().SetNormalsIndependentFlat(),
+		PhongDrawable::MaterialData{ { 1.0f, 0.0f, 0.0f }, 1.0f, 30.0f }), "Kocka 1", DirectX::XMFLOAT3{0.0f, 0.0f, 0.0f});
+	ctrlbls.emplace_back(std::make_unique<PhongDrawable>(gfx, SphereModel::MakeWithNormals<PhongDrawable::Vertex>(),
+		PhongDrawable::MaterialData{ { 0.0f, 1.0f, 0.0f }, 4.0f, 80.0f }), "Sfera 1", DirectX::XMFLOAT3{ 5.0f, 5.0f, 5.0f });
+
 	cam.SetLocalTransform(cam.GetLocalTransform().Translate(DirectX::XMFLOAT3{ 0.0f, 0.0f, -10.0f }));
 	floor.AddTransformation(DirectX::XMMatrixScaling(100, 1, 100));
 	floor.AddTransformation(DirectX::XMMatrixTranslation(0.0f, -5.0f, 0.0f));

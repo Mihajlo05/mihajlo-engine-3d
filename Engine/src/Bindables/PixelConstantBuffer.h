@@ -9,6 +9,8 @@ class PixelConstantBuffer : public ConstantBuffer<C>
 	using Bindable::GetContext;
 	using ConstantBuffer<C>::slot;
 public:
+	using ConstantBuffer<C>::SetData;
+public:
 	using ConstantBuffer<C>::ConstantBuffer;
 	void Bind(Graphics& gfx) const override
 	{

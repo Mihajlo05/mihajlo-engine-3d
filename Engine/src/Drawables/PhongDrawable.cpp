@@ -26,4 +26,19 @@ PhongDrawable::PhongDrawable(Graphics& gfx, IndexedTriangleList<Vertex> model, c
 	}
 
 	AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
+	
+	auto pPCB = std::make_unique<PixelConstantBuffer<MaterialData>>(gfx, mData, 1u);
+	pPixelConstantBuffer = pPCB.get();
+	AddBindable(std::move(pPCB));
+}
+
+PhongDrawable::MaterialData PhongDrawable::GetMaterialData() const
+{
+	return mData;
+}
+
+void PhongDrawable::SetMaterialData(const PhongDrawable::MaterialData& mData)
+{
+	this->mData = mData;
+	pPixelConstantBuffer->SetData(mData);
 }

@@ -8,11 +8,11 @@ class ConstantBuffer : public Bindable
 public:
 	ConstantBuffer(Graphics& gfx, const C& cBuf, uint32_t slot = 0u)
 		:
-		slot(slot)
+		slot(slot),
+		gfx(gfx)
 	{
 		BIND_INFOMAN(gfx);
 
-		D3D11_BUFFER_DESC cbd;
 		cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 		cbd.Usage = D3D11_USAGE_DYNAMIC;
 		cbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
@@ -27,7 +27,8 @@ public:
 	}
 	ConstantBuffer(Graphics& gfx, uint32_t slot = 0u)
 		:
-		slot(slot)
+		slot(slot),
+		gfx(gfx)
 	{
 		BIND_INFOMAN(gfx);
 
@@ -51,9 +52,21 @@ public:
 		memcpy(msr.pData, &cBuf, sizeof(cBuf));
 		GetContext(gfx)->Unmap(pData.Get(), 0u);
 	}
+	void SetData(const C& cBuf)
+	{
+		BIND_INFOMAN(gfx);
+
+		D3D11_SUBRESOURCE_DATA csd = {};
+		csd.pSysMem = &cBuf;
+
+		GFX_THROW(GetDevice(gfx)->CreateBuffer(&cbd, &csd, &pData));
+	}
 	virtual void Bind(Graphics& gfx) const override = 0;
 	virtual ~ConstantBuffer() = default;
 protected:
+	D3D11_BUFFER_DESC cbd = {};
 	Microsoft::WRL::ComPtr<ID3D11Buffer> pData;
 	uint32_t slot;
+private:
+	Graphics& gfx;
 };
