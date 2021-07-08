@@ -235,6 +235,7 @@
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Models\FromFileModel.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />
@@ -275,6 +276,7 @@
     <Image Include="src\Resources\logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="imgui.ini" />
     <None Include="src\ErrorHandling\DXGetErrorDescription.inl" />
     <None Include="src\ErrorHandling\DXGetErrorString.inl" />
     <None Include="src\ErrorHandling\DXTrace.inl" />

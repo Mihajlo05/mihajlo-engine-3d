@@ -240,6 +240,7 @@
     <ClInclude Include="src\imgui\imgui_impl_win32.h" />
     <ClInclude Include="src\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
+    <ClInclude Include="src\Models\FromFileModel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -358,6 +359,7 @@
     <None Include="src\ErrorHandling\DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
+    <None Include="imgui.ini" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="src\Shaders\PhongVS.hlsl" />

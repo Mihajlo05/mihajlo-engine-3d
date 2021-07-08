@@ -51,6 +51,7 @@ artifacts/
 *.ilk
 *.meta
 *.obj
+!Engine/src/ModelFiles/*.obj
 *.pch
 *.pdb
 *.pgc
