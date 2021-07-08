@@ -1,5 +1,6 @@
 #include "UniverseScene.h"
 #include "imgui/imgui.h"
+#include "Models/CubeModel.h"
 
 namespace dx = DirectX;
 
@@ -11,11 +12,11 @@ UniverseScene::UniverseScene(Graphics& gfx)
 		1.0f,
 		0.02f, 0.075f, 0.008f},
 		gfx),
-	floor(gfx)
+	floor(gfx, CubeModel::MakeIndependent<PhongDrawable::Vertex>().SetNormalsIndependentFlat(),
+		{ {0.0f, 1.0f, 1.0f}, 0.1f, 30.0f })
 {
-	ctrlbls.emplace_back(std::make_unique<Box>(gfx), "Kocka 1", DirectX::XMFLOAT3{ 0.0f, 0.0f, 0.0f });
 	cam.SetLocalTransform(cam.GetLocalTransform().Translate(DirectX::XMFLOAT3{ 0.0f, 0.0f, -10.0f }));
-	floor.AddTransformation(DirectX::XMMatrixScaling(100, 0.1f, 100));
+	floor.AddTransformation(DirectX::XMMatrixScaling(100, 1, 100));
 	floor.AddTransformation(DirectX::XMMatrixTranslation(0.0f, -5.0f, 0.0f));
 }
 
@@ -35,9 +36,9 @@ void UniverseScene::Update(float dt, Keyboard& kbd, Mouse& mouse)
 void UniverseScene::Draw() const
 {
 	pointLight.Draw();
+	pointLight.Bind(gfx, cam.GetView());
 	for (const auto& ctrlbl : ctrlbls)
 	{
-		pointLight.Bind(gfx, cam.GetView());
 		ctrlbl.Draw();
 	}
 	floor.Draw();

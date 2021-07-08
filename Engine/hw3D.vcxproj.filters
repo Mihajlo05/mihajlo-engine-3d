@@ -228,7 +228,6 @@
     <ClInclude Include="src\Entities\ControllableEntity.h">
       <Filter>Entities\ControllableEntity</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drawables\Box.h" />
     <ClInclude Include="src\Drawables\SolidSphere.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\imgui\imgui_internal.h" />
@@ -240,6 +239,7 @@
     <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
     <ClInclude Include="src\imgui\imgui_impl_win32.h" />
     <ClInclude Include="src\imgui\ImGuiManager.h" />
+    <ClInclude Include="src\Drawables\PhongDrawable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -326,7 +326,6 @@
     <ClCompile Include="src\Entities\ControllableEntity.cpp">
       <Filter>Entities\ControllableEntity</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drawables\Box.cpp" />
     <ClCompile Include="src\Drawables\SolidSphere.cpp" />
     <ClCompile Include="src\Entities\PointLight.cpp" />
     <ClCompile Include="src\imgui\imgui_draw.cpp" />
@@ -337,6 +336,7 @@
     <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
+    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

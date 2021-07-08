@@ -2,9 +2,9 @@
 
 #include "Scene.h"
 #include "Entities/ControllableEntity.h"
+#include "Drawables/PhongDrawable.h"
 #include "Entities/Camera.h"
 #include "Entities/PointLight.h"
-#include "Drawables/Box.h"
 #include <vector>
 
 class UniverseScene : public Scene
@@ -18,8 +18,8 @@ private:
 private:
 	Camera cam;
 	PointLight pointLight;
-	Box floor;
 	std::vector<ControllableEntity> ctrlbls;
+	PhongDrawable floor;
 	float camSpeed = 20.0f;
 	float camRotSpeed = 1.0f;
 };

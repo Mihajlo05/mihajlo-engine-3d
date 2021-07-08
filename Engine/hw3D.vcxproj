@@ -167,7 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Bindables\Bindable.cpp" />
-    <ClCompile Include="src\Drawables\Box.cpp" />
+    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
     <ClCompile Include="src\Drawables\SolidSphere.cpp" />
     <ClCompile Include="src\Entities\ControllableEntity.cpp" />
     <ClCompile Include="src\Entities\PointLight.cpp" />
@@ -209,7 +209,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bindables\AllBindables.h" />
     <ClInclude Include="src\Bindables\Bindable.h" />
-    <ClInclude Include="src\Drawables\Box.h" />
+    <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Drawables\SolidSphere.h" />
     <ClInclude Include="src\Entities\Camera.h" />
     <ClInclude Include="src\Entities\PointLight.h" />

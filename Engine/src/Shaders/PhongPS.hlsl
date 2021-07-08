@@ -10,10 +10,12 @@ cbuffer CBuf
 };
 
 static const float3 materialColor = { 1.0f, 1.0f, 1.0f };
+static const float specularIntensity = 1.2f;
+static const float specularPower = 40.0f;
 
-float4 main(float3 camPostion : POSITION, float3 normal : NORMAL) : SV_Target
+float4 main(float3 camPosition : POSITION, float3 normal : NORMAL) : SV_Target
 {
-    float3 vToL = lightPos - camPostion;
+    float3 vToL = lightPos - camPosition;
     float distToL = length(vToL);
     float3 dirToL = vToL / distToL;
     
@@ -21,5 +23,10 @@ float4 main(float3 camPostion : POSITION, float3 normal : NORMAL) : SV_Target
     
     const float3 diffuse = diffuseColor * diffuseIntensity * att * max(0.0f, dot(dirToL, normal));
     
-    return float4(saturate(diffuse + ambient) * materialColor, 1.0f);
+    const float3 r = reflect(dirToL, normal);
+    
+    const float3 specular = att * (diffuseColor * diffuseIntensity) * specularIntensity *
+    pow(max(0.0f, dot(normalize(r), normalize(camPosition))), specularPower);
+	
+    return float4(saturate((diffuse + ambient + specular) * materialColor), 1.0f);
 }
