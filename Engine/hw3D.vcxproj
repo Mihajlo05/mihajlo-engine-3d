@@ -211,6 +211,7 @@
     <ClInclude Include="src\Bindables\Bindable.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Drawables\SolidSphere.h" />
+    <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
     <ClInclude Include="src\Entities\Camera.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Graphics\Color.h" />

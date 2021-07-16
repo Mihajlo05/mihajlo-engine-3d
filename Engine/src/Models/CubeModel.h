@@ -2,6 +2,7 @@
 
 #include "Math/IndexedTriangleList.h"
 #include "Math/DefaultVertex.h"
+#include "DynamicVertexBuf/Vertex.h"
 
 class CubeModel
 {

@@ -241,6 +241,7 @@
     <ClInclude Include="src\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Models\FromFileModel.h" />
+    <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
