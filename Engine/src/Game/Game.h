@@ -2,7 +2,6 @@
 
 #include "Windows/Window.h"
 #include "Components/Timer.h"
-#include "Scenes/Scene.h"
 
 class Game
 {
@@ -16,12 +15,7 @@ private:
 	void HandleKeyboardEvents(const Keyboard::Event& e);
 	void Update(float dt);
 	void Draw();
-	void GoToScene(int index);
-	void GoToNextScene();
 private:
 	Window wnd;
 	Timer timer;
-	std::vector<std::unique_ptr<Scene>> scenePtrs;
-	int curSceneIndex = 0;
-	Scene* curScene = nullptr;
 };

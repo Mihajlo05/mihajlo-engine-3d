@@ -165,14 +165,8 @@
     <ClInclude Include="src\Math\IndexedTriangleList.h">
       <Filter>Math\IndexedLists</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\CubeModel.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="src\Math\DefaultVertex.h">
       <Filter>Math\Vertices</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scenes\Scene.h">
-      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h">
       <Filter>ErrorHandling</Filter>
@@ -180,20 +174,8 @@
     <ClInclude Include="src\ErrorHandling\MihajloException.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\PlaneModel.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\ConeModel.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="src\Math\MihajloMath.h">
       <Filter>Math</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\PrismModel.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\SphereModel.h">
-      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="src\Graphics\Color.h">
       <Filter>Graphics</Filter>
@@ -213,23 +195,9 @@
     <ClInclude Include="src\Bindables\Sampler.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scenes\UniverseScene.h">
-      <Filter>Scenes\UniverseScene</Filter>
-    </ClInclude>
     <ClInclude Include="src\Math\Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entities\Entity.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\Camera.h">
-      <Filter>Entities\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Entities\ControllableEntity.h">
-      <Filter>Entities\ControllableEntity</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drawables\SolidSphere.h" />
-    <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\imgui\imgui_internal.h" />
     <ClInclude Include="src\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\imgui\imstb_textedit.h" />
@@ -239,7 +207,6 @@
     <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
     <ClInclude Include="src\imgui\imgui_impl_win32.h" />
     <ClInclude Include="src\imgui\ImGuiManager.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Models\FromFileModel.h" />
     <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
   </ItemGroup>
@@ -319,17 +286,6 @@
     <ClCompile Include="src\Bindables\Sampler.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scenes\UniverseScene.cpp">
-      <Filter>Scenes\UniverseScene</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\Entity.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Entities\ControllableEntity.cpp">
-      <Filter>Entities\ControllableEntity</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drawables\SolidSphere.cpp" />
-    <ClCompile Include="src\Entities\PointLight.cpp" />
     <ClCompile Include="src\imgui\imgui_draw.cpp" />
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
@@ -338,7 +294,6 @@
     <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

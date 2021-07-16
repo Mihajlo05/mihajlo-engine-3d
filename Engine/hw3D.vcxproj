@@ -167,15 +167,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Bindables\Bindable.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
-    <ClCompile Include="src\Drawables\SolidSphere.cpp" />
-    <ClCompile Include="src\Entities\ControllableEntity.cpp" />
-    <ClCompile Include="src\Entities\PointLight.cpp" />
     <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
     <ClCompile Include="src\ErrorHandling\DxgiInfoManager.cpp" />
-    <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
@@ -199,7 +194,6 @@
     <ClCompile Include="src\Bindables\Texture2D.cpp" />
     <ClCompile Include="src\Components\Timer.cpp" />
     <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp" />
-    <ClCompile Include="src\Scenes\UniverseScene.cpp" />
     <ClCompile Include="src\Bindables\VertexBuffer.cpp" />
     <ClCompile Include="src\Bindables\VertexShader.cpp" />
     <ClCompile Include="src\Bindables\Viewport.cpp" />
@@ -209,11 +203,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bindables\AllBindables.h" />
     <ClInclude Include="src\Bindables\Bindable.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
-    <ClInclude Include="src\Drawables\SolidSphere.h" />
     <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
-    <ClInclude Include="src\Entities\Camera.h" />
-    <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\imgui\imconfig.h" />
     <ClInclude Include="src\imgui\imgui.h" />
@@ -224,17 +214,13 @@
     <ClInclude Include="src\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\imgui\imstb_textedit.h" />
     <ClInclude Include="src\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\Models\ConeModel.h" />
     <ClInclude Include="src\Bindables\ConstantBuffer.h" />
-    <ClInclude Include="src\Entities\ControllableEntity.h" />
-    <ClInclude Include="src\Models\CubeModel.h" />
     <ClInclude Include="src\ErrorHandling\DefaultMihException.h" />
     <ClInclude Include="src\Math\DefaultVertex.h" />
     <ClInclude Include="src\Drawables\Drawable.h" />
     <ClInclude Include="src\Drawables\DrawableBase.h" />
     <ClInclude Include="src\ErrorHandling\dxerr.h" />
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
-    <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Models\FromFileModel.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
@@ -251,19 +237,14 @@
     <ClInclude Include="src\Windows\Mouse.h" />
     <ClInclude Include="src\Bindables\PixelConstantBuffer.h" />
     <ClInclude Include="src\Bindables\PixelShader.h" />
-    <ClInclude Include="src\Models\PlaneModel.h" />
     <ClInclude Include="src\Bindables\PrimitiveTopology.h" />
-    <ClInclude Include="src\Models\PrismModel.h" />
     <ClInclude Include="src\Resources\resource.h" />
     <ClInclude Include="src\Bindables\Sampler.h" />
-    <ClInclude Include="src\Scenes\Scene.h" />
-    <ClInclude Include="src\Models\SphereModel.h" />
     <ClInclude Include="src\Graphics\Surface.h" />
     <ClInclude Include="src\Bindables\Texture2D.h" />
     <ClInclude Include="src\Components\Timer.h" />
     <ClInclude Include="src\Math\Transform.h" />
     <ClInclude Include="src\Bindables\TransformationConstantBuffer.h" />
-    <ClInclude Include="src\Scenes\UniverseScene.h" />
     <ClInclude Include="src\Bindables\VertexBuffer.h" />
     <ClInclude Include="src\Bindables\VertexConstantBuffer.h" />
     <ClInclude Include="src\Bindables\VertexShader.h" />
