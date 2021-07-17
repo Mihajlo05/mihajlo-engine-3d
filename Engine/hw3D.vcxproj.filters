@@ -159,15 +159,6 @@
     <ClInclude Include="src\Math\Index.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="src\Math\IndexedList.h">
-      <Filter>Math\IndexedLists</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Math\IndexedTriangleList.h">
-      <Filter>Math\IndexedLists</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Math\DefaultVertex.h">
-      <Filter>Math\Vertices</Filter>
-    </ClInclude>
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h">
       <Filter>ErrorHandling</Filter>
     </ClInclude>
@@ -207,7 +198,6 @@
     <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
     <ClInclude Include="src\imgui\imgui_impl_win32.h" />
     <ClInclude Include="src\imgui\ImGuiManager.h" />
-    <ClInclude Include="src\Models\FromFileModel.h" />
     <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
