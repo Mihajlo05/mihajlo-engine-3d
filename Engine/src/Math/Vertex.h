@@ -111,6 +111,33 @@ namespace DynamicVertexBuf
 				assert("Invalid element type" && false);
 				return 0u;
 			}
+			D3D11_INPUT_ELEMENT_DESC GetDesc() const
+			{
+
+				switch (type)
+				{
+				case Position3D:
+					return GenerateDesc<Position3D>(offset);
+				case Position2D:
+					return GenerateDesc<Position2D>(offset);
+				case Texture2D:
+					return GenerateDesc<Texture2D>(offset);
+				case Normal:
+					return GenerateDesc<Normal>(offset);
+				case Float3Color:
+					return GenerateDesc<Float3Color>(offset);
+				case Float4Color:
+					return GenerateDesc<Float4Color>(offset);
+				case BGRAColor:
+					return GenerateDesc<BGRAColor>(offset);
+				}
+			}
+		private:
+			template<ElementType Type>
+			static constexpr D3D11_INPUT_ELEMENT_DESC GenerateDesc(size_t offset)
+			{
+				return { Map<Type>::semantic, 0, Map<Type>::dxgiFormat, 0u, (UINT)offset, D3D11_INPUT_PER_VERTEX_DATA, 0u };
+			}
 		private:
 			ElementType type;
 			size_t offset;
@@ -145,6 +172,17 @@ namespace DynamicVertexBuf
 		size_t GetElementCount() const
 		{
 			return elements.size();
+		}
+		std::vector<D3D11_INPUT_ELEMENT_DESC> GetD3DLayout() const
+		{
+			std::vector<D3D11_INPUT_ELEMENT_DESC> d3dl;
+
+			for (const Element& e : elements)
+			{
+				d3dl.push_back(e.GetDesc());
+			}
+
+			return d3dl;
 		}
 	private:
 		std::vector<Element> elements;
@@ -220,6 +258,19 @@ namespace DynamicVertexBuf
 		VertexLayout& layout;
 	};
 
+	class ConstVertex
+	{
+	public:
+		ConstVertex(const Vertex data) : data(data) {}
+		template<VertexLayout::ElementType Type>
+		const auto& Attribute() const
+		{
+			return const_cast<Vertex&>(data).Attribute<Type>();
+		}
+	private:
+		Vertex data;
+	};
+
 	class VertexBuffer
 	{
 	public:
@@ -246,10 +297,26 @@ namespace DynamicVertexBuf
 			assert(Size() != 0);
 			return Vertex(layout, buffer.data() + SizeInBytes() - layout.Size());
 		}
+		ConstVertex CBack() const
+		{
+			return const_cast<VertexBuffer&>(*this).Back();
+		}
+		ConstVertex Back() const
+		{
+			return CBack();
+		}
 		Vertex Front()
 		{
 			assert(Size() != 0);
 			return Vertex(layout, buffer.data());
+		}
+		ConstVertex CFront() const
+		{
+			return const_cast<VertexBuffer&>(*this).Front();
+		}
+		ConstVertex Front() const
+		{
+			return CFront();
 		}
 		Vertex operator[](size_t i)
 		{
