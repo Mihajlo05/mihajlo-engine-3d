@@ -116,6 +116,7 @@ namespace DynamicVertexBuf
 			size_t offset;
 		};
 	public:
+		VertexLayout() = default;
 		const Element& GetElement(ElementType type) const
 		{
 			for (auto& e : elements)
@@ -222,7 +223,8 @@ namespace DynamicVertexBuf
 	class VertexBuffer
 	{
 	public:
-		VertexBuffer(VertexLayout& layout) : layout(std::move(layout)) {}
+		VertexBuffer() = default;
+		VertexBuffer(VertexLayout layout) : layout(std::move(layout)) {}
 		const VertexLayout& GetLayout() const { return layout; }
 		size_t Size() const // size in vertices
 		{

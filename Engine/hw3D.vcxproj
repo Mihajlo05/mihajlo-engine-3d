@@ -180,6 +180,7 @@
     <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Bindables\IndexBuffer.cpp" />
@@ -203,7 +204,7 @@
   <ItemGroup>
     <ClInclude Include="src\Bindables\AllBindables.h" />
     <ClInclude Include="src\Bindables\Bindable.h" />
-    <ClInclude Include="src\DynamicVertexBuf\Vertex.h" />
+    <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\imgui\imconfig.h" />
     <ClInclude Include="src\imgui\imgui.h" />
@@ -221,6 +222,7 @@
     <ClInclude Include="src\ErrorHandling\dxerr.h" />
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />
