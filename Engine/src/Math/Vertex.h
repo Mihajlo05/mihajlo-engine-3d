@@ -130,6 +130,8 @@ namespace DynamicVertexBuf
 					return GenerateDesc<Float4Color>(offset);
 				case BGRAColor:
 					return GenerateDesc<BGRAColor>(offset);
+				default:
+					return {};
 				}
 			}
 		private:

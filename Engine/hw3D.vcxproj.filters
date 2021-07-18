@@ -200,6 +200,7 @@
     <ClInclude Include="src\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
+    <ClInclude Include="src\Drawables\SolidDrawable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -286,6 +287,7 @@
     <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
+    <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

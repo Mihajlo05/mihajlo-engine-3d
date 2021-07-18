@@ -11,7 +11,7 @@ class VertexBuffer : public Bindable
 public:
 	VertexBuffer(Graphics& gfx, const DynamicVertexBuf::VertexBuffer& vertices)
 		:
-		stride(vertices.GetLayout().Size())
+		stride((uint32_t)vertices.GetLayout().Size())
 	{
 		BIND_INFOMAN(gfx);
 
@@ -21,7 +21,7 @@ public:
 		bd.Usage = D3D11_USAGE_DEFAULT;
 		bd.CPUAccessFlags = 0u;
 		bd.MiscFlags = 0u;
-		bd.ByteWidth = vertices.SizeInBytes();
+		bd.ByteWidth = (UINT)vertices.SizeInBytes();
 		bd.StructureByteStride = stride;
 		D3D11_SUBRESOURCE_DATA sd = {};
 		sd.pSysMem = vertices.GetData();

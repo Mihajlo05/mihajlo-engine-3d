@@ -20,7 +20,17 @@ public:
 	virtual ~Drawable() = default;
 protected:
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
+	template<class B, typename... Params>
+	void AddBindable(Params&&... params)
+	{
+		AddBindable(std::make_unique<B>(std::forward<Params>(params)...));
+	}
 	void AddIndexBuffer(std::unique_ptr<IndexBuffer> pib);
+	template<typename... Params>
+	void AddIndexBuffer(Params&&... params)
+	{
+		AddIndexBuffer(std::make_unique<IndexBuffer>(std::forward<Params>(params)...));
+	}
 protected:
 	Graphics& gfx;
 private:

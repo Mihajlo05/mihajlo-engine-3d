@@ -18,8 +18,8 @@ public:
 	IndexedTriangleList(IndexBuffer indices, VertexBuffer vertices);
 	IndexedTriangleList(const aiMesh& mesh); //creates Itl from aiMesh
 	IndexedTriangleList(const std::string& filename); //loads first mesh from file
-	static constexpr D3D11_PRIMITIVE_TOPOLOGY GetD3D11Type();
 public:
 	IndexBuffer indices;
 	VertexBuffer vertices;
+	static constexpr D3D11_PRIMITIVE_TOPOLOGY d3dtype = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
 };

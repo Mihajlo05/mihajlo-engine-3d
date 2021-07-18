@@ -25,11 +25,21 @@ protected:
 		assert(typeid(b) != typeid(IndexBuffer));
 		staticBindablePtrs.push_back(std::move(b));
 	}
+	template<class B, typename... Params>
+	void AddStaticBindable(Params&&... params)
+	{
+		AddStaticBindable(std::make_unique<B>(std::forward<Params>(params)...));
+	}
 	void AddStaticIndexBuffer(std::unique_ptr<IndexBuffer> ib)
 	{
 		assert(pIndexBuffer == nullptr);
 		pIndexBuffer = ib.get();
 		staticBindablePtrs.push_back(std::move(ib));
+	}
+	template<typename... Params>
+	void AddStaticIndexBuffer(Params&&... params)
+	{
+		AddStaticIndexBuffer(std::make_unique<IndexBuffer>(std::forward<Params>(params)...));
 	}
 	void AddIndexBufferFromStatic()
 	{

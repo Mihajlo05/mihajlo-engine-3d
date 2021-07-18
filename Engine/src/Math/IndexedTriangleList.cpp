@@ -58,8 +58,3 @@ IndexedTriangleList::IndexedTriangleList(const std::string& filename)
 
 	*this = IndexedTriangleList(*pMesh);
 }
-
-constexpr D3D11_PRIMITIVE_TOPOLOGY IndexedTriangleList::GetD3D11Type()
-{
-	return D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
-}
