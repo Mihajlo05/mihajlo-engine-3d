@@ -4,11 +4,11 @@
 
 struct Transform
 {
-	DirectX::XMVECTOR pos;
-	DirectX::XMVECTOR rot;
-	DirectX::XMVECTOR scale;
+	DXVec pos;
+	DXVec rot;
+	DXVec scale;
 	
-	Transform(DirectX::XMVECTOR pos, DirectX::XMVECTOR rot, DirectX::XMVECTOR scale)
+	Transform(DXVec pos, DXVec rot, DXVec scale)
 		: pos(pos), rot(rot), scale(scale)
 	{ }
 	Transform(float3 pos = { 0.0f, 0.0f, 0.0f },
@@ -25,7 +25,7 @@ struct Transform
 			DirectX::XMMatrixRotationRollPitchYawFromVector(rot) *
 			DirectX::XMMatrixTranslationFromVector(pos);
 	}
-	Transform& Translate(DirectX::FXMVECTOR delta)
+	Transform& Translate(FDXVec delta)
 	{
 		pos = DirectX::XMVectorAdd(pos, delta);
 		return *this;
@@ -34,7 +34,7 @@ struct Transform
 	{
 		return Translate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
 	}
-	Transform& Rotate(DirectX::FXMVECTOR delta)
+	Transform& Rotate(FDXVec delta)
 	{
 		rot = DirectX::XMVectorAdd(rot, delta);
 		return *this;

@@ -12,6 +12,8 @@ using float3x3 = DirectX::XMFLOAT3X3;
 using float4x4 = DirectX::XMFLOAT4X4;
 using matrix = DirectX::XMMATRIX;
 using fmatrix = DirectX::FXMMATRIX;
+using DXVec = DirectX::XMVECTOR;
+using FDXVec = DirectX::FXMVECTOR;
 
 template <typename T>
 constexpr auto sq(const T& x)
