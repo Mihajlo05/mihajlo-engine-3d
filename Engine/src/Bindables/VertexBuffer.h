@@ -4,14 +4,14 @@
 #include <vector>
 #include "Bindable.h"
 #include <d3d11.h>
+#include "Math/Vertex.h"
 
 class VertexBuffer : public Bindable
 {
 public:
-	template<class Vertex>
-	VertexBuffer(Graphics& gfx, const std::vector<Vertex>& vertices)
+	VertexBuffer(Graphics& gfx, const DynamicVertexBuf::VertexBuffer& vertices)
 		:
-		stride(sizeof(Vertex))
+		stride(vertices.GetLayout().Size())
 	{
 		BIND_INFOMAN(gfx);
 
@@ -21,10 +21,10 @@ public:
 		bd.Usage = D3D11_USAGE_DEFAULT;
 		bd.CPUAccessFlags = 0u;
 		bd.MiscFlags = 0u;
-		bd.ByteWidth = stride * (uint32_t)vertices.size();
+		bd.ByteWidth = vertices.SizeInBytes();
 		bd.StructureByteStride = stride;
 		D3D11_SUBRESOURCE_DATA sd = {};
-		sd.pSysMem = vertices.data();
+		sd.pSysMem = vertices.GetData();
 		GFX_THROW(GetDevice(gfx)->CreateBuffer(&bd, &sd, &pData));
 	}
 	void Bind(Graphics& gfx) const override;

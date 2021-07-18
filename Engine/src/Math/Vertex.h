@@ -323,6 +323,14 @@ namespace DynamicVertexBuf
 			assert(i < Size());
 			return Vertex(layout, buffer.data() + layout.Size() * i);
 		}
+		char* GetData()
+		{
+			return buffer.data();
+		}
+		const char* GetData() const
+		{
+			return buffer.data();
+		}
 	private:
 		VertexLayout layout; //this describes Vertices in buffer
 		std::vector<char> buffer; //array of bites for data
