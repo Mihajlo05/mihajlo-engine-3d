@@ -223,22 +223,22 @@ void Graphics::DrawIndexed(uint32_t count)
 	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
 }
 
-void Graphics::SetPerspective(const DirectX::XMMATRIX& p)
+void Graphics::SetPerspective(const matrix& p)
 {
 	perspective = p;
 }
 
-DirectX::XMMATRIX Graphics::GetPerspective() const
+matrix Graphics::GetPerspective() const
 {
 	return perspective;
 }
 
-void Graphics::SetCamera(DirectX::FXMMATRIX ct)
+void Graphics::SetCamera(fmatrix ct)
 {
 	cameraTransf = ct;
 }
 
-DirectX::XMMATRIX Graphics::GetCamera() const
+matrix Graphics::GetCamera() const
 {
 	return cameraTransf;
 }

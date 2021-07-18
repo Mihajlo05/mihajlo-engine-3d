@@ -3,7 +3,7 @@
 #include "Bindable.h"
 #include "VertexConstantBuffer.h"
 #include "Drawables/Drawable.h"
-#include <DirectXMath.h>
+#include "Math/MihajloMath.h"
 
 class TransformationConstantBuffer : public Bindable
 {
@@ -13,8 +13,8 @@ public:
 private:
 	struct Data
 	{
-		DirectX::XMMATRIX modelView;
-		DirectX::XMMATRIX modelViewProj;
+		matrix modelView;
+		matrix modelViewProj;
 	};
 private:
 	const Drawable& parent;

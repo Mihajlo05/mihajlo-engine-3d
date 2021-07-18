@@ -20,12 +20,12 @@ void Drawable::ResetTransformations()
 	transformation = DirectX::XMMatrixIdentity();
 }
 
-void Drawable::AddTransformation(DirectX::FXMMATRIX t)
+void Drawable::AddTransformation(fmatrix t)
 {
 	transformation *= t;
 }
 
-DirectX::XMMATRIX Drawable::GetTransformation() const
+matrix Drawable::GetTransformation() const
 {
 	return transformation;
 }

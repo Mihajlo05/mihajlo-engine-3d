@@ -3,7 +3,7 @@
 #include <vector>
 #include "Bindables/Bindable.h"
 #include "Bindables/IndexBuffer.h"
-#include <DirectXMath.h>
+#include "Math/MihajloMath.h"
 #include <memory>
 
 class Drawable
@@ -15,8 +15,8 @@ public:
 	virtual void Draw() const;
 	virtual void Update(float dt) {}
 	void ResetTransformations();
-	void AddTransformation(DirectX::FXMMATRIX t);
-	DirectX::XMMATRIX GetTransformation() const;
+	void AddTransformation(fmatrix t);
+	matrix GetTransformation() const;
 	virtual ~Drawable() = default;
 protected:
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
@@ -36,5 +36,5 @@ protected:
 private:
 	const IndexBuffer* pIndexBuffer = nullptr;
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
-	DirectX::XMMATRIX transformation = DirectX::XMMatrixIdentity();
+	matrix transformation = DirectX::XMMatrixIdentity();
 };

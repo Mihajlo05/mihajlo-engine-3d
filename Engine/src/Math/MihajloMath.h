@@ -1,8 +1,17 @@
 #pragma once
 #include <math.h>
+#include  <DirectXMath.h>
 
 constexpr float PI = 3.14159265f;
 constexpr double PI_D = 3.1415926535897932;
+
+using float2 = DirectX::XMFLOAT2;
+using float3 = DirectX::XMFLOAT3;
+using float4 = DirectX::XMFLOAT4;
+using float3x3 = DirectX::XMFLOAT3X3;
+using float4x4 = DirectX::XMFLOAT4X4;
+using matrix = DirectX::XMMATRIX;
+using fmatrix = DirectX::FXMMATRIX;
 
 template <typename T>
 constexpr auto sq(const T& x)

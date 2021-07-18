@@ -1,6 +1,6 @@
 #pragma once
 
-#include <DirectXMath.h>
+#include "MihajloMath.h"
 
 struct Transform
 {
@@ -11,15 +11,15 @@ struct Transform
 	Transform(DirectX::XMVECTOR pos, DirectX::XMVECTOR rot, DirectX::XMVECTOR scale)
 		: pos(pos), rot(rot), scale(scale)
 	{ }
-	Transform(DirectX::XMFLOAT3 pos = { 0.0f, 0.0f, 0.0f },
-		DirectX::XMFLOAT3 rot = { 0.0f, 0.0f, 0.0f },
-		DirectX::XMFLOAT3 scale = {1.0f, 1.0f, 1.0f})
+	Transform(float3 pos = { 0.0f, 0.0f, 0.0f },
+		float3 rot = { 0.0f, 0.0f, 0.0f },
+		float3 scale = {1.0f, 1.0f, 1.0f})
 		:
 		pos(DirectX::XMVectorSet(pos.x, pos.y, pos.z, 1.0f)),
 		rot(DirectX::XMVectorSet(rot.x, rot.y, rot.z, 1.0f)),
 		scale(DirectX::XMVectorSet(scale.x, scale.y, scale.z, 1.0f))
 	{ }
-	DirectX::XMMATRIX GetMatrix() const
+	matrix GetMatrix() const
 	{
 		return DirectX::XMMatrixScalingFromVector(scale) *
 			DirectX::XMMatrixRotationRollPitchYawFromVector(rot) *
@@ -30,7 +30,7 @@ struct Transform
 		pos = DirectX::XMVectorAdd(pos, delta);
 		return *this;
 	}
-	Transform& Translate(DirectX::XMFLOAT3 delta)
+	Transform& Translate(float3 delta)
 	{
 		return Translate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
 	}
@@ -39,7 +39,7 @@ struct Transform
 		rot = DirectX::XMVectorAdd(rot, delta);
 		return *this;
 	}
-	Transform& Rotate(DirectX::XMFLOAT3 delta)
+	Transform& Rotate(float3 delta)
 	{
 		return Rotate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
 	}

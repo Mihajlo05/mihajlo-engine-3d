@@ -5,7 +5,7 @@
 #include "wrl.h"
 #include "ErrorHandling/MihajloException.h"
 #include "ErrorHandling/DxgiInfoManager.h"
-#include <DirectXMath.h>
+#include "Math/MihajloMath.h"
 
 class Graphics
 {
@@ -51,10 +51,10 @@ public:
 	void EndFrame();
 	void ClearBuffer(float r, float g, float b, float a=1.0f);
 	void DrawIndexed(uint32_t count);
-	void SetPerspective(const DirectX::XMMATRIX& p);
-	DirectX::XMMATRIX GetPerspective() const;
-	void SetCamera(DirectX::FXMMATRIX ct);
-	DirectX::XMMATRIX GetCamera() const;
+	void SetPerspective(const matrix& p);
+	matrix GetPerspective() const;
+	void SetCamera(fmatrix ct);
+	matrix GetCamera() const;
 	void EnableGui();
 	void DisableGui();
 	bool IsGuiEnabled() const;
@@ -64,8 +64,8 @@ private:
 	DxgiInfoManager infoManager;
 #endif
 private:
-	DirectX::XMMATRIX perspective;
-	DirectX::XMMATRIX cameraTransf = DirectX::XMMatrixIdentity();
+	matrix perspective;
+	matrix cameraTransf = DirectX::XMMatrixIdentity();
 private:
 	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;

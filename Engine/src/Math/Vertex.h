@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <DirectXMath.h>
+#include "Math/MihajloMath.h"
 #include "Graphics/Graphics.h"
 
 //Was lazy to seperate code in .h and .cpp files, so it's all in this file
@@ -34,37 +34,37 @@ namespace DynamicVertexBuf
 		template<ElementType> struct Map; //From this, you can get usefull information about each element type
 		template<> struct Map<Position3D>
 		{
-			using SysType = DirectX::XMFLOAT3; //this is actuall, system type that is being used for this type
+			using SysType = float3; //this is actuall, system type that is being used for this type
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "POSITION"; //semantic that is being used in shaders
 		};
 		template<> struct Map<Position2D>
 		{
-			using SysType = DirectX::XMFLOAT2;
+			using SysType = float2;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
 			static constexpr const char* semantic = "POSITION";
 		};
 		template<> struct Map<Texture2D>
 		{
-			using SysType = DirectX::XMFLOAT2;
+			using SysType = float2;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "TEXCOORD";
 		};
 		template<> struct Map<Normal>
 		{
-			using SysType = DirectX::XMFLOAT3;
+			using SysType = float3;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "NORMAL";
 		};
 		template<> struct Map<Float3Color>
 		{
-			using SysType = DirectX::XMFLOAT3;
+			using SysType = float3;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "COLOR";
 		};
 		template<> struct Map<Float4Color>
 		{
-			using SysType = DirectX::XMFLOAT4;
+			using SysType = float4;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
 			static constexpr const char* semantic = "COLOR";
 		};
