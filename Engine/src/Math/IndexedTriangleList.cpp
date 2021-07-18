@@ -27,9 +27,11 @@ IndexedTriangleList::IndexedTriangleList(const aiMesh& mesh)
 	for (size_t i = 0; i < mesh.mNumVertices; i++)
 	{
 		const float3 pos = { mesh.mVertices[i].x, mesh.mVertices[i].y , mesh.mVertices[i].z };
-		const float3 normal = { mesh.mNormals[i].x, mesh.mNormals[i].y, mesh.mNormals[i].z };
 		if (hasNormals)
+		{
+			const float3 normal = { mesh.mNormals[i].x, mesh.mNormals[i].y, mesh.mNormals[i].z };
 			vertices.EmplaceBack(pos, normal);
+		}
 		else
 			vertices.EmplaceBack(pos);
 	}

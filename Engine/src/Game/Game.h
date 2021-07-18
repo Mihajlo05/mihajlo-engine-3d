@@ -2,6 +2,7 @@
 
 #include "Windows/Window.h"
 #include "Components/Timer.h"
+#include "Entities/DrawableEntity.h"
 
 class Game
 {
@@ -17,5 +18,7 @@ private:
 	void Draw();
 private:
 	Window wnd;
+	Graphics& gfx;
 	Timer timer;
+	DrawableEntity entity;
 };

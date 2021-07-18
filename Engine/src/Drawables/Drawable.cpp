@@ -1,11 +1,6 @@
 #include "Drawable.h"
 
-Drawable::Drawable(Graphics& gfx)
-	:
-	gfx(gfx)
-{ }
-
-void Drawable::Draw() const
+void Drawable::Draw(Graphics& gfx) const
 {
 	for (const auto& pb : bindablePtrs)
 	{
@@ -20,9 +15,14 @@ void Drawable::ResetTransformations()
 	transformation = DirectX::XMMatrixIdentity();
 }
 
-void Drawable::AddTransformation(fmatrix t)
+void Drawable::Transform(fmatrix t)
 {
 	transformation *= t;
+}
+
+void Drawable::SetTransformation(fmatrix t)
+{
+	transformation = t;
 }
 
 matrix Drawable::GetTransformation() const

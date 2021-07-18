@@ -11,14 +11,15 @@ class Drawable
 	template<class T>
 	friend class DrawableBase;
 public:
-	Drawable(Graphics& gfx);
-	virtual void Draw() const;
+	virtual void Draw(Graphics& gfx) const;
 	virtual void Update(float dt) {}
 	void ResetTransformations();
-	void AddTransformation(fmatrix t);
+	void Transform(fmatrix t);
+	void SetTransformation(fmatrix t);
 	matrix GetTransformation() const;
 	virtual ~Drawable() = default;
 protected:
+	Drawable() = default;
 	void AddBindable(std::unique_ptr<Bindable> pBindable);
 	template<class B, typename... Params>
 	void AddBindable(Params&&... params)
@@ -31,8 +32,6 @@ protected:
 	{
 		AddIndexBuffer(std::make_unique<IndexBuffer>(std::forward<Params>(params)...));
 	}
-protected:
-	Graphics& gfx;
 private:
 	const IndexBuffer* pIndexBuffer = nullptr;
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;

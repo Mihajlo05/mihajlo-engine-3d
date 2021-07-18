@@ -2,8 +2,6 @@
 #include "Bindables/AllBindables.h"
 
 SolidDrawable::SolidDrawable(Graphics& gfx, IndexedTriangleList model)
-	:
-	DrawableBase(gfx)
 {
 	if (!IsStaticInitialized())
 	{

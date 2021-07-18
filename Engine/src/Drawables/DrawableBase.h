@@ -6,16 +6,16 @@ template<class T>
 class DrawableBase : public Drawable
 {
 public:
-	void Draw() const override
+	void Draw(Graphics& gfx) const override
 	{
 		for (auto& b : staticBindablePtrs)
 		{
 			b->Bind(gfx);
 		}
-		Drawable::Draw();
+		Drawable::Draw(gfx);
 	}
 protected:
-	DrawableBase(Graphics& gfx) : Drawable(gfx) {}
+	DrawableBase() = default;
 	bool IsStaticInitialized() const
 	{
 		return !staticBindablePtrs.empty();
