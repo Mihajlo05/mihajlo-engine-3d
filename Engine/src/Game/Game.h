@@ -3,6 +3,7 @@
 #include "Windows/Window.h"
 #include "Components/Timer.h"
 #include "Entities/DrawableEntity.h"
+#include "Entities/PointLight.h"
 
 class Game
 {
@@ -20,5 +21,6 @@ private:
 	Window wnd;
 	Graphics& gfx;
 	Timer timer;
+	PointLight light;
 	DrawableEntity entity;
 };

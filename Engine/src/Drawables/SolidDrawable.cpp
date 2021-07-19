@@ -3,10 +3,10 @@
 
 SolidDrawable::SolidDrawable(Graphics& gfx, IndexedTriangleList model)
 {
+	AddBindable<VertexBuffer>(gfx, model.vertices);
+	AddIndexBuffer(gfx, model.indices);
 	if (!IsStaticInitialized())
 	{
-		AddStaticBindable<VertexBuffer>(gfx, model.vertices);
-		AddStaticIndexBuffer(gfx, model.indices);
 		struct PSCBuf
 		{
 			float r, g, b, a;
@@ -23,10 +23,6 @@ SolidDrawable::SolidDrawable(Graphics& gfx, IndexedTriangleList model)
 
 		AddStaticBindable<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize());
 		AddStaticBindable<PrimitiveTopology>(model.d3dtype);
-	}
-	else
-	{
-		AddIndexBufferFromStatic();
 	}
 
 	AddBindable<TransformationConstantBuffer>(gfx, *this);

@@ -167,6 +167,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Bindables\Bindable.cpp" />
+    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp" />
@@ -206,9 +207,11 @@
   <ItemGroup>
     <ClInclude Include="src\Bindables\AllBindables.h" />
     <ClInclude Include="src\Bindables\Bindable.h" />
+    <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Entities\DrawableEntity.h" />
     <ClInclude Include="src\Entities\Entity.h" />
+    <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\imgui\imconfig.h" />

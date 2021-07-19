@@ -203,6 +203,8 @@
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Entities\Entity.h" />
     <ClInclude Include="src\Entities\DrawableEntity.h" />
+    <ClInclude Include="src\Drawables\PhongDrawable.h" />
+    <ClInclude Include="src\Entities\PointLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -291,6 +293,7 @@
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
+    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
