@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "Application.h"
 #include "Drawables/PhongDrawable.h"
 #include <cassert>
 
-Game::Game()
+Application::Application()
 	:
 	wnd(1280u, 720u, "Mihajlo Engine 3D"),
 	gfx(wnd.Gfx()),
@@ -15,7 +15,7 @@ Game::Game()
 	
 }
 
-void Game::Go()
+void Application::Go()
 {
 	const float dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
@@ -26,21 +26,21 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
-void Game::HandleMouseEvents(const Mouse::Event& e)
+void Application::HandleMouseEvents(const Mouse::Event& e)
 {
 }
 
-void Game::HandleKeyboardEvents(const Keyboard::Event& e)
+void Application::HandleKeyboardEvents(const Keyboard::Event& e)
 {
 }
 
-void Game::Update(float dt)
+void Application::Update(float dt)
 {
 	entity.SpawnControllWindow("Suzanne");
 	light.SpawnControllWindow("Sijalica");
 }
 
-void Game::Draw()
+void Application::Draw()
 {
 	light.Draw(gfx);
 	light.Bind(gfx);

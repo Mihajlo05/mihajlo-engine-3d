@@ -174,7 +174,7 @@
     <ClCompile Include="src\Drawables\Drawable.cpp" />
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
     <ClCompile Include="src\ErrorHandling\DxgiInfoManager.cpp" />
-    <ClCompile Include="src\Game\Game.cpp" />
+    <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\imgui\imgui_demo.cpp" />
@@ -229,7 +229,7 @@
     <ClInclude Include="src\Drawables\DrawableBase.h" />
     <ClInclude Include="src\ErrorHandling\dxerr.h" />
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
-    <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />

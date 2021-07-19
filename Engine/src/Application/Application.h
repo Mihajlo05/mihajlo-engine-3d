@@ -5,12 +5,12 @@
 #include "Entities/DrawableEntity.h"
 #include "Entities/PointLight.h"
 
-class Game
+class Application
 {
 public:
-	Game();
-	Game(const Game&) = delete;
-	Game& operator=(const Game&) = delete;
+	Application();
+	Application(const Application&) = delete;
+	Application& operator=(const Application&) = delete;
 	void Go();
 private:
 	void HandleMouseEvents(const Mouse::Event& e);

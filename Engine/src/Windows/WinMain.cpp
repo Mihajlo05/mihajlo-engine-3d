@@ -1,7 +1,6 @@
-#include "Game/Game.h"
+#include "Application/Application.h"
 #include "GDIPlusManager.h"
 #include "imgui/ImGuiManager.h"
-#include <optional>
 
 int CALLBACK WinMain(
 	HINSTANCE hInst,
@@ -14,7 +13,7 @@ int CALLBACK WinMain(
 	{
 		GDIPlusManager gpm;
 		ImGuiManager igm;
-		Game game;
+		Application game;
 
 		std::optional<int> ecode;
 

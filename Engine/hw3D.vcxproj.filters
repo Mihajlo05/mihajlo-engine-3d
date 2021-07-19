@@ -102,7 +102,7 @@
     <ClInclude Include="src\Components\Timer.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Game.h">
+    <ClInclude Include="src\Application\Application.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="src\ErrorHandling\dxerr.h">
@@ -222,7 +222,7 @@
     <ClCompile Include="src\Components\Timer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Game.cpp">
+    <ClCompile Include="src\Application\Application.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="src\ErrorHandling\dxerr.cpp">
