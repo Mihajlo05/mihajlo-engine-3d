@@ -8,11 +8,12 @@ Application::Application()
 	gfx(wnd.Gfx()),
 	light(gfx, { {0.2f, 0.2f, 0.2f}, {1.0f, 1.0f, 1.0f},
 		1.0f,
-		1.0f, 0.045f, 0.075f } ),
-	entity(std::make_unique<PhongDrawable>(gfx, IndexedTriangleList("src\\ModelFiles\\suzanne.obj"),
-		PhongDrawable::Material{ {1.0f, 1.0f, 1.0f}, 3.5f, 100.0f }))
+		1.0f, 0.045f, 0.075f } )
 {
-	
+	entityPtrs.push_back(std::make_unique<PhongDrawableEntity>(
+		std::make_unique<PhongDrawable>(gfx, IndexedTriangleList("src\\ModelFiles\\suzanne.obj"),
+		PhongDrawable::Material{ {1.0f, 1.0f, 1.0f}, 5.0f, 100.0f })));
+	eNames.push_back("Suzanne");
 }
 
 void Application::Go()
@@ -36,13 +37,19 @@ void Application::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Application::Update(float dt)
 {
-	entity.SpawnControllWindow("Suzanne");
 	light.SpawnControllWindow("Sijalica");
+	for (int i = 0; i < entityPtrs.size(); i++)
+	{
+		entityPtrs[i]->SpawnControllWindow(eNames[i]);
+	}
 }
 
 void Application::Draw()
 {
 	light.Draw(gfx);
-	light.Bind(gfx);
-	entity.Draw(gfx);
+	for (const auto& pe : entityPtrs)
+	{
+		light.Bind(gfx);
+		pe->Draw(gfx);
+	}
 }

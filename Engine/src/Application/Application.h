@@ -2,7 +2,7 @@
 
 #include "Windows/Window.h"
 #include "Components/Timer.h"
-#include "Entities/DrawableEntity.h"
+#include "Entities/PhongDrawableEntity.h"
 #include "Entities/PointLight.h"
 
 class Application
@@ -22,5 +22,6 @@ private:
 	Graphics& gfx;
 	Timer timer;
 	PointLight light;
-	DrawableEntity entity;
+	std::vector<std::unique_ptr<DrawableEntity>> entityPtrs;
+	std::vector<std::string> eNames;
 };

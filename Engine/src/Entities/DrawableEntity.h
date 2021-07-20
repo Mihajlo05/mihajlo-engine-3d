@@ -16,6 +16,15 @@ public:
 		pModel->SetTransformation(GetTransform().GetMatrix());
 		pModel->Draw(gfx);
 	}
+protected:
+	Drawable& Model()
+	{
+		return *pModel;
+	}
+	const Drawable& Model() const
+	{
+		return *pModel;
+	}
 private:
 	std::unique_ptr<Drawable> pModel;
 };

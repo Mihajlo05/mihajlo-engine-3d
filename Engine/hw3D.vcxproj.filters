@@ -205,6 +205,7 @@
     <ClInclude Include="src\Entities\DrawableEntity.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
+    <ClInclude Include="src\Entities\PhongDrawableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
