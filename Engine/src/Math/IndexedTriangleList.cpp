@@ -48,7 +48,7 @@ IndexedTriangleList::IndexedTriangleList(const aiMesh& mesh)
 	}
 }
 
-IndexedTriangleList::IndexedTriangleList(const std::string& filename)
+IndexedTriangleList::IndexedTriangleList(const std::string& filename, int meshIndex)
 {
 	using namespace DirectX;
 	
@@ -56,7 +56,7 @@ IndexedTriangleList::IndexedTriangleList(const std::string& filename)
 	const aiScene* pModel = imp.ReadFile(filename, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
 	assert(pModel != nullptr);
 	
-	const aiMesh* pMesh = pModel->mMeshes[0];
+	const aiMesh* pMesh = pModel->mMeshes[meshIndex];
 
 	*this = IndexedTriangleList(*pMesh);
 }

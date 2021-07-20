@@ -206,6 +206,8 @@
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Entities\PhongDrawableEntity.h" />
+    <ClInclude Include="src\Model\Model.h" />
+    <ClInclude Include="src\Entities\ModelEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -295,6 +297,7 @@
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
+    <ClCompile Include="src\Model\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

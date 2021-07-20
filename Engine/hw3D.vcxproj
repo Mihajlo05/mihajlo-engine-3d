@@ -184,6 +184,7 @@
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
+    <ClCompile Include="src\Model\Model.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Bindables\IndexBuffer.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Entities\DrawableEntity.h" />
     <ClInclude Include="src\Entities\Entity.h" />
+    <ClInclude Include="src\Entities\ModelEntity.h" />
     <ClInclude Include="src\Entities\PhongDrawableEntity.h" />
     <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Math\Vertex.h" />
@@ -232,6 +234,7 @@
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
+    <ClInclude Include="src\Model\Model.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />
