@@ -24,8 +24,9 @@ private:
         Data other;
     };
 public:
-    PointLight(Graphics& gfx, Data data)
+    PointLight(Graphics& gfx, Data data, const std::string& name)
         :
+        Entity(name),
         model(gfx, IndexedTriangleList("src\\ModelFiles\\sphere.obj"),
             { data.diffuseColor.x * data.diffuseIntensity,
               data.diffuseColor.y * data.diffuseIntensity,
@@ -52,11 +53,11 @@ public:
         model.SetTransformation(GetTransform().GetMatrix());
         model.Draw(gfx);
     }
-    void SpawnControllWindow(const std::string& wndName) override
+    void SpawnControllWindow() override
     {
-        Entity::SpawnControllWindow(wndName);
+        Entity::SpawnControllWindow();
 
-        if (ImGui::Begin(wndName.c_str()))
+        if (ImGui::Begin(GetName().c_str()))
         {
             ImGui::ColorPicker3("Ambijent", &data.ambient.x);
             ImGui::ColorPicker3("Boja", &data.diffuseColor.x);

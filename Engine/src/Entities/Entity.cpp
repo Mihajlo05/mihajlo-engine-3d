@@ -3,6 +3,11 @@
 
 namespace dx = DirectX;
 
+Entity::Entity(const std::string& name)
+	:
+	name(name)
+{ }
+
 Transform Entity::GetTransform() const
 {
 	return transf;
@@ -13,9 +18,9 @@ void Entity::SetTransform(const Transform& transf)
 	this->transf = transf;
 }
 
-void Entity::SpawnControllWindow(const std::string& wndName)
+void Entity::SpawnControllWindow()
 {
-	if (ImGui::Begin(wndName.c_str()))
+	if (ImGui::Begin(name.c_str()))
 	{
 		float3 pos;
 		dx::XMStoreFloat3(&pos, transf.pos);
@@ -36,4 +41,14 @@ void Entity::SpawnControllWindow(const std::string& wndName)
 		transf.rot = dx::XMLoadFloat3(&rot);
 	}
 	ImGui::End();
+}
+
+std::string Entity::GetName() const
+{
+	return name;
+}
+
+void Entity::SetName(const std::string& name)
+{
+	this->name = name;
 }

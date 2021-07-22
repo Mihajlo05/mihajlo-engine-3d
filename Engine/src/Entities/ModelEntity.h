@@ -6,8 +6,9 @@
 class ModelEntity : public Entity
 {
 public:
-	ModelEntity(Graphics& gfx, const std::string& filename)
+	ModelEntity(Graphics& gfx, const std::string& filename, const std::string& name)
 		:
+		Entity(name),
 		model(gfx, filename)
 	{ }
 	void Draw(Graphics& gfx) override
@@ -15,10 +16,10 @@ public:
 		model.SetTransform(GetTransform().GetMatrix());
 		model.Draw(gfx);
 	}
-	void SpawnControllWindow(const std::string& wndName) override
+	void SpawnControllWindow() override
 	{
-		Entity::SpawnControllWindow(wndName);
-		model.SpawnNodeTree(wndName);
+		Entity::SpawnControllWindow();
+		model.SpawnNodeTree(GetName());
 	}
 private:
 	Model model;

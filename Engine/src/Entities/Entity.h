@@ -8,15 +8,19 @@
 class Entity
 {
 public:
-	Entity() = default;
+	Entity(const std::string& name);
 	Transform GetTransform() const;
 	void SetTransform(const Transform& transf);
-	virtual void SpawnControllWindow(const std::string& wndName);
+	virtual void SpawnControllWindow();
 
 	virtual void HandleMouseEvents(const Mouse::Event& e) { }
 	virtual void HandleKeyboardEvents(const Keyboard::Event& e) { }
 	virtual void Update(float dt, Keyboard& kbd, Mouse& mouse) { }
 	virtual void Draw(Graphics& gfx) { }
+
+	std::string GetName() const;
+	void SetName(const std::string& name);
 private:
 	Transform transf;
+	std::string name;
 };

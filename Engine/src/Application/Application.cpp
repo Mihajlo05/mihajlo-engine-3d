@@ -8,8 +8,8 @@ Application::Application()
 	gfx(wnd.Gfx()),
 	light(gfx, { {0.2f, 0.2f, 0.2f}, {1.0f, 1.0f, 1.0f},
 		1.0f,
-		1.0f, 0.045f, 0.075f } ),
-	entity(gfx, "src\\ModelFiles\\nano.gltf")
+		1.0f, 0.045f, 0.075f }, "Sijalica"),
+	entity(gfx, "src\\ModelFiles\\nano.gltf", "NanoSuit")
 {
 	entity.SetTransform(entity.GetTransform().Translate(float3{ 0.0f, -7.5f, 10.0f }));
 	entity.SetTransform(entity.GetTransform().Rotate(float3{ PI / 2, 0, 0 }));
@@ -37,8 +37,8 @@ void Application::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Application::Update(float dt)
 {
-	light.SpawnControllWindow("Sijalica");
-	entity.SpawnControllWindow("NanoSuit");
+	light.SpawnControllWindow();
+	entity.SpawnControllWindow();
 }
 
 void Application::Draw()
