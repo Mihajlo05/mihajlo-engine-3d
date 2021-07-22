@@ -15,6 +15,11 @@ public:
 		model.SetTransform(GetTransform().GetMatrix());
 		model.Draw(gfx);
 	}
+	void SpawnControllWindow(const std::string& wndName) override
+	{
+		Entity::SpawnControllWindow(wndName);
+		model.SpawnNodeTree(wndName);
+	}
 private:
 	Model model;
 };

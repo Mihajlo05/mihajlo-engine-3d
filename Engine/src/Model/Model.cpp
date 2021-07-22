@@ -1,11 +1,13 @@
 #include "Model.h"
 #include "Math/IndexedTriangleList.h"
 #include "Drawables/PhongDrawable.h"
+#include "imgui/imgui.h"
 
-Model::Node::Node(const std::vector<Drawable*>& meshPtrs, fmatrix transf)
+Model::Node::Node(const std::vector<Drawable*>& meshPtrs, fmatrix transf, const std::string& name)
 	:
 	meshPtrs(meshPtrs),
-	transf(transf)
+	transf(transf),
+	name(name)
 { }
 
 void Model::Node::Draw(Graphics& gfx, fmatrix prevTransfs) const
@@ -28,6 +30,18 @@ void Model::Node::AddChild(const Node& node)
 	childs.push_back(node);
 }
 
+void Model::Node::SpawnNodeTree() const
+{
+	if (ImGui::TreeNode(name.c_str()))
+	{
+		for (const auto& node : childs)
+		{
+			node.SpawnNodeTree();
+		}
+		ImGui::TreePop();
+	}
+}
+
 Model::Model(Graphics& gfx, const std::string& filename)
 {
 	transf = DirectX::XMMatrixIdentity();
@@ -37,7 +51,7 @@ Model::Model(Graphics& gfx, const std::string& filename)
 	assert(pModel != nullptr);
 
 	meshPtrs.reserve(pModel->mNumMeshes);
-	for (int i = 0; i < pModel->mNumMeshes; i++)
+	for (int i = 0; i < (int)pModel->mNumMeshes; i++)
 	{
 		meshPtrs.push_back(ParseMesh(*pModel->mMeshes[i], gfx));
 	}
@@ -65,6 +79,15 @@ matrix Model::GetTransform() const
 	return transf;
 }
 
+void Model::SpawnNodeTree(const std::string& wndName) const
+{
+	if (ImGui::Begin(wndName.c_str()))
+	{
+		pRoot->SpawnNodeTree();
+	}
+	ImGui::End();
+}
+
 std::unique_ptr<Drawable> Model::ParseMesh(const aiMesh& amesh, Graphics& gfx)
 {
 	IndexedTriangleList itl = amesh;
@@ -79,14 +102,14 @@ std::unique_ptr<Model::Node> Model::ParseNode(const aiNode& anode)
 
 	std::vector<Drawable*> curMeshPtrs;
 	curMeshPtrs.reserve(anode.mNumMeshes);
-	for (int i = 0; i < anode.mNumMeshes; i++)
+	for (int i = 0; i < (int)anode.mNumMeshes; i++)
 	{
 		curMeshPtrs.push_back(meshPtrs.at(anode.mMeshes[i]).get());
 	}
 
-	auto pNode = std::make_unique<Node>(curMeshPtrs, transf);
+	auto pNode = std::make_unique<Node>(curMeshPtrs, transf, anode.mName.C_Str());
 
-	for (int i = 0; i < anode.mNumChildren; i++)
+	for (int i = 0; i < (int)anode.mNumChildren; i++)
 	{
 		pNode->AddChild(*ParseNode(*anode.mChildren[i]));
 	}

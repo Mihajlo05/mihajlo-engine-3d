@@ -10,16 +10,18 @@ class Model
 private:
 	class Node
 	{
-		friend class Model;
+		friend Model;
 	public:
-		Node(const std::vector<Drawable*>& meshPtrs, fmatrix transf);
+		Node(const std::vector<Drawable*>& meshPtrs, fmatrix transf, const std::string& name);
 		void Draw(Graphics& gfx, fmatrix prevTransfs) const;
 	private:
 		void AddChild(const Node& node);
+		void SpawnNodeTree() const;
 	private:
 		std::vector<Drawable*> meshPtrs;
 		std::vector<Node> childs;
 		matrix transf;
+		std::string name;
 	};
 public:
 	Model(Graphics& gfx, const std::string& filename);
@@ -27,6 +29,7 @@ public:
 	void SetTransform(fmatrix t);
 	void Transform(fmatrix t);
 	matrix GetTransform() const;
+	void SpawnNodeTree(const std::string& wndName) const;
 private:
 	static std::unique_ptr<Drawable> ParseMesh(const aiMesh& amesh, Graphics& gfx);
 	std::unique_ptr<Node> ParseNode(const aiNode& anode);
