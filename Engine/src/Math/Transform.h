@@ -2,7 +2,8 @@
 
 #include "MihajloMath.h"
 
-struct Transform
+struct Transform //this should be used instead of matrix when rotation and scaling should always be around origin point, not around origin point of the world
+				 // aka transformation doesn't depend on order of multiplication, as it's always: scalig * roll * pitch * yaw * translation
 {
 	DXVec pos;
 	DXVec rot;
