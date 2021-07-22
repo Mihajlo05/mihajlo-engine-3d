@@ -11,6 +11,8 @@ Application::Application()
 		1.0f, 0.045f, 0.075f } ),
 	entity(gfx, "src\\ModelFiles\\nanosuit.obj")
 {
+	entity.SetTransform(entity.GetTransform().Translate(float3{ 0.0f, -7.5f, 10.0f }));
+	light.SetTransform(light.GetTransform().Translate(float3{ -3, 4, 5 }));
 }
 
 void Application::Go()
