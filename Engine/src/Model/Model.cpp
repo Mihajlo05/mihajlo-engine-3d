@@ -25,18 +25,44 @@ void Model::Node::Draw(Graphics& gfx, fmatrix prevTransfs) const
 	}
 }
 
+std::string Model::Node::GetName() const
+{
+	return name;
+}
+
+void Model::Node::SetName(const std::string& name)
+{
+	this->name = name;
+}
+
 void Model::Node::AddChild(const Node& node)
 {
 	childs.push_back(node);
 }
 
-void Model::Node::SpawnNodeTree() const
+void Model::Node::SpawnNodeTree(int& nodeIndexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode) const
 {
-	if (ImGui::TreeNode(name.c_str()))
+	int curIndex = nodeIndexTracker;
+	nodeIndexTracker++;
+
+	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
+	if (curIndex == selectedIndex.value_or(-1))
 	{
+		flags |= ImGuiTreeNodeFlags_Selected;
+		pSelectedNode = const_cast<Node*>(this);
+	}
+	if (childs.empty()) flags |= ImGuiTreeNodeFlags_Leaf;
+
+	if (ImGui::TreeNodeEx(name.c_str(), flags))
+	{
+		if (ImGui::IsItemClicked(ImGuiMouseButton_Left))
+		{
+			selectedIndex = curIndex;
+		}
+
 		for (const auto& node : childs)
 		{
-			node.SpawnNodeTree();
+			node.SpawnNodeTree(nodeIndexTracker, selectedIndex, pSelectedNode);
 		}
 		ImGui::TreePop();
 	}
@@ -83,9 +109,28 @@ void Model::SpawnNodeTree(const std::string& wndName) const
 {
 	if (ImGui::Begin(wndName.c_str()))
 	{
-		pRoot->SpawnNodeTree();
+		pSelectedNode = nullptr;
+		int nodeIndexTracker = 0;
+		pRoot->SpawnNodeTree(nodeIndexTracker, selectedNodeIndex, pSelectedNode);
 	}
 	ImGui::End();
+}
+
+bool Model::IsAnyNodeSelected() const
+{
+	return pSelectedNode != nullptr;
+}
+
+Model::Node& Model::SelectedNode()
+{
+	assert(IsAnyNodeSelected());
+	return *pSelectedNode;
+}
+
+const Model::Node& Model::SelectedNode() const
+{
+	assert(IsAnyNodeSelected());
+	return *pSelectedNode;
 }
 
 std::unique_ptr<Drawable> Model::ParseMesh(const aiMesh& amesh, Graphics& gfx)
