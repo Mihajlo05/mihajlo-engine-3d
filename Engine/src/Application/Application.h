@@ -2,7 +2,8 @@
 
 #include "Windows/Window.h"
 #include "Timer/Timer.h"
-#include "Nodes/Mesh/Mesh.h"
+#include "Nodes/Meshes/Mesh.h"
+#include "Nodes/PointLights/PointLight.h"
 
 class Application
 {
@@ -21,4 +22,5 @@ private:
 	Graphics& gfx;
 	Timer timer;
 	Node suzanne;
+	PointLight light;
 };

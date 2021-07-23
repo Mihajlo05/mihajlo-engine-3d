@@ -53,7 +53,7 @@ IndexedTriangleList::IndexedTriangleList(const std::string& filename, int meshIn
 	using namespace DirectX;
 	
 	Assimp::Importer imp;
-	const aiScene* pModel = imp.ReadFile(filename, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices);
+	const aiScene* pModel = imp.ReadFile(filename, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenNormals);
 	assert(pModel != nullptr);
 	
 	const aiMesh* pMesh = pModel->mMeshes[meshIndex];

@@ -1,6 +1,6 @@
 #include "Application/Application.h"
 #include "GDIPlusManager.h"
-#include "imgui/ImGuiManager.h"
+#include "Gui/imgui/ImGuiManager.h"
 
 int CALLBACK WinMain(
 	HINSTANCE hInst,

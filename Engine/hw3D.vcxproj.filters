@@ -189,21 +189,23 @@
     <ClInclude Include="src\Math\Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="src\imgui\imgui_internal.h" />
-    <ClInclude Include="src\imgui\imstb_rectpack.h" />
-    <ClInclude Include="src\imgui\imstb_textedit.h" />
-    <ClInclude Include="src\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\imgui\imconfig.h" />
-    <ClInclude Include="src\imgui\imgui.h" />
-    <ClInclude Include="src\imgui\imgui_impl_dx11.h" />
-    <ClInclude Include="src\imgui\imgui_impl_win32.h" />
-    <ClInclude Include="src\imgui\ImGuiManager.h" />
+    <ClInclude Include="src\Gui\imgui\imgui_internal.h" />
+    <ClInclude Include="src\Gui\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\Gui\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\Gui\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\Gui\imgui\imconfig.h" />
+    <ClInclude Include="src\Gui\imgui\imgui.h" />
+    <ClInclude Include="src\Gui\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\Gui\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="src\Gui\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Nodes\Node.h" />
-    <ClInclude Include="src\Nodes\Mesh\Mesh.h" />
+    <ClInclude Include="src\Nodes\Meshes\Mesh.h" />
+    <ClInclude Include="src\assimp.h" />
+    <ClInclude Include="src\Nodes\PointLights\PointLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -281,19 +283,19 @@
     <ClCompile Include="src\Bindables\Sampler.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\imgui\imgui_draw.cpp" />
-    <ClCompile Include="src\imgui\imgui_tables.cpp" />
-    <ClCompile Include="src\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\imgui\imgui.cpp" />
-    <ClCompile Include="src\imgui\imgui_demo.cpp" />
-    <ClCompile Include="src\imgui\imgui_impl_win32.cpp" />
-    <ClCompile Include="src\imgui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="src\imgui\ImGuiManager.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_tables.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\Gui\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\Gui\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
-    <ClCompile Include="src\Nodes\Mesh\Mesh.cpp" />
+    <ClCompile Include="src\Nodes\Meshes\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
