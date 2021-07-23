@@ -169,7 +169,6 @@
     <ClCompile Include="src\Bindables\Bindable.cpp" />
     <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
-    <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
@@ -184,7 +183,6 @@
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
-    <ClCompile Include="src\Model\Model.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Bindables\IndexBuffer.cpp" />
@@ -197,7 +195,7 @@
     <ClCompile Include="src\Bindables\Sampler.cpp" />
     <ClCompile Include="src\Graphics\Surface.cpp" />
     <ClCompile Include="src\Bindables\Texture2D.cpp" />
-    <ClCompile Include="src\Components\Timer.cpp" />
+    <ClCompile Include="src\Timer\Timer.cpp" />
     <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp" />
     <ClCompile Include="src\Bindables\VertexBuffer.cpp" />
     <ClCompile Include="src\Bindables\VertexShader.cpp" />
@@ -210,11 +208,6 @@
     <ClInclude Include="src\Bindables\Bindable.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
-    <ClInclude Include="src\Entities\DrawableEntity.h" />
-    <ClInclude Include="src\Entities\Entity.h" />
-    <ClInclude Include="src\Entities\ModelEntity.h" />
-    <ClInclude Include="src\Entities\PhongDrawableEntity.h" />
-    <ClInclude Include="src\Entities\PointLight.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\imgui\imconfig.h" />
@@ -234,7 +227,6 @@
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
-    <ClInclude Include="src\Model\Model.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />
@@ -252,7 +244,7 @@
     <ClInclude Include="src\Bindables\Sampler.h" />
     <ClInclude Include="src\Graphics\Surface.h" />
     <ClInclude Include="src\Bindables\Texture2D.h" />
-    <ClInclude Include="src\Components\Timer.h" />
+    <ClInclude Include="src\Timer\Timer.h" />
     <ClInclude Include="src\Math\Transform.h" />
     <ClInclude Include="src\Bindables\TransformationConstantBuffer.h" />
     <ClInclude Include="src\Bindables\VertexBuffer.h" />

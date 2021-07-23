@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Windows/Window.h"
-#include "Components/Timer.h"
-#include "Entities/PointLight.h"
-#include "Entities/ModelEntity.h"
+#include "Timer/Timer.h"
 
 class Application
 {
@@ -21,6 +19,4 @@ private:
 	Window wnd;
 	Graphics& gfx;
 	Timer timer;
-	PointLight light;
-	ModelEntity entity;
 };

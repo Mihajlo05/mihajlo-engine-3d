@@ -99,7 +99,7 @@
     <ClInclude Include="src\Windows\Mouse.h">
       <Filter>Windows\Input</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components\Timer.h">
+    <ClInclude Include="src\Timer\Timer.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="src\Application\Application.h">
@@ -201,13 +201,7 @@
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
-    <ClInclude Include="src\Entities\Entity.h" />
-    <ClInclude Include="src\Entities\DrawableEntity.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
-    <ClInclude Include="src\Entities\PointLight.h" />
-    <ClInclude Include="src\Entities\PhongDrawableEntity.h" />
-    <ClInclude Include="src\Model\Model.h" />
-    <ClInclude Include="src\Entities\ModelEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -222,7 +216,7 @@
     <ClCompile Include="src\Windows\Mouse.cpp">
       <Filter>Windows\Input</Filter>
     </ClCompile>
-    <ClCompile Include="src\Components\Timer.cpp">
+    <ClCompile Include="src\Timer\Timer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="src\Application\Application.cpp">
@@ -295,9 +289,7 @@
     <ClCompile Include="src\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
-    <ClCompile Include="src\Entities\Entity.cpp" />
     <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
-    <ClCompile Include="src\Model\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
