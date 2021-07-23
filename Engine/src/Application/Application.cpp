@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Drawables/PhongDrawable.h"
 #include <cassert>
+#include "Math/IndexedTriangleList.h"
 
 //{ {0.2f, 0.2f, 0.2f}, {1.0f, 1.0f, 1.0f},
 //1.0f,
@@ -9,8 +10,11 @@
 Application::Application()
 	:
 	wnd(1280u, 720u, "Mihajlo Engine 3D"),
-	gfx(wnd.Gfx())
+	gfx(wnd.Gfx()),
+	suzanne("Suzanne")
 {
+	suzanne.SetTransform(suzanne.GetTransform().Translate(float3{ 0, 0, 10 }));
+	suzanne.AddChild(std::make_unique<MeshInstance>(gfx, IndexedTriangleList("src\\Models\\suzanne.obj"), "Model"));
 }
 
 void Application::Go()
@@ -34,8 +38,10 @@ void Application::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Application::Update(float dt)
 {
+	suzanne.Update(dt);
 }
 
 void Application::Draw()
 {
+	suzanne.Draw(gfx);
 }

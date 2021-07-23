@@ -2,6 +2,7 @@
 
 #include "Windows/Window.h"
 #include "Timer/Timer.h"
+#include "Nodes/Mesh/Mesh.h"
 
 class Application
 {
@@ -19,4 +20,5 @@ private:
 	Window wnd;
 	Graphics& gfx;
 	Timer timer;
+	Node suzanne;
 };

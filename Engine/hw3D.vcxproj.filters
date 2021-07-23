@@ -202,6 +202,8 @@
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
+    <ClInclude Include="src\Nodes\Node.h" />
+    <ClInclude Include="src\Nodes\Mesh\Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -290,6 +292,8 @@
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
     <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
+    <ClCompile Include="src\Nodes\Node.cpp" />
+    <ClCompile Include="src\Nodes\Mesh\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
@@ -311,7 +315,6 @@
     <None Include="src\ErrorHandling\DXTrace.inl">
       <Filter>ErrorHandling\DxErr</Filter>
     </None>
-    <None Include="imgui.ini" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="src\Shaders\PhongVS.hlsl" />

@@ -183,6 +183,8 @@
     <ClCompile Include="src\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
+    <ClCompile Include="src\Nodes\Mesh\Mesh.cpp" />
+    <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
     <ClCompile Include="src\Bindables\IndexBuffer.cpp" />
@@ -227,6 +229,8 @@
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
+    <ClInclude Include="src\Nodes\Mesh\Mesh.h" />
+    <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />
@@ -260,7 +264,6 @@
     <Image Include="src\Resources\logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="imgui.ini" />
     <None Include="src\ErrorHandling\DXGetErrorDescription.inl" />
     <None Include="src\ErrorHandling\DXGetErrorString.inl" />
     <None Include="src\ErrorHandling\DXTrace.inl" />
