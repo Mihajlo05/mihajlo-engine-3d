@@ -1,5 +1,6 @@
 #include "Node.h"
 #include "Math/MihajloMath.h"
+#include "Gui/imgui/imgui.h"
 
 Node::Node(const std::string& name)
 	:
@@ -92,4 +93,16 @@ void Node::_Draw(Graphics& gfx) const
 void Node::SetPrevTranfs(fmatrix prevTranfs)
 {
 	this->prevTranfs = prevTranfs;
+}
+
+void Node::RenderGuiTree() const
+{
+	if (ImGui::TreeNode(name.c_str()))
+	{
+		for (const auto& pChild : childrens)
+		{
+			pChild->RenderGuiTree();
+		}
+		ImGui::TreePop();
+	}
 }

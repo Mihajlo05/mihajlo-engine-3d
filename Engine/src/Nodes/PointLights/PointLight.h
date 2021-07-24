@@ -17,7 +17,7 @@ public:
         float  attLin;
         float  attQuad;
     };
-private:
+public:
     struct CBufData
     {
         alignas(16) float3 camPos;

@@ -1,15 +1,6 @@
 #include "Mesh.h"
 #include "Drawables/PhongDrawable.h"
 
-MeshInstance::MeshInstance(Graphics& gfx, const IndexedTriangleList& itl, const std::string& name)
-	:
-	Node(name)
-{
-	pMesh = std::make_shared<PhongDrawable>(gfx,
-		itl,
-		PhongDrawable::Material{ {1.0f, 1.0f, 1.0f}, 4.0f, 100.0f });
-}
-
 MeshInstance::MeshInstance(std::shared_ptr<Drawable> pMesh, const std::string& name)
 	:
 	Node(name),

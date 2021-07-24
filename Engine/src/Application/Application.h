@@ -4,6 +4,7 @@
 #include "Timer/Timer.h"
 #include "Nodes/Meshes/Mesh.h"
 #include "Nodes/PointLights/PointLight.h"
+#include "Gui/Hierarchy.h"
 
 class Application
 {
@@ -21,6 +22,6 @@ private:
 	Window wnd;
 	Graphics& gfx;
 	Timer timer;
-	Node suzanne;
-	PointLight light;
+	Gui::Hierarchy hierarchy;
+	Node scene;
 };

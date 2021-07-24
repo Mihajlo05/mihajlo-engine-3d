@@ -8,8 +8,14 @@
 #include "Windows/Keyboard.h"
 #include "Graphics/Graphics.h"
 
+namespace Gui
+{
+	class Hierarchy;
+}
+
 class Node
 {
+	friend Gui::Hierarchy;
 private:
 	using ChildrenList = std::vector<std::unique_ptr<Node>>;
 public:
@@ -31,6 +37,8 @@ protected:
 protected:
 	void SetPrevTranfs(fmatrix prevTranfs);
 	matrix GetPrevTranfs() const { return prevTranfs; }
+private:
+	void RenderGuiTree() const;
 protected:
 	ChildrenList childrens;
 private:

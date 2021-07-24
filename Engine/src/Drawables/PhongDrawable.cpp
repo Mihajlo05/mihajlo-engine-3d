@@ -28,6 +28,20 @@ PhongDrawable::PhongDrawable(Graphics& gfx, IndexedTriangleList model, Material 
 	AddBindable<TransformationConstantBuffer>(gfx, *this);
 }
 
+void PhongDrawable::Draw(Graphics& gfx) const
+{
+	if (pLight != nullptr)
+	{
+		pLight->Bind(gfx);
+	}
+	DrawableBase::Draw(gfx);
+}
+
+void PhongDrawable::SetLight(const PointLight& pcb)
+{
+	pLight = &pcb;
+}
+
 void PhongDrawable::SetMaterial(Material m)
 {
 	assert(pMaterialBuf != nullptr);

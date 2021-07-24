@@ -8,7 +8,6 @@
 class MeshInstance : public Node
 {
 public:
-	MeshInstance(Graphics& gfx, const IndexedTriangleList& itl, const std::string& name);
 	MeshInstance(std::shared_ptr<Drawable> pMesh, const std::string& name);
 	virtual ~MeshInstance() = default;
 private:
