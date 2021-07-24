@@ -183,6 +183,7 @@
     <ClCompile Include="src\Gui\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="src\Gui\imgui\imgui_tables.cpp" />
     <ClCompile Include="src\Gui\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Nodes\Meshes\Mesh.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="src\Drawables\PhongDrawable.h" />
     <ClInclude Include="src\Drawables\SolidDrawable.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
+    <ClInclude Include="src\Gui\Inspector.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\Gui\imgui\imconfig.h" />

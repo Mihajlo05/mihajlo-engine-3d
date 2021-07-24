@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "Math/MihajloMath.h"
 #include "Gui/imgui/imgui.h"
+#include "Gui/Inspector.h"
 
 Node::Node(const std::string& name)
 	:
@@ -95,13 +96,41 @@ void Node::SetPrevTranfs(fmatrix prevTranfs)
 	this->prevTranfs = prevTranfs;
 }
 
-void Node::RenderGuiTree() const
+void Node::ShowOnInspector()
 {
-	if (ImGui::TreeNode(name.c_str()))
+	float3 pos;
+	DirectX::XMStoreFloat3(&pos, transf.pos);
+	float3 rot;
+	DirectX::XMStoreFloat3(&rot, transf.rot);
+	float3 scale;
+	DirectX::XMStoreFloat3(&scale, transf.scale);
+	ImGui::InputFloat3("Pozicija", &pos.x);
+	ImGui::SliderFloat3("Rotacija", &rot.x, -180.0f, 180.0f, "%.0f deg");
+	ImGui::InputFloat3("Scale", &scale.x);
+
+	transf = Transform().Rotate(rot).Translate(pos);
+	transf.scale = DirectX::XMLoadFloat3(&scale);
+}
+
+void Node::RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode)
+{
+	int curIndex = indexTracker;
+	indexTracker++;
+
+	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
+	if (childrens.empty()) flags |= ImGuiTreeNodeFlags_Leaf;
+	if (curIndex == selectedIndex.value_or(-1)) flags |= ImGuiTreeNodeFlags_Selected;
+
+	if (ImGui::TreeNodeEx(name.c_str(), flags))
 	{
+		if (ImGui::IsItemClicked())
+		{
+			selectedIndex = curIndex;
+			pSelectedNode = this;
+		}
 		for (const auto& pChild : childrens)
 		{
-			pChild->RenderGuiTree();
+			pChild->RenderGuiTree(indexTracker, selectedIndex, pSelectedNode);
 		}
 		ImGui::TreePop();
 	}

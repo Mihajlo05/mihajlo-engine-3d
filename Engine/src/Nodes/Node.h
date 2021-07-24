@@ -7,15 +7,18 @@
 #include "Windows/Mouse.h"
 #include "Windows/Keyboard.h"
 #include "Graphics/Graphics.h"
+#include <optional>
 
 namespace Gui
 {
 	class Hierarchy;
+	class Inspector;
 }
 
 class Node
 {
 	friend Gui::Hierarchy;
+	friend Gui::Inspector;
 private:
 	using ChildrenList = std::vector<std::unique_ptr<Node>>;
 public:
@@ -29,7 +32,7 @@ public:
 	void Update(float dt);
 	void Draw(Graphics& gfx) const;
 	virtual ~Node() = default;
-protected:
+private:
 	virtual void _HandleMouseEvents(const Mouse::Event& e);
 	virtual void _HandleKeyboardEvents(const Keyboard::Event& e);
 	virtual void _Update(float dt);
@@ -38,7 +41,8 @@ protected:
 	void SetPrevTranfs(fmatrix prevTranfs);
 	matrix GetPrevTranfs() const { return prevTranfs; }
 private:
-	void RenderGuiTree() const;
+	void ShowOnInspector(); //used by inspector
+	void RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode); //Used by hierarchy
 protected:
 	ChildrenList childrens;
 private:

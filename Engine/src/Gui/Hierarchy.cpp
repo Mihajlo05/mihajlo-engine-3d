@@ -3,13 +3,16 @@
 
 namespace Gui
 {
-	void Hierarchy::SpawnWindow() const
+	void Hierarchy::SpawnWindow()
 	{
 		if (ImGui::Begin(wndName))
 		{
-			pRoot->RenderGuiTree();
+			int nodeIndexTracker = 0;
+			static std::optional<int> selectedIndex;
+			pRoot->RenderGuiTree(nodeIndexTracker, selectedIndex, pSelectedNode);
 		}
 		ImGui::End();
+		inspector.SpawnWindow(pSelectedNode);
 	}
 
 	void Hierarchy::SetRoot(Node& node)

@@ -1,17 +1,22 @@
 #pragma once
 
 #include "Nodes/Node.h"
+#include "Inspector.h"
+#include <optional>
 
 namespace Gui
 {
 	class Hierarchy
 	{
 	public:
-		void SpawnWindow() const; //not needed if window is not empty, as putting something in the window will also create window
+		void SpawnWindow();
 		void SetRoot(Node& node);
 		const Node* GetRoot() const;
 	private:
-		static constexpr const char* wndName = "Hijerarhija";
 		Node* pRoot = nullptr;
+		Node* pSelectedNode = nullptr;
+		Inspector inspector;
+	public:
+		static constexpr const char* wndName = "Hijerarhija";
 	};
 }
