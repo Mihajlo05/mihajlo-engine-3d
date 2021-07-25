@@ -4,6 +4,7 @@
 #include "Bindables/PixelConstantBuffer.h"
 #include "Nodes/Meshes/Mesh.h"
 #include "Drawables/SolidDrawable.h"
+#include "Gui/imgui/imgui.h"
 
 class PointLight : public Node
 {
@@ -51,6 +52,18 @@ public:
 
         cbuf.Update(gfx, cbufd);
         cbuf.Bind(gfx);
+    }
+    virtual ~PointLight() = default;
+protected:
+    virtual void ShowOnInspector() override
+    {
+        ImGui::ColorPicker3("Ambijent", &data.ambient.x);
+        ImGui::ColorPicker3("Boja", &data.diffuseColor.x);
+        ImGui::SliderFloat("Intezitet", &data.diffuseIntensity, 0, 1);
+        ImGui::InputFloat3("Atenuacija", &data.attConst);
+
+        ImGui::NewLine();
+        Node::ShowOnInspector();
     }
 private:
     SolidDrawable* pMesh = nullptr;

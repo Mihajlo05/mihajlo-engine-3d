@@ -1,8 +1,8 @@
 #include "Graphics.h"
 #include "ErrorHandling/dxerr.h"
 #include <sstream>
-#include "imgui/imgui_impl_dx11.h"
-#include "imgui/imgui_impl_win32.h"
+#include "Gui/imgui/imgui_impl_dx11.h"
+#include "Gui/imgui/imgui_impl_win32.h"
 #include "Surface.h"
 
 #pragma comment(lib, "d3d11.lib")

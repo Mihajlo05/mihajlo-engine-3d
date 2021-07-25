@@ -40,8 +40,9 @@ private:
 protected:
 	void SetPrevTranfs(fmatrix prevTranfs);
 	matrix GetPrevTranfs() const { return prevTranfs; }
+protected:
+	virtual void ShowOnInspector(); //Used by inspector
 private:
-	void ShowOnInspector(); //used by inspector
 	void RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode); //Used by hierarchy
 protected:
 	ChildrenList childrens;

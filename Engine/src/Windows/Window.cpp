@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Resources/resource.h"
 #include <sstream>
-#include "imgui\imgui_impl_win32.h"
+#include "Gui\imgui\imgui_impl_win32.h"
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 

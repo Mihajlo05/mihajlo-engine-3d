@@ -4,6 +4,7 @@
 
 constexpr float PI = 3.14159265f;
 constexpr double PI_D = 3.1415926535897932;
+constexpr float deg2rad = PI / 180.0f;
 
 using float2 = DirectX::XMFLOAT2;
 using float3 = DirectX::XMFLOAT3;

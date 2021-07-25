@@ -105,10 +105,16 @@ void Node::ShowOnInspector()
 	float3 scale;
 	DirectX::XMStoreFloat3(&scale, transf.scale);
 	ImGui::InputFloat3("Pozicija", &pos.x);
-	ImGui::SliderFloat3("Rotacija", &rot.x, -180.0f, 180.0f, "%.0f deg");
+
+	ImGui::Text("Rotacija");
+	ImGui::SliderAngle("Roll", &rot.z);
+	ImGui::SliderAngle("Pitch", &rot.x);
+	ImGui::SliderAngle("Yaw", &rot.y);
+
 	ImGui::InputFloat3("Scale", &scale.x);
 
-	transf = Transform().Rotate(rot).Translate(pos);
+	transf.pos = DirectX::XMLoadFloat3(&pos);
+	transf.rot = DirectX::XMLoadFloat3(&rot);
 	transf.scale = DirectX::XMLoadFloat3(&scale);
 }
 
