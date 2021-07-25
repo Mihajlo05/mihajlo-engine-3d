@@ -1,11 +1,11 @@
 #include "ImGuiManager.h"
-#include "imgui/imgui.h"
+#include "imgui.h"
 
 ImGuiManager::ImGuiManager()
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	ImGui::StyleColorsDark();
+	ImGui::StyleColorsClassic();
 }
 
 ImGuiManager::~ImGuiManager()

@@ -77,10 +77,6 @@ void Graphics::BeginFrame(float r, float g, float b)
 		ImGui_ImplDX11_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
-	}
-
-	if (isGuiEnabled)
-	{
 		ImGui::DockSpaceOverViewport();
 	}
 
