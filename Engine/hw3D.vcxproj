@@ -185,6 +185,7 @@
     <ClCompile Include="src\Gui\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
+    <ClCompile Include="src\Models\Model.cpp" />
     <ClCompile Include="src\Nodes\Meshes\Mesh.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
+    <ClInclude Include="src\Models\Model.h" />
     <ClInclude Include="src\Nodes\Meshes\Mesh.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\Nodes\PointLights\PointLight.h" />

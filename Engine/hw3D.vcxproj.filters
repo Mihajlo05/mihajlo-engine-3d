@@ -208,6 +208,7 @@
     <ClInclude Include="src\Nodes\PointLights\PointLight.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
     <ClInclude Include="src\Gui\Inspector.h" />
+    <ClInclude Include="src\Models\Model.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -300,6 +301,7 @@
     <ClCompile Include="src\Nodes\Meshes\Mesh.cpp" />
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
     <ClCompile Include="src\Gui\Inspector.cpp" />
+    <ClCompile Include="src\Models\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

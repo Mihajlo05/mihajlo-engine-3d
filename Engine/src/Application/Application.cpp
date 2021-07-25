@@ -2,8 +2,7 @@
 #include "Drawables/PhongDrawable.h"
 #include <cassert>
 #include "Math/IndexedTriangleList.h"
-
-
+#include "Models/Model.h"
 
 Application::Application()
 	:
@@ -27,6 +26,10 @@ Application::Application()
 
 	pSuzzane->SetTransform(pSuzzane->GetTransform().Translate(float3{ 0, 0, 10 }).Rotate(float3{ 0, PI, 0 }));
 
+	auto pNano = std::make_unique<Node>("Nanosuit");
+	pNano->AddChild(LoadModel(gfx, "src\\Models\\nano.gltf", pLight.get()));
+
+	scene.AddChild(std::move(pNano));
 	scene.AddChild(std::move(pLight));
 	scene.AddChild(std::move(pSuzzane));
 
