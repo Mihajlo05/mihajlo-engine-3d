@@ -1,6 +1,10 @@
-#include "Application/Application.h"
-#include "GDIPlusManager.h"
+#pragma once
+
+#include "Application.h"
+#include "Windows/GDIPlusManager.h"
 #include "Gui/imgui/ImGuiManager.h"
+
+extern Application* GetApplication();
 
 int CALLBACK WinMain(
 	HINSTANCE hInst,
@@ -9,31 +13,36 @@ int CALLBACK WinMain(
 	int		  nCmdShow
 )
 {
+	Application* pApp = nullptr;
 	try
 	{
 		GDIPlusManager gpm;
 		ImGuiManager igm;
-		Application game;
+		pApp = GetApplication();
 
 		std::optional<int> ecode;
 
 		while (!(ecode = Window::ProcessMessages()))
 		{
-			game.Go();
+			pApp->Go();
 		}
 
+		delete pApp;
 		return *ecode;
 	}
 	catch (const MihajloException& e)
 	{
+		delete pApp;
 		Window::CreateErrorMsgBox(e.GetType(), e.what());
 	}
 	catch (const std::exception& e)
 	{
+		delete pApp;
 		Window::CreateErrorMsgBox("Standard Exception", e.what());
 	}
 	catch (...)
 	{
+		delete pApp;
 		Window::CreateErrorMsgBox("Unknown Exception", "No details available");
 	}
 

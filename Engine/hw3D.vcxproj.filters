@@ -102,7 +102,7 @@
     <ClInclude Include="src\Timer\Timer.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="src\Application\Application.h">
+    <ClInclude Include="src\EntryPoint\Application.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="src\ErrorHandling\dxerr.h">
@@ -208,13 +208,11 @@
     <ClInclude Include="src\Nodes\PointLight.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
     <ClInclude Include="src\Gui\Inspector.h" />
+    <ClInclude Include="src\EntryPoint\EntryPoint.h" />
     <ClInclude Include="src\Models\Model.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
-      <Filter>Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Windows\WinMain.cpp">
       <Filter>Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Windows\Keyboard.cpp">
@@ -226,7 +224,7 @@
     <ClCompile Include="src\Timer\Timer.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application\Application.cpp">
+    <ClCompile Include="src\EntryPoint\Application.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="src\ErrorHandling\dxerr.cpp">
