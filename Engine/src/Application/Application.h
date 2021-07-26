@@ -2,8 +2,8 @@
 
 #include "Windows/Window.h"
 #include "Timer/Timer.h"
-#include "Nodes/Meshes/Mesh.h"
-#include "Nodes/PointLights/PointLight.h"
+#include "Nodes/MeshInstance.h"
+#include "Nodes/PointLight.h"
 #include "Gui/Hierarchy.h"
 
 class Application
@@ -24,4 +24,5 @@ private:
 	Timer timer;
 	Gui::Hierarchy hierarchy;
 	Node scene;
+	bool isPlaying = false;
 };

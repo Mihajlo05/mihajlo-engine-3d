@@ -51,10 +51,8 @@ void Node::HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Node::Update(float dt)
 {
-	matrix nextPrevTransf = transf.GetMatrix() * prevTranfs;
 	for (auto& pChild : childrens)
 	{
-		pChild->SetPrevTranfs(nextPrevTransf);
 		pChild->_Update(dt);
 	}
 	for (auto& pChild : childrens)
@@ -65,8 +63,10 @@ void Node::Update(float dt)
 
 void Node::Draw(Graphics& gfx) const
 {
+	matrix nextPrevTransf = transf.GetMatrix() * prevTranfs;
 	for (auto& pChild : childrens)
 	{
+		pChild->SetPrevTranfs(nextPrevTransf);
 		pChild->_Draw(gfx);
 	}
 	for (auto& pChild : childrens)

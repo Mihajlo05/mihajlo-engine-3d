@@ -186,7 +186,7 @@
     <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Models\Model.cpp" />
-    <ClCompile Include="src\Nodes\Meshes\Mesh.cpp" />
+    <ClCompile Include="src\Nodes\MeshInstance.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Windows\GDIPlusManager.cpp" />
     <ClCompile Include="src\Graphics\Graphics.cpp" />
@@ -236,9 +236,9 @@
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Models\Model.h" />
-    <ClInclude Include="src\Nodes\Meshes\Mesh.h" />
+    <ClInclude Include="src\Nodes\MeshInstance.h" />
     <ClInclude Include="src\Nodes\Node.h" />
-    <ClInclude Include="src\Nodes\PointLights\PointLight.h" />
+    <ClInclude Include="src\Nodes\PointLight.h" />
     <ClInclude Include="src\Windows\GDIPlusManager.h" />
     <ClInclude Include="src\Graphics\Graphics.h" />
     <ClInclude Include="src\Math\Index.h" />

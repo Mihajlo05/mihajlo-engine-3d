@@ -41,6 +41,16 @@ void Application::Go()
 	const float dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
 	hierarchy.SpawnWindow();
+
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::ArrowButton("Play", ImGuiDir_Right))
+		{
+			isPlaying = !isPlaying;
+		}
+	}
+	ImGui::EndMainMenuBar();
+
 	while (!wnd.mouse.IsEmpty()) HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) HandleKeyboardEvents(wnd.kbd.ReadKey());
 	Update(dt);
@@ -50,17 +60,26 @@ void Application::Go()
 
 void Application::HandleMouseEvents(const Mouse::Event& e)
 {
-	scene.HandleMouseEvents(e);
+	if (isPlaying)
+	{
+		scene.HandleMouseEvents(e);
+	}
 }
 
 void Application::HandleKeyboardEvents(const Keyboard::Event& e)
 {
-	scene.HandleKeyboardEvents(e);
+	if (isPlaying)
+	{
+		scene.HandleKeyboardEvents(e);
+	}
 }
 
 void Application::Update(float dt)
 {
-	scene.Update(dt);
+	if (isPlaying)
+	{
+		scene.Update(dt);
+	}
 }
 
 void Application::Draw()

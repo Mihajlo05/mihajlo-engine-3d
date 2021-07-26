@@ -3,7 +3,7 @@
 #include "DrawableBase.h"
 #include "Math/IndexedTriangleList.h"
 #include "Bindables/PixelConstantBuffer.h"
-#include "Nodes/PointLights/PointLight.h"
+#include "Nodes/PointLight.h"
 
 class PhongDrawable : public DrawableBase<PhongDrawable>
 {

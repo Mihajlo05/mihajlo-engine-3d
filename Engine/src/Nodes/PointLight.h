@@ -2,7 +2,7 @@
 
 #include "Nodes/Node.h"
 #include "Bindables/PixelConstantBuffer.h"
-#include "Nodes/Meshes/Mesh.h"
+#include "Nodes/MeshInstance.h"
 #include "Drawables/SolidDrawable.h"
 #include "Gui/imgui/imgui.h"
 

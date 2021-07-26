@@ -3,7 +3,7 @@
 #include "Math/IndexedTriangleList.h"
 #include "Drawables/Drawable.h"
 #include "Drawables/PhongDrawable.h"
-#include "Nodes/Meshes/Mesh.h"
+#include "Nodes/MeshInstance.h"
 
 std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh);
 std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<PhongDrawable>>& meshPtrs, aiMesh** const aiMeshes);
