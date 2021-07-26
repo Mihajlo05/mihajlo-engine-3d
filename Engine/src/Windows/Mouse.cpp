@@ -1,3 +1,4 @@
+#include "MihajloWin.h"
 #include "Mouse.h"
 
 bool Mouse::LeftIsPressed() const
@@ -47,6 +48,18 @@ std::pair<int, int> Mouse::GetPos() const
 	return { xPos, yPos };
 }
 
+void Mouse::EnableCursor()
+{
+	isCursorEnabled = true;
+	ShowCursor();
+}
+
+void Mouse::DisableCursor()
+{
+	isCursorEnabled = false;
+	HideCursor();
+}
+
 void Mouse::ChangeLeftState(bool pressed)
 {
 	leftIsPressed = pressed;
@@ -72,10 +85,15 @@ void Mouse::OnWheelMove(bool isUp)
 
 void Mouse::Move(int x, int y)
 {
-	xPos = x;
-	yPos = y;
+	MoveWithoutEvent(x, y);
 	buffer.emplace(Event::Type::Move, *this);
 	LimitBuffer();
+}
+
+void Mouse::MoveWithoutEvent(int x, int y)
+{
+	xPos = x;
+	yPos = y;
 }
 
 void Mouse::OnMouseLeave()
@@ -95,4 +113,14 @@ void Mouse::OnMouseEnter()
 void Mouse::LimitBuffer()
 {
 	while (buffer.size() > bufferSize) buffer.pop();
+}
+
+void Mouse::ShowCursor()
+{
+	while (::ShowCursor(TRUE) < 0);
+}
+
+void Mouse::HideCursor()
+{
+	while (::ShowCursor(FALSE) >= 0);
 }

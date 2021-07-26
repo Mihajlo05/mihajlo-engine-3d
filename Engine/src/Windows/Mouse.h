@@ -44,14 +44,19 @@ public:
 	void Clear();
 	Event Read();
 	std::pair<int, int> GetPos() const;
+	void EnableCursor();
+	void DisableCursor();
 private:
 	void ChangeLeftState(bool pressed);
 	void ChangeRightState(bool pressed);
 	void OnWheelMove(bool isUp);
 	void Move(int x, int y);
+	void MoveWithoutEvent(int x, int y);
 	void OnMouseLeave();
 	void OnMouseEnter();
 	void LimitBuffer();
+	void ShowCursor();
+	void HideCursor();
 private:
 	static constexpr unsigned int bufferSize = 16u;
 	bool leftIsPressed = false;
@@ -60,4 +65,5 @@ private:
 	int xPos = 0;
 	int yPos = 0;
 	std::queue<Event> buffer;
+	bool isCursorEnabled = false;
 };

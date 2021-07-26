@@ -59,6 +59,8 @@ public:
 	void DisableGui();
 	bool IsGuiEnabled() const;
 	void OnResize(uint32_t width, uint32_t height);
+	float2 GetRendererPos() const;
+	float2 GetRendererSize() const;
 private:
 #ifndef NDEBUG
 	DxgiInfoManager infoManager;
@@ -76,8 +78,9 @@ private:
 private:
 	bool isGuiEnabled = true;
 	const char* rendererWndName = "Renderer";
-	float rndWidth = -1.0f;
-	float rndHeight = -1.0f;
+	float2 rndPos = { -1.0f, -1.0f };
+	float2 rndSize = { -1.0f, -1.0f };
+	float2 rndSizeContent = { -1.0f, -1.0f };
 };
 
 #define GFX_EXCEPT_NOINFO(hr) Graphics::Exception(__FILE__, __LINE__, (hr))

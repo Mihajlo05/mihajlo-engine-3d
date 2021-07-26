@@ -85,12 +85,16 @@ void Graphics::BeginFrame(float r, float g, float b)
 		D3D11_TEXTURE2D_DESC textureDesc = {};
 
 		ImGui::Begin(rendererWndName);
-		rndWidth = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
-		rndHeight = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
+		rndPos.x = ImGui::GetWindowPos().x;
+		rndPos.y = ImGui::GetWindowPos().y;
+		rndSizeContent.x = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
+		rndSizeContent.y = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
+		rndSize.x = ImGui::GetWindowWidth();
+		rndSize.y = ImGui::GetWindowHeight();
 		ImGui::End();
 
-		textureDesc.Width = (UINT)rndWidth;
-		textureDesc.Height = (UINT)rndHeight;
+		textureDesc.Width = (UINT)rndSizeContent.x;
+		textureDesc.Height = (UINT)rndSizeContent.y;
 		textureDesc.MipLevels = 1;
 		textureDesc.ArraySize = 1;
 		textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -120,8 +124,8 @@ void Graphics::BeginFrame(float r, float g, float b)
 		pContext->OMSetDepthStencilState(pDepthStencilState.Get(), 0u);
 
 		D3D11_TEXTURE2D_DESC t2d = {};
-		t2d.Width = (UINT)rndWidth;
-		t2d.Height = (UINT)rndHeight;
+		t2d.Width = (UINT)rndSizeContent.x;
+		t2d.Height = (UINT)rndSizeContent.y;
 		t2d.MipLevels = 0u;
 		t2d.ArraySize = 1u;
 		t2d.Format = DXGI_FORMAT_D32_FLOAT;
@@ -142,8 +146,8 @@ void Graphics::BeginFrame(float r, float g, float b)
 		GFX_THROW(pDevice->CreateDepthStencilView(pTexture.Get(), &dsvd, &pDepthStencilView));
 
 		D3D11_VIEWPORT dvp;
-		dvp.Width = rndWidth;
-		dvp.Height = rndHeight;
+		dvp.Width = rndSizeContent.x;
+		dvp.Height = rndSizeContent.y;
 		dvp.MinDepth = 0.0f;
 		dvp.MaxDepth = 1.0f;
 		dvp.TopLeftX = 0u;
@@ -172,11 +176,16 @@ void Graphics::EndFrame()
 
 		ImGui::Begin(rendererWndName);
 		{
-			rndWidth = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
-			rndHeight = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
-			perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndHeight / rndWidth, 0.5f, 100.0f);
+			rndPos.x = ImGui::GetWindowPos().x;
+			rndPos.y = ImGui::GetWindowPos().y;
+			rndSizeContent.x = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
+			rndSizeContent.y = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
+			rndSize.x = ImGui::GetWindowWidth();
+			rndSize.y = ImGui::GetWindowHeight();
 
-			ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndWidth, rndHeight)); //Render the frame on ImGui window
+			perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndSizeContent.y / rndSizeContent.x , 0.5f, 100.0f);
+
+			ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndSizeContent.x, rndSizeContent.y)); //Render the frame on ImGui window
 		}
 		ImGui::End();
 
@@ -274,6 +283,16 @@ void Graphics::OnResize(uint32_t width, uint32_t height)
 		&pGuiTarget));
 
 	//the rest is being handeld in BeginFrame, since pRendererTarget is nullptr
+}
+
+float2 Graphics::GetRendererPos() const
+{
+	return rndPos;
+}
+
+float2 Graphics::GetRendererSize() const
+{
+	return rndSize;
 }
 
 //EXCEPTION

@@ -1,4 +1,5 @@
 #include "EntryPoint/EntryPoint.h"
+#include <sstream>
 
 class App : public Application
 {
@@ -33,6 +34,14 @@ public:
 		pScene->AddChild(std::move(pSuzzane));
 
 		SetActiveScene(pScene);
+	}
+
+	void HandleMouseEvents(const Mouse::Event& e) override
+	{
+		if (e.GetType() == Mouse::Event::Type::RPress)
+			wnd.mouse.DisableCursor();
+		else if (e.GetType() == Mouse::Event::Type::RRelease)
+			wnd.mouse.EnableCursor();
 	}
 };
 
