@@ -107,9 +107,9 @@ void Node::ShowOnInspector()
 	ImGui::InputFloat3("Pozicija", &pos.x);
 
 	ImGui::Text("Rotacija");
-	ImGui::SliderAngle("Roll", &rot.z);
-	ImGui::SliderAngle("Pitch", &rot.x);
-	ImGui::SliderAngle("Yaw", &rot.y);
+	ImGui::SliderAngle("Roll", &rot.z, -180, 180);
+	ImGui::SliderAngle("Pitch", &rot.x, -180, 180);
+	ImGui::SliderAngle("Yaw", &rot.y, -180, 180);
 
 	ImGui::InputFloat3("Scale", &scale.x);
 

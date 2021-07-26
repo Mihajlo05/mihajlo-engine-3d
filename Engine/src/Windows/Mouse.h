@@ -20,19 +20,29 @@ public:
 			Move,
 			Enter,
 			Leave,
+			RawDelta, //x and y represent delta in this case, not the position
 			Invalid
 		};
 	private:
 		Type type;
-		int xPos;
-		int yPos;
+		int x;
+		int y;
 	public:
-		Event(Type type, Mouse& parent) : type(type), xPos(parent.xPos), yPos(parent.yPos) { }
+		Event(Type type, Mouse& parent) : type(type), x(parent.xPos), y(parent.yPos) { }
+		static Event RawDeltaEvent(int dx, int dy)
+		{
+			Event e;
+			e.type = Type::RawDelta; e.x = dx; e.y = dy;
+			return e;
+		}
 		bool IsValid() const { return type != Type::Invalid; }
+		bool IsRawDelta() const { return type == Type::RawDelta; }
 		Type GetType() const { return type; }
-		int GetPosX() const { return xPos; }
-		int GetPosY() const { return yPos; }
-		std::pair<int, int> GetPos() const { return { xPos, yPos }; }
+		int GetX() const { return x; }
+		int GetY() const { return y; }
+		std::pair<int, int> GetPos() const { return { x, y }; }
+	private:
+		Event() = default;
 	};
 public:
 	bool LeftIsPressed() const;
@@ -47,6 +57,9 @@ public:
 	void EnableCursor();
 	void DisableCursor();
 	bool IsCursorEnabled() const;
+	void EnableRawInput();
+	void DisableRawInput();
+	bool IsRawEnabled() const;
 private:
 	void ChangeLeftState(bool pressed);
 	void ChangeRightState(bool pressed);
@@ -55,6 +68,7 @@ private:
 	void MoveWithoutEvent(int x, int y);
 	void OnMouseLeave();
 	void OnMouseEnter();
+	void OnRawDelta(int dx, int dy);
 	void LimitBuffer();
 	void ShowCursor();
 	void HideCursor();
@@ -71,4 +85,5 @@ private:
 	int yPos = 0;
 	std::queue<Event> buffer;
 	bool isCursorEnabled = false;
+	bool isRawEnabled = false;
 };

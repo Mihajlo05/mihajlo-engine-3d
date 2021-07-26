@@ -83,6 +83,19 @@ Window::Window(unsigned int width, unsigned int height, const char* wndName)
 	ImGui_ImplWin32_Init(hWnd);
 
 	pGfx = std::make_unique<Graphics>(hWnd, width, height);
+
+	mouse.EnableRawInput();
+
+	RAWINPUTDEVICE rid;
+	//mouse
+	rid.usUsagePage = 0x01;
+	rid.usUsage = 0x02;
+	rid.dwFlags = 0;
+	rid.hwndTarget = nullptr;
+	if (RegisterRawInputDevices(&rid, 1, sizeof(rid)) == FALSE)
+	{
+		throw WND_EXCEPTION;
+	}
 }
 
 Window::~Window()
@@ -139,6 +152,40 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 	switch (uMsg)
 	{
+	case WM_INPUT:
+	{
+		if (!mouse.IsRawEnabled()) break;
+
+		UINT size;
+
+		if (GetRawInputData(
+			reinterpret_cast<HRAWINPUT>(lParam),
+			RID_INPUT,
+			nullptr,
+			&size,
+			sizeof(RAWINPUTHEADER)) == -1) break;
+
+		rawBuffer.resize(size);
+
+		if (GetRawInputData(
+			reinterpret_cast<HRAWINPUT>(lParam),
+			RID_INPUT,
+			rawBuffer.data(),
+			&size,
+			sizeof(RAWINPUTHEADER)) != size)
+		{
+			break;
+		}
+
+		const RAWINPUT& ri = reinterpret_cast<const RAWINPUT&>(*rawBuffer.data());
+		if (ri.header.dwType == RIM_TYPEMOUSE)
+		{
+			int dx = ri.data.mouse.lLastX;
+			int dy = ri.data.mouse.lLastY;
+			if (dx != 0 || dy != 0) mouse.OnRawDelta(dx, dy);
+		}
+	}
+		break;
 	case WM_CLOSE:
 		PostQuitMessage(0);
 		return 0;

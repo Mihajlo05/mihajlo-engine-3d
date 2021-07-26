@@ -65,6 +65,7 @@ private:
 	std::string name;
 	HWND hWnd;
 	std::unique_ptr<Graphics> pGfx = nullptr;
+	std::vector<BYTE> rawBuffer;
 };
 
 #define WND_EXCEPTION_H(hr) Window::Exception(__FILE__, __LINE__, hr)

@@ -70,6 +70,21 @@ bool Mouse::IsCursorEnabled() const
 	return isCursorEnabled;
 }
 
+void Mouse::EnableRawInput()
+{
+	isRawEnabled = true;
+}
+
+void Mouse::DisableRawInput()
+{
+	isRawEnabled = false;
+}
+
+bool Mouse::IsRawEnabled() const
+{
+	return isRawEnabled;
+}
+
 void Mouse::ChangeLeftState(bool pressed)
 {
 	leftIsPressed = pressed;
@@ -118,6 +133,12 @@ void Mouse::OnMouseEnter()
 	isInWindow = true;
 	buffer.emplace(Event::Type::Enter, *this);
 	LimitBuffer();
+}
+
+void Mouse::OnRawDelta(int dx, int dy)
+{
+	assert(isRawEnabled);
+	buffer.push(Event::RawDeltaEvent(dx, dy));
 }
 
 void Mouse::LimitBuffer()
