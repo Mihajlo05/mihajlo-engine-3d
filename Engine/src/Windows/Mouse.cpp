@@ -1,5 +1,6 @@
 #include "MihajloWin.h"
 #include "Mouse.h"
+#include "Gui/imgui/imgui.h"
 
 bool Mouse::LeftIsPressed() const
 {
@@ -52,12 +53,21 @@ void Mouse::EnableCursor()
 {
 	isCursorEnabled = true;
 	ShowCursor();
+	EnableImGuiMouse();
+	FreeCursor();
 }
 
 void Mouse::DisableCursor()
 {
 	isCursorEnabled = false;
 	HideCursor();
+	DisableImGuiMouse();
+	LockCursor();
+}
+
+bool Mouse::IsCursorEnabled() const
+{
+	return isCursorEnabled;
 }
 
 void Mouse::ChangeLeftState(bool pressed)
@@ -123,4 +133,29 @@ void Mouse::ShowCursor()
 void Mouse::HideCursor()
 {
 	while (::ShowCursor(FALSE) >= 0);
+}
+
+void Mouse::EnableImGuiMouse()
+{
+	ImGui::GetIO().ConfigFlags &= ~ImGuiConfigFlags_NoMouse;
+}
+
+void Mouse::DisableImGuiMouse()
+{
+	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_NoMouse;
+}
+
+void Mouse::LockCursor()
+{
+	RECT r;
+	POINT p;
+	GetCursorPos(&p);
+	r.left = p.x - 1; r.right = p.x;
+	r.top = p.y - 1; r.bottom = p.y;
+	ClipCursor(&r);
+}
+
+void Mouse::FreeCursor()
+{
+	ClipCursor(nullptr);
 }

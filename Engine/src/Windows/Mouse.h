@@ -46,6 +46,7 @@ public:
 	std::pair<int, int> GetPos() const;
 	void EnableCursor();
 	void DisableCursor();
+	bool IsCursorEnabled() const;
 private:
 	void ChangeLeftState(bool pressed);
 	void ChangeRightState(bool pressed);
@@ -57,6 +58,10 @@ private:
 	void LimitBuffer();
 	void ShowCursor();
 	void HideCursor();
+	void EnableImGuiMouse();
+	void DisableImGuiMouse();
+	void LockCursor();
+	void FreeCursor();
 private:
 	static constexpr unsigned int bufferSize = 16u;
 	bool leftIsPressed = false;

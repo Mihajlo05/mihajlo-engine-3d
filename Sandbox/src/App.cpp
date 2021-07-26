@@ -25,7 +25,11 @@ public:
 		pSuzzane->SetTransform(pSuzzane->GetTransform().Translate(float3{ 0, 0, 10 }).Rotate(float3{ 0, PI, 0 }));
 
 		auto pNano = std::make_unique<Node>("Nanosuit");
-		pNano->AddChild(LoadModel(gfx, "src\\Models\\nano.gltf", pLight.get()));
+		pNano->SetTransform(pNano->GetTransform().Translate(float3{ 0, 0, 15 }));
+		auto pNanoModel = LoadModel(gfx, "src\\Models\\nano.gltf", pLight.get());
+
+		pNanoModel->SetTransform(pNanoModel->GetTransform().Rotate(float3{ PI / 2.0f, 0, PI }).Translate(float3{ 0, -8, 0 }));
+		pNano->AddChild(std::move(pNanoModel));
 
 		Node* pScene = new Node("Scena");
 

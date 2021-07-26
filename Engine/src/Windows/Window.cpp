@@ -175,7 +175,10 @@ LRESULT Window::HandleMsg(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEMOVE:
 		const POINTS pos = MAKEPOINTS(lParam);
 		if (wantCaptureMouse)
+		{
+			mouse.MoveWithoutEvent(pos.x, pos.y);
 			break;
+		}
 		if (pos.x < 0 || pos.x >= (int)width || pos.y < 0 || pos.y >= (int)height) //if mouse is outside
 		{
 			if (mouse.LeftIsPressed() || mouse.RightIsPressed())
