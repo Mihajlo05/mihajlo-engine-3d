@@ -13,8 +13,8 @@ public:
 		{
 			LPress,
 			RPress,
-			LDown,
-			RDown,
+			LRelease,
+			RRelease,
 			WheelUp,
 			WheelDown,
 			Move,

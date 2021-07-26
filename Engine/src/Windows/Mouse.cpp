@@ -50,8 +50,8 @@ std::pair<int, int> Mouse::GetPos() const
 void Mouse::ChangeLeftState(bool pressed)
 {
 	leftIsPressed = pressed;
-	if (LeftIsPressed()) buffer.emplace(Event::Type::RPress, *this);
-	else buffer.emplace(Event::Type::LPress, *this);
+	if (LeftIsPressed()) buffer.emplace(Event::Type::LPress, *this);
+	else buffer.emplace(Event::Type::LRelease, *this);
 	LimitBuffer();
 }
 
@@ -59,7 +59,7 @@ void Mouse::ChangeRightState(bool pressed)
 {
 	rightIsPressed = pressed;
 	if (RightIsPressed()) buffer.emplace(Event::Type::RPress, *this);
-	else buffer.emplace(Event::Type::LPress, *this);
+	else buffer.emplace(Event::Type::RRelease, *this);
 	LimitBuffer();
 }
 
