@@ -24,7 +24,7 @@ public:
 		pNanoModel->SetTransform(pNanoModel->GetTransform().Rotate(float3{ PI / 2.0f, 0, PI }).Translate(float3{ 0, -8, 0 }));
 		pNano->AddChild(std::move(pNanoModel));
 
-		Node* pScene = new Node("Scena");
+		Node* pScene = new Node("NanoSuzzane Scene");
 
 		pScene->AddChild(std::move(pNano));
 		pScene->AddChild(std::move(pLight));
