@@ -19,4 +19,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders-bin\DefaultVS.cso" />
+    <None Include="shaders-bin\PhongPS.cso" />
+    <None Include="shaders-bin\PhongVS.cso" />
+    <None Include="shaders-bin\SolidPS.cso" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Suzzane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

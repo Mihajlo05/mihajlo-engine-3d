@@ -16,10 +16,10 @@ PhongDrawable::PhongDrawable(Graphics& gfx, IndexedTriangleList model, Material 
 	if (!IsStaticInitialized())
 	{
 		
-		auto pvs = std::make_unique<VertexShader>(gfx, L"src\\Shaders\\bin\\PhongVS.cso");
+		auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\PhongVS.cso");
 		VertexShader& vs = *pvs;
 		AddBindable(std::move(pvs));
-		AddBindable<PixelShader>(gfx, L"src\\Shaders\\bin\\PhongPS.cso");
+		AddBindable<PixelShader>(gfx, L"shaders-bin\\PhongPS.cso");
 
 		AddBindable<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize());
 		AddBindable<PrimitiveTopology>(model.d3dtype);

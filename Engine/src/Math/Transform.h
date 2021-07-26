@@ -49,4 +49,17 @@ struct Transform //this should be used instead of matrix when rotation and scali
 		scale = DirectX::XMVectorScale(scale, scalar);
 		return *this;
 	}
+	Transform& WrapRotation()
+	{
+		float3 r;
+		DirectX::XMStoreFloat3(&r, rot);
+
+		r.x = WrapAngle(r.x);
+		r.y = WrapAngle(r.y);
+		r.z = WrapAngle(r.z);
+
+		rot = DirectX::XMLoadFloat3(&r);
+
+		return *this;
+	}
 };

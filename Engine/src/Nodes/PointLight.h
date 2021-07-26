@@ -32,7 +32,7 @@ public:
         cbuf(gfx)
     {
         auto psMesh = std::make_shared<SolidDrawable>(gfx,
-            IndexedTriangleList("src\\Models\\sphere.obj"),
+            IndexedTriangleList("Models\\sphere.obj"),
             data.diffuseColor);
         pMesh = psMesh.get();
         auto meshi = std::make_unique<MeshInstance>(std::move(psMesh), "Mesh");
