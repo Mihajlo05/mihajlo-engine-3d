@@ -11,7 +11,7 @@ TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const 
 
 void TransformationConstantBuffer::Bind(Graphics& gfx) const
 {
-	vConstBuf.Update(gfx, Data{ dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera()),
-		dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera() * gfx.GetPerspective()) });
+	vConstBuf.Update(gfx, Data{ dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera().GetView()),
+		dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera().GetViewProjection()) });
 	vConstBuf.Bind(gfx);
 }

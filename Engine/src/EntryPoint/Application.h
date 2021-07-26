@@ -10,6 +10,7 @@
 #include "Math/IndexedTriangleList.h"
 #include "Models/Model.h"
 #include <memory>
+#include "Camera/EditorCamera.h"
 
 class Application
 {
@@ -18,6 +19,7 @@ public:
 	Application& operator=(const Application&) = delete;
 	void Go();
 	virtual ~Application();
+	static float GetDeltaTime();
 protected:
 	Application(const std::string& name);
 	void SetActiveScene(Node* pScene);
@@ -38,6 +40,8 @@ private:
 	Gui::Hierarchy hierarchy;
 	bool isPlaying = false;
 	Node* pScene = nullptr;
+	EditorCamera cam;
+	static float dt;
 };
 
 Application* GetApplication(); //defiend by client (in some project that produces .exe file)

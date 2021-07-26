@@ -39,6 +39,14 @@ T WrapAngle(T theta)
 }
 
 template<typename T>
+T Clamp(T val, T min, T max)
+{
+	if (val < min) return min;
+	if (val > max) return max;
+	return val;
+}
+
+template<typename T>
 constexpr T Interpolate(const T& src, const T& dst, float alpha)
 {
 	return src + (dst - src) * alpha;

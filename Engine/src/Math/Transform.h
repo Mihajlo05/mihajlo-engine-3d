@@ -62,4 +62,17 @@ struct Transform //this should be used instead of matrix when rotation and scali
 
 		return *this;
 	}
+	Transform& ClampPitch()
+	{
+		float3 r;
+		DirectX::XMStoreFloat3(&r, rot);
+
+		float deg = 0.99f * (PI / 2.0f);
+
+		r.x = Clamp(r.x, -deg, deg);
+
+		rot = DirectX::XMLoadFloat3(&r);
+
+		return *this;
+	}
 };

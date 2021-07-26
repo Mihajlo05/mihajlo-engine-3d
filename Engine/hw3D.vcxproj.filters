@@ -210,6 +210,8 @@
     <ClInclude Include="src\Gui\Inspector.h" />
     <ClInclude Include="src\EntryPoint\EntryPoint.h" />
     <ClInclude Include="src\Models\Model.h" />
+    <ClInclude Include="src\Camera\ICamera.h" />
+    <ClInclude Include="src\Camera\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -300,6 +302,7 @@
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
     <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Models\Model.cpp" />
+    <ClCompile Include="src\Camera\EditorCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

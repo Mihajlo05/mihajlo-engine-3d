@@ -84,6 +84,6 @@ private:
 	int xPos = 0;
 	int yPos = 0;
 	std::queue<Event> buffer;
-	bool isCursorEnabled = false;
+	bool isCursorEnabled = true;
 	bool isRawEnabled = false;
 };

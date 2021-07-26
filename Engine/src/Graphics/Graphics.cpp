@@ -10,8 +10,6 @@
 using namespace Microsoft::WRL;
 
 Graphics::Graphics(HWND hWnd, uint32_t width, uint32_t height)
-	:
-	perspective(DirectX::XMMatrixPerspectiveLH(1.0f, (float)height / (float)width, 0.5f, 100.0f))
 {
 	//swap chain descriptor
 	DXGI_SWAP_CHAIN_DESC scd = { 0 };
@@ -183,7 +181,8 @@ void Graphics::EndFrame()
 			rndSize.x = ImGui::GetWindowWidth();
 			rndSize.y = ImGui::GetWindowHeight();
 
-			perspective = DirectX::XMMatrixPerspectiveLH(1.0f, rndSizeContent.y / rndSizeContent.x , 0.5f, 100.0f);
+			if (IsCameraBound())
+				pCamera->SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, rndSizeContent.y / rndSizeContent.x, 0.5f, 100.0f));
 
 			ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndSizeContent.x, rndSizeContent.y)); //Render the frame on ImGui window
 		}
@@ -228,24 +227,25 @@ void Graphics::DrawIndexed(uint32_t count)
 	GFX_THROW_INFO_ONLY( pContext->DrawIndexed(count, 0u, 0u) );
 }
 
-void Graphics::SetPerspective(const matrix& p)
+const ICamera& Graphics::GetCamera() const
 {
-	perspective = p;
+	assert(IsCameraBound());
+	return *pCamera;
 }
 
-matrix Graphics::GetPerspective() const
+void Graphics::BindCamera(ICamera& cam)
 {
-	return perspective;
+	pCamera = &cam;
 }
 
-void Graphics::SetCamera(fmatrix ct)
+void Graphics::UnbindCamera()
 {
-	cameraTransf = ct;
+	pCamera = nullptr;
 }
 
-matrix Graphics::GetCamera() const
+bool Graphics::IsCameraBound() const
 {
-	return cameraTransf;
+	return pCamera != nullptr;
 }
 
 void Graphics::EnableGui()

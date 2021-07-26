@@ -44,7 +44,7 @@ public:
         CBufData cbufd;
 
         DXVec pos = GetTransform().pos;
-        pos = DirectX::XMVector3Transform(pos, gfx.GetCamera());
+        pos = DirectX::XMVector3Transform(pos, gfx.GetCamera().GetView());
         DirectX::XMStoreFloat3(&cbufd.camPos, pos);
         cbufd.other = data;
 

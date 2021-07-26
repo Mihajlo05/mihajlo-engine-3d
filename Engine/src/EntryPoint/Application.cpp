@@ -1,10 +1,15 @@
 #include "Application.h"
 
+float Application::dt;
+
 Application::Application(const std::string& name)
 	:
 	wnd(1280u, 720u, name.c_str()),
-	gfx(wnd.Gfx())
-{ }
+	gfx(wnd.Gfx()),
+	cam(720.0f/1280.0f)
+{
+	gfx.BindCamera(cam);
+}
 
 void Application::SetActiveScene(Node* pScene)
 {
@@ -14,7 +19,7 @@ void Application::SetActiveScene(Node* pScene)
 
 void Application::Go()
 {
-	const float dt = timer.Reset();
+	dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
 	if (ImGui::BeginMainMenuBar())
 	{
@@ -22,7 +27,7 @@ void Application::Go()
 		{
 			isPlaying = !isPlaying;
 		}
-	}
+	} ImGui::EndMainMenuBar();
 	hierarchy.SpawnWindow();
 	while (!wnd.mouse.IsEmpty()) _HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) _HandleKeyboardEvents(wnd.kbd.ReadKey());
@@ -35,6 +40,11 @@ Application::~Application()
 {
 	delete pScene;
 	pScene = nullptr;
+}
+
+float Application::GetDeltaTime()
+{
+	return dt;
 }
 
 void Application::HandleMouseEvents(const Mouse::Event& e)
@@ -51,6 +61,11 @@ void Application::Update(float dt)
 
 void Application::_HandleMouseEvents(const Mouse::Event& e)
 {
+	if (!wnd.mouse.IsCursorEnabled())
+	{
+		cam.HandleMouseInput(e);
+	}
+
 	HandleMouseEvents(e);
 	if (isPlaying && pScene)
 	{
@@ -69,7 +84,7 @@ void Application::_HandleKeyboardEvents(const Keyboard::Event& e)
 
 void Application::_Update(float dt)
 {
-	ImGui::EndMainMenuBar();
+	cam.Update(dt, wnd.kbd);
 	Update(dt);
 	if (isPlaying && pScene)
 	{

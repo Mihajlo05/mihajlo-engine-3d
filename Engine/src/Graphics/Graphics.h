@@ -6,6 +6,7 @@
 #include "ErrorHandling/MihajloException.h"
 #include "ErrorHandling/DxgiInfoManager.h"
 #include "Math/MihajloMath.h"
+#include "Camera/ICamera.h"
 
 class Graphics
 {
@@ -51,10 +52,10 @@ public:
 	void EndFrame();
 	void ClearBuffer(float r, float g, float b, float a=1.0f);
 	void DrawIndexed(uint32_t count);
-	void SetPerspective(const matrix& p);
-	matrix GetPerspective() const;
-	void SetCamera(fmatrix ct);
-	matrix GetCamera() const;
+	const ICamera& GetCamera() const;
+	void BindCamera(ICamera& cam);
+	void UnbindCamera();
+	bool IsCameraBound() const;
 	void EnableGui();
 	void DisableGui();
 	bool IsGuiEnabled() const;
@@ -66,8 +67,7 @@ private:
 	DxgiInfoManager infoManager;
 #endif
 private:
-	matrix perspective;
-	matrix cameraTransf = DirectX::XMMatrixIdentity();
+	ICamera* pCamera = nullptr;
 private:
 	Microsoft::WRL::ComPtr<ID3D11Device> pDevice = nullptr;
 	Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain = nullptr;
