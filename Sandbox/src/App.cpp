@@ -19,9 +19,10 @@ public:
 
 		auto pNano = std::make_unique<Node>("Nanosuit");
 		pNano->SetTransform(pNano->GetTransform().Translate(float3{ 0, 0, 15 }));
-		auto pNanoModel = LoadModel(gfx, "Models\\nano.gltf", pLight.get());
 
-		pNanoModel->SetTransform(pNanoModel->GetTransform().Rotate(float3{ PI / 2.0f, 0, PI }).Translate(float3{ 0, -8, 0 }));
+		auto pNanoModel = LoadModel(gfx, "Models\\nanosuit.obj", pLight.get());
+		pNanoModel->SetTransform(pNanoModel->GetTransform().Rotate(float3{ 0, PI, 0 }).Translate(float3{ 0, -8, 0 }));
+
 		pNano->AddChild(std::move(pNanoModel));
 
 		Node* pScene = new Node("NanoSuzzane Scene");
