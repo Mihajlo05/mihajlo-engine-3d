@@ -4,33 +4,169 @@
 #include "Drawables/Drawable.h"
 #include "Drawables/PhongDrawable.h"
 #include "Nodes/MeshInstance.h"
+#include "Nodes/PointLight.h"
+#include "Bindables/AllBindables.h"
 
-std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh);
-std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<PhongDrawable>>& meshPtrs, aiMesh** const aiMeshes);
+class Mesh : public DrawableBase<Mesh>
+{
+public:
+	Mesh(Graphics& gfx, std::vector<std::unique_ptr<Bindable>> bindPtrs)
+	{
+		if (!IsStaticInitialized())
+		{
+			AddStaticBindable(std::make_unique<PrimitiveTopology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+		}
+
+		for (auto& pb : bindPtrs)
+		{
+			if (auto pi = dynamic_cast<IndexBuffer*>(pb.get()))
+			{
+				AddIndexBuffer(std::unique_ptr<IndexBuffer>{ pi });
+				pb.release();
+			}
+			else
+			{
+				AddBindable(std::move(pb));
+			}
+		}
+
+		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
+	}
+	void SetLight(const PointLight& light)
+	{
+		pLight = &light;
+	}
+	void UnbindLight()
+	{
+		pLight = nullptr;
+	}
+	void Draw(Graphics& gfx) const override
+	{
+		if (pLight != nullptr)
+		{
+			pLight->Bind(gfx);
+		}
+		DrawableBase::Draw(gfx);
+	}
+private:
+	const PointLight* pLight = nullptr;
+};
+
+std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMaterial* const* pMaterials);
+std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<Mesh>>& meshPtrs, aiMesh** const aiMeshes);
 
 std::unique_ptr<Node> LoadModel(Graphics& gfx, const std::string& filename, const PointLight* pLight)
 {
 	Assimp::Importer imp;
 	const aiScene* pModel = imp.ReadFile(filename, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenNormals);
 
-	std::vector<std::shared_ptr<PhongDrawable>> meshPtrs;
+	std::vector<std::shared_ptr<Mesh>> meshPtrs;
 	meshPtrs.reserve(pModel->mNumMeshes);
 	for (unsigned int i = 0; i < pModel->mNumMeshes; i++)
 	{
-		meshPtrs.push_back(ParseMesh(gfx, *pModel->mMeshes[i]));
+		meshPtrs.push_back(ParseMesh(gfx, *pModel->mMeshes[i], pModel->mMaterials));
 		if (pLight) meshPtrs[i]->SetLight(*pLight);
 	}
 
 	return ParseNode(*pModel->mRootNode, meshPtrs, pModel->mMeshes);
 }
 
-std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh)
+std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMaterial* const* pMaterials)
 {
-	IndexedTriangleList itl(amesh);
-	return std::make_shared<PhongDrawable>(gfx, itl, PhongDrawable::Material{ {1, 1, 1}, 4, 100 });
+	using std::make_unique;
+	using DynamicVertexBuf::VertexLayout;
+
+	DynamicVertexBuf::VertexBuffer vbuf(
+		std::move(
+			VertexLayout{}
+			.Append(VertexLayout::Position3D)
+			.Append(VertexLayout::Normal)
+			.Append(VertexLayout::Texture2D)
+		)
+	);
+	
+	std::vector<Index> indices;
+	indices.reserve(amesh.mNumFaces * 3);
+	for (unsigned int i = 0; i < amesh.mNumFaces; i++)
+	{
+		const auto& face = amesh.mFaces[i];
+		assert(face.mNumIndices == 3);
+		indices.push_back(face.mIndices[0]);
+		indices.push_back(face.mIndices[1]);
+		indices.push_back(face.mIndices[2]);
+	}
+
+	for (unsigned int i = 0; i < amesh.mNumVertices; i++)
+	{
+		vbuf.EmplaceBack(
+			*reinterpret_cast<float3*>(&amesh.mVertices[i]),
+			*reinterpret_cast<float3*>(&amesh.mNormals[i]),
+			*reinterpret_cast<float2*>(&amesh.mTextureCoords[0][i])
+		);
+	}
+
+	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
+
+	bool hasSpecularMap = false;
+	float shininess = 35.0f;
+
+	if (amesh.mMaterialIndex >= 0)
+	{
+		using namespace std::string_literals;
+		const aiMaterial& material = *pMaterials[amesh.mMaterialIndex];
+
+		std::string base = "Models\\nano_textured\\"s;
+
+		aiString texFileName;
+		material.GetTexture(aiTextureType_DIFFUSE, 0, &texFileName);
+		bindablePtrs.push_back(make_unique<Texture2D>(gfx, Surface(base + texFileName.C_Str())));
+		bindablePtrs.push_back(make_unique<Sampler>(gfx));
+
+		if (material.GetTexture(aiTextureType_SPECULAR, 0, &texFileName) == aiReturn_SUCCESS)
+		{
+			hasSpecularMap = true;
+			bindablePtrs.push_back(std::make_unique<Texture2D>(gfx, Surface(base + texFileName.C_Str()), 1u));
+		}
+		else
+		{
+			material.Get(AI_MATKEY_SHININESS, shininess);
+		}
+	}
+
+	bindablePtrs.push_back(std::make_unique<VertexBuffer>(gfx, vbuf));
+
+	bindablePtrs.push_back(std::make_unique<IndexBuffer>(gfx, indices));
+
+	auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\PhongTexVS.cso");
+	auto pvsbc = pvs->GetBytecode();
+	auto pvsbcs = pvs->GetBytecodeSize();
+	bindablePtrs.push_back(std::move(pvs));
+
+	bindablePtrs.push_back(std::make_unique<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
+
+	if (!hasSpecularMap)
+	{
+		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"shaders-bin\\PhongTexPS.cso"));
+
+		struct PSMaterialConstant
+		{
+			float specularIntensity = 4.0f;
+			float specularPower;
+			float2 padding;
+		} pmc;
+		pmc.specularPower = shininess;
+
+		bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+	}
+	else
+	{
+		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"shaders-bin\\PhongTexSpecPS.cso"));
+	}
+
+	return std::make_unique<Mesh>(gfx, std::move(bindablePtrs));
 }
 
-std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<PhongDrawable>>& meshPtrs, aiMesh** const aiMeshes)
+std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<Mesh>>& meshPtrs, aiMesh** const aiMeshes)
 {
 	aiVector3D pos;
 	aiVector3D rot;
