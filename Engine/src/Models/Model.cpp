@@ -108,6 +108,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
 
 	bool hasSpecularMap = false;
+	float shininess = 35.0f;
 
 	if (amesh.mMaterialIndex >= 0)
 	{
@@ -125,6 +126,10 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		{
 			hasSpecularMap = true;
 			bindablePtrs.push_back(std::make_unique<Texture2D>(gfx, Surface(base + texFileName.C_Str()), 1u));
+		}
+		else
+		{
+			material.Get(AI_MATKEY_SHININESS, shininess);
 		}
 	}
 
@@ -146,9 +151,11 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		struct PSMaterialConstant
 		{
 			float specularIntensity = 4.0f;
-			float specularPower = 100;
+			float specularPower;
 			float2 padding;
 		} pmc;
+		pmc.specularPower = shininess;
+
 		bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
 	}
 	else
