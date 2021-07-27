@@ -28,7 +28,7 @@ float4 main(float3 camPosition : POSITION, float3 normal : NORMAL, float2 texCoo
     
     const float4 specSample = specMap.Sample(samp, texCoord);
     const float3 specularColorIntensity = specSample.rgb;
-    const float specularPower = specSample.a * 100;
+    const float specularPower = pow(2.0f, specSample.a * 13.0f);
     
     const float3 specular = att * specularColorIntensity *
     pow(max(0.0f, dot(normalize(r), normalize(camPosition))), specularPower);
