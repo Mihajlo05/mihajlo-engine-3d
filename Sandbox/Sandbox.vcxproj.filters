@@ -25,6 +25,7 @@
     <None Include="shaders-bin\PhongVS.cso" />
     <None Include="shaders-bin\SolidPS.cso" />
     <None Include="Models\nano_textured\nanosuit.mtl" />
+    <None Include="Models\krevet.blend" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Suzzane.h">

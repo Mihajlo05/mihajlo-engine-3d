@@ -25,11 +25,18 @@ public:
 
 		pNano->AddChild(std::move(pNanoModel));
 
+		auto pBed = std::make_unique<Node>("Krevet");
+
+		auto pBedModel = LoadModel(gfx, "Models\\krevet.gltf", pLight.get());
+
+		pBed->AddChild(std::move(pBedModel));
+
 		Node* pScene = new Node("NanoSuzzane Scene");
 
-		pScene->AddChild(std::move(pNano));
 		pScene->AddChild(std::move(pLight));
+		pScene->AddChild(std::move(pNano));
 		pScene->AddChild(std::move(pSuzzane));
+		pScene->AddChild(std::move(pBed));
 
 		SetActiveScene(pScene);
 	}

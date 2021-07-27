@@ -175,6 +175,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Models\krevet.blend" />
     <None Include="Models\nano_textured\nanosuit.mtl" />
     <None Include="shaders-bin\DefaultVS.cso" />
     <None Include="shaders-bin\PhongPS.cso" />
