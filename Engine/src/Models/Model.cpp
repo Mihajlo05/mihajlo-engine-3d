@@ -107,37 +107,54 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 
 	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
 
+	bool hasSpecularMap = false;
+
 	if (amesh.mMaterialIndex >= 0)
 	{
 		using namespace std::string_literals;
 		const aiMaterial& material = *pMaterials[amesh.mMaterialIndex];
+
+		std::string base = "Models\\nano_textured\\"s;
+
 		aiString texFileName;
 		material.GetTexture(aiTextureType_DIFFUSE, 0, &texFileName);
-		bindablePtrs.push_back(make_unique<Texture2D>(gfx, Surface("Models\\nano_textured\\"s + texFileName.C_Str())));
+		bindablePtrs.push_back(make_unique<Texture2D>(gfx, Surface(base + texFileName.C_Str())));
 		bindablePtrs.push_back(make_unique<Sampler>(gfx));
+
+		if (material.GetTexture(aiTextureType_SPECULAR, 0, &texFileName) == aiReturn_SUCCESS)
+		{
+			hasSpecularMap = true;
+			bindablePtrs.push_back(std::make_unique<Texture2D>(gfx, Surface(base + texFileName.C_Str()), 1u));
+		}
 	}
 
 	bindablePtrs.push_back(std::make_unique<VertexBuffer>(gfx, vbuf));
 
 	bindablePtrs.push_back(std::make_unique<IndexBuffer>(gfx, indices));
 
-	auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\PhongVS.cso");
+	auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\PhongTexVS.cso");
 	auto pvsbc = pvs->GetBytecode();
 	auto pvsbcs = pvs->GetBytecodeSize();
 	bindablePtrs.push_back(std::move(pvs));
 
 	bindablePtrs.push_back(std::make_unique<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
 
-	bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"shaders-bin\\PhongPS.cso"));
-
-	struct PSMaterialConstant
+	if (!hasSpecularMap)
 	{
-		float3 color = { 1.0f, 1.0f, 1.0f };
-		float specularIntensity = 4.0f;
-		float specularPower = 100;
-		float3 padding;
-	} pmc;
-	bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"shaders-bin\\PhongTexPS.cso"));
+
+		struct PSMaterialConstant
+		{
+			float specularIntensity = 4.0f;
+			float specularPower = 100;
+			float2 padding;
+		} pmc;
+		bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+	}
+	else
+	{
+		bindablePtrs.push_back(std::make_unique<PixelShader>(gfx, L"shaders-bin\\PhongTexSpecPS.cso"));
+	}
 
 	return std::make_unique<Mesh>(gfx, std::move(bindablePtrs));
 }
