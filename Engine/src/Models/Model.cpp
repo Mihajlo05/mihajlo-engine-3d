@@ -5,7 +5,7 @@
 #include "Drawables/PhongDrawable.h"
 #include "Nodes/MeshInstance.h"
 
-std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh);
+std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMaterial* const* pMaterials);
 std::unique_ptr<Node> ParseNode(const aiNode& anode, const std::vector<std::shared_ptr<PhongDrawable>>& meshPtrs, aiMesh** const aiMeshes);
 
 std::unique_ptr<Node> LoadModel(Graphics& gfx, const std::string& filename, const PointLight* pLight)
@@ -17,15 +17,17 @@ std::unique_ptr<Node> LoadModel(Graphics& gfx, const std::string& filename, cons
 	meshPtrs.reserve(pModel->mNumMeshes);
 	for (unsigned int i = 0; i < pModel->mNumMeshes; i++)
 	{
-		meshPtrs.push_back(ParseMesh(gfx, *pModel->mMeshes[i]));
+		meshPtrs.push_back(ParseMesh(gfx, *pModel->mMeshes[i], pModel->mMaterials));
 		if (pLight) meshPtrs[i]->SetLight(*pLight);
 	}
 
 	return ParseNode(*pModel->mRootNode, meshPtrs, pModel->mMeshes);
 }
 
-std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh)
+std::shared_ptr<PhongDrawable> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMaterial* const* pMaterials)
 {
+	const aiMaterial& material = *pMaterials[amesh.mMaterialIndex];
+
 	IndexedTriangleList itl(amesh);
 	return std::make_shared<PhongDrawable>(gfx, itl, PhongDrawable::Material{ {1, 1, 1}, 4, 100 });
 }
