@@ -24,10 +24,67 @@
     <None Include="shaders-bin\PhongPS.cso" />
     <None Include="shaders-bin\PhongVS.cso" />
     <None Include="shaders-bin\SolidPS.cso" />
+    <None Include="Models\nano_textured\nanosuit.mtl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Suzzane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Models\nano_textured\arm_dif.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\arm_showroom_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\arm_showroom_spec.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\body_dif.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\body_showroom_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\body_showroom_spec.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\glass_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\glass_dif.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\hand_dif.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\hand_showroom_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\hand_showroom_spec.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\helmet_diff.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\helmet_showroom_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\helmet_showroom_spec.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\leg_dif.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\leg_showroom_ddn.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Models\nano_textured\leg_showroom_spec.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Models\nano_textured\LICENSE.txt" />
   </ItemGroup>
 </Project>

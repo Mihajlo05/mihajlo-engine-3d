@@ -20,7 +20,7 @@ public:
 		auto pNano = std::make_unique<Node>("Nanosuit");
 		pNano->SetTransform(pNano->GetTransform().Translate(float3{ 0, 0, 15 }));
 
-		auto pNanoModel = LoadModel(gfx, "Models\\nanosuit.obj", pLight.get());
+		auto pNanoModel = LoadModel(gfx, "Models\\nano_textured\\nanosuit.obj", pLight.get());
 		pNanoModel->SetTransform(pNanoModel->GetTransform().Rotate(float3{ 0, PI, 0 }).Translate(float3{ 0, -8, 0 }));
 
 		pNano->AddChild(std::move(pNanoModel));
