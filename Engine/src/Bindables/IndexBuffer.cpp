@@ -2,9 +2,10 @@
 
 namespace Binds
 {
-	IndexBuffer::IndexBuffer(Graphics& gfx, std::vector<Index>& indices)
+	IndexBuffer::IndexBuffer(Graphics& gfx, const std::string& tag, const std::vector<Index>& indices)
 		:
-		count((uint32_t)indices.size())
+		count((uint32_t)indices.size()),
+		tag(tag)
 	{
 		BIND_INFOMAN(gfx);
 

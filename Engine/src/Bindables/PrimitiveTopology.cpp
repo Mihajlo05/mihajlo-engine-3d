@@ -2,7 +2,7 @@
 
 namespace Binds
 {
-	PrimitiveTopology::PrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY type)
+	PrimitiveTopology::PrimitiveTopology(Graphics& gfx, D3D11_PRIMITIVE_TOPOLOGY type)
 		:
 		data(type)
 	{ }

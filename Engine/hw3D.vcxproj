@@ -138,6 +138,7 @@
     <ClInclude Include="src\assimp.h" />
     <ClInclude Include="src\Bindables\AllBindables.h" />
     <ClInclude Include="src\Bindables\Bindable.h" />
+    <ClInclude Include="src\Bindables\Codex.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
     <ClInclude Include="src\Camera\ICamera.h" />
     <ClInclude Include="src\Drawables\Phong.h" />

@@ -87,6 +87,27 @@ namespace Binds
 			}
 		}
 		virtual ~ConstantBuffer() = default;
+		static std::shared_ptr<ConstantBuffer> Resolve(Graphics& gfx, Type type, const C& cBuf, uint32_t slot = 0u)
+		{
+			return Codex::Resolve<ConstantBuffer<C>>(gfx, type, cBuf, slot);
+		}
+		static std::shared_ptr<ConstantBuffer> Resolve(Graphics& gfx, Type type, uint32_t slot = 0u)
+		{
+			return Codex::Resolve<ConstantBuffer<C>>(gfx, type, slot);
+		}
+		static std::string GenerateUID(Type type, const C& cBuf, uint32_t slot)
+		{
+			return GenerateUID(type, slot);
+		}
+		static std::string GenerateUID(Type type, uint32_t slot)
+		{
+			using namespace std::string_literals;
+			return typeid(ConstantBuffer).name() + "#"s + std::to_string(slot);
+		}
+		std::string GetUID() const override
+		{
+			return GenerateUID(type, slot);
+		}
 	private:
 		Type type;
 		D3D11_BUFFER_DESC cbd = {};

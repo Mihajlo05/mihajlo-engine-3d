@@ -11,9 +11,10 @@ namespace Binds
 	class VertexBuffer : public Bindable
 	{
 	public:
-		VertexBuffer(Graphics& gfx, const DynamicVertexBuf::VertexBuffer& vertices)
+		VertexBuffer(Graphics& gfx, const std::string& tag, const DynamicVertexBuf::VertexBuffer& vertices)
 			:
-			stride((uint32_t)vertices.GetLayout().Size())
+			stride((uint32_t)vertices.GetLayout().Size()),
+			tag(tag)
 		{
 			BIND_INFOMAN(gfx);
 
@@ -30,7 +31,27 @@ namespace Binds
 			GFX_THROW(GetDevice(gfx)->CreateBuffer(&bd, &sd, &pData));
 		}
 		void Bind(Graphics& gfx) const override;
+		static std::shared_ptr<VertexBuffer> Resolve(Graphics& gfx, const std::string& tag, const DynamicVertexBuf::VertexBuffer& vertices)
+		{
+			return Codex::Resolve<VertexBuffer>(gfx, tag, vertices);
+		}
+		template<typename... Ignore>
+		static std::string GenerateUID(const std::string& tag, Ignore&&... ignore)
+		{
+			return _GenerateUID(tag);
+		}
+		std::string GetUID() const override
+		{
+			return GenerateUID(tag);
+		}
 	private:
+		static std::string _GenerateUID(const std::string& tag)
+		{
+			using namespace std::string_literals;
+			return typeid(VertexBuffer).name() + "#"s + tag;
+		}
+	private:
+		std::string tag;
 		Microsoft::WRL::ComPtr<ID3D11Buffer> pData;
 		const uint32_t stride;
 	};

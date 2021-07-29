@@ -203,6 +203,7 @@
     <ClInclude Include="src\Camera\ICamera.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
     <ClInclude Include="src\Drawables\Phong.h" />
+    <ClInclude Include="src\Bindables\Codex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">

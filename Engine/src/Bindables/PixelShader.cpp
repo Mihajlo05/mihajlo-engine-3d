@@ -6,6 +6,8 @@
 namespace Binds
 {
 	PixelShader::PixelShader(Graphics& gfx, const std::string& filename)
+		:
+		filename(filename)
 	{
 		BIND_INFOMAN(gfx);
 

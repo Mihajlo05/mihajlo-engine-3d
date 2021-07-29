@@ -37,42 +37,49 @@ namespace DynamicVertexBuf
 			using SysType = float3; //this is actuall, system type that is being used for this type
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "POSITION"; //semantic that is being used in shaders
+			static constexpr const char* code = "P3";
 		};
 		template<> struct Map<Position2D>
 		{
 			using SysType = float2;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32_FLOAT;
 			static constexpr const char* semantic = "POSITION";
+			static constexpr const char* code = "P2";
 		};
 		template<> struct Map<Texture2D>
 		{
 			using SysType = float2;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "TEXCOORD";
+			static constexpr const char* code = "T2";
 		};
 		template<> struct Map<Normal>
 		{
 			using SysType = float3;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "NORMAL";
+			static constexpr const char* code = "N";
 		};
 		template<> struct Map<Float3Color>
 		{
 			using SysType = float3;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32_FLOAT;
 			static constexpr const char* semantic = "COLOR";
+			static constexpr const char* code = "F3C";
 		};
 		template<> struct Map<Float4Color>
 		{
 			using SysType = float4;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R32G32B32A32_FLOAT;
 			static constexpr const char* semantic = "COLOR";
+			static constexpr const char* code = "F4C";
 		};
 		template<> struct Map<BGRAColor>
 		{
 			using SysType = DynamicVertexBuf::BGRAColorData;
 			static constexpr DXGI_FORMAT dxgiFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
 			static constexpr const char* semantic = "COLOR";
+			static constexpr const char* code = "BGRAC";
 		};
 	public:
 		class Element //Describes one element of vertex
@@ -113,7 +120,6 @@ namespace DynamicVertexBuf
 			}
 			D3D11_INPUT_ELEMENT_DESC GetDesc() const
 			{
-
 				switch (type)
 				{
 				case Position3D:
@@ -132,6 +138,29 @@ namespace DynamicVertexBuf
 					return GenerateDesc<BGRAColor>(offset);
 				default:
 					return {};
+				}
+			}
+			const char* GetCode() const
+			{
+				switch (type)
+				{
+				case Position3D:
+					return Map<Position3D>::code;
+				case Position2D:
+					return Map<Position2D>::code;
+				case Texture2D:
+					return Map<Texture2D>::code;
+				case Normal:
+					return Map<Normal>::code;
+				case Float3Color:
+					return Map<Float3Color>::code;
+				case Float4Color:
+					return Map<Float4Color>::code;
+				case BGRAColor:
+					return Map<BGRAColor>::code;
+				default:
+					assert(false);
+					return "";
 				}
 			}
 		private:
@@ -185,6 +214,16 @@ namespace DynamicVertexBuf
 			}
 
 			return d3dl;
+		}
+		std::string GetCode() const
+		{
+			std::string code;
+
+			for (const Element& e : elements)
+			{
+				code += e.GetCode();
+			}
+			return code;
 		}
 	private:
 		std::vector<Element> elements;

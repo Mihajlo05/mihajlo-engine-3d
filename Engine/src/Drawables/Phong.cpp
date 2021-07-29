@@ -10,20 +10,24 @@ namespace Drawables
 		gfx(gfx),
 		material(material)
 	{
-		AddBind(std::make_shared<VertexBuffer>(gfx, model.vertices));
-		AddBind(std::make_shared<IndexBuffer>(gfx, model.indices));
+		static int tagIndex = 0;
+		tagIndex++;
+		std::string tag = "PhongTag" + std::to_string(tagIndex);
 
-		auto pcb = std::make_shared<ConstantBuffer<Material>>(gfx, ConstantBuffer<Material>::Type::Pixel, material, cbufSlot);
+		AddBind(VertexBuffer::Resolve(gfx, tag, model.vertices));
+		AddBind(IndexBuffer::Resolve(gfx, tag, model.indices));
+
+		auto pcb = ConstantBuffer<Material>::Resolve(gfx, ConstantBuffer<Material>::Type::Pixel, material, cbufSlot);
 		pMaterialBuf = pcb.get();
 		AddBind(std::move(pcb));
 
-		auto pvs = std::make_shared<VertexShader>(gfx, "shaders-bin\\PhongVS.cso");
+		auto pvs = VertexShader::Resolve(gfx, "shaders-bin\\PhongVS.cso");
 		VertexShader& vs = *pvs;
 		AddBind(std::move(pvs));
-		AddBind(std::make_shared<PixelShader>(gfx, "shaders-bin\\PhongPS.cso"));
+		AddBind(PixelShader::Resolve(gfx, "shaders-bin\\PhongPS.cso"));
 
-		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
-		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));
+		AddBind(InputLayout::Resolve(gfx, model.vertices.GetLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
+		AddBind(PrimitiveTopology::Resolve(gfx, model.d3dtype));
 
 		AddBind(std::make_shared<TransformCBuf>(gfx, *this));
 	}

@@ -3,6 +3,8 @@
 namespace Binds
 {
 	InputLayout::InputLayout(Graphics& gfx, const DynamicVertexBuf::VertexLayout& layout, void* bytecode, size_t bytecodeLength)
+		:
+		layout(layout)
 	{
 		BIND_INFOMAN(gfx);
 

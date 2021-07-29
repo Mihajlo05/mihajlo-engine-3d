@@ -4,11 +4,14 @@ using namespace Microsoft::WRL;
 
 namespace Binds
 {
-	Texture2D::Texture2D(Graphics& gfx, const Surface& surf, uint32_t slot)
+	Texture2D::Texture2D(Graphics& gfx, const std::string& path, uint32_t slot)
 		:
-		slot(slot)
+		slot(slot),
+		path(path)
 	{
 		BIND_INFOMAN(gfx);
+
+		Surface surf(path);
 
 		ComPtr<ID3D11Texture2D> pTexture;
 
