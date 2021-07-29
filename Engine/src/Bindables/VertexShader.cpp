@@ -5,11 +5,11 @@
 
 namespace Binds
 {
-	VertexShader::VertexShader(Graphics& gfx, const std::wstring& filename)
+	VertexShader::VertexShader(Graphics& gfx, const std::string& filename)
 	{
 		BIND_INFOMAN(gfx);
 
-		GFX_THROW(D3DReadFileToBlob(filename.c_str(), &pBlob));
+		GFX_THROW(D3DReadFileToBlob(std::wstring{ filename.begin(), filename.end() }.c_str(), &pBlob));
 		GFX_THROW(GetDevice(gfx)->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &pData));
 
 	}

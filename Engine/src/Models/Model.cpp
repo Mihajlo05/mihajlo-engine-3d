@@ -175,7 +175,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 
 	if (hasTexture)
 	{
-		auto pvs = make_shared<VertexShader>(gfx, L"shaders-bin\\PhongTexVS.cso");
+		auto pvs = make_shared<VertexShader>(gfx, "shaders-bin\\PhongTexVS.cso");
 		auto pvsbc = pvs->GetBytecode();
 		auto pvsbcs = pvs->GetBytecodeSize();
 		bindablePtrs.push_back(std::move(pvs));
@@ -184,7 +184,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 
 		if (!hasSpecularMap)
 		{
-			bindablePtrs.push_back(make_shared<PixelShader>(gfx, L"shaders-bin\\PhongTexPS.cso"));
+			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongTexPS.cso"));
 
 			struct PSMaterialConstant
 			{
@@ -199,7 +199,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		}
 		else
 		{
-			bindablePtrs.push_back(make_shared<PixelShader>(gfx, L"shaders-bin\\PhongTexSpecPS.cso"));
+			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongTexSpecPS.cso"));
 		}
 	}
 	else
@@ -207,14 +207,14 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 
 		if (!hasSpecularMap)
 		{
-			auto pvs = make_shared<VertexShader>(gfx, L"shaders-bin\\PhongVS.cso");
+			auto pvs = make_shared<VertexShader>(gfx, "shaders-bin\\PhongVS.cso");
 			auto pvsbc = pvs->GetBytecode();
 			auto pvsbcs = pvs->GetBytecodeSize();
 			bindablePtrs.push_back(std::move(pvs));
 
 			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
 
-			bindablePtrs.push_back(make_shared<PixelShader>(gfx, L"shaders-bin\\PhongPS.cso"));
+			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongPS.cso"));
 
 			struct PSMaterialConstant
 			{
@@ -230,14 +230,14 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		}
 		else
 		{
-			auto pvs = make_shared<VertexShader>(gfx, L"shaders-bin\\PhongTexVS.cso");
+			auto pvs = make_shared<VertexShader>(gfx, "shaders-bin\\PhongTexVS.cso");
 			auto pvsbc = pvs->GetBytecode();
 			auto pvsbcs = pvs->GetBytecodeSize();
 			bindablePtrs.push_back(std::move(pvs));
 
 			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
 
-			bindablePtrs.push_back(make_shared<PixelShader>(gfx, L"shaders-bin\\PhongSpecPS.cso"));
+			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongSpecPS.cso"));
 
 			struct PSMaterialConstant
 			{

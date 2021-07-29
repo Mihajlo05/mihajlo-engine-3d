@@ -17,10 +17,10 @@ namespace Drawables
 		pMaterialBuf = pcb.get();
 		AddBind(std::move(pcb));
 
-		auto pvs = std::make_shared<VertexShader>(gfx, L"shaders-bin\\PhongVS.cso");
+		auto pvs = std::make_shared<VertexShader>(gfx, "shaders-bin\\PhongVS.cso");
 		VertexShader& vs = *pvs;
 		AddBind(std::move(pvs));
-		AddBind(std::make_shared<PixelShader>(gfx, L"shaders-bin\\PhongPS.cso"));
+		AddBind(std::make_shared<PixelShader>(gfx, "shaders-bin\\PhongPS.cso"));
 
 		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
 		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));

@@ -20,11 +20,11 @@ namespace Drawables
 
 		AddBind(std::move(pcb));
 
-		auto pvs = std::make_shared<VertexShader>(gfx, L"shaders-bin\\DefaultVS.cso");
+		auto pvs = std::make_shared<VertexShader>(gfx, "shaders-bin\\DefaultVS.cso");
 		VertexShader& vs = *pvs;
 		AddBind(std::move(pvs));
 
-		AddBind(std::make_shared<PixelShader>(gfx, L"shaders-bin\\SolidPS.cso"));
+		AddBind(std::make_shared<PixelShader>(gfx, "shaders-bin\\SolidPS.cso"));
 
 		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
 		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));
