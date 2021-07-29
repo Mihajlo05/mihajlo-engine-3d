@@ -1,11 +1,11 @@
 #pragma once
 
-#include "DrawableBase.h"
+#include "Drawable.h"
 #include "Math/IndexedTriangleList.h"
 #include "Bindables/PixelConstantBuffer.h"
 #include "Nodes/PointLight.h"
 
-class PhongDrawable : public DrawableBase<PhongDrawable>
+class PhongDrawable : public Drawable
 {
 public:
 	struct Material

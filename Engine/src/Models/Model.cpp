@@ -7,15 +7,12 @@
 #include "Nodes/PointLight.h"
 #include "Bindables/AllBindables.h"
 
-class Mesh : public DrawableBase<Mesh>
+class Mesh : public Drawable
 {
 public:
 	Mesh(Graphics& gfx, std::vector<std::unique_ptr<Bindable>> bindPtrs)
 	{
-		if (!IsStaticInitialized())
-		{
-			AddStaticBindable(std::make_unique<PrimitiveTopology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
-		}
+		AddBindable(std::make_unique<PrimitiveTopology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
 
 		for (auto& pb : bindPtrs)
 		{
@@ -46,7 +43,7 @@ public:
 		{
 			pLight->Bind(gfx);
 		}
-		DrawableBase::Draw(gfx);
+		Drawable::Draw(gfx);
 	}
 private:
 	const PointLight* pLight = nullptr;

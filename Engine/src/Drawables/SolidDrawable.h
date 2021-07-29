@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Math/IndexedTriangleList.h"
-#include "DrawableBase.h"
+#include "Drawable.h"
 #include "Bindables/PixelConstantBuffer.h"
 
-class SolidDrawable : public DrawableBase<SolidDrawable>
+class SolidDrawable : public Drawable
 {
 public:
 	SolidDrawable(Graphics& gfx, IndexedTriangleList model, float3 color);

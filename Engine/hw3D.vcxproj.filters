@@ -150,9 +150,6 @@
     <ClInclude Include="src\Bindables\AllBindables.h">
       <Filter>Bindables</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drawables\DrawableBase.h">
-      <Filter>Drawables\Base</Filter>
-    </ClInclude>
     <ClInclude Include="src\Drawables\Drawable.h">
       <Filter>Drawables\Base</Filter>
     </ClInclude>

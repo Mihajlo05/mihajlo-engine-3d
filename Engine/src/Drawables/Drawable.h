@@ -8,8 +8,6 @@
 
 class Drawable
 {
-	template<class T>
-	friend class DrawableBase;
 public:
 	virtual void Draw(Graphics& gfx) const;
 	virtual void Update(float dt) {}

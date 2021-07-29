@@ -10,23 +10,21 @@ SolidDrawable::SolidDrawable(Graphics& gfx, IndexedTriangleList model, float3 co
 {
 	AddBindable<VertexBuffer>(gfx, model.vertices);
 	AddIndexBuffer(gfx, model.indices);
-	if (!IsStaticInitialized())
-	{
-		const float4 pscb = { color.x, color.y, color.z, 1.0f };
-		auto pcb = std::make_unique<PixelConstantBuffer<float4>>(gfx, pscb);
-		pColorCBuf = pcb.get();
 
-		AddStaticBindable(std::move(pcb));
+	const float4 pscb = { color.x, color.y, color.z, 1.0f };
+	auto pcb = std::make_unique<PixelConstantBuffer<float4>>(gfx, pscb);
+	pColorCBuf = pcb.get();
 
-		auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\DefaultVS.cso");
-		VertexShader& vs = *pvs;
-		AddStaticBindable(std::move(pvs));
+	AddBindable(std::move(pcb));
 
-		AddStaticBindable<PixelShader>(gfx, L"shaders-bin\\SolidPS.cso");
+	auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\DefaultVS.cso");
+	VertexShader& vs = *pvs;
+	AddBindable(std::move(pvs));
 
-		AddStaticBindable<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize());
-		AddStaticBindable<PrimitiveTopology>(model.d3dtype);
-	}
+	AddBindable<PixelShader>(gfx, L"shaders-bin\\SolidPS.cso");
+
+	AddBindable<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize());
+	AddBindable<PrimitiveTopology>(model.d3dtype);
 
 	AddBindable<TransformationConstantBuffer>(gfx, *this);
 }
