@@ -25,7 +25,7 @@ namespace Drawables
 		Material GetMaterial() const;
 	private:
 		static constexpr uint32_t cbufSlot = 1u;
-		ConstantBuffer<Material>* pMaterialBuf = nullptr;
+		Binds::ConstantBuffer<Material>* pMaterialBuf = nullptr;
 		const PointLight* pLight = nullptr;
 		Material material;
 		Graphics& gfx;

@@ -29,7 +29,7 @@ public:
         :
         Node(name),
         data(data),
-        cbuf(gfx, ConstantBuffer<CBufData>::Type::Pixel)
+        cbuf(gfx, Binds::ConstantBuffer<CBufData>::Type::Pixel)
     {
         auto psMesh = std::make_shared<Drawables::Solid>(gfx,
             IndexedTriangleList("Models\\sphere.obj"),
@@ -68,5 +68,5 @@ protected:
 private:
     Drawables::Solid* pMesh = nullptr;
     Data data;
-    ConstantBuffer<CBufData> cbuf;
+    Binds::ConstantBuffer<CBufData> cbuf;
 };

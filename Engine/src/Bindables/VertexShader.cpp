@@ -3,26 +3,29 @@
 
 #pragma comment(lib, "D3DCompiler.lib")
 
-VertexShader::VertexShader(Graphics& gfx, const std::wstring& filename)
+namespace Binds
 {
-	BIND_INFOMAN(gfx);
+	VertexShader::VertexShader(Graphics& gfx, const std::wstring& filename)
+	{
+		BIND_INFOMAN(gfx);
 
-	GFX_THROW(D3DReadFileToBlob(filename.c_str(), &pBlob));
-	GFX_THROW(GetDevice(gfx)->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &pData));
+		GFX_THROW(D3DReadFileToBlob(filename.c_str(), &pBlob));
+		GFX_THROW(GetDevice(gfx)->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), nullptr, &pData));
 
-}
+	}
 
-void VertexShader::Bind(Graphics& gfx) const
-{
-	GetContext(gfx)->VSSetShader(pData.Get(), nullptr, 0u);
-}
+	void VertexShader::Bind(Graphics& gfx) const
+	{
+		GetContext(gfx)->VSSetShader(pData.Get(), nullptr, 0u);
+	}
 
-void* VertexShader::GetBytecode() const
-{
-	return pBlob->GetBufferPointer();
-}
+	void* VertexShader::GetBytecode() const
+	{
+		return pBlob->GetBufferPointer();
+	}
 
-size_t VertexShader::GetBytecodeSize() const
-{
-	return pBlob->GetBufferSize();
+	size_t VertexShader::GetBytecodeSize() const
+	{
+		return pBlob->GetBufferSize();
+	}
 }

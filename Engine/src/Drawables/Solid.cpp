@@ -1,6 +1,7 @@
 #include "Solid.h"
 #include "Bindables/AllBindables.h"
 
+using namespace Binds;
 ConstantBuffer<float4>* Drawables::Solid::pColorCBuf = nullptr;
 
 namespace Drawables

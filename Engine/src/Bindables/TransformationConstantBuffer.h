@@ -5,18 +5,21 @@
 #include "Drawables/Drawable.h"
 #include "Math/MihajloMath.h"
 
-class TransformationConstantBuffer : public Bindable
+namespace Binds
 {
-public:
-	TransformationConstantBuffer(Graphics& gfx, const Drawables::Drawable& parent, uint32_t slot = 0u);
-	void Bind(Graphics& gfx) const override;
-private:
-	struct Data
+	class TransformationConstantBuffer : public Bindable
 	{
-		matrix modelView;
-		matrix modelViewProj;
+	public:
+		TransformationConstantBuffer(Graphics& gfx, const Drawables::Drawable& parent, uint32_t slot = 0u);
+		void Bind(Graphics& gfx) const override;
+	private:
+		struct Data
+		{
+			matrix modelView;
+			matrix modelViewProj;
+		};
+	private:
+		const Drawables::Drawable& parent;
+		ConstantBuffer<Data> vConstBuf;
 	};
-private:
-	const Drawables::Drawable& parent;
-	ConstantBuffer<Data> vConstBuf;
-};
+}

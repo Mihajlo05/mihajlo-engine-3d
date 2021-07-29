@@ -13,7 +13,7 @@ namespace Drawables
 		void SetColor(float3 c);
 		float3 GetColor() const;
 	private:
-		static ConstantBuffer<float4>* pColorCBuf;
+		static Binds::ConstantBuffer<float4>* pColorCBuf;
 		float3 color;
 		Graphics& gfx;
 	};

@@ -8,9 +8,14 @@
 #include "Math/MihajloMath.h"
 #include "Camera/ICamera.h"
 
+namespace Binds
+{
+	class Bindable;
+}
+
 class Graphics
 {
-	friend class Bindable;
+	friend Binds::Bindable;
 public:
 		class Exception : public MihajloException
 		{

@@ -20,10 +20,10 @@ namespace Drawables
 		virtual ~Drawable() = default;
 	protected:
 		Drawable() = default;
-		void AddBind(std::shared_ptr<Bindable> pBindable);
+		void AddBind(std::shared_ptr<Binds::Bindable> pBindable);
 	private:
-		const IndexBuffer* pIndexBuffer = nullptr;
-		std::vector<std::shared_ptr<Bindable>> bindablePtrs;
+		const Binds::IndexBuffer* pIndexBuffer = nullptr;
+		std::vector<std::shared_ptr<Binds::Bindable>> bindablePtrs;
 		matrix transformation = DirectX::XMMatrixIdentity();
 	};
 }

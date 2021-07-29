@@ -1,6 +1,8 @@
 #include "Phong.h"
 #include "Bindables/AllBindables.h"
 
+using namespace Binds;
+
 namespace Drawables
 {
 	Phong::Phong(Graphics& gfx, IndexedTriangleList model, Material material)

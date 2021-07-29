@@ -1,5 +1,7 @@
 #include "Drawable.h"
 
+using namespace Binds;
+
 namespace Drawables
 {
 	void Drawable::Draw(Graphics& gfx) const
