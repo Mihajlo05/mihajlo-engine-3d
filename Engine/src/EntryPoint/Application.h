@@ -2,14 +2,7 @@
 
 #include "Windows/Window.h"
 #include "Timer/Timer.h"
-#include "Nodes/MeshInstance.h"
-#include "Nodes/PointLight.h"
 #include "Gui/Hierarchy.h"
-#include "Drawables/Phong.h"
-#include <cassert>
-#include "Math/IndexedTriangleList.h"
-#include "Models/Model.h"
-#include <memory>
 #include "Camera/EditorCamera.h"
 
 class Application
