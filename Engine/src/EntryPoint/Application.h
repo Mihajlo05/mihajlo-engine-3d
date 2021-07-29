@@ -18,11 +18,11 @@ public:
 	Application(const Application&) = delete;
 	Application& operator=(const Application&) = delete;
 	void Go();
-	virtual ~Application();
+	virtual ~Application() = default;
 	static float GetDeltaTime();
+	void SetActiveScene(std::unique_ptr<Node> pScene);
 protected:
 	Application(const std::string& name);
-	void SetActiveScene(Node* pScene);
 protected:
 	virtual void HandleMouseEvents(const Mouse::Event& e);
 	virtual void HandleKeyboardEvents(const Keyboard::Event& e);
@@ -39,9 +39,9 @@ private:
 	Timer timer;
 	Gui::Hierarchy hierarchy;
 	bool isPlaying = false;
-	Node* pScene = nullptr;
 	EditorCamera cam;
 	static float dt;
+	std::unique_ptr<Node> pScene = nullptr;
 };
 
-Application* GetApplication(); //defiend by client (in some project that produces .exe file)
+std::unique_ptr<Application> GetApplication(); //defiend by client (in some project that produces .exe file)

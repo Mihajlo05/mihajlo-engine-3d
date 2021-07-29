@@ -11,12 +11,6 @@ Application::Application(const std::string& name)
 	gfx.BindCamera(cam);
 }
 
-void Application::SetActiveScene(Node* pScene)
-{
-	this->pScene = pScene;
-	hierarchy.SetRoot(*pScene);
-}
-
 void Application::Go()
 {
 	dt = timer.Reset();
@@ -36,15 +30,15 @@ void Application::Go()
 	gfx.EndFrame();
 }
 
-Application::~Application()
-{
-	delete pScene;
-	pScene = nullptr;
-}
-
 float Application::GetDeltaTime()
 {
 	return dt;
+}
+
+void Application::SetActiveScene(std::unique_ptr<Node> pScene)
+{
+	this->pScene = std::move(pScene);
+	hierarchy.SetRoot(*this->pScene.get());
 }
 
 void Application::HandleMouseEvents(const Mouse::Event& e)

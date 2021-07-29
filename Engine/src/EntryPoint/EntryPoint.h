@@ -4,7 +4,7 @@
 #include "Windows/GDIPlusManager.h"
 #include "Gui/imgui/ImGuiManager.h"
 
-extern Application* GetApplication();
+extern std::unique_ptr<Application> GetApplication();
 
 int CALLBACK WinMain(
 	HINSTANCE hInst,
@@ -13,12 +13,11 @@ int CALLBACK WinMain(
 	int		  nCmdShow
 )
 {
-	Application* pApp = nullptr;
 	try
 	{
 		GDIPlusManager gpm;
 		ImGuiManager igm;
-		pApp = GetApplication();
+		auto pApp = GetApplication();
 
 		std::optional<int> ecode;
 
@@ -27,22 +26,18 @@ int CALLBACK WinMain(
 			pApp->Go();
 		}
 
-		delete pApp;
 		return *ecode;
 	}
 	catch (const MihajloException& e)
 	{
-		delete pApp;
 		Window::CreateErrorMsgBox(e.GetType(), e.what());
 	}
 	catch (const std::exception& e)
 	{
-		delete pApp;
 		Window::CreateErrorMsgBox("Standard Exception", e.what());
 	}
 	catch (...)
 	{
-		delete pApp;
 		Window::CreateErrorMsgBox("Unknown Exception", "No details available");
 	}
 

@@ -31,14 +31,14 @@ public:
 
 		pBed->AddChild(std::move(pBedModel));
 
-		Node* pScene = new Node("NanoSuzzane Scene");
+		auto pScene = std::make_unique<Node>("NanoSuzzane Scene");
 
 		pScene->AddChild(std::move(pLight));
 		pScene->AddChild(std::move(pNano));
 		pScene->AddChild(std::move(pSuzzane));
 		pScene->AddChild(std::move(pBed));
 
-		SetActiveScene(pScene);
+		SetActiveScene(std::move(pScene));
 	}
 
 	void HandleMouseEvents(const Mouse::Event& e) override
@@ -50,7 +50,7 @@ public:
 	}
 };
 
-Application* GetApplication()
+std::unique_ptr<Application> GetApplication()
 {
-	return new App();
+	return std::make_unique<App>();
 }

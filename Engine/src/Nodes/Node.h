@@ -19,10 +19,10 @@ class Node
 {
 	friend Gui::Hierarchy;
 	friend Gui::Inspector;
-private:
-	using ChildrenList = std::vector<std::unique_ptr<Node>>;
 public:
 	Node(const std::string& name);
+	Node(const Node&) = delete;
+	Node& operator=(const Node&) = delete;
 	void AddChild(std::unique_ptr<Node> node);
 	Transform GetTransform() const;
 	void SetTransform(const Transform& transf);
@@ -45,7 +45,7 @@ protected:
 private:
 	void RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode); //Used by hierarchy
 protected:
-	ChildrenList childrens;
+	std::vector<std::unique_ptr<Node>> childrens;
 private:
 	Transform transf;
 	matrix prevTranfs;
