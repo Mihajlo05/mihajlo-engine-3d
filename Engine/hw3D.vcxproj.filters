@@ -197,8 +197,7 @@
     <ClInclude Include="src\Gui\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
-    <ClInclude Include="src\Drawables\SolidDrawable.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
+    <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\Nodes\MeshInstance.h" />
     <ClInclude Include="src\assimp.h" />
@@ -209,6 +208,7 @@
     <ClInclude Include="src\Models\Model.h" />
     <ClInclude Include="src\Camera\ICamera.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
+    <ClInclude Include="src\Drawables\Phong.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -292,14 +292,14 @@
     <ClCompile Include="src\Gui\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\Gui\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
-    <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
+    <ClCompile Include="src\Drawables\Solid.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Nodes\MeshInstance.cpp" />
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
     <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Models\Model.cpp" />
     <ClCompile Include="src\Camera\EditorCamera.cpp" />
+    <ClCompile Include="src\Drawables\Phong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">

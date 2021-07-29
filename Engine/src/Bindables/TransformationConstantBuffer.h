@@ -8,7 +8,7 @@
 class TransformationConstantBuffer : public Bindable
 {
 public:
-	TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot = 0u);
+	TransformationConstantBuffer(Graphics& gfx, const Drawables::Drawable& parent, uint32_t slot = 0u);
 	void Bind(Graphics& gfx) const override;
 private:
 	struct Data
@@ -17,6 +17,6 @@ private:
 		matrix modelViewProj;
 	};
 private:
-	const Drawable& parent;
+	const Drawables::Drawable& parent;
 	VertexConstantBuffer<Data> vConstBuf;
 };

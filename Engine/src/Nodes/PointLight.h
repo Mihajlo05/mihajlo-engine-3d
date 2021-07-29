@@ -3,7 +3,7 @@
 #include "Nodes/Node.h"
 #include "Bindables/PixelConstantBuffer.h"
 #include "Nodes/MeshInstance.h"
-#include "Drawables/SolidDrawable.h"
+#include "Drawables/Solid.h"
 #include "Gui/imgui/imgui.h"
 
 class PointLight : public Node
@@ -31,7 +31,7 @@ public:
         data(data),
         cbuf(gfx)
     {
-        auto psMesh = std::make_shared<SolidDrawable>(gfx,
+        auto psMesh = std::make_shared<Drawables::Solid>(gfx,
             IndexedTriangleList("Models\\sphere.obj"),
             data.diffuseColor);
         pMesh = psMesh.get();
@@ -66,7 +66,7 @@ protected:
         Node::ShowOnInspector();
     }
 private:
-    SolidDrawable* pMesh = nullptr;
+    Drawables::Solid* pMesh = nullptr;
     Data data;
     PixelConstantBuffer<CBufData> cbuf;
 };

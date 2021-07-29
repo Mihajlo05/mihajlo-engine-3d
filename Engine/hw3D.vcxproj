@@ -94,8 +94,8 @@
   <ItemGroup>
     <ClCompile Include="src\Bindables\Bindable.cpp" />
     <ClCompile Include="src\Camera\EditorCamera.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
-    <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
+    <ClCompile Include="src\Drawables\Phong.cpp" />
+    <ClCompile Include="src\Drawables\Solid.cpp" />
     <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
@@ -140,8 +140,8 @@
     <ClInclude Include="src\Bindables\Bindable.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
     <ClInclude Include="src\Camera\ICamera.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
-    <ClInclude Include="src\Drawables\SolidDrawable.h" />
+    <ClInclude Include="src\Drawables\Phong.h" />
+    <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\EntryPoint\EntryPoint.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
     <ClInclude Include="src\Gui\Inspector.h" />

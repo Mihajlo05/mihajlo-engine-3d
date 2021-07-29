@@ -2,12 +2,12 @@
 #include "assimp.h"
 #include "Math/IndexedTriangleList.h"
 #include "Drawables/Drawable.h"
-#include "Drawables/PhongDrawable.h"
+#include "Drawables/Phong.h"
 #include "Nodes/MeshInstance.h"
 #include "Nodes/PointLight.h"
 #include "Bindables/AllBindables.h"
 
-class Mesh : public Drawable
+class Mesh : public Drawables::Drawable
 {
 public:
 	Mesh(Graphics& gfx, std::vector<std::unique_ptr<Bindable>> bindPtrs)
@@ -95,7 +95,6 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 			bindablePtrs.push_back(make_unique<Sampler>(gfx));
 		}
 
-		float s;
 		if (material.GetTexture(aiTextureType_SPECULAR, 0, &texFileName) == aiReturn_SUCCESS)
 		{
 			hasSpecularMap = true;
@@ -123,7 +122,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		);
 
 		std::vector<Index> indices;
-		indices.reserve(amesh.mNumFaces * 3);
+		indices.reserve(amesh.mNumFaces * 3u);
 		for (unsigned int i = 0; i < amesh.mNumFaces; i++)
 		{
 			const auto& face = amesh.mFaces[i];
@@ -157,7 +156,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		);
 
 		std::vector<Index> indices;
-		indices.reserve(amesh.mNumFaces * 3);
+		indices.reserve(amesh.mNumFaces * 3u);
 		for (unsigned int i = 0; i < amesh.mNumFaces; i++)
 		{
 			const auto& face = amesh.mFaces[i];

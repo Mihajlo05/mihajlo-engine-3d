@@ -2,6 +2,7 @@
 
 namespace dx = DirectX;
 using VConstBuf = VertexConstantBuffer<dx::XMMATRIX>;
+using namespace Drawables;
 
 TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot)
 	:

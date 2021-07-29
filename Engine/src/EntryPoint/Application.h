@@ -5,7 +5,7 @@
 #include "Nodes/MeshInstance.h"
 #include "Nodes/PointLight.h"
 #include "Gui/Hierarchy.h"
-#include "Drawables/PhongDrawable.h"
+#include "Drawables/Phong.h"
 #include <cassert>
 #include "Math/IndexedTriangleList.h"
 #include "Models/Model.h"
