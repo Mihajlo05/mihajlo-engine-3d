@@ -22,7 +22,7 @@ namespace Drawables
 		AddBind(std::move(pvs));
 		AddBind(std::make_shared<PixelShader>(gfx, "shaders-bin\\PhongPS.cso"));
 
-		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
+		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
 		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));
 
 		AddBind(std::make_shared<TransformCBuf>(gfx, *this));

@@ -180,7 +180,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 		auto pvsbcs = pvs->GetBytecodeSize();
 		bindablePtrs.push_back(std::move(pvs));
 
-		bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
+		bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout(), pvsbc, pvsbcs));
 
 		if (!hasSpecularMap)
 		{
@@ -212,7 +212,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 			auto pvsbcs = pvs->GetBytecodeSize();
 			bindablePtrs.push_back(std::move(pvs));
 
-			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
+			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout(), pvsbc, pvsbcs));
 
 			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongPS.cso"));
 
@@ -235,7 +235,7 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 			auto pvsbcs = pvs->GetBytecodeSize();
 			bindablePtrs.push_back(std::move(pvs));
 
-			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout().GetD3DLayout(), pvsbc, pvsbcs));
+			bindablePtrs.push_back(make_shared<InputLayout>(gfx, vbuf.GetLayout(), pvsbc, pvsbcs));
 
 			bindablePtrs.push_back(make_shared<PixelShader>(gfx, "shaders-bin\\PhongSpecPS.cso"));
 
