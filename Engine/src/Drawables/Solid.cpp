@@ -10,25 +10,25 @@ namespace Drawables
 		gfx(gfx),
 		color(color)
 	{
-		AddBindable<VertexBuffer>(gfx, model.vertices);
-		AddIndexBuffer(gfx, model.indices);
+		AddBind(std::make_shared<VertexBuffer>(gfx, model.vertices));
+		AddBind(std::make_shared<IndexBuffer>(gfx, model.indices));
 
 		const float4 pscb = { color.x, color.y, color.z, 1.0f };
-		auto pcb = std::make_unique<ConstantBuffer<float4>>(gfx, ConstantBuffer<float4>::Type::Pixel, pscb);
+		auto pcb = std::make_shared<ConstantBuffer<float4>>(gfx, ConstantBuffer<float4>::Type::Pixel, pscb);
 		pColorCBuf = pcb.get();
 
-		AddBindable(std::move(pcb));
+		AddBind(std::move(pcb));
 
-		auto pvs = std::make_unique<VertexShader>(gfx, L"shaders-bin\\DefaultVS.cso");
+		auto pvs = std::make_shared<VertexShader>(gfx, L"shaders-bin\\DefaultVS.cso");
 		VertexShader& vs = *pvs;
-		AddBindable(std::move(pvs));
+		AddBind(std::move(pvs));
 
-		AddBindable<PixelShader>(gfx, L"shaders-bin\\SolidPS.cso");
+		AddBind(std::make_shared<PixelShader>(gfx, L"shaders-bin\\SolidPS.cso"));
 
-		AddBindable<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize());
-		AddBindable<PrimitiveTopology>(model.d3dtype);
+		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
+		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));
 
-		AddBindable<TransformationConstantBuffer>(gfx, *this);
+		AddBind(std::make_shared<TransformationConstantBuffer>(gfx, *this));
 	}
 
 	void Solid::SetColor(float3 c)

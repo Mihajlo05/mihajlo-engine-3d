@@ -32,17 +32,13 @@ namespace Drawables
 		return transformation;
 	}
 
-	void Drawable::AddBindable(std::unique_ptr<Bindable> pBindable)
+	void Drawable::AddBind(std::shared_ptr<Bindable> pBindable)
 	{
-		assert("Can't add index buffer in AddBindable function, you MUST use AddIndexBuffer" &&
-			typeid(*pBindable) != typeid(IndexBuffer));
+		if (typeid(*pBindable) == typeid(IndexBuffer))
+		{
+			assert(!pIndexBuffer);
+			pIndexBuffer = static_cast<IndexBuffer*>(pBindable.get());
+		}
 		bindablePtrs.push_back(std::move(pBindable));
-	}
-
-	void Drawable::AddIndexBuffer(std::unique_ptr<IndexBuffer> pib)
-	{
-		assert("Binding index buffer second time, this is not allowed" && pIndexBuffer == nullptr);
-		pIndexBuffer = pib.get();
-		bindablePtrs.push_back(std::move(pib));
 	}
 }

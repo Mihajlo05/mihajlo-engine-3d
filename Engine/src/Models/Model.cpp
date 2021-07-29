@@ -12,22 +12,14 @@ class Mesh : public Drawables::Drawable
 public:
 	Mesh(Graphics& gfx, std::vector<std::unique_ptr<Bindable>> bindPtrs)
 	{
-		AddBindable(std::make_unique<PrimitiveTopology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
+		AddBind(std::make_shared<PrimitiveTopology>(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST));
 
 		for (auto& pb : bindPtrs)
 		{
-			if (auto pi = dynamic_cast<IndexBuffer*>(pb.get()))
-			{
-				AddIndexBuffer(std::unique_ptr<IndexBuffer>{ pi });
-				pb.release();
-			}
-			else
-			{
-				AddBindable(std::move(pb));
-			}
+			AddBind(std::move(pb));
 		}
 
-		AddBindable(std::make_unique<TransformationConstantBuffer>(gfx, *this));
+		AddBind(std::make_shared<TransformationConstantBuffer>(gfx, *this));
 	}
 	void SetLight(const PointLight& light)
 	{

@@ -20,21 +20,10 @@ namespace Drawables
 		virtual ~Drawable() = default;
 	protected:
 		Drawable() = default;
-		void AddBindable(std::unique_ptr<Bindable> pBindable);
-		template<class B, typename... Params>
-		void AddBindable(Params&&... params)
-		{
-			AddBindable(std::make_unique<B>(std::forward<Params>(params)...));
-		}
-		void AddIndexBuffer(std::unique_ptr<IndexBuffer> pib);
-		template<typename... Params>
-		void AddIndexBuffer(Params&&... params)
-		{
-			AddIndexBuffer(std::make_unique<IndexBuffer>(std::forward<Params>(params)...));
-		}
+		void AddBind(std::shared_ptr<Bindable> pBindable);
 	private:
 		const IndexBuffer* pIndexBuffer = nullptr;
-		std::vector<std::unique_ptr<Bindable>> bindablePtrs;
+		std::vector<std::shared_ptr<Bindable>> bindablePtrs;
 		matrix transformation = DirectX::XMMatrixIdentity();
 	};
 }
