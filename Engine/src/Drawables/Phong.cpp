@@ -25,7 +25,7 @@ namespace Drawables
 		AddBind(std::make_shared<InputLayout>(gfx, model.vertices.GetLayout().GetD3DLayout(), vs.GetBytecode(), vs.GetBytecodeSize()));
 		AddBind(std::make_shared<PrimitiveTopology>(model.d3dtype));
 
-		AddBind(std::make_shared<TransformationConstantBuffer>(gfx, *this));
+		AddBind(std::make_shared<TransformCBuf>(gfx, *this));
 	}
 
 	void Phong::Draw(Graphics& gfx) const

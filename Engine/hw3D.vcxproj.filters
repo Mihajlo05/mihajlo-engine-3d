@@ -138,7 +138,7 @@
     <ClInclude Include="src\Bindables\VertexBuffer.h">
       <Filter>Bindables\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Bindables\TransformationConstantBuffer.h">
+    <ClInclude Include="src\Bindables\TransformCBuf.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="src\Bindables\AllBindables.h">
@@ -250,7 +250,7 @@
     <ClCompile Include="src\Bindables\VertexBuffer.cpp">
       <Filter>Bindables\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp">
+    <ClCompile Include="src\Bindables\TransformCBuf.cpp">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClCompile>
     <ClCompile Include="src\Drawables\Drawable.cpp">

@@ -21,7 +21,7 @@ public:
 			AddBind(std::move(pb));
 		}
 
-		AddBind(std::make_shared<TransformationConstantBuffer>(gfx, *this));
+		AddBind(std::make_shared<TransformCBuf>(gfx, *this));
 	}
 	void SetLight(const PointLight& light)
 	{

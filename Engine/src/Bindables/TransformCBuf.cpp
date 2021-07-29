@@ -1,17 +1,17 @@
-#include "TransformationConstantBuffer.h"
+#include "TransformCBuf.h"
 
 namespace dx = DirectX;
 using namespace Drawables;
 
 namespace Binds
 {
-	TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot)
+	TransformCBuf::TransformCBuf(Graphics& gfx, const Drawable& parent, uint32_t slot)
 		:
 		parent(parent),
 		vConstBuf(gfx, ConstantBuffer<Data>::Type::Vertex, slot)
 	{ }
 
-	void TransformationConstantBuffer::Bind(Graphics& gfx) const
+	void TransformCBuf::Bind(Graphics& gfx) const
 	{
 		vConstBuf.Update(gfx, Data{ dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera().GetView()),
 			dx::XMMatrixTranspose(parent.GetTransformation() * gfx.GetCamera().GetViewProjection()) });

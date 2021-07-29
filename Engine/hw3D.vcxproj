@@ -128,7 +128,7 @@
     <ClCompile Include="src\Graphics\Surface.cpp" />
     <ClCompile Include="src\Bindables\Texture2D.cpp" />
     <ClCompile Include="src\Timer\Timer.cpp" />
-    <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp" />
+    <ClCompile Include="src\Bindables\TransformCBuf.cpp" />
     <ClCompile Include="src\Bindables\VertexBuffer.cpp" />
     <ClCompile Include="src\Bindables\VertexShader.cpp" />
     <ClCompile Include="src\Bindables\Viewport.cpp" />
@@ -185,7 +185,7 @@
     <ClInclude Include="src\Bindables\Texture2D.h" />
     <ClInclude Include="src\Timer\Timer.h" />
     <ClInclude Include="src\Math\Transform.h" />
-    <ClInclude Include="src\Bindables\TransformationConstantBuffer.h" />
+    <ClInclude Include="src\Bindables\TransformCBuf.h" />
     <ClInclude Include="src\Bindables\VertexBuffer.h" />
     <ClInclude Include="src\Bindables\VertexShader.h" />
     <ClInclude Include="src\Bindables\Viewport.h" />

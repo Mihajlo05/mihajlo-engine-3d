@@ -7,10 +7,10 @@
 
 namespace Binds
 {
-	class TransformationConstantBuffer : public Bindable
+	class TransformCBuf : public Bindable
 	{
 	public:
-		TransformationConstantBuffer(Graphics& gfx, const Drawables::Drawable& parent, uint32_t slot = 0u);
+		TransformCBuf(Graphics& gfx, const Drawables::Drawable& parent, uint32_t slot = 0u);
 		void Bind(Graphics& gfx) const override;
 	private:
 		struct Data

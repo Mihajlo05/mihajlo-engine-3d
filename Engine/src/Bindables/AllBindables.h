@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ConstantBuffer.h"
-#include "TransformationConstantBuffer.h"
+#include "TransformCBuf.h"
 #include "IndexBuffer.h"
 #include "VertexBuffer.h"
 #include "PixelShader.h"
