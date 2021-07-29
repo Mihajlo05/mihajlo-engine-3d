@@ -6,34 +6,24 @@
 #include "Math/MihajloMath.h"
 #include <memory>
 
-class Drawable
+namespace Drawables
 {
-	template<class T>
-	friend class DrawableBase;
-public:
-	virtual void Draw(Graphics& gfx) const;
-	virtual void Update(float dt) {}
-	void ResetTransformations();
-	void Transform(fmatrix t);
-	void SetTransformation(fmatrix t);
-	matrix GetTransformation() const;
-	virtual ~Drawable() = default;
-protected:
-	Drawable() = default;
-	void AddBindable(std::unique_ptr<Bindable> pBindable);
-	template<class B, typename... Params>
-	void AddBindable(Params&&... params)
+	class Drawable
 	{
-		AddBindable(std::make_unique<B>(std::forward<Params>(params)...));
-	}
-	void AddIndexBuffer(std::unique_ptr<IndexBuffer> pib);
-	template<typename... Params>
-	void AddIndexBuffer(Params&&... params)
-	{
-		AddIndexBuffer(std::make_unique<IndexBuffer>(std::forward<Params>(params)...));
-	}
-private:
-	const IndexBuffer* pIndexBuffer = nullptr;
-	std::vector<std::unique_ptr<Bindable>> bindablePtrs;
-	matrix transformation = DirectX::XMMatrixIdentity();
-};
+	public:
+		virtual void Draw(Graphics& gfx) const;
+		virtual void Update(float dt) {}
+		void ResetTransformations();
+		void Transform(fmatrix t);
+		void SetTransformation(fmatrix t);
+		matrix GetTransformation() const;
+		virtual ~Drawable() = default;
+	protected:
+		Drawable() = default;
+		void AddBind(std::shared_ptr<Binds::Bindable> pBindable);
+	private:
+		const Binds::IndexBuffer* pIndexBuffer = nullptr;
+		std::vector<std::shared_ptr<Binds::Bindable>> bindablePtrs;
+		matrix transformation = DirectX::XMMatrixIdentity();
+	};
+}

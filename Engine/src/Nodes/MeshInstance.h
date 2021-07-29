@@ -8,9 +8,9 @@
 class MeshInstance : public Node
 {
 public:
-	MeshInstance(std::shared_ptr<Drawable> pMesh, const std::string& name);
+	MeshInstance(std::shared_ptr<Drawables::Drawable> pMesh, const std::string& name);
 	virtual ~MeshInstance() = default;
-	Drawable& Mesh()
+	Drawables::Drawable& Mesh()
 	{
 		assert(pMesh != nullptr);
 		return *pMesh;
@@ -18,5 +18,5 @@ public:
 private:
 	void _Draw(Graphics& gfx) const override;
 private:
-	std::shared_ptr<Drawable> pMesh;
+	std::shared_ptr<Drawables::Drawable> pMesh;
 };

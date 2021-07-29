@@ -1,5 +1,7 @@
 #include "MeshInstance.h"
-#include "Drawables/PhongDrawable.h"
+#include "Drawables/Phong.h"
+
+using namespace Drawables;
 
 MeshInstance::MeshInstance(std::shared_ptr<Drawable> pMesh, const std::string& name)
 	:

@@ -94,8 +94,8 @@
   <ItemGroup>
     <ClCompile Include="src\Bindables\Bindable.cpp" />
     <ClCompile Include="src\Camera\EditorCamera.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
-    <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
+    <ClCompile Include="src\Drawables\Phong.cpp" />
+    <ClCompile Include="src\Drawables\Solid.cpp" />
     <ClCompile Include="src\ErrorHandling\DefaultMihException.cpp" />
     <ClCompile Include="src\Drawables\Drawable.cpp" />
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
@@ -128,7 +128,7 @@
     <ClCompile Include="src\Graphics\Surface.cpp" />
     <ClCompile Include="src\Bindables\Texture2D.cpp" />
     <ClCompile Include="src\Timer\Timer.cpp" />
-    <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp" />
+    <ClCompile Include="src\Bindables\TransformCBuf.cpp" />
     <ClCompile Include="src\Bindables\VertexBuffer.cpp" />
     <ClCompile Include="src\Bindables\VertexShader.cpp" />
     <ClCompile Include="src\Bindables\Viewport.cpp" />
@@ -140,8 +140,8 @@
     <ClInclude Include="src\Bindables\Bindable.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
     <ClInclude Include="src\Camera\ICamera.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
-    <ClInclude Include="src\Drawables\SolidDrawable.h" />
+    <ClInclude Include="src\Drawables\Phong.h" />
+    <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\EntryPoint\EntryPoint.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
     <ClInclude Include="src\Gui\Inspector.h" />
@@ -159,7 +159,6 @@
     <ClInclude Include="src\Bindables\ConstantBuffer.h" />
     <ClInclude Include="src\ErrorHandling\DefaultMihException.h" />
     <ClInclude Include="src\Drawables\Drawable.h" />
-    <ClInclude Include="src\Drawables\DrawableBase.h" />
     <ClInclude Include="src\ErrorHandling\dxerr.h" />
     <ClInclude Include="src\ErrorHandling\DxgiInfoManager.h" />
     <ClInclude Include="src\EntryPoint\Application.h" />
@@ -178,7 +177,6 @@
     <ClInclude Include="src\Math\MihajloMath.h" />
     <ClInclude Include="src\Windows\MihajloWin.h" />
     <ClInclude Include="src\Windows\Mouse.h" />
-    <ClInclude Include="src\Bindables\PixelConstantBuffer.h" />
     <ClInclude Include="src\Bindables\PixelShader.h" />
     <ClInclude Include="src\Bindables\PrimitiveTopology.h" />
     <ClInclude Include="src\Resources\resource.h" />
@@ -187,9 +185,8 @@
     <ClInclude Include="src\Bindables\Texture2D.h" />
     <ClInclude Include="src\Timer\Timer.h" />
     <ClInclude Include="src\Math\Transform.h" />
-    <ClInclude Include="src\Bindables\TransformationConstantBuffer.h" />
+    <ClInclude Include="src\Bindables\TransformCBuf.h" />
     <ClInclude Include="src\Bindables\VertexBuffer.h" />
-    <ClInclude Include="src\Bindables\VertexConstantBuffer.h" />
     <ClInclude Include="src\Bindables\VertexShader.h" />
     <ClInclude Include="src\Bindables\Viewport.h" />
     <ClInclude Include="src\Windows\Window.h" />

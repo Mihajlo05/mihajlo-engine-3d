@@ -126,12 +126,6 @@
     <ClInclude Include="src\Bindables\ConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Bindables\VertexConstantBuffer.h">
-      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Bindables\PixelConstantBuffer.h">
-      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
     <ClInclude Include="src\Bindables\PixelShader.h">
       <Filter>Bindables\Shaders</Filter>
     </ClInclude>
@@ -144,14 +138,11 @@
     <ClInclude Include="src\Bindables\VertexBuffer.h">
       <Filter>Bindables\Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Bindables\TransformationConstantBuffer.h">
+    <ClInclude Include="src\Bindables\TransformCBuf.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
     <ClInclude Include="src\Bindables\AllBindables.h">
       <Filter>Bindables</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drawables\DrawableBase.h">
-      <Filter>Drawables\Base</Filter>
     </ClInclude>
     <ClInclude Include="src\Drawables\Drawable.h">
       <Filter>Drawables\Base</Filter>
@@ -200,8 +191,7 @@
     <ClInclude Include="src\Gui\imgui\ImGuiManager.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
-    <ClInclude Include="src\Drawables\SolidDrawable.h" />
-    <ClInclude Include="src\Drawables\PhongDrawable.h" />
+    <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\Nodes\Node.h" />
     <ClInclude Include="src\Nodes\MeshInstance.h" />
     <ClInclude Include="src\assimp.h" />
@@ -212,6 +202,7 @@
     <ClInclude Include="src\Models\Model.h" />
     <ClInclude Include="src\Camera\ICamera.h" />
     <ClInclude Include="src\Camera\EditorCamera.h" />
+    <ClInclude Include="src\Drawables\Phong.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -259,7 +250,7 @@
     <ClCompile Include="src\Bindables\VertexBuffer.cpp">
       <Filter>Bindables\Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="src\Bindables\TransformationConstantBuffer.cpp">
+    <ClCompile Include="src\Bindables\TransformCBuf.cpp">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClCompile>
     <ClCompile Include="src\Drawables\Drawable.cpp">
@@ -295,14 +286,14 @@
     <ClCompile Include="src\Gui\imgui\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\Gui\imgui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
-    <ClCompile Include="src\Drawables\SolidDrawable.cpp" />
-    <ClCompile Include="src\Drawables\PhongDrawable.cpp" />
+    <ClCompile Include="src\Drawables\Solid.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
     <ClCompile Include="src\Nodes\MeshInstance.cpp" />
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
     <ClCompile Include="src\Gui\Inspector.cpp" />
     <ClCompile Include="src\Models\Model.cpp" />
     <ClCompile Include="src\Camera\EditorCamera.cpp" />
+    <ClCompile Include="src\Drawables\Phong.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
