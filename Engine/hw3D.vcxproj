@@ -177,7 +177,6 @@
     <ClInclude Include="src\Math\MihajloMath.h" />
     <ClInclude Include="src\Windows\MihajloWin.h" />
     <ClInclude Include="src\Windows\Mouse.h" />
-    <ClInclude Include="src\Bindables\PixelConstantBuffer.h" />
     <ClInclude Include="src\Bindables\PixelShader.h" />
     <ClInclude Include="src\Bindables\PrimitiveTopology.h" />
     <ClInclude Include="src\Resources\resource.h" />
@@ -188,7 +187,6 @@
     <ClInclude Include="src\Math\Transform.h" />
     <ClInclude Include="src\Bindables\TransformationConstantBuffer.h" />
     <ClInclude Include="src\Bindables\VertexBuffer.h" />
-    <ClInclude Include="src\Bindables\VertexConstantBuffer.h" />
     <ClInclude Include="src\Bindables\VertexShader.h" />
     <ClInclude Include="src\Bindables\Viewport.h" />
     <ClInclude Include="src\Windows\Window.h" />

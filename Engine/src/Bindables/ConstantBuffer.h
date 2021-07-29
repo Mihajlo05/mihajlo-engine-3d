@@ -6,10 +6,17 @@ template<class C>
 class ConstantBuffer : public Bindable
 {
 public:
-	ConstantBuffer(Graphics& gfx, const C& cBuf, uint32_t slot = 0u)
+	enum class Type
+	{
+		Vertex,
+		Pixel
+	};
+public:
+	ConstantBuffer(Graphics& gfx, Type type, const C& cBuf, uint32_t slot = 0u)
 		:
 		slot(slot),
-		gfx(gfx)
+		gfx(gfx),
+		type(type)
 	{
 		BIND_INFOMAN(gfx);
 
@@ -25,10 +32,11 @@ public:
 
 		GFX_THROW(GetDevice(gfx)->CreateBuffer(&cbd, &csd, &pData));
 	}
-	ConstantBuffer(Graphics& gfx, uint32_t slot = 0u)
+	ConstantBuffer(Graphics& gfx, Type type, uint32_t slot = 0u)
 		:
 		slot(slot),
-		gfx(gfx)
+		gfx(gfx),
+		type(type)
 	{
 		BIND_INFOMAN(gfx);
 
@@ -61,12 +69,26 @@ public:
 
 		GFX_THROW(GetDevice(gfx)->CreateBuffer(&cbd, &csd, &pData));
 	}
-	virtual void Bind(Graphics& gfx) const override = 0;
+	void Bind(Graphics& gfx) const override
+	{
+		switch (type)
+		{
+		case Type::Vertex:
+			GetContext(gfx)->VSSetConstantBuffers(slot, 1u, pData.GetAddressOf());
+			break;
+		case Type::Pixel:
+			GetContext(gfx)->PSSetConstantBuffers(slot, 1u, pData.GetAddressOf());
+			break;
+		default:
+			assert("Unknown Constant Buffer type" && false);
+			break;
+		}
+	}
 	virtual ~ConstantBuffer() = default;
-protected:
+private:
+	Type type;
 	D3D11_BUFFER_DESC cbd = {};
 	Microsoft::WRL::ComPtr<ID3D11Buffer> pData;
 	uint32_t slot;
-private:
 	Graphics& gfx;
 };

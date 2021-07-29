@@ -2,7 +2,7 @@
 
 #include "Drawable.h"
 #include "Math/IndexedTriangleList.h"
-#include "Bindables/PixelConstantBuffer.h"
+#include "Bindables/ConstantBuffer.h"
 #include "Nodes/PointLight.h"
 
 namespace Drawables
@@ -25,7 +25,7 @@ namespace Drawables
 		Material GetMaterial() const;
 	private:
 		static constexpr uint32_t cbufSlot = 1u;
-		PixelConstantBuffer<Material>* pMaterialBuf = nullptr;
+		ConstantBuffer<Material>* pMaterialBuf = nullptr;
 		const PointLight* pLight = nullptr;
 		Material material;
 		Graphics& gfx;

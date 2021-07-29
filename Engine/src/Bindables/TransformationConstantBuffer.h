@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Bindable.h"
-#include "VertexConstantBuffer.h"
+#include "ConstantBuffer.h"
 #include "Drawables/Drawable.h"
 #include "Math/MihajloMath.h"
 
@@ -18,5 +18,5 @@ private:
 	};
 private:
 	const Drawables::Drawable& parent;
-	VertexConstantBuffer<Data> vConstBuf;
+	ConstantBuffer<Data> vConstBuf;
 };

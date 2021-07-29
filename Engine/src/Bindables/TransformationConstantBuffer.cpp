@@ -1,13 +1,12 @@
 #include "TransformationConstantBuffer.h"
 
 namespace dx = DirectX;
-using VConstBuf = VertexConstantBuffer<dx::XMMATRIX>;
 using namespace Drawables;
 
 TransformationConstantBuffer::TransformationConstantBuffer(Graphics& gfx, const Drawable& parent, uint32_t slot)
 	:
 	parent(parent),
-	vConstBuf(gfx, slot)
+	vConstBuf(gfx, ConstantBuffer<Data>::Type::Vertex, slot)
 { }
 
 void TransformationConstantBuffer::Bind(Graphics& gfx) const

@@ -126,12 +126,6 @@
     <ClInclude Include="src\Bindables\ConstantBuffer.h">
       <Filter>Bindables\Buffers\ConstantBuffers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Bindables\VertexConstantBuffer.h">
-      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Bindables\PixelConstantBuffer.h">
-      <Filter>Bindables\Buffers\ConstantBuffers</Filter>
-    </ClInclude>
     <ClInclude Include="src\Bindables\PixelShader.h">
       <Filter>Bindables\Shaders</Filter>
     </ClInclude>

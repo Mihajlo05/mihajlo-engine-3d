@@ -11,7 +11,7 @@ namespace Drawables
 		AddBindable<VertexBuffer>(gfx, model.vertices);
 		AddIndexBuffer(gfx, model.indices);
 
-		auto pcb = std::make_unique<PixelConstantBuffer<Material>>(gfx, material, cbufSlot);
+		auto pcb = std::make_unique<ConstantBuffer<Material>>(gfx, ConstantBuffer<Material>::Type::Pixel, material, cbufSlot);
 		pMaterialBuf = pcb.get();
 		AddBindable(std::move(pcb));
 

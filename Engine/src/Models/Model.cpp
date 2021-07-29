@@ -200,7 +200,8 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 			} pmc;
 			pmc.specularPower = shininess;
 
-			bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+			bindablePtrs.push_back(std::make_unique<ConstantBuffer<PSMaterialConstant>>(gfx, 
+				ConstantBuffer<PSMaterialConstant>::Type::Pixel, pmc, 1u));
 		}
 		else
 		{
@@ -230,7 +231,8 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 			} pmc;
 			pmc.specularPower = shininess;
 
-			bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+			bindablePtrs.push_back(std::make_unique<ConstantBuffer<PSMaterialConstant>>(gfx,
+				ConstantBuffer<PSMaterialConstant>::Type::Pixel, pmc, 1u));
 		}
 		else
 		{
@@ -249,7 +251,8 @@ std::shared_ptr<Mesh> ParseMesh(Graphics& gfx, const aiMesh& amesh, const aiMate
 				float padding;
 			} pmc;
 
-			bindablePtrs.push_back(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(gfx, pmc, 1u));
+			bindablePtrs.push_back(std::make_unique<ConstantBuffer<PSMaterialConstant>>(gfx,
+				ConstantBuffer<PSMaterialConstant>::Type::Pixel, pmc, 1u));
 		}
 	}
 

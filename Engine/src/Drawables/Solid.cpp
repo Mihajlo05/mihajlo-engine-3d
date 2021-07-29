@@ -1,7 +1,7 @@
 #include "Solid.h"
 #include "Bindables/AllBindables.h"
 
-PixelConstantBuffer<float4>* Drawables::Solid::pColorCBuf = nullptr;
+ConstantBuffer<float4>* Drawables::Solid::pColorCBuf = nullptr;
 
 namespace Drawables
 {
@@ -14,7 +14,7 @@ namespace Drawables
 		AddIndexBuffer(gfx, model.indices);
 
 		const float4 pscb = { color.x, color.y, color.z, 1.0f };
-		auto pcb = std::make_unique<PixelConstantBuffer<float4>>(gfx, pscb);
+		auto pcb = std::make_unique<ConstantBuffer<float4>>(gfx, ConstantBuffer<float4>::Type::Pixel, pscb);
 		pColorCBuf = pcb.get();
 
 		AddBindable(std::move(pcb));

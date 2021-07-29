@@ -2,7 +2,7 @@
 
 #include "Math/IndexedTriangleList.h"
 #include "Drawable.h"
-#include "Bindables/PixelConstantBuffer.h"
+#include "Bindables/ConstantBuffer.h"
 
 namespace Drawables
 {
@@ -13,7 +13,7 @@ namespace Drawables
 		void SetColor(float3 c);
 		float3 GetColor() const;
 	private:
-		static PixelConstantBuffer<float4>* pColorCBuf;
+		static ConstantBuffer<float4>* pColorCBuf;
 		float3 color;
 		Graphics& gfx;
 	};

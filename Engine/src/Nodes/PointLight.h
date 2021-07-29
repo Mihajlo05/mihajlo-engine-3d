@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Nodes/Node.h"
-#include "Bindables/PixelConstantBuffer.h"
+#include "Bindables/ConstantBuffer.h"
 #include "Nodes/MeshInstance.h"
 #include "Drawables/Solid.h"
 #include "Gui/imgui/imgui.h"
@@ -29,7 +29,7 @@ public:
         :
         Node(name),
         data(data),
-        cbuf(gfx)
+        cbuf(gfx, ConstantBuffer<CBufData>::Type::Pixel)
     {
         auto psMesh = std::make_shared<Drawables::Solid>(gfx,
             IndexedTriangleList("Models\\sphere.obj"),
@@ -68,5 +68,5 @@ protected:
 private:
     Drawables::Solid* pMesh = nullptr;
     Data data;
-    PixelConstantBuffer<CBufData> cbuf;
+    ConstantBuffer<CBufData> cbuf;
 };
