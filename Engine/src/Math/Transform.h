@@ -1,58 +1,75 @@
 #pragma once
 
 #include "MihajloMath.h"
+#include "Vector.h"
 
 struct Transform //this should be used instead of matrix when rotation and scaling should always be around origin point, not around origin point of the world
 				 // aka transformation doesn't depend on order of multiplication, as it's always: scalig * roll * pitch * yaw * translation
 {
-	DXVec pos;
-	DXVec rot;
-	DXVec scale;
+	Vector pos;
+	Vector rot;
+	Vector scale;
 	
-	Transform(DXVec pos, DXVec rot, DXVec scale)
-		: pos(pos), rot(rot), scale(scale)
-	{ }
-	Transform(float3 pos = { 0.0f, 0.0f, 0.0f },
-		float3 rot = { 0.0f, 0.0f, 0.0f },
-		float3 scale = {1.0f, 1.0f, 1.0f})
+	Transform(const Vector& pos = {0, 0, 0},
+		const Vector& rot = {0, 0, 0},
+		const Vector& scale = {1, 1, 1})
 		:
-		pos(DirectX::XMVectorSet(pos.x, pos.y, pos.z, 1.0f)),
-		rot(DirectX::XMVectorSet(rot.x, rot.y, rot.z, 1.0f)),
-		scale(DirectX::XMVectorSet(scale.x, scale.y, scale.z, 1.0f))
+		pos(pos),
+		rot(rot),
+		scale(scale)
 	{ }
+	Transform(fmatrix t)
+	{
+		DirectX::XMMatrixDecompose(&scale.GetDXVec(), &rot.GetDXVec(), &pos.GetDXVec(), t);
+		float angle = 0.0f;
+		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rot);
+		rot.Scale(angle);
+	}
 	matrix GetMatrix() const
 	{
-		return DirectX::XMMatrixScalingFromVector(scale) *
-			DirectX::XMMatrixRotationRollPitchYawFromVector(rot) *
-			DirectX::XMMatrixTranslationFromVector(pos);
+		return DirectX::XMMatrixScalingFromVector(scale.GetDXVec()) *
+			DirectX::XMMatrixRotationRollPitchYawFromVector(rot.GetDXVec()) *
+			DirectX::XMMatrixTranslationFromVector(pos.GetDXVec());
 	}
-	Transform& Translate(FDXVec delta)
+	operator matrix()
 	{
-		pos = DirectX::XMVectorAdd(pos, delta);
+		return GetMatrix();
+	}
+	Transform& Translate(Vector delta)
+	{
+		pos += delta;
 		return *this;
 	}
-	Transform& Translate(float3 delta)
+	Transform& Translate(float x, float y, float z)
 	{
-		return Translate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
+		return Translate({ x, y, z });
 	}
-	Transform& Rotate(FDXVec delta)
+	Transform& Rotate(Vector delta)
 	{
-		rot = DirectX::XMVectorAdd(rot, delta);
+		rot += delta;
 		return *this;
 	}
-	Transform& Rotate(float3 delta)
+	Transform& Rotate(float pitch, float yaw, float roll)
 	{
-		return Rotate(DirectX::XMVectorSet(delta.x, delta.y, delta.z, 0.0f));
+		return Rotate({ pitch, yaw, roll });
+	}
+	Transform& Scale(Vector delta)
+	{
+		scale = Hadamard(scale, delta);
+		return *this;
+	}
+	Transform& Scale(float x, float y, float z)
+	{
+		return Scale({ x, y, z });
 	}
 	Transform& Scale(float scalar)
 	{
-		scale = DirectX::XMVectorScale(scale, scalar);
+		scale.Scale(scalar);
 		return *this;
 	}
 	Transform& WrapRotation()
 	{
-		float3 r;
-		DirectX::XMStoreFloat3(&r, rot);
+		float3 r = rot.GetFloat3();
 
 		r.x = WrapAngle(r.x);
 		r.y = WrapAngle(r.y);
@@ -64,14 +81,13 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	}
 	Transform& ClampPitch()
 	{
-		float3 r;
-		DirectX::XMStoreFloat3(&r, rot);
+		float3 r = rot.GetFloat3();
 
 		float deg = 0.99f * (PI / 2.0f);
 
 		r.x = Clamp(r.x, -deg, deg);
 
-		rot = DirectX::XMLoadFloat3(&r);
+		rot = r;
 
 		return *this;
 	}

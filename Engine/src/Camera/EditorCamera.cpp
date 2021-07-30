@@ -24,10 +24,10 @@ matrix EditorCamera::GetView() const
 	DXVec forward = dx::XMVectorSet(0, 0, 1, 1);
 	DXVec up = dx::XMVectorSet(0, 1, 0, 1);
 
-	forward = dx::XMVector3Transform(forward, dx::XMMatrixRotationRollPitchYawFromVector(transf.rot));
-	DXVec toLookAt = dx::XMVector3Transform(transf.pos, dx::XMMatrixTranslationFromVector(forward));
+	forward = dx::XMVector3Transform(forward, dx::XMMatrixRotationRollPitchYawFromVector(transf.rot.GetDXVec()));
+	DXVec toLookAt = dx::XMVector3Transform(transf.pos.GetDXVec(), dx::XMMatrixTranslationFromVector(forward));
 
-	return dx::XMMatrixLookAtLH(transf.pos, toLookAt, up);
+	return dx::XMMatrixLookAtLH(transf.pos.GetDXVec(), toLookAt, up);
 }
 
 matrix EditorCamera::GetProjection() const
