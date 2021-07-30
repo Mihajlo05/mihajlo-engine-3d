@@ -98,12 +98,9 @@ void Node::SetPrevTranfs(fmatrix prevTranfs)
 
 void Node::ShowOnInspector()
 {
-	float3 pos;
-	DirectX::XMStoreFloat3(&pos, transf.pos);
-	float3 rot;
-	DirectX::XMStoreFloat3(&rot, transf.rot);
-	float3 scale;
-	DirectX::XMStoreFloat3(&scale, transf.scale);
+	float3 pos = transf.pos.GetFloat3();
+	float3 rot = transf.rot.GetFloat3();
+	float3 scale = transf.scale.GetFloat3();
 	ImGui::InputFloat3("Pozicija", &pos.x);
 
 	ImGui::Text("Rotacija");
@@ -113,9 +110,7 @@ void Node::ShowOnInspector()
 
 	ImGui::InputFloat3("Scale", &scale.x);
 
-	transf.pos = DirectX::XMLoadFloat3(&pos);
-	transf.rot = DirectX::XMLoadFloat3(&rot);
-	transf.scale = DirectX::XMLoadFloat3(&scale);
+	transf = Transform(pos, rot, scale);
 }
 
 void Node::RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode)

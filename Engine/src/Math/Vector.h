@@ -14,10 +14,6 @@ public:
 	Vector(float x, float y, float z, float w) : Vector(float4{ x, y, z, w }) {}
 	Vector(float x, float y, float z) : Vector(float3{ x, y, z }) {}
 	Vector(DXVec dxVec) : data(dxVec) { }
-	operator DXVec()
-	{
-		return data;
-	}
 	float4 GetFloat4() const
 	{
 		float4 f4;
@@ -35,18 +31,6 @@ public:
 		float2 f2;
 		DirectX::XMStoreFloat2(&f2, data);
 		return f2;
-	}
-	operator float4()
-	{
-		return GetFloat4();
-	}
-	operator float3()
-	{
-		return GetFloat3();
-	}
-	operator float2()
-	{
-		return GetFloat2();
 	}
 	DXVec& GetDXVec()
 	{
@@ -125,6 +109,11 @@ public:
 	Vector& Scale(float v)
 	{
 		data = DirectX::XMVectorScale(data, v);
+		return *this;
+	}
+	Vector& Transform(fmatrix t)
+	{
+		data = DirectX::XMVector3Transform(data, t);
 		return *this;
 	}
 private:

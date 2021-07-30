@@ -43,9 +43,8 @@ public:
     {
         CBufData cbufd;
 
-        DXVec pos = DirectX::XMVector3Transform(GetTransform().pos, GetPrevTranfs());
-        pos = DirectX::XMVector3Transform(pos, gfx.GetCamera().GetView());
-        DirectX::XMStoreFloat3(&cbufd.camPos, pos);
+        Vector pos = GetTransform().pos.Transform(GetPrevTranfs() * gfx.GetCamera().GetView());
+        cbufd.camPos = pos.GetFloat3();
         cbufd.other = data;
 
         pMesh->SetColor(data.diffuseColor);

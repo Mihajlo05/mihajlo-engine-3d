@@ -22,7 +22,7 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	{
 		DirectX::XMMatrixDecompose(&scale.GetDXVec(), &rot.GetDXVec(), &pos.GetDXVec(), t);
 		float angle = 0.0f;
-		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rot);
+		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rot.GetDXVec());
 		rot.Scale(angle);
 	}
 	matrix GetMatrix() const

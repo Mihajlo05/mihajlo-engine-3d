@@ -70,14 +70,14 @@ void EditorCamera::HandleMouseInput(const Mouse::Event& e)
 
 void EditorCamera::Update(float dt, Keyboard& kbd)
 {
-	DXVec delta = dx::XMVectorSet(0, 0, 0, 1);
+	Vector delta = { 0, 0, 0 };
 
-	if (kbd.IsKeyPressed('W')) delta = dx::XMVector3Transform(delta, dx::XMMatrixTranslation(0, 0, 1));
-	if (kbd.IsKeyPressed('S')) delta = dx::XMVector3Transform(delta, dx::XMMatrixTranslation(0, 0, -1));
-	if (kbd.IsKeyPressed('A')) delta = dx::XMVector3Transform(delta, dx::XMMatrixTranslation(-1, 0, 0));
-	if (kbd.IsKeyPressed('D')) delta = dx::XMVector3Transform(delta, dx::XMMatrixTranslation(1, 0, 0));
+	if (kbd.IsKeyPressed('W')) delta += { 0, 0, 1 };
+	if (kbd.IsKeyPressed('S')) delta -= { 0, 0, 1 };
+	if (kbd.IsKeyPressed('A')) delta -= { 1, 0, 0 };
+	if (kbd.IsKeyPressed('D')) delta += { 1, 0, 0 };
 
-	delta = dx::XMVector3Transform(delta, dx::XMMatrixRotationRollPitchYawFromVector(transf.rot) *
+	delta.Transform(dx::XMMatrixRotationRollPitchYawFromVector(transf.rot.GetDXVec()) *
 		dx::XMMatrixScaling(travelSpeed * dt, travelSpeed * dt, travelSpeed * dt));
 	transf.Translate(delta);
 }
