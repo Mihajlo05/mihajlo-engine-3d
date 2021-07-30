@@ -157,6 +157,7 @@
     <ClInclude Include="src\Gui\ImGuizmo\ImSequencer.h" />
     <ClInclude Include="src\Gui\ImGuizmo\ImZoomSlider.h" />
     <ClInclude Include="src\Gui\Inspector.h" />
+    <ClInclude Include="src\Math\Vector.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />
     <ClInclude Include="src\Gui\ImGui\imconfig.h" />

@@ -210,6 +210,7 @@
     <ClInclude Include="src\Gui\ImGuizmo\ImGuizmo.h" />
     <ClInclude Include="src\Gui\ImGuizmo\ImSequencer.h" />
     <ClInclude Include="src\Gui\ImGuizmo\ImZoomSlider.h" />
+    <ClInclude Include="src\Math\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
