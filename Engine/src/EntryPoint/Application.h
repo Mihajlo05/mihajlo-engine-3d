@@ -31,7 +31,6 @@ protected:
 private:
 	Timer timer;
 	Gui::Hierarchy hierarchy;
-	bool isPlaying = false;
 	EditorCamera cam;
 	static float dt;
 	std::unique_ptr<Node> pScene = nullptr;

@@ -180,15 +180,15 @@
     <ClInclude Include="src\Math\Transform.h">
       <Filter>Math</Filter>
     </ClInclude>
-    <ClInclude Include="src\Gui\imgui\imgui_internal.h" />
-    <ClInclude Include="src\Gui\imgui\imstb_rectpack.h" />
-    <ClInclude Include="src\Gui\imgui\imstb_textedit.h" />
-    <ClInclude Include="src\Gui\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\Gui\imgui\imconfig.h" />
-    <ClInclude Include="src\Gui\imgui\imgui.h" />
-    <ClInclude Include="src\Gui\imgui\imgui_impl_dx11.h" />
-    <ClInclude Include="src\Gui\imgui\imgui_impl_win32.h" />
-    <ClInclude Include="src\Gui\imgui\ImGuiManager.h" />
+    <ClInclude Include="src\Gui\ImGui\imgui_internal.h" />
+    <ClInclude Include="src\Gui\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="src\Gui\ImGui\imstb_textedit.h" />
+    <ClInclude Include="src\Gui\ImGui\imstb_truetype.h" />
+    <ClInclude Include="src\Gui\ImGui\imconfig.h" />
+    <ClInclude Include="src\Gui\ImGui\imgui.h" />
+    <ClInclude Include="src\Gui\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="src\Gui\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="src\Gui\ImGui\ImGuiManager.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Math\IndexedTriangleList.h" />
     <ClInclude Include="src\Drawables\Solid.h" />
@@ -278,14 +278,14 @@
     <ClCompile Include="src\Bindables\Sampler.cpp">
       <Filter>Bindables</Filter>
     </ClCompile>
-    <ClCompile Include="src\Gui\imgui\imgui_draw.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui_tables.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui_demo.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui_impl_win32.cpp" />
-    <ClCompile Include="src\Gui\imgui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="src\Gui\imgui\ImGuiManager.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\Gui\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="src\Gui\ImGui\ImGuiManager.cpp" />
     <ClCompile Include="src\Math\IndexedTriangleList.cpp" />
     <ClCompile Include="src\Drawables\Solid.cpp" />
     <ClCompile Include="src\Nodes\Node.cpp" />
