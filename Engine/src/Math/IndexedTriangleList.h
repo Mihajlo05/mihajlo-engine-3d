@@ -17,7 +17,7 @@ public:
 	IndexedTriangleList() = default;
 	IndexedTriangleList(IndexBuffer indices, VertexBuffer vertices);
 	IndexedTriangleList(const aiMesh& mesh); //creates Itl from aiMesh
-	IndexedTriangleList(const std::string& filename, int meshIndex = 0); //loads mesh from file
+	IndexedTriangleList(const std::string& filename, bool genNormals = false, int meshIndex = 0); //loads mesh from file
 public:
 	IndexBuffer indices;
 	VertexBuffer vertices;

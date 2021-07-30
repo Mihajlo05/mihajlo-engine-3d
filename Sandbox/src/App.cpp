@@ -1,5 +1,7 @@
 #include "EntryPoint/EntryPoint.h"
-#include "Suzzane.h"
+#include "Meshes.h"
+#include "Drawables/Phong.h"
+#include "Nodes/PointLight.h"
 
 class App : public Application
 {
@@ -9,6 +11,22 @@ public:
 		Application("Mihajlo Engine 3D")
 	{
 		auto pScene = std::make_unique<Node>("Scena");
+		auto pLight = std::make_unique<PointLight>(gfx, PointLight::Data{ {0.2f, 0.2f, 0.2f}, {1.0f, 1.0f, 1.0f},
+										1.0f, 1.0f, 0.045f, 0.075f }, "Osvetljenje");
+
+		auto pCubeMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::cube, Drawables::Phong::Material{});
+		pCubeMesh->SetLight(*pLight);
+
+		auto pCube = std::make_unique<MeshInstance>(std::move(pCubeMesh), "Kocka");
+
+		auto pSphereMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::sphere, Drawables::Phong::Material{});
+		pSphereMesh->SetLight(*pLight);
+
+		auto pSphere = std::make_unique<MeshInstance>(std::move(pSphereMesh), "Sfera");
+		
+		pScene->AddChild(std::move(pLight));
+		pScene->AddChild(std::move(pCube));
+		pScene->AddChild(std::move(pSphere));
 
 		SetActiveScene(std::move(pScene));
 	}

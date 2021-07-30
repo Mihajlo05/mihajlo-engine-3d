@@ -12,9 +12,9 @@ namespace Drawables
 	public:
 		struct Material
 		{
-			float3 color;
-			float specularIntensity;
-			float specularPower;
+			float3 color = { 1.0f, 1.0f, 1.0f };
+			float specularIntensity = 2.0f;
+			float specularPower = 70.0f;
 			float3 padding;
 		};
 	public:

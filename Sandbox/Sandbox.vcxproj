@@ -183,9 +183,6 @@
     <None Include="shaders-bin\SolidPS.cso" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Suzzane.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Models\nano_textured\arm_dif.png" />
     <Image Include="Models\nano_textured\arm_showroom_ddn.png" />
     <Image Include="Models\nano_textured\arm_showroom_spec.png" />
@@ -206,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Models\nano_textured\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Meshes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

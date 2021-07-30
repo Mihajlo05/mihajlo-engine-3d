@@ -28,11 +28,6 @@
     <None Include="Models\krevet.blend" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Suzzane.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Models\nano_textured\arm_dif.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -87,5 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Models\nano_textured\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Meshes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
