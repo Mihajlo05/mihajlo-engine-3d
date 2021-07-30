@@ -76,6 +76,8 @@ void Graphics::BeginFrame(float r, float g, float b)
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();
 		ImGui::DockSpaceOverViewport();
+
+		ImGui::StyleColorsDark();
 	}
 
 	if (pRendererTarget == nullptr) //this will init pRenderTarget at the beginning and when screen is resized (genius)

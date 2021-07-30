@@ -25,6 +25,7 @@ public:
 	Node& operator=(const Node&) = delete;
 	void AddChild(std::unique_ptr<Node> node);
 	Node* GetChild(const std::string& name);
+	const Node* GetChild(const std::string& name) const;
 	Transform GetTransform() const;
 	void SetTransform(const Transform& transf);
 	std::string GetName() const;
