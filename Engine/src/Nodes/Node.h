@@ -24,8 +24,11 @@ public:
 	Node(const Node&) = delete;
 	Node& operator=(const Node&) = delete;
 	void AddChild(std::unique_ptr<Node> node);
+	Node* GetChild(const std::string& name);
 	Transform GetTransform() const;
 	void SetTransform(const Transform& transf);
+	std::string GetName() const;
+	void SetName(const std::string& name);
 
 	void HandleMouseEvents(const Mouse::Event& e);
 	void HandleKeyboardEvents(const Keyboard::Event& e);

@@ -18,11 +18,13 @@ public:
 		pCubeMesh->SetLight(*pLight);
 
 		auto pCube = std::make_unique<MeshInstance>(std::move(pCubeMesh), "Kocka");
+		pCube->SetTransform(Transform({ 3, 3, 3 }));
 
 		auto pSphereMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::sphere, Drawables::Phong::Material{});
 		pSphereMesh->SetLight(*pLight);
 
 		auto pSphere = std::make_unique<MeshInstance>(std::move(pSphereMesh), "Sfera");
+		pSphere->SetTransform(Transform({ -3, -3, -3 }));
 		
 		pScene->AddChild(std::move(pLight));
 		pScene->AddChild(std::move(pCube));

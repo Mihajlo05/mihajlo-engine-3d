@@ -9,10 +9,12 @@ public:
 		:
 		data(DirectX::XMVectorSet(0, 0, 0, 0))
 	{ }
-	Vector(float4 f4) : Vector(DirectX::XMLoadFloat4(&f4)) { }
-	Vector(float3 f3) : Vector(DirectX::XMLoadFloat3(&f3)) { }
-	Vector(float x, float y, float z, float w) : Vector(float4{ x, y, z, w }) {}
-	Vector(float x, float y, float z) : Vector(float3{ x, y, z }) {}
+	Vector(float4 f4) : data(DirectX::XMLoadFloat4(&f4)) { }
+	Vector(float3 f3) : data(DirectX::XMLoadFloat3(&f3)) { }
+	Vector(float2 f2) : data(DirectX::XMLoadFloat2(&f2)) { }
+	Vector(float x, float y, float z, float w) : Vector(float4{ x, y, z, w }) { }
+	Vector(float x, float y, float z) : Vector(float3{ x, y, z }) { }
+	Vector(float x, float y) : Vector(float2{ x, y }) { }
 	Vector(DXVec dxVec) : data(dxVec) { }
 	float4 GetFloat4() const
 	{
@@ -42,43 +44,43 @@ public:
 	}
 	float GetX() const
 	{
-		return GetFloat4().x;
+		return DirectX::XMVectorGetX(data);
 	}
 	float GetY() const
 	{
-		return GetFloat4().y;
+		return DirectX::XMVectorGetY(data);
 	}
 	float GetZ() const
 	{
-		return GetFloat4().z;
+		return DirectX::XMVectorGetZ(data);
 	}
 	float GetW() const
 	{
-		return GetFloat4().w;
+		return DirectX::XMVectorGetW(data);
+	}
+	float GetByIndex(size_t i) const
+	{
+		return DirectX::XMVectorGetByIndex(data, i);
 	}
 	Vector& SetX(float v)
 	{
-		float4 f = GetFloat4();
-		f.x = v;
-		return *this = f;
+		data = DirectX::XMVectorSetX(data, v);
 	}
 	Vector& SetY(float v)
 	{
-		float4 f = GetFloat4();
-		f.y = v;
-		return *this = f;
+		data = DirectX::XMVectorSetY(data, v);
 	}
 	Vector& SetZ(float v)
 	{
-		float4 f = GetFloat4();
-		f.z = v;
-		return *this = f;
+		data = DirectX::XMVectorSetZ(data, v);
 	}
 	Vector& SetW(float v)
 	{
-		float4 f = GetFloat4();
-		f.w = v;
-		return *this = f;
+		data = DirectX::XMVectorSetW(data, v);
+	}
+	Vector& SetByIndex(float v, size_t i)
+	{
+		data = DirectX::XMVectorSetByIndex(data, v, i);
 	}
 	bool operator==(const Vector& rhs) const
 	{

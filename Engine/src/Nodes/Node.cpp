@@ -15,6 +15,23 @@ void Node::AddChild(std::unique_ptr<Node> node)
 	childrens.push_back(std::move(node));
 }
 
+Node* Node::GetChild(const std::string& name)
+{
+	for (auto& c : childrens)
+	{
+		if (c->GetName() == name)
+		{
+			return c.get();
+		}
+	}
+	return nullptr;
+}
+
+const Node* Node::GetChild(const std::string& name) const
+{
+	return const_cast<Node*>(this)->GetChild(name);
+}
+
 Transform Node::GetTransform() const
 {
 	return transf;
@@ -23,6 +40,16 @@ Transform Node::GetTransform() const
 void Node::SetTransform(const Transform& transf)
 {
 	this->transf = transf;
+}
+
+std::string Node::GetName() const
+{
+	return name;
+}
+
+void Node::SetName(const std::string& name)
+{
+	this->name = name;
 }
 
 void Node::HandleMouseEvents(const Mouse::Event& e)
