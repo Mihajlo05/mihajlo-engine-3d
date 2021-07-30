@@ -102,6 +102,11 @@
     <ClCompile Include="src\ErrorHandling\DxgiInfoManager.cpp" />
     <ClCompile Include="src\EntryPoint\Application.cpp" />
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\GraphEditor.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImCurveEdit.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImGradient.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImSequencer.cpp" />
     <ClCompile Include="src\Gui\ImGui\imgui.cpp" />
     <ClCompile Include="src\Gui\ImGui\ImGuiManager.cpp" />
     <ClCompile Include="src\Gui\ImGui\imgui_demo.cpp" />
@@ -145,6 +150,12 @@
     <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\EntryPoint\EntryPoint.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\GraphEditor.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImCurveEdit.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImGradient.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImSequencer.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImZoomSlider.h" />
     <ClInclude Include="src\Gui\Inspector.h" />
     <ClInclude Include="src\Math\Vertex.h" />
     <ClInclude Include="src\Graphics\Color.h" />

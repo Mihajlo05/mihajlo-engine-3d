@@ -204,6 +204,12 @@
     <ClInclude Include="src\Camera\EditorCamera.h" />
     <ClInclude Include="src\Drawables\Phong.h" />
     <ClInclude Include="src\Bindables\Codex.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\GraphEditor.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImCurveEdit.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImGradient.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImGuizmo.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImSequencer.h" />
+    <ClInclude Include="src\Gui\ImGuizmo\ImZoomSlider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -295,6 +301,11 @@
     <ClCompile Include="src\Models\Model.cpp" />
     <ClCompile Include="src\Camera\EditorCamera.cpp" />
     <ClCompile Include="src\Drawables\Phong.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\GraphEditor.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImCurveEdit.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImGradient.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImGuizmo.cpp" />
+    <ClCompile Include="src\Gui\ImGuizmo\ImSequencer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
