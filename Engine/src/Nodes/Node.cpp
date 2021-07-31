@@ -140,25 +140,21 @@ void Node::ShowOnInspector()
 	transf = Transform(pos, rot, scale);
 }
 
-void Node::RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode)
+void Node::RenderGuiTree(Node*& pSelectedNode)
 {
-	int curIndex = indexTracker;
-	indexTracker++;
-
 	ImGuiTreeNodeFlags flags = ImGuiTreeNodeFlags_OpenOnArrow;
 	if (childrens.empty()) flags |= ImGuiTreeNodeFlags_Leaf;
-	if (curIndex == selectedIndex.value_or(-1)) flags |= ImGuiTreeNodeFlags_Selected;
+	if (pSelectedNode == this) flags |= ImGuiTreeNodeFlags_Selected;
 
 	if (ImGui::TreeNodeEx(name.c_str(), flags))
 	{
 		if (ImGui::IsItemClicked())
 		{
-			selectedIndex = curIndex;
 			pSelectedNode = this;
 		}
 		for (const auto& pChild : childrens)
 		{
-			pChild->RenderGuiTree(indexTracker, selectedIndex, pSelectedNode);
+			pChild->RenderGuiTree(pSelectedNode);
 		}
 		ImGui::TreePop();
 	}

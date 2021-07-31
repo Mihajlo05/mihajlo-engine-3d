@@ -47,7 +47,7 @@ protected:
 protected:
 	virtual void ShowOnInspector(); //Used by inspector
 private:
-	void RenderGuiTree(int& indexTracker, std::optional<int>& selectedIndex, Node*& pSelectedNode); //Used by hierarchy
+	void RenderGuiTree(Node*& pSelectedNode); //Used by hierarchy
 protected:
 	std::vector<std::unique_ptr<Node>> childrens;
 private:

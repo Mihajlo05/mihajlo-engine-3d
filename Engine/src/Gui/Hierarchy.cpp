@@ -7,9 +7,7 @@ namespace Gui
 	{
 		if (ImGui::Begin(wndName))
 		{
-			int nodeIndexTracker = 0;
-			static std::optional<int> selectedIndex;
-			pRoot->RenderGuiTree(nodeIndexTracker, selectedIndex, pSelectedNode);
+			pRoot->RenderGuiTree(pSelectedNode);
 		}
 		ImGui::End();
 		inspector.SpawnWindow(pSelectedNode);
