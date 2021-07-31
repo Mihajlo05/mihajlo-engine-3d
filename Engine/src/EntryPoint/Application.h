@@ -33,7 +33,6 @@ protected:
 	Graphics& gfx;
 private:
 	Timer timer;
-	Gui::Hierarchy hierarchy;
 	EditorCamera cam;
 	static float dt;
 	std::unique_ptr<Node> pScene = nullptr;

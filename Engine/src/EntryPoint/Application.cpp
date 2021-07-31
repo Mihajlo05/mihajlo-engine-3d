@@ -16,7 +16,7 @@ void Application::Go()
 {
 	dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
-	hierarchy.SpawnWindow();
+	Gui::Hierarchy::Get().SpawnWindow();
 	while (!wnd.mouse.IsEmpty()) _HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) _HandleKeyboardEvents(wnd.kbd.ReadKey());
 	_Update(dt);
@@ -32,7 +32,7 @@ float Application::GetDeltaTime()
 void Application::SetActiveScene(std::unique_ptr<Node> pScene)
 {
 	this->pScene = std::move(pScene);
-	hierarchy.SetRoot(*this->pScene.get());
+	Gui::Hierarchy::Get().SetRoot(*this->pScene.get());
 }
 
 void Application::HandleMouseEvents(const Mouse::Event& e)
