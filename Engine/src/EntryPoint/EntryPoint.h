@@ -16,7 +16,6 @@ int CALLBACK WinMain(
 	try
 	{
 		GDIPlusManager gpm;
-		ImGuiManager igm;
 		auto pApp = GetApplication();
 
 		std::optional<int> ecode;

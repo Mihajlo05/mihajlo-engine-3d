@@ -61,9 +61,6 @@ public:
 	void BindCamera(ICamera& cam);
 	void UnbindCamera();
 	bool IsCameraBound() const;
-	void EnableGui();
-	void DisableGui();
-	bool IsGuiEnabled() const;
 	void OnResize(uint32_t width, uint32_t height);
 	float2 GetRendererPos() const;
 	float2 GetRendererSize() const;
@@ -81,7 +78,6 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> pRendererTarget = nullptr;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDepthStencilView = nullptr;
 private:
-	bool isGuiEnabled = true;
 	const char* rendererWndName = "Renderer";
 	float2 rndPos = { -1.0f, -1.0f };
 	float2 rndSize = { -1.0f, -1.0f };

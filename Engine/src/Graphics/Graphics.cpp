@@ -70,15 +70,10 @@ Graphics::~Graphics()
 
 void Graphics::BeginFrame(float r, float g, float b)
 {
-	if (isGuiEnabled)
-	{
-		ImGui_ImplDX11_NewFrame();
-		ImGui_ImplWin32_NewFrame();
-		ImGui::NewFrame();
-		ImGui::DockSpaceOverViewport();
-
-		ImGui::StyleColorsDark();
-	}
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+	ImGui::DockSpaceOverViewport();
 
 	if (pRendererTarget == nullptr) //this will init pRenderTarget at the beginning and when screen is resized (genius)
 	{
@@ -160,46 +155,43 @@ void Graphics::BeginFrame(float r, float g, float b)
 
 void Graphics::EndFrame()
 {
-	if (isGuiEnabled)
+	D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc;
+	shaderResourceViewDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+	shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
+	shaderResourceViewDesc.Texture2D.MipLevels = 1;
+
+	ComPtr<ID3D11Resource> pRendTexture;
+	pRendererTarget->GetResource(&pRendTexture);
+
+	ComPtr<ID3D11ShaderResourceView> pView;
+	GFX_THROW(pDevice->CreateShaderResourceView(pRendTexture.Get(), &shaderResourceViewDesc, &pView));
+
+	ImGui::Begin(rendererWndName);
 	{
-		D3D11_SHADER_RESOURCE_VIEW_DESC shaderResourceViewDesc;
-		shaderResourceViewDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-		shaderResourceViewDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
-		shaderResourceViewDesc.Texture2D.MostDetailedMip = 0;
-		shaderResourceViewDesc.Texture2D.MipLevels = 1;
+		rndPos.x = ImGui::GetWindowPos().x;
+		rndPos.y = ImGui::GetWindowPos().y;
+		rndSizeContent.x = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
+		rndSizeContent.y = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
+		rndSize.x = ImGui::GetWindowWidth();
+		rndSize.y = ImGui::GetWindowHeight();
 
-		ComPtr<ID3D11Resource> pRendTexture;
-		pRendererTarget->GetResource(&pRendTexture);
+		if (IsCameraBound())
+			pCamera->SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, rndSizeContent.y / rndSizeContent.x, 0.5f, 100.0f));
 
-		ComPtr<ID3D11ShaderResourceView> pView;
-		GFX_THROW(pDevice->CreateShaderResourceView(pRendTexture.Get(), &shaderResourceViewDesc, &pView));
+		ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndSizeContent.x, rndSizeContent.y)); //Render the frame on ImGui window
+	}
+	ImGui::End();
 
-		ImGui::Begin(rendererWndName);
-		{
-			rndPos.x = ImGui::GetWindowPos().x;
-			rndPos.y = ImGui::GetWindowPos().y;
-			rndSizeContent.x = ImGui::GetWindowContentRegionMax().x - ImGui::GetWindowContentRegionMin().x;
-			rndSizeContent.y = ImGui::GetWindowContentRegionMax().y - ImGui::GetWindowContentRegionMin().y;
-			rndSize.x = ImGui::GetWindowWidth();
-			rndSize.y = ImGui::GetWindowHeight();
+	pContext->OMSetRenderTargets(1u, pGuiTarget.GetAddressOf(), nullptr);
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
-			if (IsCameraBound())
-				pCamera->SetProjection(DirectX::XMMatrixPerspectiveLH(1.0f, rndSizeContent.y / rndSizeContent.x, 0.5f, 100.0f));
-
-			ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndSizeContent.x, rndSizeContent.y)); //Render the frame on ImGui window
-		}
-		ImGui::End();
-
-		pContext->OMSetRenderTargets(1u, pGuiTarget.GetAddressOf(), nullptr);
-		ImGui::Render();
-		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-
-		// Update and Render additional Platform Windows
-		if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-		{
-			ImGui::UpdatePlatformWindows();
-			ImGui::RenderPlatformWindowsDefault();
-		}
+	// Update and Render additional Platform Windows
+	if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+	{
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
 	}
 
 #ifndef NDEBUG
@@ -248,21 +240,6 @@ void Graphics::UnbindCamera()
 bool Graphics::IsCameraBound() const
 {
 	return pCamera != nullptr;
-}
-
-void Graphics::EnableGui()
-{
-	isGuiEnabled = true;
-}
-
-void Graphics::DisableGui()
-{
-	isGuiEnabled = false;
-}
-
-bool Graphics::IsGuiEnabled() const
-{
-	return isGuiEnabled;
 }
 
 void Graphics::OnResize(uint32_t width, uint32_t height)

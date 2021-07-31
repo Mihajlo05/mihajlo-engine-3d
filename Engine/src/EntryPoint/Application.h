@@ -4,6 +4,7 @@
 #include "Timer/Timer.h"
 #include "Gui/Hierarchy.h"
 #include "Camera/EditorCamera.h"
+#include "Gui/ImGui/ImGuiManager.h"
 
 class Application
 {
@@ -25,6 +26,8 @@ private:
 	void _HandleKeyboardEvents(const Keyboard::Event& e);
 	void _Update(float dt);
 	void _Draw();
+private:
+	ImGuiManager igm; //all variables HAVE to be bellow ImGuiManager, as it has to be initialized first
 protected:
 	Window wnd;
 	Graphics& gfx;
