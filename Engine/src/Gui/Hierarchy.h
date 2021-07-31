@@ -15,12 +15,9 @@ namespace Gui
 			return hier;
 		}
 	public:
-		void BeginFrame();
-		void EndFrame(float2 rndPos, float2 rndSize, ICamera& cam);
+		void SpawnWindow();
 		void SetRoot(Node& node);
 		const Node* GetRoot() const;
-		Node* GetSelectedNode();
-		const Node* GetSelectedNode() const;
 	private:
 		Hierarchy() = default;
 	private:

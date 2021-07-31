@@ -16,6 +16,7 @@ void Application::Go()
 {
 	dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
+	Gui::Hierarchy::Get().SpawnWindow();
 	while (!wnd.mouse.IsEmpty()) _HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) _HandleKeyboardEvents(wnd.kbd.ReadKey());
 	_Update(dt);
