@@ -4,6 +4,8 @@
 #include "Gui/imgui/imgui_impl_dx11.h"
 #include "Gui/imgui/imgui_impl_win32.h"
 #include "Surface.h"
+#include "Gui/Hierarchy.h"
+#include "Gui/ImGuizmo/ImGuizmo.h"
 
 #pragma comment(lib, "d3d11.lib")
 
@@ -72,7 +74,9 @@ void Graphics::BeginFrame(float r, float g, float b)
 {
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
+
 	ImGui::NewFrame();
+
 	ImGui::DockSpaceOverViewport();
 
 	if (pRendererTarget == nullptr) //this will init pRenderTarget at the beginning and when screen is resized (genius)
@@ -151,6 +155,8 @@ void Graphics::BeginFrame(float r, float g, float b)
 	}
 
 	ClearBuffer(r, g, b);
+
+	Gui::Hierarchy::Get().BeginFrame();
 }
 
 void Graphics::EndFrame()
@@ -181,6 +187,9 @@ void Graphics::EndFrame()
 
 		ImGui::Image((ImTextureID)pView.Get(), ImVec2(rndSizeContent.x, rndSizeContent.y)); //Render the frame on ImGui window
 	}
+
+	//Gizmo
+	Gui::Hierarchy::Get().EndFrame(rndPos, rndSize, *pCamera);
 	ImGui::End();
 
 	pContext->OMSetRenderTargets(1u, pGuiTarget.GetAddressOf(), nullptr);
