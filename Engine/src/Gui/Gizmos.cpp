@@ -25,6 +25,11 @@ namespace Gui
 				operation = (int)ImGuizmo::OPERATION::ROTATE;
 			else if (ImGui::Button("S"))
 				operation = (int)ImGuizmo::OPERATION::SCALE;
+
+			if (ImGui::Button("L"))
+				mode = (int)ImGuizmo::MODE::LOCAL;
+			if (ImGui::Button("W"))
+				mode = (int)ImGuizmo::MODE::WORLD;
 		}
 		ImGui::EndMainMenuBar();
 	}
@@ -48,7 +53,7 @@ namespace Gui
 			return reinterpret_cast<float*>(&m);
 		};
 
-		ImGuizmo::Manipulate(cast(view), cast(proj), ImGuizmo::OPERATION(operation), ImGuizmo::MODE::LOCAL, cast(transf));
+		ImGuizmo::Manipulate(cast(view), cast(proj), ImGuizmo::OPERATION(operation), ImGuizmo::MODE(mode), cast(transf));
 
 		if (ImGuizmo::IsUsing())
 		{

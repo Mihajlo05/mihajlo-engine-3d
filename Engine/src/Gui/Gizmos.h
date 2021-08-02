@@ -16,5 +16,6 @@ namespace Gui
 		Graphics& gfx;
 		Node* pNode = nullptr;
 		int operation = 7;
+		int mode = 0;
 	};
 }
