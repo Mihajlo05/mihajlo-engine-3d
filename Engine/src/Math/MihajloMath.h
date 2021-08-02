@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <cmath>
 #include  <DirectXMath.h>
 
 constexpr float PI = 3.14159265f;

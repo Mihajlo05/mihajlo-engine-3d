@@ -65,22 +65,27 @@ public:
 	Vector& SetX(float v)
 	{
 		data = DirectX::XMVectorSetX(data, v);
+		return *this;
 	}
 	Vector& SetY(float v)
 	{
 		data = DirectX::XMVectorSetY(data, v);
+		return *this;
 	}
 	Vector& SetZ(float v)
 	{
 		data = DirectX::XMVectorSetZ(data, v);
+		return *this;
 	}
 	Vector& SetW(float v)
 	{
 		data = DirectX::XMVectorSetW(data, v);
+		return *this;
 	}
 	Vector& SetByIndex(float v, size_t i)
 	{
 		data = DirectX::XMVectorSetByIndex(data, v, i);
+		return *this;
 	}
 	bool operator==(const Vector& rhs) const
 	{

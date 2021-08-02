@@ -22,10 +22,11 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	{
 		Vector rotQuat;
 		assert(DirectX::XMMatrixDecompose(&scale.GetDXVec(), &rotQuat.GetDXVec(), &pos.GetDXVec(), t));
-		float angle;
-		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rotQuat.GetDXVec());
-		rot = rot.GetNormalized();
-		rot *= angle;
+		matrix rotMatrix = DirectX::XMMatrixRotationQuaternion(rotQuat.GetDXVec());
+
+		float pitch, yaw, roll;
+		ExtractRollPitchYawFromMatrix(pitch, yaw, roll, rotMatrix);
+		rot = { pitch, yaw, roll };
 	}
 	matrix GetMatrix() const
 	{
@@ -100,5 +101,13 @@ struct Transform //this should be used instead of matrix when rotation and scali
 		rot = r;
 
 		return *this;
+	}
+	static void ExtractRollPitchYawFromMatrix(float& pitchOut, float& yawOut, float& rollOut, fmatrix rotationMatrix)
+	{
+		float4x4 XMFLOAT4X4_Values;
+		DirectX::XMStoreFloat4x4(&XMFLOAT4X4_Values, DirectX::XMMatrixTranspose(rotationMatrix));
+		pitchOut = (float)asin(-XMFLOAT4X4_Values._23);
+		yawOut = (float)atan2(XMFLOAT4X4_Values._13, XMFLOAT4X4_Values._33);
+		rollOut = (float)atan2(XMFLOAT4X4_Values._21, XMFLOAT4X4_Values._22);
 	}
 };
