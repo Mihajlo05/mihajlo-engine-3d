@@ -20,10 +20,12 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	{ }
 	Transform(fmatrix t)
 	{
-		DirectX::XMMatrixDecompose(&scale.GetDXVec(), &rot.GetDXVec(), &pos.GetDXVec(), t);
-		float angle = 0.0f;
-		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rot.GetDXVec());
-		rot.Scale(angle);
+		Vector rotQuat;
+		assert(DirectX::XMMatrixDecompose(&scale.GetDXVec(), &rotQuat.GetDXVec(), &pos.GetDXVec(), t));
+		float angle;
+		DirectX::XMQuaternionToAxisAngle(&rot.GetDXVec(), &angle, rotQuat.GetDXVec());
+		rot = rot.GetNormalized();
+		rot *= angle;
 	}
 	matrix GetMatrix() const
 	{
@@ -31,7 +33,7 @@ struct Transform //this should be used instead of matrix when rotation and scali
 			DirectX::XMMatrixRotationRollPitchYawFromVector(rot.GetDXVec()) *
 			DirectX::XMMatrixTranslationFromVector(pos.GetDXVec());
 	}
-	operator matrix()
+	explicit operator matrix()
 	{
 		return GetMatrix();
 	}
@@ -64,7 +66,7 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	}
 	Transform& Scale(float scalar)
 	{
-		scale.Scale(scalar);
+		scale *= scalar;
 		return *this;
 	}
 	Transform& WrapRotation()

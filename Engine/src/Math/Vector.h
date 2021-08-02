@@ -108,15 +108,22 @@ public:
 	{
 		return DirectX::XMVector3Dot(data, rhs.data);
 	}
-	Vector& Scale(float v)
+	Vector operator*(float scalar) const
 	{
-		data = DirectX::XMVectorScale(data, v);
-		return *this;
+		return DirectX::XMVectorScale(data, scalar);
+	}
+	Vector& operator*=(float scalar)
+	{
+		return *this = *this * scalar;
 	}
 	Vector& Transform(fmatrix t)
 	{
 		data = DirectX::XMVector3Transform(data, t);
 		return *this;
+	}
+	Vector GetNormalized() const
+	{
+		return DirectX::XMVector3Normalize(data);
 	}
 private:
 	DXVec data;

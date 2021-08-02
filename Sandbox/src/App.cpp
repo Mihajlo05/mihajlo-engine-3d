@@ -18,7 +18,7 @@ public:
 		pCubeMesh->SetLight(*pLight);
 
 		auto pCube = std::make_unique<MeshInstance>(std::move(pCubeMesh), "Kocka");
-		pCube->SetTransform(Transform({ 3, 3, 3 }));
+		pCube->SetTransform(DirectX::XMMatrixRotationRollPitchYaw(PI/2.0f, 0, 0));
 
 		auto pSphereMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::sphere, Drawables::Phong::Material{});
 		pSphereMesh->SetLight(*pLight);
