@@ -52,7 +52,15 @@ namespace Gui
 
 		if (ImGuizmo::IsUsing())
 		{
-			pNode->SetTransform(transf);
+			Transform manipulatedTransform = transf;
+			Transform nodeTransform = pNode->GetTransform();
+			Vector deltaRot = manipulatedTransform.rot - nodeTransform.rot;
+
+			nodeTransform.pos = manipulatedTransform.pos;
+			nodeTransform.rot += deltaRot; //fixed gimbal lock problem
+			nodeTransform.scale = manipulatedTransform.scale;
+
+			pNode->SetTransform(nodeTransform);
 		}
 	}
 
