@@ -2,6 +2,7 @@
 #include "Meshes.h"
 #include "Drawables/Phong.h"
 #include "Nodes/PointLight.h"
+#include "Models/Model.h"
 
 class App : public Application
 {
@@ -25,10 +26,18 @@ public:
 
 		auto pSphere = std::make_unique<MeshInstance>(std::move(pSphereMesh), "Sfera");
 		pSphere->SetTransform(Transform({ -3, -3, -3 }));
-		
+
+		auto pNano = std::make_unique<Node>("NanoSuit");
+		pNano->AddChild(LoadModel(gfx, "Models\\nano.gltf", pLight.get()));
+
+		auto pNanoM = std::make_unique<Node>("NanoSuit Material");
+		pNanoM->AddChild(LoadModel(gfx, "Models\\nano_textured\\nanosuit.obj", pLight.get()));
+
 		pScene->AddChild(std::move(pLight));
 		pScene->AddChild(std::move(pCube));
 		pScene->AddChild(std::move(pSphere));
+		pScene->AddChild(std::move(pNano));
+		pScene->AddChild(std::move(pNanoM));
 
 		SetActiveScene(std::move(pScene));
 	}
