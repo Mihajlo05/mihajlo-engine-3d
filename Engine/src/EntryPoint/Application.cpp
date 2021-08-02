@@ -7,7 +7,8 @@ Application::Application(const std::string& name)
 	:
 	wnd(1280u, 720u, name.c_str()),
 	gfx(wnd.Gfx()),
-	cam(720.0f/1280.0f)
+	cam(720.0f/1280.0f),
+	hierarchy(gfx)
 {
 	gfx.BindCamera(cam);
 }
@@ -16,11 +17,12 @@ void Application::Go()
 {
 	dt = timer.Reset();
 	gfx.BeginFrame(0.2f, 0.4f, 1.0f);
-	hierarchy.SpawnWindow();
+	hierarchy.BeginFrame();
 	while (!wnd.mouse.IsEmpty()) _HandleMouseEvents(wnd.mouse.Read());
 	while (!wnd.kbd.IsKeyEmpty()) _HandleKeyboardEvents(wnd.kbd.ReadKey());
 	_Update(dt);
 	_Draw();
+	hierarchy.EndFrame();
 	gfx.EndFrame();
 }
 

@@ -101,6 +101,7 @@
     <ClCompile Include="src\ErrorHandling\dxerr.cpp" />
     <ClCompile Include="src\ErrorHandling\DxgiInfoManager.cpp" />
     <ClCompile Include="src\EntryPoint\Application.cpp" />
+    <ClCompile Include="src\Gui\Gizmos.cpp" />
     <ClCompile Include="src\Gui\Hierarchy.cpp" />
     <ClCompile Include="src\Gui\ImGuizmo\GraphEditor.cpp" />
     <ClCompile Include="src\Gui\ImGuizmo\ImCurveEdit.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="src\Drawables\Phong.h" />
     <ClInclude Include="src\Drawables\Solid.h" />
     <ClInclude Include="src\EntryPoint\EntryPoint.h" />
+    <ClInclude Include="src\Gui\Gizmos.h" />
     <ClInclude Include="src\Gui\Hierarchy.h" />
     <ClInclude Include="src\Gui\ImGuizmo\GraphEditor.h" />
     <ClInclude Include="src\Gui\ImGuizmo\ImCurveEdit.h" />

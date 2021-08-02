@@ -126,18 +126,17 @@ void Node::SetPrevTranfs(fmatrix prevTranfs)
 void Node::ShowOnInspector()
 {
 	float3 pos = transf.pos.GetFloat3();
-	float3 rot = transf.rot.GetFloat3();
+	float3 rot = (transf.rot * rad2deg).GetFloat3();
 	float3 scale = transf.scale.GetFloat3();
+
 	ImGui::InputFloat3("Pozicija", &pos.x);
-
-	ImGui::Text("Rotacija");
-	ImGui::SliderAngle("Roll", &rot.z, -180, 180);
-	ImGui::SliderAngle("Pitch", &rot.x, -180, 180);
-	ImGui::SliderAngle("Yaw", &rot.y, -180, 180);
-
+	ImGui::InputFloat3("Rotacija", &rot.x);
 	ImGui::InputFloat3("Scale", &scale.x);
 
-	transf = Transform(pos, rot, scale);
+	Vector r = rot;
+	r *= deg2rad;
+
+	transf = Transform(pos, r, scale);
 }
 
 void Node::RenderGuiTree(Node*& pSelectedNode)

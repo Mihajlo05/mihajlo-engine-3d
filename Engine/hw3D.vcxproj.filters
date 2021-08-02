@@ -211,6 +211,7 @@
     <ClInclude Include="src\Gui\ImGuizmo\ImSequencer.h" />
     <ClInclude Include="src\Gui\ImGuizmo\ImZoomSlider.h" />
     <ClInclude Include="src\Math\Vector.h" />
+    <ClInclude Include="src\Gui\Gizmos.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Windows\Window.cpp">
@@ -307,6 +308,7 @@
     <ClCompile Include="src\Gui\ImGuizmo\ImGradient.cpp" />
     <ClCompile Include="src\Gui\ImGuizmo\ImGuizmo.cpp" />
     <ClCompile Include="src\Gui\ImGuizmo\ImSequencer.cpp" />
+    <ClCompile Include="src\Gui\Gizmos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\Resources\hw3D.rc">
