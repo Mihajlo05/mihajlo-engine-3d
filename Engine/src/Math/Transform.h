@@ -37,6 +37,14 @@ struct Transform //this should be used instead of matrix when rotation and scali
 	{
 		return GetMatrix();
 	}
+	Transform operator*(const Transform& rhs) const
+	{
+		return GetMatrix() * rhs.GetMatrix();
+	}
+	Transform& operator*=(const Transform& rhs)
+	{
+		return *this = *this * rhs;
+	}
 	Transform& Translate(Vector delta)
 	{
 		pos += delta;
