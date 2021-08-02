@@ -28,6 +28,8 @@ public:
 	const Node* GetChild(const std::string& name) const;
 	Transform GetTransform() const;
 	void SetTransform(const Transform& transf);
+	Transform GetGlobalTransform() const;
+	void SetGlobalTransform(const Transform& t);
 	std::string GetName() const;
 	void SetName(const std::string& name);
 

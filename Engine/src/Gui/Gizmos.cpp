@@ -46,7 +46,7 @@ namespace Gui
 		Vector oldRot = pNode->GetTransform().rot;
 		matrix view = gfx.GetCamera().GetView();
 		matrix proj = gfx.GetCamera().GetProjection();
-		matrix transf = pNode->GetTransform().GetMatrix();
+		matrix transf = pNode->GetGlobalTransform().GetMatrix();
 
 		auto cast = [](matrix& m)
 		{
@@ -65,7 +65,7 @@ namespace Gui
 			nodeTransform.rot += deltaRot; //fixed gimbal lock problem
 			nodeTransform.scale = manipulatedTransform.scale;
 
-			pNode->SetTransform(nodeTransform);
+			pNode->SetGlobalTransform(nodeTransform);
 		}
 	}
 

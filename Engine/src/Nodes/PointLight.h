@@ -43,7 +43,7 @@ public:
     {
         CBufData cbufd;
 
-        Vector pos = GetTransform().pos.Transform(GetPrevTranfs() * gfx.GetCamera().GetView());
+        Vector pos = Transform(GetGlobalTransform().GetMatrix() * gfx.GetCamera().GetView()).pos;
         cbufd.camPos = pos.GetFloat3();
         cbufd.other = data;
 

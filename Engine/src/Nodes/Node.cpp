@@ -42,6 +42,17 @@ void Node::SetTransform(const Transform& transf)
 	this->transf = transf;
 }
 
+Transform Node::GetGlobalTransform() const
+{
+	return transf.GetMatrix() * prevTranfs;
+}
+
+void Node::SetGlobalTransform(const Transform& t)
+{
+	DXVec determinant = DirectX::XMMatrixDeterminant(prevTranfs);
+	transf = t.GetMatrix() * DirectX::XMMatrixInverse(&determinant, prevTranfs);
+}
+
 std::string Node::GetName() const
 {
 	return name;

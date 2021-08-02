@@ -12,9 +12,7 @@ MeshInstance::MeshInstance(std::shared_ptr<Drawable> pMesh, const std::string& n
 
 void MeshInstance::_Draw(Graphics& gfx) const
 {
-	matrix globalTransf = GetTransform().GetMatrix() * GetPrevTranfs();
-
-	pMesh->SetTransformation(globalTransf);
+	pMesh->SetTransformation(GetGlobalTransform().GetMatrix());
 	pMesh->Draw(gfx);
 
 	for (const auto& pChild : childrens)
