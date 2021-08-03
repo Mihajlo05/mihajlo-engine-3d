@@ -11,20 +11,20 @@ public:
 		:
 		Application("Mihajlo Engine 3D")
 	{
-		auto pScene = std::make_unique<Node>("Scena");
+		auto pScene = std::make_unique<Node>("Test Scene");
 		auto pLight = std::make_unique<PointLight>(gfx, PointLight::Data{ {0.2f, 0.2f, 0.2f}, {1.0f, 1.0f, 1.0f},
-										1.0f, 1.0f, 0.045f, 0.075f }, "Osvetljenje");
+										1.0f, 1.0f, 0.045f, 0.075f }, "Point Light");
 
 		auto pCubeMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::cube, Drawables::Phong::Material{});
 		pCubeMesh->SetLight(*pLight);
 
-		auto pCube = std::make_unique<MeshInstance>(std::move(pCubeMesh), "Kocka");
+		auto pCube = std::make_unique<MeshInstance>(std::move(pCubeMesh), "Cube");
 		pCube->SetTransform(Transform({ 3, 3, 3 }));
 
 		auto pSphereMesh = std::make_shared<Drawables::Phong>(gfx, Meshes::sphere, Drawables::Phong::Material{});
 		pSphereMesh->SetLight(*pLight);
 
-		auto pSphere = std::make_unique<MeshInstance>(std::move(pSphereMesh), "Sfera");
+		auto pSphere = std::make_unique<MeshInstance>(std::move(pSphereMesh), "Sphere");
 		pSphere->SetTransform(Transform({ -3, -3, -3 }));
 
 		auto pNano = std::make_unique<Node>("NanoSuit");

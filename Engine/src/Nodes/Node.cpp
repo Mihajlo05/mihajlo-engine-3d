@@ -140,8 +140,8 @@ void Node::ShowOnInspector()
 	float3 rot = (transf.rot * rad2deg).GetFloat3();
 	float3 scale = transf.scale.GetFloat3();
 
-	ImGui::InputFloat3("Pozicija", &pos.x);
-	ImGui::InputFloat3("Rotacija", &rot.x);
+	ImGui::InputFloat3("Position", &pos.x);
+	ImGui::InputFloat3("Rotation", &rot.x);
 	ImGui::InputFloat3("Scale", &scale.x);
 
 	Vector r = rot;

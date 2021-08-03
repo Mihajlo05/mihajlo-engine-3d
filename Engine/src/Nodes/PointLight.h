@@ -56,10 +56,10 @@ public:
 protected:
     virtual void ShowOnInspector() override
     {
-        ImGui::ColorPicker3("Ambijent", &data.ambient.x);
-        ImGui::ColorPicker3("Boja", &data.diffuseColor.x);
-        ImGui::SliderFloat("Intezitet", &data.diffuseIntensity, 0, 1);
-        ImGui::InputFloat3("Atenuacija", &data.attConst);
+        ImGui::ColorPicker3("Ambient", &data.ambient.x);
+        ImGui::ColorPicker3("Color", &data.diffuseColor.x);
+        ImGui::SliderFloat("Intensiy", &data.diffuseIntensity, 0, 1);
+        ImGui::InputFloat3("Atenuation", &data.attConst);
 
         ImGui::NewLine();
         Node::ShowOnInspector();

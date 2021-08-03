@@ -23,6 +23,6 @@ namespace Gui
 		Gizmos gizmos;
 		Graphics& gfx;
 	public:
-		static constexpr const char* wndName = "Hijerarhija";
+		static constexpr const char* wndName = "Scene Hierarchy";
 	};
 }

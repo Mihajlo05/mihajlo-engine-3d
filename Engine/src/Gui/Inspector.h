@@ -9,6 +9,6 @@ namespace Gui
 	public:
 		void SpawnWindow(Node* pNode);
 	public:
-		static constexpr const char* wndName = "Pregledac";
+		static constexpr const char* wndName = "Properties";
 	};
 }
